@@ -1,5 +1,5 @@
 var app = angular.module('GoldMorning');
 
-app.controller('cartCtrl', function($scope) {
-	$scope.cTest = "This is the cartTmpl.html. D UP from the cartCtrl!"
-});//end productModalCtrl
+app.controller('checkoutCtrl', function($scope) {
+	$scope.checkoutTest = "This is the checkoutTmpl.html. slangin rocks from the checkoutCtrl!"
+});//end checkoutCtrl
