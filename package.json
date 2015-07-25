@@ -1,0 +1,24 @@
+{
+  "name": "golden-morning-store",
+  "version": "1.0.0",
+  "description": "our group ecommerce site for gold morning store",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoldenMorningStore/GoldenMorningStore.git"
+  },
+  "keywords": [
+    "ecommerce",
+    "mean"
+  ],
+  "author": "alicia chen, peter griesmer, robert hallowell, andy johnson, tyler tebbs - thanks to page garner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GoldenMorningStore/GoldenMorningStore/issues"
+  },
+  "homepage": "https://github.com/GoldenMorningStore/GoldenMorningStore#readme"
+}
