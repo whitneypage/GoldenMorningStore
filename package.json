@@ -20,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/GoldenMorningStore/GoldenMorningStore/issues"
   },
-  "homepage": "https://github.com/GoldenMorningStore/GoldenMorningStore#readme"
+  "homepage": "https://github.com/GoldenMorningStore/GoldenMorningStore#readme",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "cors": "^2.7.1",
+    "express": "^4.13.1",
+    "express-session": "^1.11.3",
+    "mongoose": "^4.1.0",
+    "passport": "^0.2.2"
+  }
 }
