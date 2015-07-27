@@ -1,19 +1,28 @@
 var mongoose = require('mongoose');
 
-var productsSchema = mongoose.Schema({
-    nameAndColor: 
-    category: 
-    price: 
-    sizes: 
-    photos: 
-    description: 
-    dateCreated:
-    /*so the lady can see when she most recently updated a given product*/
-    dateUpdated:
+
+var productSchema = mongoose.Schema({
+	sku: {type: Number}
+	, productTitleField: {type: String} 
+	, productDescriptionField: {type: String}
+	, chooseProductCategory: {type: String}
+	, imageField: {type: String}
+	, addPriceField: {type: Number}
+	, dateCreated: {type: Date}
+	, dateUpdated: {type: Date}
+	, colorSize: {
+		color: {type: String}, 
+		sizes: [{
+			smallQty: {type: Number},
+			mediumQty: {type: Number},
+			largeQty: {type: Number}
+		}]
+
+	}
+
 })
 
-productsSchema.pre('update', function() {
-    this.dateUp
+productSchema.pre('createProduct', function(){
+		this.dateCreated = Date.now();
 })
 
-module.exports = mongoose.model("Product", productsSchema);
