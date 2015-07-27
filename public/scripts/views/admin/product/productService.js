@@ -7,7 +7,7 @@ app.service('productService', function($http, $q){
         var deferred = $q.defer();
         $http({
             method: 'POST',
-            url: "http://localhost:8080/products",
+            url: "http://localhost:1337/products",
             headers: {
                'Content-Type': "application/json"
             },
@@ -35,7 +35,7 @@ app.service('productService', function($http, $q){
         var deferred = $q.defer();
         $http({
             method: 'PUT',
-            url: "http://localhost:8080/products/",
+            url: "http://localhost:1337/products/",
         }).then(function(response) {
             deferred.resolve(response.data)
         });
@@ -47,7 +47,7 @@ app.service('productService', function($http, $q){
         var deferred = $q.defer();
         $http({
             method: 'DELETE',
-            url: "http://localhost:8080/products",
+            url: "http://localhost:1337/products",
         }).then(function(response) {
             deferred.resolve(response.data)
         });
