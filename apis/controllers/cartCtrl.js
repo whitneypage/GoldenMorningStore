@@ -1,4 +1,4 @@
-var Cart = require('../models.cartSchema');
+var Cart = require('../models/cartSchema');
 
 module.exports = {
 

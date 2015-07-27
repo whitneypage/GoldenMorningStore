@@ -1,1 +1,87 @@
-{{productTest}}
+<!DOCTYPE html>
+<html ng-app="GoldMorning">
+<head>
+	<title>This is a product html layout test</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-controller="productCtrl">
+
+
+
+   <div class="addProductArea">
+
+ 		<div class="addProductTitle">
+ 			Add Product Title: <input class="productTitleInput" placeholder="Enter the name of your product." ng-model="product.productTitleField"/>
+ 		</div>
+
+ 		<br>
+
+ 		<div class="addProductDescription">
+ 			Add Product Description: <textarea class="productDescriptionInput" type="text" ng-model="product.productDescriptionField" placeholder="Enter a description of your product."></textarea>
+ 		</div>
+
+ 		<br>
+
+ 		<div class="selectCategory">
+
+ 			Select Product Category: <select class="addProductCategory" type="text" ng-model="product.chooseProductCategory">
+ 			<option value="shirts">Shirts</option>
+  			<option value="pants">Pants</option>
+  			<option value="shoes">Shoes</option>
+  			<option value="socks">Socks</option>
+  			</select>
+ 		</div>
+
+ 		<br>
+
+ 		<div class="addImages">
+ 			Upload Images: <input class="addImageInput" type="text" ng-model="product.imageField" placeholder="Upload Images"/>
+ 		</div>
+
+ 		<br>
+
+ 		<table>
+		  <colgroup span="4" class="inPutTable"></colgroup>
+		  <tr>
+		    <th>Color</th>
+		    <th>Small</th>
+		    <th>Medium</th>
+		    <th>Large</th>
+		  </tr>
+		  <tr ng-repeat="colorSize in product.colorSize">
+		    <td><input ng-model="colorSize.color"></td>
+		    <td><input ng-model="colorSize.smallQty"></td>
+		    <td><input ng-model="colorSize.mediumQty"></td>
+		    <td><input ng-model="colorSize.largeQty"></td>
+		  </tr>
+		</table>
+
+		<br>
+
+		<div class="addcolorButton">
+ 		<button ng-click="addColor()" ng-disabled="disableButton">Add Color</button>
+ 		</div>
+
+		<br>
+
+		<div class="addPrice">
+ 			Add Price: <input class="priceInput" placeholder="Enter Price" ng-model="addPriceField"/>
+ 		</div>
+
+ 		<br>
+
+ 		<div class="addProductButton">
+ 		<button ng-click="addProduct()" ng-disabled="disableButton">Add Product</button>
+ 		</div>
+ 	</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.js"></script>
+    <script src="/app.js"></script>
+    <script src="/services/productService.js"></script>
+  	<script src="/controllers/productCtrl.js"></script>
+  	<script src="/domain/colorSize.js"></script>
+  	<script src="/domain/product.js"></script>
+</body>
+</html>
