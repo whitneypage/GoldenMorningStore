@@ -1,10 +1,16 @@
-var cartCtrl = require('./controllers.cartCtrl');
-var orderCtrl = require('./controllers.orderCtrl');
-var productsCtrl = require('./controllers.productsCtrl');
-var userCtrl = require('./controllers.userCtrl');
+var cartCtrl = require('./apis/controllers/cartCtrl');
+var orderCtrl = require('./apis/controllers/orderCtrl');
+var productsCtrl = require('./apis/controllers/productsCtrl');
+var userCtrl = require('./apis/controllers/userCtrl');
 
 module.exports = function(app){
 
-  app.get('/api/whatever', cartCtrl.getCart);
+  	app.get('/api/whatever', cartCtrl.getCart);
+
+		//Add Product Modal FrontEnd EndPoints
+	app.post('/admin/product', productsCtrl.create);
+	app.get('/admin/product', productsCtrl.retrieve);
+	app.put('/admin/product:product_id', productsCtrl.update);
+	app.delete('/admin/product:product_id', productsCtrl.remove);
 
 }

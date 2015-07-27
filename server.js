@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var passport = require('passport');
 var session = require('express-session');
-var configDB = require('./config/database.js');
+var configDB = require('./apis/config/database.js');
 var port = 1337;
 
 mongoose.connect(configDB.url);
