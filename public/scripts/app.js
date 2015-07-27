@@ -30,6 +30,6 @@ app.config(function($routeProvider) {
 		templateUrl : 'scripts/views/admin/product/productTmpl.html',
 		controller : 'productCtrl'
 	})
-	.otherwise('/')
-})//end app.config in app.js
+	.otherwise('/');
+});//end app.config in app.js
 
