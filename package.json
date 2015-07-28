@@ -29,6 +29,7 @@
     "express-session": "^1.11.3",
     "fs": "0.0.2",
     "mongoose": "^4.1.0",
-    "passport": "^0.2.2"
+    "passport": "^0.2.2",
+    "paypal-rest-sdk": "^1.6.0"
   }
 }

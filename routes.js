@@ -7,6 +7,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local');
 var session = require('express-session');
 var User = require('./apis/models/userSchema');
+var paypal = require('paypal-rest-sdk');
 
 
 
@@ -50,6 +51,7 @@ passport.deserializeUser(function(obj, done) {
    done(null, obj);
 })
 
+  app.post('/api/admin', userCtrl.createAdmin);
 		// Add Product Modal FrontEnd EndPoints
 	// app.post('/addProduct', productsCtrl.create);
 	// app.get('/getProduct', productsCtrl.retrieve);
@@ -64,6 +66,6 @@ passport.deserializeUser(function(obj, done) {
 
 	app.post('/api/user/order', orderCtrl.createOrder);
 	app.get('/api/admin/order/:id', orderCtrl.getOrder);
-	app.get('/api/admin/orders', orderCtrl.getOrders);
+	// app.get('/api/admin/orders', orderCtrl.getOrders);
 	app.put('/api/admin/order/:id', orderCtrl.updateOrder);
 };
