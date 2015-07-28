@@ -1,8 +1,9 @@
 var app = angular.module('GoldMorning');
 
 app.controller('ordersCtrl', function($scope, orders, orderService) {
-	
+
 	$scope.orders = orders;
+
 	$scope.showOrder = function(order) {
 		order.show = !order.show;
 	}
@@ -14,6 +15,6 @@ app.controller('ordersCtrl', function($scope, orders, orderService) {
 		orderService.updateOrder(orderId, paymentStatus, orderStatus).then(function(response) {
 			Materialize.toast('order updated', 1000);	
 		})
-	}
+	};
 
 });
