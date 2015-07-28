@@ -19,15 +19,13 @@ app.service('productService', function($http, $q){
     // }
 
         this.addProduct = function(product){
+          console.log("ProductInService", product);
         console.log('add product service hit')
         var deferred = $q.defer();
         $http({
             method: 'POST',
             url: "/api/products",
-            headers: {
-               'Content-Type': "application/json"
-            },
-            data: {product: product}
+            data: product
         }).then(function(response) {
             deferred.resolve(response.data)
         });

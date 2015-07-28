@@ -6,9 +6,6 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var passport = require('passport');
-var session = require('express-session');
-var productsCtrl = require('./apis/controllers/productsCtrl')
 var configDB = require('./apis/config/database.js');
 var AWS = require('aws-sdk');
 var AWSAuth = require('./apis/config/auth');
@@ -23,12 +20,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname+'/public'));
 
-
-
-
 var s3bucket = new AWS.S3({params: {Bucket: 'goldmorning'}});
-
-
 
 require('./routes.js')(app);
 

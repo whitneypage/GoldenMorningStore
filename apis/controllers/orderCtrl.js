@@ -1,3 +1,6 @@
+var Order = require('../models/orderSchema');
+var Product = require('../models/productsSchema');
+
 module.exports = {
 
 	/*to be invoked when a customer has purchased the products in their cart*/
@@ -23,6 +26,17 @@ module.exports = {
 			else {
 				res.send(data);
 			}
+		})
+	}
+
+	, getAllOrders: function(req, res) {
+		Palette.find({})
+		.populate('orders')
+		.exec(function(err, result) {
+			if(err) {
+				res.status(500).json(err);
+			}
+			return res.json(result);
 		})
 	}
 
