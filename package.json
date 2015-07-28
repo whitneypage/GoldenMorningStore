@@ -23,12 +23,15 @@
   "homepage": "https://github.com/GoldenMorningStore/GoldenMorningStore#readme",
   "dependencies": {
     "aws-sdk": "^2.1.40",
+    "bcrypt": "^0.8.4",
     "body-parser": "^1.13.2",
     "cors": "^2.7.1",
     "express": "^4.13.1",
     "express-session": "^1.11.3",
     "fs": "0.0.2",
     "mongoose": "^4.1.0",
-    "passport": "^0.2.2"
+    "passport": "^0.2.2",
+    "paypal-rest-sdk": "^1.6.0",
+    "passport-local": "^1.0.0"
   }
 }
