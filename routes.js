@@ -9,8 +9,6 @@ var app = express.Router();
 
 module.exports = function(app){
 
-	app.get('/api/whatever', cartCtrl.getCart);
-
 		// Add Product Modal FrontEnd EndPoints
 	// app.post('/addProduct', productsCtrl.create);
 	// app.get('/getProduct', productsCtrl.retrieve);
@@ -19,4 +17,6 @@ module.exports = function(app){
 	app.put('/api/products', productsCtrl.put);
 	app.delete('/api/products', productsCtrl.delete);
 
+	
+	
 }
