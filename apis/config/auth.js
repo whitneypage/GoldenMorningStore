@@ -8,6 +8,14 @@ module.exports = {
 
 	'AWS':
 	{
-		'Access Key ID': 'AKIAIN3DOVMHKRHMZFWA',
+		'AccessKeyID': 'AKIAIN3DOVMHKRHMZFWA',
 		'Secret Access Key': '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'
+	},
+
+	'AWS-Admin':
+	{
+		'Access Key ID': 'AKIAJ3GVOL67VFOYLSFA',
+    'Secret Access Key': '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'
 	}
+
+}

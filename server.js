@@ -10,6 +10,8 @@ var session = require('express-session');
 var productsCtrl = require('./apis/controllers/productsCtrl')
 var configDB = require('./apis/config/database.js');
 var AWS = require('aws-sdk');
+var AWSAuth = require('./apis/config/auth');
+var fs = require('fs');
 var port = 1337;
 
 console.log('configDB.url', configDB.url)
@@ -22,6 +24,16 @@ app.use(express.static(__dirname+'/public'));
 
 var s3bucket = new AWS.S3({params: {Bucket: 'goldmorning'}});
 
+// s3bucket.createBucket(function() {
+//   var params = {Key: s3Key.AccessKeyID, Body: 'Hello!'};
+//   s3bucket.upload(params, function(err, data) {
+//     if (err) {
+//       console.log("Error uploading data: ", err);
+//     } else {
+//       console.log("Successfully uploaded data to myBucket/myKey");
+//     }
+//   });
+// });
 
 
 require('./routes.js')(app);
