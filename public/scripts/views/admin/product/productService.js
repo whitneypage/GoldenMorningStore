@@ -2,12 +2,28 @@ var app = angular.module('GoldMorning');
 
 app.service('productService', function($http, $q){
 
-    this.addProduct = function(product){
+    // this.addProduct = function(product){
+    //     console.log('add product service hit')
+    //     var deferred = $q.defer();
+    //     $http({
+    //         method: 'POST',
+    //         url: "/addProduct",
+    //         headers: {
+    //            'Content-Type': "application/json"
+    //         },
+    //         data: {product: product}
+    //     }).then(function(response) {
+    //         deferred.resolve(response.data)
+    //     });
+    //     return deferred.promise;
+    // }
+
+        this.addProduct = function(product){
         console.log('add product service hit')
         var deferred = $q.defer();
         $http({
             method: 'POST',
-            url: "http://localhost:1337/products",
+            url: "/api/products",
             headers: {
                'Content-Type': "application/json"
             },
@@ -18,24 +34,38 @@ app.service('productService', function($http, $q){
         return deferred.promise;
     }
 
+    // this.getProduct = function(product){
+    //     var deferred = $q.defer();
+    //     $http({
+    //         method: 'GET',
+    //         url: "/getProduct",
+    //     }).then(function(response) {
+    //         console.log('I got the data I requested');
+    //         deferred.resolve(response.data)
+    //     });
+    //     return deferred.promise;
+    // }
+
+    
     this.getProduct = function(product){
-        console.log('get product service hit')
         var deferred = $q.defer();
         $http({
             method: 'GET',
-            url: "./product/data.json",
+            url: "/api/products",
         }).then(function(response) {
+            console.log('I got the data I requested');
             deferred.resolve(response.data)
         });
         return deferred.promise;
     }
+
 
     this.updateProduct = function(product){
         console.log('update product service hit')
         var deferred = $q.defer();
         $http({
             method: 'PUT',
-            url: "http://localhost:1337/products/",
+            url: "/api/products",
         }).then(function(response) {
             deferred.resolve(response.data)
         });
@@ -47,7 +77,7 @@ app.service('productService', function($http, $q){
         var deferred = $q.defer();
         $http({
             method: 'DELETE',
-            url: "http://localhost:1337/products",
+            url: "/api/products",
         }).then(function(response) {
             deferred.resolve(response.data)
         });
