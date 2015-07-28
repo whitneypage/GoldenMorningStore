@@ -53,16 +53,17 @@ passport.deserializeUser(function(obj, done) {
 		// Add Product Modal FrontEnd EndPoints
 	// app.post('/addProduct', productsCtrl.create);
 	// app.get('/getProduct', productsCtrl.retrieve);
-	app.get('/api/products', productsCtrl.get);
-	app.post('/api/products',isAdmin, productsCtrl.post);
-	app.put('/api/products',isAdmin, productsCtrl.put);
-	app.delete('/api/products',isAdmin, productsCtrl.delete);
+	app.get('/api/products', productsCtrl.handleGet);
+	app.post('/api/products', isAdmin, productsCtrl.handlePost);
+	app.put('/api/products', isAdmin, productsCtrl.handlePut);
+	app.delete('/api/products', isAdmin, productsCtrl.handleDelete);
 
-	app.post('/user/cart', cartCtrl.addProductToCart);
-	app.get('/user/cart', cartCtrl.getCart);
-	app.put('/user/cart', cartCtrl.removeProductFromCart);
+	app.post('/api/user/cart', cartCtrl.addProductToCart);
+	app.get('/api/user/cart', cartCtrl.getCart);
+	app.put('/api/user/cart/:id', cartCtrl.removeProductFromCart);
 
-	app.post('/user/order', orderCtrl.createOrder);
-	app.get('/admin/order', orderCtrl.getOrder);
-	app.put('/admin/order', orderCtrl.updateOrder);
-}
+	app.post('/api/user/order', orderCtrl.createOrder);
+	app.get('/api/admin/order/:id', orderCtrl.getOrder);
+	app.get('/api/admin/orders', orderCtrl.getOrders);
+	app.put('/api/admin/order/:id', orderCtrl.updateOrder);
+};
