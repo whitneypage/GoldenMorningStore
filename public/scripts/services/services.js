@@ -2,7 +2,7 @@ var app = angular.module('GoldMorning');
 
 app.service('cartService', function($http, $q) {
 	
-	this.addProductToCart = function (data)) {
+	this.addProductToCart = function(data) {
 		return $http({
 			method: 'POST',
 			url: '/api/cart',
