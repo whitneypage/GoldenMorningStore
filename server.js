@@ -7,9 +7,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var configDB = require('./apis/config/database.js');
-var AWS = require('aws-sdk');
-var AWSAuth = require('./apis/config/auth');
-var fs = require('fs');
+
 var port = 1337;
 
 console.log('configDB.url', configDB.url)

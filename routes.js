@@ -1,6 +1,6 @@
 var cartCtrl = require('./apis/controllers/cartCtrl');
 var orderCtrl = require('./apis/controllers/orderCtrl');
-var productsCtrl = require('./apis/controllers/productsCtrl.js');
+var productsCtrl = require('./apis/controllers/productsCtrl');
 var userCtrl = require('./apis/controllers/userCtrl');
 var express = require('express');
 var passport = require('passport');
@@ -8,8 +8,10 @@ var LocalStrategy = require('passport-local');
 var session = require('express-session');
 var User = require('./apis/models/userSchema');
 var paypal = require('paypal-rest-sdk');
+var AWS = require('aws-sdk');
 
-
+var fs = require('fs');
+var config = require('./apis/config/auth');
 
 
 var app = express.Router();
@@ -46,11 +48,12 @@ passport.use(new LocalStrategy(
 
 passport.serializeUser(function(user, done) {
    done(null, user);
-})
+});
 passport.deserializeUser(function(obj, done) {
    done(null, obj);
-})
+});
 
+	app.post('/api/upload', isAdmin, productsCtrl.uploadPhoto)
   app.post('/api/admin', userCtrl.createAdmin);
 		// Add Product Modal FrontEnd EndPoints
 	// app.post('/addProduct', productsCtrl.create);
