@@ -33,7 +33,7 @@ app.service('orderService', function($http, $q) {
 	this.createOrder = function(order) {
 		return $http({
 			method: 'POST',
-			url: '/api/orders',
+			url: '/api/order',
 			data: order
 		})
 	};
@@ -41,7 +41,7 @@ app.service('orderService', function($http, $q) {
 	this.getOrder = function(id) {
 		return $http({
 			method: 'GET',
-			url: '/api/orders' + id
+			url: '/api/order' + id
 		})
 	};
 
@@ -55,7 +55,7 @@ app.service('orderService', function($http, $q) {
 	this.updateOrder = function(id, orderStatus) {
 		return $http({
 			method: 'PUT',
-			url: 'api/orders' + id,
+			url: 'api/order' + id,
 			data: {
 				status: orderStatus
 			}

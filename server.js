@@ -10,8 +10,8 @@ var passport = require('passport');
 var session = require('express-session');
 var productsCtrl = require('./apis/controllers/productsCtrl')
 var configDB = require('./apis/config/database.js');
-var AWS = require('aws-sdk');
-var AWSAuth = require('./apis/config/auth');
+/*var AWS = require('aws-sdk');*/
+/*var AWSAuth = require('./apis/config/auth');*/
 var fs = require('fs');
 var port = 1337;
 
@@ -26,7 +26,7 @@ app.use(express.static(__dirname+'/public'));
 
 
 
-var s3bucket = new AWS.S3({params: {Bucket: 'goldmorning'}});
+/*var s3bucket = new AWS.S3({params: {Bucket: 'goldmorning'}});*/
 
 
 

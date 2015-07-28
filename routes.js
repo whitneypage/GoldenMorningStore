@@ -23,6 +23,6 @@ module.exports = function(app){
 
 	app.post('/api/user/order', orderCtrl.createOrder);
 	app.get('/api/admin/order/:id', orderCtrl.getOrder);
-	app.get('/api/admin/orders', orderCtrl.getOrders);
+	app.get('/api/admin/orders', orderCtrl.getAllOrders);
 	app.put('/api/admin/order/:id', orderCtrl.updateOrder);
 };

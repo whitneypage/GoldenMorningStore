@@ -6,8 +6,8 @@ var cartSchema = mongoose.Schema({
     /*also need a way to ensure that product inventory will reflect increases in qty if session ends or customers clear their cart*/
     products: [{
         product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true}
-        , size: {type: String, required: true}
-        , price: {type: Number, min: 0.01, max: 100000, required: true}
+        , color: {type: String}
+        , size: {type: String}
     }]
     , total: {type: Number, required: true}
     , updatedAt: {type: Date, default: Date.now}
