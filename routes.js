@@ -17,11 +17,12 @@ module.exports = function(app){
 	app.put('/api/products', productsCtrl.handlePut);
 	app.delete('/api/products', productsCtrl.handleDelete);
 
-	app.post('/user/cart', cartCtrl.addProductToCart);
-	app.get('/user/cart', cartCtrl.getCart);
-	app.put('/user/cart', cartCtrl.removeProductFromCart);
+	app.post('/api/user/cart', cartCtrl.addProductToCart);
+	app.get('/api/user/cart', cartCtrl.getCart);
+	app.put('/api/user/cart/:id', cartCtrl.removeProductFromCart);
 
-	app.post('/user/order', orderCtrl.createOrder);
-	app.get('/admin/order', orderCtrl.getOrder);
-	app.put('/admin/order', orderCtrl.updateOrder);
-}
+	app.post('/api/user/order', orderCtrl.createOrder);
+	app.get('/api/admin/order/:id', orderCtrl.getOrder);
+	app.get('/api/admin/orders', orderCtrl.getOrders);
+	app.put('/api/admin/order/:id', orderCtrl.updateOrder);
+};
