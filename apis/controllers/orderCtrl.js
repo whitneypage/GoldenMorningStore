@@ -16,7 +16,14 @@ module.exports = {
 		Order.find(req.query)
 		/*the line below should be changed later*/
 		.populate('products.product')
-
+		.exec(function(err, data) {
+			if(err) {
+				res.error(500).send(err);
+			}
+			else {
+				res.send(data);
+			}
+		})
 	}
 
 	/*not sure exactly what this method will be for nor how it will be used...yet*/

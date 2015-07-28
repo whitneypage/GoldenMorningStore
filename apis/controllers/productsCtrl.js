@@ -1,20 +1,50 @@
 var mongoose = require('mongoose');
 var Product = require('../models/productsSchema.js');
 
-module.exports = {
-  create: function(req, res){
-  	console.log(req.body);
-  },
-
-  retrieve: function(req, res){
-  	console.log(req.body);
-  },
-
-  update: function(req, res){
-  	console.log(req.body);
-  },
-
-  remove: function(req, res){
-  	console.log(req.body)
-  },
+var handleGet = function(req, res){
+  
+    Product.find(req.query, function(err, response){
+      if(err) {
+        res.status(500).json(err);
+      } else {
+        res.json(response);
+      }
+    })
 };
+
+var handlePost = function(req, res){
+    Product.create(req.body, function(error, response){
+      if(error) {
+        return res.status(500).json(error);
+      } else {
+        return res.json(response);
+      }
+    });
+}
+
+var handlePut = function(req, res){
+    Product.update(req.query, req.body, function(error, response){
+      if(error) {
+        return res.status(500).json(error);
+      } else {
+        return res.json(response);
+      }
+    }); 
+}
+
+var handleDelete = function(req, res){
+    Product.remove(req.query, function(error, response){
+      if(error) {
+        return res.status(500).json(error);
+      } else {
+        return res.json(response);
+      }
+    });
+} 
+
+module.exports = {
+  get: handleGet,
+  post: handlePost,
+  put: handlePut,
+  delete: handleDelete
+}
