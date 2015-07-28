@@ -8,7 +8,7 @@ app.controller('ordersCtrl', function($scope, orders, orderService) {
 		order.show = !order.show;
 	}
 
-	$scope.paymentStatusOptions = ['waiting', 'processing', 'paid'];
+	$scope.paymentStatusOptions = ['processing', 'paid'];
 	$scope.orderStatusOptions = ['processing', 'shipping', 'on hold', 'delivered'];
 
 	$scope.updateOrder = function(orderId, paymentStatus, orderStatus) {
