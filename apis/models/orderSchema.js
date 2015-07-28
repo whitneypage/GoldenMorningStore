@@ -17,7 +17,8 @@ var orderSchema = mongoose.Schema({
 
 orderSchema.pre('createOrder', function() {
     this.timePlaced = Date.now();
-})
+});
+
 
 
 module.exports = mongoose.model("Order", orderSchema);

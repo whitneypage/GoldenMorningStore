@@ -2,9 +2,8 @@ var mongoose = require('mongoose');
 var Product = require('../models/productsSchema.js');
 
 module.exports = {
-   handleGet: function(req, res) {
-
-       Product.find(req.query, function(err, response) {
+   handleGetAll: function(req, res) {
+    Product.find({}, function(err, response) {
            if (err) {
                res.status(500).json(err);
            } else {
@@ -18,6 +17,7 @@ module.exports = {
            if (error) {
                return res.status(500).json(error);
            } else {
+            console.log("new Product", response);
                return res.json(response);
            }
        });
@@ -34,7 +34,7 @@ module.exports = {
    },
 
    handleDelete: function(req, res) {
-       Product.remove(req.query, function(error, response) {
+       Product.findByIdAndRemove(req.params.productId, function(error, response) {
            if (error) {
                return res.status(500).json(error);
            } else {
