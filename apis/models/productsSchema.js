@@ -2,23 +2,18 @@ var mongoose = require('mongoose');
 
 
 var productSchema = mongoose.Schema({
-	sku: {type: Number}
-	, productTitleField: {type: String} 
-	, productDescriptionField: {type: String}
-	, chooseProductCategory: {type: String}
-	, imageField: {type: String}
-	, addPriceField: {type: Number}
-	, dateCreated: {type: Date}
+    productTitle: {type: String} 
+	, productDescription: {type: String}
+	, productCategory: {type: String}
+	, image: {type: String}
+	, price: {type: Number}
 	, dateUpdated: {type: Date}
-	, colorSize: {
-		color: {type: String}, 
-		sizes: [{
-			smallQty: {type: Number},
-			mediumQty: {type: Number},
-			largeQty: {type: Number}
-		}]
-
-	}
+	, colorSize: [{
+	  color: {type: String} ,
+	  smallQty: {type: Number},
+		mediumQty: {type: Number},
+		largeQty: {type: Number}
+  }]
 
 });
 

@@ -3,6 +3,7 @@ var app = angular.module('GoldMorning');
 app.controller('productCtrl', function($scope, productService){
 
 	$scope.addProduct = function() {
+    console.log($scope.product);
 		productService.addProduct($scope.product)
 	        .then(function(data) {
 	            console.log(data);   
@@ -13,6 +14,10 @@ app.controller('productCtrl', function($scope, productService){
 		var newColorSize = new ColorSize();
 		$scope.product.addColorSize(newColorSize);
 	}; 
+
+  $scope.deleteColor = function(toBeDeleted) {
+    $scope.product.deleteColorSize(toBeDeleted)
+  }
 
 
 	$scope.getProduct = function() {
@@ -38,7 +43,5 @@ app.controller('productCtrl', function($scope, productService){
 
 	$scope.product = new Product();
 	$scope.addColor();
-	$scope.addProduct();
 
-	$scope.getProduct();
 });

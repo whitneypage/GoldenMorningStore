@@ -46,19 +46,20 @@ passport.use(new LocalStrategy(
 
 passport.serializeUser(function(user, done) {
    done(null, user);
-})
+});
 passport.deserializeUser(function(obj, done) {
    done(null, obj);
-})
+});
 
   app.post('/api/admin', userCtrl.createAdmin);
 		// Add Product Modal FrontEnd EndPoints
 	// app.post('/addProduct', productsCtrl.create);
 	// app.get('/getProduct', productsCtrl.retrieve);
-	app.get('/api/products', productsCtrl.handleGet);
-	app.post('/api/products', isAdmin, productsCtrl.handlePost);
-	app.put('/api/products', isAdmin, productsCtrl.handlePut);
-	app.delete('/api/products', isAdmin, productsCtrl.handleDelete);
+
+	app.get('/api/products', productsCtrl.handleGetAll);
+	app.post('/api/products', productsCtrl.handlePost);
+	app.put('/api/products', productsCtrl.handlePut);
+	app.delete('/api/products/:productId', productsCtrl.handleDelete);
 
 	app.post('/api/user/cart', cartCtrl.addProductToCart);
 	app.get('/api/user/cart', cartCtrl.getCart);
