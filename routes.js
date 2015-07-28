@@ -17,6 +17,11 @@ module.exports = function(app){
 	app.put('/api/products', productsCtrl.put);
 	app.delete('/api/products', productsCtrl.delete);
 
-	
-	
+	app.post('/user/cart', cartCtrl.addProductToCart);
+	app.get('/user/cart', cartCtrl.getCart);
+	app.put('/user/cart', cartCtrl.removeProductFromCart);
+
+	app.post('/user/order', orderCtrl.createOrder);
+	app.get('/admin/order', orderCtrl.getOrder);
+	app.put('/admin/order', orderCtrl.updateOrder);
 }
