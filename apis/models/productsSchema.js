@@ -20,9 +20,10 @@ var productSchema = mongoose.Schema({
 
 	}
 
-})
+});
 
 productSchema.pre('createProduct', function(){
 		this.dateCreated = Date.now();
-})
+});
 
+module.exports = mongoose.model('Product', productSchema);
