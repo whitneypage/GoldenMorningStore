@@ -15,6 +15,11 @@ module.exports = function(app){
 	app.put('/admin/product:product_id', productsCtrl.update);
 	app.delete('/admin/product:product_id', productsCtrl.remove);
 
-	
-	
+	app.post('/user/cart', cartCtrl.addProductToCart);
+	app.get('/user/cart', cartCtrl.getCart);
+	app.put('/user/cart', cartCtrl.removeProductFromCart);
+
+	app.post('/user/order', orderCtrl.createOrder);
+	app.get('/admin/order', orderCtrl.getOrder);
+	app.put('/admin/order', orderCtrl.updateOrder);
 }
