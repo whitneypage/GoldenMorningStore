@@ -1,0 +1,40 @@
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0px 0px;
+}
+#hero {
+	background-image: url(images/test.jpg);
+	background-size: cover;
+	position: relative;
+	height: 100vh;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  font-size:3 6px;
+  -ms-transform: translate(0,-50%);  /*IE 9*/ 
+    -webkit-transform: translate(0,-50%);  /*Safari*/ 
+    transform: translate(0,-50%);
+}
+
+#hello {
+	font-weight: 200;
+	
+}
+
+#products {
+  padding: 100px 50px;
+  text-align: center;
+  width: 80%;
+  margin: 0px auto;
+}
+
+#products h4 {
+  margin:0px 0px 30px 0px;
+}
+

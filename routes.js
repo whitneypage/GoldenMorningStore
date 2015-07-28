@@ -9,12 +9,12 @@ var app = express.Router();
 
 module.exports = function(app){
 
-	app.get('/api/whatever', cartCtrl.getCart);
-
 		// Add Product Modal FrontEnd EndPoints
 	app.post('/admin/product', productsCtrl.create);
 	app.get('/admin/product', productsCtrl.retrieve);
 	app.put('/admin/product:product_id', productsCtrl.update);
 	app.delete('/admin/product:product_id', productsCtrl.remove);
 
+	
+	
 }
