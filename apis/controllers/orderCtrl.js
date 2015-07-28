@@ -1,3 +1,6 @@
+var Order = require('../models/orderSchema');
+var Product = require('../models/productsSchema');
+
 module.exports = {
 
 	/*to be invoked when a customer has purchased the products in their cart*/

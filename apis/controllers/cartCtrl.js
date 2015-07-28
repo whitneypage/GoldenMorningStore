@@ -1,3 +1,6 @@
+var Order = require('../models/orderSchema');
+var Product = require('../models/productsSchema');
+
 module.exports = {
 
 	/*might not be necessary to have a query for every single 'conversation' between customer and DB*/
