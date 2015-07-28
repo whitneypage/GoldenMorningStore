@@ -29,6 +29,17 @@ module.exports = {
 		})
 	}
 
+	, getAllOrders: function(req, res) {
+		Palette.find({})
+		.populate('orders')
+		.exec(function(err, result) {
+			if(err) {
+				res.status(500).json(err);
+			}
+			return res.json(result);
+		})
+	}
+
 	/*not sure exactly what this method will be for nor how it will be used...yet*/
 	, updateOrder: function(req, res) {
 		Order.findByIdAndUpdate(req.query._id, req.body, function(err, data) {
