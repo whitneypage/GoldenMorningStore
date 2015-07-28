@@ -2,6 +2,7 @@
 
 var express = require('express');
 var app = express();
+
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var cors = require('cors');
@@ -18,6 +19,26 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname+'/public'));
 
+// app.get('/getProduct', function(req, res){
+// 	console.log("In node getProduct method");
+// 	res.json({
+// 		"productItems":[
+// 		    {
+// 		        "productTitle": "Beauty Shirt",
+// 		        "productDescription": "This is a high class beautiful shirt.",
+// 		        "productCategory": "Shirts",
+// 		        "image": "http://blahblah.com",
+// 		        "color": "Blue",
+// 		        "size": "Medium",
+// 		        "price": "35"
+// 		    }
+// 	    ]
+// 	});
+// });
+
+// app.post('/addProduct', function(req, res){
+// 	console.log("In node addProduct method");
+// });
 
 require('./routes.js')(app);
 
