@@ -12,10 +12,10 @@ module.exports = function(app){
 		// Add Product Modal FrontEnd EndPoints
 	// app.post('/addProduct', productsCtrl.create);
 	// app.get('/getProduct', productsCtrl.retrieve);
-	app.get('/api/products', productsCtrl.get);
-	app.post('/api/products', productsCtrl.post);
-	app.put('/api/products', productsCtrl.put);
-	app.delete('/api/products', productsCtrl.delete);
+	app.get('/api/products', productsCtrl.handleGet);
+	app.post('/api/products', productsCtrl.handlePost);
+	app.put('/api/products', productsCtrl.handlePut);
+	app.delete('/api/products', productsCtrl.handleDelete);
 
 	app.post('/user/cart', cartCtrl.addProductToCart);
 	app.get('/user/cart', cartCtrl.getCart);
