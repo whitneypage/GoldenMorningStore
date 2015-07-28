@@ -24,7 +24,7 @@ module.exports = {
    },
 
    handlePut: function(req, res) {
-       Product.update(req.query, req.body, function(error, response) {
+       Product.findByIdAndUpdate(req.params.productId, req.body, {new: true}, function(error, response) {
            if (error) {
                return res.status(500).json(error);
            } else {
