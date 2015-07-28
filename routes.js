@@ -1,6 +1,6 @@
 var cartCtrl = require('./apis/controllers/cartCtrl');
 var orderCtrl = require('./apis/controllers/orderCtrl');
-var productsCtrl = require('./apis/controllers/productsCtrl');
+var productsCtrl = require('./apis/controllers/productsCtrl.js');
 var userCtrl = require('./apis/controllers/userCtrl');
 var express = require('express');
 
@@ -12,9 +12,11 @@ module.exports = function(app){
 	app.get('/api/whatever', cartCtrl.getCart);
 
 		// Add Product Modal FrontEnd EndPoints
-	app.post('/admin/product', productsCtrl.create);
-	app.get('/admin/product', productsCtrl.retrieve);
-	app.put('/admin/product:product_id', productsCtrl.update);
-	app.delete('/admin/product:product_id', productsCtrl.remove);
+	// app.post('/addProduct', productsCtrl.create);
+	// app.get('/getProduct', productsCtrl.retrieve);
+	app.get('/api/products', productsCtrl.get);
+	app.post('/api/products', productsCtrl.post);
+	app.put('/api/products', productsCtrl.put);
+	app.delete('/api/products', productsCtrl.delete);
 
 }
