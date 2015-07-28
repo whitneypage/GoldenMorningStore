@@ -21,7 +21,10 @@ userSchema.pre('save', function(next) {
 });//end userSchema.pre
 
 userSchema.methods.validPassword = function(password) {
-	return bcrypt.compareSync(password, this.password);
-};
+	var result = bcrypt.compareSync(password, this.password);
+	if(result) {console.log("password is correct!");}
+	else {console.log("incorrect password");}
+	return result;
+};// end password check //userSchema.methods.validPassword
 
 module.exports = mongoose.model('User', userSchema);
