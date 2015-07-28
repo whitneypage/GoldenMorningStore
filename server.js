@@ -24,6 +24,8 @@ app.use(express.static(__dirname+'/public'));
 
 var s3bucket = new AWS.S3({params: {Bucket: 'goldmorning'}});
 
+
+  // for creating a new bucket on the fly
 // s3bucket.createBucket(function() {
 //   var params = {Key: s3Key.AccessKeyID, Body: 'Hello!'};
 //   s3bucket.upload(params, function(err, data) {
