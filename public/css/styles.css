@@ -3,29 +3,38 @@ body {
 	width: 100%;
 	margin: 0px 0px;
 }
+
+
 #hero {
-	background-image: url(images/test.jpg);
+	background-image: url(../images/test.jpg);
 	background-size: cover;
 	position: relative;
 	height: 100vh;
 }
 
-.logo {
+.headline-main {
   position: absolute;
   top: 50%;
   text-align: center;
   width: 100%;
   color: #fff;
   font-size:3 6px;
-  -ms-transform: translate(0,-50%);  /*IE 9*/ 
-    -webkit-transform: translate(0,-50%);  /*Safari*/ 
+  -ms-transform: translate(0,-50%);  IE 9 
+    -webkit-transform: translate(0,-50%);  Safari 
     transform: translate(0,-50%);
 }
 
 #hello {
-	font-weight: 200;
-	
+  font-weight: 100;
 }
+
+.fixed {
+  position: fixed; 
+  top: 0; 
+  height: 70px; 
+  z-index: 1;
+}
+
 
 #products {
   padding: 100px 50px;
@@ -37,4 +46,5 @@ body {
 #products h4 {
   margin:0px 0px 30px 0px;
 }
+
 

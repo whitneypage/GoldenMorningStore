@@ -10,11 +10,8 @@ AWS.config.secretAccessKey = config.AWSAdmin.secretAccessKey;
 AWS.config.region = 'us-west-2';
 
 module.exports = {
-
-
-   handleGet: function(req, res) {
-
-       Product.find(req.query, function(err, response) {
+   handleGetAll: function(req, res) {
+    Product.find({}, function(err, response) {
            if (err) {
                res.status(500).json(err);
            } else {
@@ -28,13 +25,14 @@ module.exports = {
            if (error) {
                return res.status(500).json(error);
            } else {
+            console.log("new Product", response);
                return res.json(response);
            }
        });
    },
 
    handlePut: function(req, res) {
-       Product.update(req.query, req.body, function(error, response) {
+       Product.findByIdAndUpdate(req.params.productId, req.body, {new: true}, function(error, response) {
            if (error) {
                return res.status(500).json(error);
            } else {
@@ -44,7 +42,7 @@ module.exports = {
    },
 
    handleDelete: function(req, res) {
-       Product.remove(req.query, function(error, response) {
+       Product.findByIdAndRemove(req.params.productId, function(error, response) {
            if (error) {
                return res.status(500).json(error);
            } else {

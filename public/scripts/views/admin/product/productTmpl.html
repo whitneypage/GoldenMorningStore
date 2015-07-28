@@ -1,70 +1,66 @@
 <div>
-
-   <div class="addProductArea">
-
- 		<div class="addProductTitle">
- 			Add Product Title: <input class="productTitleInput" placeholder="Enter the name of your product." ng-model="product.productTitleField"/>
- 		</div>
-
- 		<br>
-
- 		<div class="addProductDescription">
- 			Add Product Description: <textarea class="productDescriptionInput" type="text" ng-model="product.productDescriptionField" placeholder="Enter a description of your product."></textarea>
- 		</div>
-
- 		<br>
-
- 		<div class="selectCategory">
-
- 			Select Product Category: <select class="addProductCategory" type="text" ng-model="product.chooseProductCategory">
- 			<option value="shirts">Shirts</option>
-  			<option value="pants">Pants</option>
-  			<option value="shoes">Shoes</option>
-  			<option value="socks">Socks</option>
-  			</select>
- 		</div>
-
- 		<br>
-
- 		<div class="addImages">
- 			Upload Images: <input class="addImageInput" type="text" ng-model="product.imageField" placeholder="Upload Images"/>
- 		</div>
-
- 		<br>
-
- 		<table>
-		  <colgroup span="4" class="inPutTable"></colgroup>
-		  <tr>
-		    <th>Color</th>
-		    <th>Small</th>
-		    <th>Medium</th>
-		    <th>Large</th>
-		  </tr>
-		  <tr ng-repeat="colorSize in product.colorSize">
-		    <td><input ng-model="colorSize.color"></td>
-		    <td><input ng-model="colorSize.smallQty"></td>
-		    <td><input ng-model="colorSize.mediumQty"></td>
-		    <td><input ng-model="colorSize.largeQty"></td>
-		  </tr>
-		</table>
-
-		<br>
-
-		<div class="addcolorButton">
- 		<button ng-click="addColor()" ng-disabled="disableButton">Add Color</button>
- 		</div>
-
-		<br>
-
-		<div class="addPrice">
- 			Add Price: <input class="priceInput" placeholder="Enter Price" ng-model="addPriceField"/>
- 		</div>
-
- 		<br>
-
- 		<div class="addProductButton">
- 		<button ng-click="addProduct()" ng-disabled="disableButton">Add Product</button>
- 		</div>
- 	</div>
+    <div class="addProductArea">
+        <div class="addProductTitle">
+            Add Product Title:
+            <input class="productTitleInput" placeholder="Enter the name of your product." ng-model="product.productTitle" />
+        </div>
+        <br>
+        <div class="addProductDescription">
+            Add Product Description:
+            <textarea class="productDescriptionInput" type="text" ng-model="product.productDescription" placeholder="Enter a description of your product."></textarea>
+        </div>
+        <br>
+        <div class="selectCategory">
+            Select Product Category:
+            <select class="addProductCategory" type="text" ng-model="product.productCategory">
+                <option value="shirts">Shirts</option>
+                <option value="pants">Pants</option>
+                <option value="shoes">Shoes</option>
+                <option value="socks">Socks</option>
+            </select>
+        </div>
+        <br>
+        <div class="addImages">
+            Upload Images:
+            <input class="addImageInput" type="text" ng-model="product.image" placeholder="Upload Images" />
+        </div>
+        <br>
+        <table>
+            <colgroup span="4" class="inPutTable"></colgroup>
+            <tr>
+                <th>Color</th>
+                <th>Small</th>
+                <th>Medium</th>
+                <th>Large</th>
+            </tr>
+            <tr ng-repeat="colorSize in product.colorSize">
+                <td>
+                    <input ng-model="colorSize.color">
+                </td>
+                <td>
+                    <input ng-model="colorSize.smallQty">
+                </td>
+                <td>
+                    <input ng-model="colorSize.mediumQty">
+                </td>
+                <td>
+                    <input ng-model="colorSize.largeQty">
+                </td>
+                <td><i class="fa fa-times" ng-click="deleteColor(colorSize)"></i></td>
+            </tr>
+        </table>
+        <br>
+        <div class="addcolorButton">
+            <button ng-click="addColor()" ng-disabled="disableButton">Add Color</button>
+        </div>
+        <br>
+        <div class="addPrice">
+            Add Price:
+            <input class="priceInput" placeholder="Enter Price" ng-model="product.price" />
+        </div>
+        <br>
+        <div class="addProductButton">
+            <button ng-click="addProduct()" ng-disabled="disableButton">Add Product</button>
+        </div>
+    </div>
 </div>
-

@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname+'/public'));
 
-
+var s3bucket = new AWS.S3({params: {Bucket: 'goldmorning'}});
 
 require('./routes.js')(app);
 

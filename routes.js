@@ -55,13 +55,11 @@ passport.deserializeUser(function(obj, done) {
 
 	app.post('/api/upload', isAdmin, productsCtrl.uploadPhoto)
   app.post('/api/admin', userCtrl.createAdmin);
-		// Add Product Modal FrontEnd EndPoints
-	// app.post('/addProduct', productsCtrl.create);
-	// app.get('/getProduct', productsCtrl.retrieve);
-	app.get('/api/products', productsCtrl.handleGet);
-	app.post('/api/products', isAdmin, productsCtrl.handlePost);
-	app.put('/api/products', isAdmin, productsCtrl.handlePut);
-	app.delete('/api/products', isAdmin, productsCtrl.handleDelete);
+
+	app.get('/api/products', productsCtrl.handleGetAll);
+	app.post('/api/products', productsCtrl.handlePost);
+	app.put('/api/products/:productId', productsCtrl.handlePut);
+	app.delete('/api/products/:productId', productsCtrl.handleDelete);
 
 	app.post('/api/user/cart', cartCtrl.addProductToCart);
 	app.get('/api/user/cart', cartCtrl.getCart);
@@ -69,6 +67,7 @@ passport.deserializeUser(function(obj, done) {
 
 	app.post('/api/user/order', orderCtrl.createOrder);
 	app.get('/api/admin/order/:id', orderCtrl.getOrder);
-	// app.get('/api/admin/orders', orderCtrl.getOrders);
+
+	app.get('/api/admin/orders', orderCtrl.getAllOrders);
 	app.put('/api/admin/order/:id', orderCtrl.updateOrder);
 };
