@@ -13,8 +13,7 @@ var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 
 var fs = require('fs');
-var config = require('./apis/config/auth');
-
+var config = require('./apis/config/keys');
 
 var app = express.Router();
 
