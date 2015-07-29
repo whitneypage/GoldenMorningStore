@@ -57,6 +57,7 @@ passport.deserializeUser(function(obj, done) {
   app.post('/api/admin', userCtrl.createAdmin);
 
 	app.get('/api/products', productsCtrl.handleGetAll);
+	app.get('/api/products/:productId', productsCtrl.handleGetOneProduct);
 	app.post('/api/products', productsCtrl.handlePost);
 	app.put('/api/products/:productId', productsCtrl.handlePut);
 	app.delete('/api/products/:productId', productsCtrl.handleDelete);

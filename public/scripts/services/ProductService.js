@@ -58,25 +58,22 @@ app.service('ProductService', function($http, $q) {
 	
 	//	**RH - MAY NOT NEED**  \\
 	
-//this.updateSmallQty = function(smallQtyObj){
-//	console.log(smallQtyObj, ' smallQtyObj from AdminService.updateSmallQty');
-//	
-//	//got mongo _id and new qty from front
-//	//will pick up here tomorrow >^.^<	
-//	
-////	var deferred = $q.defer();
-////	$http({
-////		method : 'PUT',
-////		url: "/api/produts/:productId",
-////		data: {
-////			_id : smallQtyObj.id,
-////			qty : smallQtyObj.qty
-////		}
-////	}).then(function(response) {
-////		deferred.resolve(response.data);
-////	});
-////	return deferred.promise;
-//};//end updateSmallQty
+this.updateSmallQty = function(smallQtyObj){
+	console.log(smallQtyObj, ' smallQtyObj from AdminService.updateSmallQty');
+	
+	var deferred = $q.defer();
+	$http({
+		method : 'PUT',
+		url: "/api/produts/:productId",
+		data: {
+			_id : smallQtyObj.id,
+			qty : smallQtyObj.qty
+		}
+	}).then(function(response) {
+		deferred.resolve(response.data);
+	});
+	return deferred.promise;
+};//end updateSmallQty
 	
 });// ********end AdminService*********
 
