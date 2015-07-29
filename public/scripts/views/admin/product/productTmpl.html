@@ -9,8 +9,10 @@
             Add Product Description:
             <textarea class="productDescriptionInput" type="text" ng-model="product.productDescription" placeholder="Enter a description of your product."></textarea>
         </div>
+
+
         <br>
-        <div class="selectCategory">
+<!--         <div class="selectCategory">
             Select Product Category:
             <select class="addProductCategory" type="text" ng-model="product.productCategory">
                 <option value="shirts">Shirts</option>
@@ -19,11 +21,43 @@
                 <option value="socks">Socks</option>
             </select>
         </div>
+        <br> -->
+
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test1" value="Dresses" ng-model="product.productCategory"/>
+              <label for="test1">Dresses</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test2" value="Tops" ng-model="product.productCategory"/>
+              <label for="test2">Tops</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test3" value="Bottoms" ng-model="product.productCategory"/>
+              <label for="test3">Bottoms</label>
+            </p>
+              <p>
+                <input class="with-gap" name="group1" type="radio" id="test4" value="Rompers/Jumpsuits" ng-model="product.productCategory"/>
+                <label for="test4">Rompers/Jumpsuits</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test5" value="Accessories" ng-model="product.productCategory"/>
+              <label for="test5">Accessories</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test6" value="Soaps/Scrubs" ng-model="product.productCategory"/>
+              <label for="test6">Soaps/Scrubs</label>
+            </p>
+          </form>
+        
+
         <br>
+
         <div class="addImages">
             Upload Images:
             <input class="addImageInput" type="text" ng-model="product.image" placeholder="Upload Images" />
         </div>
+
         <br>
         <table>
             <colgroup span="4" class="inPutTable"></colgroup>
