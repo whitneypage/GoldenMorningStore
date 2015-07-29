@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+ var mongoose = require('mongoose');
 
 var cartSchema = mongoose.Schema({
     /*if customer wants to purchase 2+ of a given product, product will appear two or more times in cart*/

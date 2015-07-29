@@ -13,7 +13,7 @@ app.service('cartService', function($http, $q) {
 	this.getCart = function() {
 		return $http({
 			method: 'GET',
-			url: '/api/cart'
+			url: '/api/cart'   
 		})
 	};
 

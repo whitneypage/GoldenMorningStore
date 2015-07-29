@@ -28,8 +28,9 @@ function isAdmin(req, res, next){
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(session({
-	secret: 'my cat can eat a whole watermelon'
-}));
+   secret: process.env.SESSION_SECRET || "goldmorningshopsecret",
+   resave: false,
+   saveUninitialized: true }));
 
 passport.use(new LocalStrategy(
 	function(username, password, done) {
