@@ -1,6 +1,3 @@
-<div ng-init="getAdminProducts()"></div>
-
-
 <div ng-repeat="product in products">
 	<div>item: {{product.productTitle}}</div>
 	<div>description: {{product.productDescription}}</div>
@@ -10,7 +7,10 @@
 	<div ng-repeat="size in product.colorSize">
 		<div>color: {{size.color}}</div>
 		<div style="font-size: 1.4rem; font-weight:bold">Sizes</div>
+			<button ng-click="toggleShowEditSizes()">edit sizes</button>
 		<div>small: {{size.smallQty}}</div>
+		<input type="text" ng-show="showEditSizes" ng-model="newSmallQty">
+				<i class="fa fa-times" ng-show="showEditSizes" ng-click="updateSmallQty(size._id, newSmallQty)"></i>
 		<div>medium: {{size.mediumQty}}</div>
 		<div>large: {{size.largeQty}}</div>
 	</div>  
