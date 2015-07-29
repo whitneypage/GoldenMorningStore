@@ -10,7 +10,7 @@ console.log(55555, config)
 // AWS.config.region = 'us-west-2';
 
 AWS.config.update({
-  accessKeyId: config.AWSAdmin.accessKeyID,
+  accessKeyId: config.AWSAdmin.AccessKeyID,
   secretAccessKey: config.AWSAdmin.SecretAccessKey,
   region: 'us-west-2'
 });
@@ -113,13 +113,14 @@ module.exports = {
             };
             var options = {new: true};
 
-            Product.findByIdAndUpdate(req.params.id, update, options, function(error, response) {
-              if (error) {
-                   return res.status(500).json(error);
-               } else {
-                   return res.json(response);
-               }
-            })
+            // Product.findByIdAndUpdate(req.params.id, update, options, function(error, response) {
+            //   if (error) {
+            //        console.log(999999, error)
+            //        return res.status(500).json(error);
+            //    } else {
+            //        return res.json(response);
+            //    }
+            // })
           })
           
           // return res.json(file_buffer);

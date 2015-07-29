@@ -9,12 +9,13 @@ var productSchema = mongoose.Schema({
 	, price: {type: Number}
 	, dateUpdated: {type: Date}
 	, colorSize: [{
-	  color: {type: String} ,
-	  smallQty: {type: Number},
-		mediumQty: {type: Number},
-		largeQty: {type: Number}
-  }]
-
+		  color: {type: String} ,
+		  smallQty: {type: Number},
+			mediumQty: {type: Number},
+			largeQty: {type: Number},
+			mainImg: {type: String}
+	  }]
+  
 });
 
 productSchema.pre('createProduct', function(){
