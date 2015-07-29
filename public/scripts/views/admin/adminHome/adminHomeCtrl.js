@@ -21,6 +21,7 @@ app.controller('adminHomeCtrl', function($scope, products, AdminService) {
 		};
 		//console.log(smallQtyObj.id, " smallQtyObj.id, ", smallQtyObj.qty, " smallQtyObj.qty from adminHomeCtrl");
 		AdminService.updateSmallQty(smallQtyObj);
+		$scope.showEditSizes = false;
 		
 	};//end updateSmallQty
 	

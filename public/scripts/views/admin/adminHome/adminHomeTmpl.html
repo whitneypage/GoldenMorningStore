@@ -10,7 +10,7 @@
 			<button ng-click="toggleShowEditSizes()">edit sizes</button>
 		<div>small: {{size.smallQty}}</div>
 		<input type="text" ng-show="showEditSizes" ng-model="newSmallQty">
-				<i class="fa fa-times" ng-click="updateSmallQty(size._id, newSmallQty)"></i>
+				<i class="fa fa-times" ng-show="showEditSizes" ng-click="updateSmallQty(size._id, newSmallQty)"></i>
 		<div>medium: {{size.mediumQty}}</div>
 		<div>large: {{size.largeQty}}</div>
 	</div>  
