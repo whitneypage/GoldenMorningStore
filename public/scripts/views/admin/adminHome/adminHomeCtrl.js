@@ -1,6 +1,6 @@
 var app = angular.module('GoldMorning');
 
-app.controller('adminHomeCtrl', function($scope, products, AdminService) {
+app.controller('adminHomeCtrl', function($scope, products, ProductService) {
 	$scope.adminHomeTest = "This is the adminHomeTmpl.html. trappin hard from the adminHomeCtrl!"
 	//show and hide edit size inputs 
 	//defaults to hidden
@@ -20,7 +20,7 @@ app.controller('adminHomeCtrl', function($scope, products, AdminService) {
 			qty: updatedQty
 		};
 		//console.log(smallQtyObj.id, " smallQtyObj.id, ", smallQtyObj.qty, " smallQtyObj.qty from adminHomeCtrl");
-		AdminService.updateSmallQty(smallQtyObj);
+		ProductService.updateSmallQty(smallQtyObj);
 		$scope.showEditSizes = false;
 		
 	};//end updateSmallQty

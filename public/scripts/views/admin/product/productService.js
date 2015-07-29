@@ -1,7 +1,9 @@
 var app = angular.module('GoldMorning');
 
-app.service('productService', function($http, $q){
+app.service('OLDPRODCTSERVICE', function($http, $q){
 
+	ALL OF THESE ARE IN public/scripts/services/ProductService
+	
     // this.addProduct = function(product){
     //     console.log('add product service hit')
     //     var deferred = $q.defer();
@@ -30,7 +32,7 @@ app.service('productService', function($http, $q){
             deferred.resolve(response.data)
         });
         return deferred.promise;
-    }
+    };
 
     // this.getProduct = function(product){
     //     var deferred = $q.defer();
@@ -55,7 +57,7 @@ app.service('productService', function($http, $q){
             deferred.resolve(response.data)
         });
         return deferred.promise;
-    }
+    };
 
 
     this.updateProduct = function(product){
@@ -68,7 +70,7 @@ app.service('productService', function($http, $q){
             deferred.resolve(response.data)
         });
         return deferred.promise;
-    }
+    };
 
     this.deleteProduct = function(product){
         console.log('delete product service hit')
@@ -80,6 +82,6 @@ app.service('productService', function($http, $q){
             deferred.resolve(response.data)
         });
         return deferred.promise;
-    }
+    };
     
 });

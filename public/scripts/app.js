@@ -22,8 +22,8 @@ app.config(function($routeProvider) {
 		templateUrl : 'scripts/views/admin/adminHome/adminHomeTmpl.html',
 		controller : 'adminHomeCtrl',
 		resolve : {
-			products : function(AdminService) {
-				return AdminService.getAdminProducts();
+			products : function(ProductService) {
+				return ProductService.getProduct();
 			}
 		}
 	})

@@ -1,10 +1,10 @@
 var app = angular.module('GoldMorning');
 
-app.controller('productCtrl', function($scope, productService){
+app.controller('productCtrl', function($scope, ProductService){
 
 	$scope.addProduct = function() {
     console.log($scope.product);
-		productService.addProduct($scope.product)
+		ProductService.addProduct($scope.product)
 	        .then(function(data) {
 	            console.log(data);   
 	    })
@@ -21,21 +21,21 @@ app.controller('productCtrl', function($scope, productService){
 
 
 	$scope.getProduct = function() {
-		productService.getProduct($scope.product)
+		ProductService.getProduct($scope.product)
 	        .then(function(data) {
 	            console.log(data);   
 	    })
 	};
 
 	$scope.updateProduct = function() {
-		productService.updateProduct($scope.product)
+		ProductService.updateProduct($scope.product)
 	        .then(function(data) {
 	            console.log(data);   
 	    })
 	};
 
 	$scope.deleteProduct = function() {
-		productService.deleteProduct($scope.product)
+		ProductService.deleteProduct($scope.product)
 	        .then(function(data) {
 	            console.log(data);   
 	    })
