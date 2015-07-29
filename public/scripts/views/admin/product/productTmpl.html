@@ -66,6 +66,7 @@
                 <th>Small</th>
                 <th>Medium</th>
                 <th>Large</th>
+                <th>Upload Main Image:</th>
             </tr>
             <tr ng-repeat="colorSize in product.colorSize">
                 <td>
@@ -79,6 +80,9 @@
                 </td>
                 <td>
                     <input ng-model="colorSize.largeQty">
+                </td>
+                <td>
+                    <input ng-model="colorSize.mainImg">
                 </td>
                 <td><i class="fa fa-times" ng-click="deleteColor(colorSize)"></i></td>
             </tr>
