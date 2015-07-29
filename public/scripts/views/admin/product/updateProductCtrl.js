@@ -1,6 +1,12 @@
 var app = angular.module('GoldMorning');
 
-app.controller('productCtrl', function($scope, ProductService, $routeParams){
+app.controller('UpdateProductCtrl', function($scope, ProductService, $routeParams, product){
+
+	$scope.specProductId = $routeParams.productId;
+	console.log($scope.specProductId, " from productCtrl in angular");
+	
+	$scope.specProduct = product;
+	console.log($scope.specProduct, " $scope.specProduct from productCtrl.js");
 	
 	$scope.addProduct = function() {
     console.log($scope.product);

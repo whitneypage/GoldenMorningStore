@@ -3,7 +3,7 @@
 	<div>description: {{product.productDescription}}</div>
 	<div>category: {{product.productCategory}}</div>
 	
-	<a class="waves-effect waves-light modal-trigger" href="#/admin/product">
+	<a class="waves-effect waves-light modal-trigger" ng-href="#/admin/product/{{product._id}}">
 	<img width="300px" height="300px" ng-src="{{product.image}}" alt="PLEASE UPLOAD A PICTURE"/>
 	</a>
 	

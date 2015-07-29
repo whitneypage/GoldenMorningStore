@@ -32,6 +32,18 @@ app.service('ProductService', function($http, $q) {
         return deferred.promise;
     }; // end ProductService.getProduct
 	
+	this.getOneProduct = function(productId) {
+		var deferred = $q.defer();
+		$http({
+			method: 'GET',
+			url: "/api/products/" + productId
+		}).then(function(response) {
+			console.log(response.data, " response.data from getOneProduct in ProductService")
+			deferred.resolve(response.data)
+		})//end .then
+		return deferred.promise;
+	};// end ProductService.getOneProduct
+	
 	this.updateProduct = function(product){
         console.log('update product service hit')
         var deferred = $q.defer();
