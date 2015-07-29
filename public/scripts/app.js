@@ -16,7 +16,12 @@ app.config(function($routeProvider) {
 	})
 	.when('/checkout', {
 		templateUrl : 'scripts/views/user/checkout/checkoutTmpl.html',
-		controller : 'checkoutCtrl'
+		controller : 'checkoutCtrl', 
+		resolve: {
+			cart: function(cartService) {
+				return cartService.getCart();
+			}
+		}
 	})
 	.when('/admin/home', {
 		templateUrl : 'scripts/views/admin/adminHome/adminHomeTmpl.html',
