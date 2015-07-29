@@ -20,7 +20,12 @@ app.config(function($routeProvider) {
 	})
 	.when('/admin/home', {
 		templateUrl : 'scripts/views/admin/adminHome/adminHomeTmpl.html',
-		controller : 'adminHomeCtrl'
+		controller : 'adminHomeCtrl',
+		resolve : {
+			products : function(AdminService) {
+				return AdminService.getAdminProducts();
+			}
+		}
 	})
 	.when('/admin/orders', {
 		templateUrl : 'scripts/views/admin/orders/ordersTmpl.html',
