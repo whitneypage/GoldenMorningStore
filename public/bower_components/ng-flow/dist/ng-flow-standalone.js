@@ -1623,8 +1623,9 @@ angular.module('flow.provider', [])
   };
 });
 angular.module('flow.init', ['flow.provider'])
-  .controller('flowCtrl', ['$scope', '$attrs', '$parse', 'flowFactory',
-  function ($scope, $attrs, $parse, flowFactory) {
+  .controller('flowCtrl', ['$scope', '$rootScope', '$attrs', '$parse', 'flowFactory',
+  function ($scope, $rootScope, $attrs, $parse, flowFactory) {
+
 
     var options = angular.extend({}, $scope.$eval($attrs.flowInit));
 

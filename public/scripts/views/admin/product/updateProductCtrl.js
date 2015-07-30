@@ -22,11 +22,11 @@ app.controller('UpdateProductCtrl', function($scope, ProductService, $routeParam
 
 	$scope.addColor = function() {
 		var newColorSize = new ColorSize();
-		$scope.product.addColorSize(newColorSize);
-	}; 
+		$scope.specProduct.colorSize.push(newColorSize);
+	};
 
   $scope.deleteColor = function(toBeDeleted) {
-    $scope.product.deleteColorSize(toBeDeleted);
+    $scope.specProduct.colorSize.splice(toBeDeleted, 1);
   };
 
 
@@ -51,7 +51,7 @@ app.controller('UpdateProductCtrl', function($scope, ProductService, $routeParam
 	    })
 	};
 
-	$scope.product = new Product();
-	$scope.addColor();
+//	$scope.product = new Product();
+//	$scope.addColor();
 
 });

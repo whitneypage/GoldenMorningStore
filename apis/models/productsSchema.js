@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 
 var productSchema = mongoose.Schema({
-   productTitle: {type: String} 
+  productTitle: {type: String} 
     , productDescription: {type: String}
     , productCategory: {type: String}
     , images: [{type: String}]
@@ -16,7 +16,6 @@ var productSchema = mongoose.Schema({
         largeQty: {type: Number},
         mainImg: {type: String}
  }]
-
 });
 
 

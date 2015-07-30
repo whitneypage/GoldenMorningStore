@@ -10,7 +10,7 @@ console.log(55555, config)
 // AWS.config.region = 'us-west-2';
 
 AWS.config.update({
-  accessKeyId: config.AWSAdmin.accessKeyID,
+  accessKeyId: config.AWSAdmin.AccessKeyID,
   secretAccessKey: config.AWSAdmin.SecretAccessKey,
   region: 'us-west-2'
 });
@@ -41,6 +41,7 @@ function(err, response){
 },// end handleGetOneProduct
 
    handlePost: function(req, res) {
+    console.log(111, req.body);
        Product.create(req.body, function(error, response) {
            if (error) {
                return res.status(500).json(error);
@@ -123,22 +124,25 @@ function(err, response){
             if (error) {
               console.log(3333, error)
               return res.status(500).json(error);
+            } else {
+              return {src: 'https://s3.amaonaws.com/'+s3_bucket_name+'/'+s3_filename}
             }
-            var update = {
-              $push: {'pictures_array': {
-                name: s3_filename,
-                src: 'https://s3.amaonaws.com/'+s3_bucket_name+'/'+s3_filename
-              }}
-            };
-            var options = {new: true};
+            // var update = {
+            //   $push: {'pictures_array': {
+            //     name: s3_filename,
+            //     src: 'https://s3.amaonaws.com/'+s3_bucket_name+'/'+s3_filename
+            //   }}
+            // };
+            // var options = {new: true};
 
-            Product.findByIdAndUpdate(req.params.id, update, options, function(error, response) {
-              if (error) {
-                   return res.status(500).json(error);
-               } else {
-                   return res.json(response);
-               }
-            })
+            // Product.findByIdAndUpdate(req.params.id, update, options, function(error, response) {
+            //   if (error) {
+            //        console.log(999999, error)
+            //        return res.status(500).json(error);
+            //    } else {
+            //        return res.json(response);
+            //    }
+            // })
           })
           
           // return res.json(file_buffer);
