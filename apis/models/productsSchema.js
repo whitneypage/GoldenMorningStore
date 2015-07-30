@@ -5,7 +5,7 @@ var productSchema = mongoose.Schema({
     productTitle: {type: String} 
 	, productDescription: {type: String}
 	, productCategory: {type: String}
-	, image: {type: String}
+	, images: [{type: String}]
 	, price: {type: Number}
 	, dateUpdated: {type: Date}
 	, colorSize: [{
@@ -18,7 +18,7 @@ var productSchema = mongoose.Schema({
   
 });
 
-productSchema.pre('createProduct', function(){
+productSchema.pre('save', function(){
 		this.dateCreated = Date.now();
 });
 

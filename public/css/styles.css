@@ -14,7 +14,7 @@ body {
 
 .headline-main {
   position: absolute;
-  top: 50%;
+  top: 40%;
   text-align: center;
   width: 100%;
   color: #fff;
@@ -46,5 +46,109 @@ body {
 #products h4 {
   margin:0px 0px 30px 0px;
 }
+
+/* START ADD TO CART HOVER */
+
+.grid {
+  padding: 20px 20px 100px 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+  list-style: none;
+  text-align: center;
+}
+
+.grid li {
+  display: inline-block;
+  width: 35%;
+  margin: 0;
+  padding: 20px;
+  /*text-align: left;*/
+  position: relative;
+}
+
+.grid figure {
+  margin: 0 auto;
+  position: relative;
+}
+
+.grid figure img {
+  max-width: 100%;
+  display: block;
+  position: relative;
+}
+
+.grid figcaption {
+  position: absolute;
+  top: 0;
+  margin: 0 auto;
+  padding: 10px;
+  background: #fff;
+  color: #000;
+}
+
+.grid figcaption h5 {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+
+.grid figcaption .bag {
+  float: left;
+  margin: 4px 5px;
+  /*border-radius: 2px;
+  display: inline-block;
+  background: #fff;*/
+  color: #000;
+}
+
+.grid figcaption .add-size {
+  float: right;
+}
+
+.add-size span {
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+.add-size span:hover {
+  color: #727272;
+  text-decoration: underline;
+}
+
+.size-style figure {
+  overflow: hidden;
+}
+
+.size-style figure img {
+  transition: transform 0.4s;
+}
+
+.size-style figcaption {
+  height: 20%;
+  width: 100%;
+  top: auto;
+  bottom: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.4s, opacity 0.1s 0.3s;
+}
+
+.size-style figure:hover figcaption {
+  opacity: 0.8;
+  transform: translateY(0px);
+  transition: transform 0.4s, opacity 0.1s;
+}
+
+.product-price {
+  font-size: 18px;
+  margin: 0 auto;
+}
+
+/*.size-style figcaption a {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}*/
 
 

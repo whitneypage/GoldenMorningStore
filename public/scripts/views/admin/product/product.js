@@ -4,7 +4,7 @@ var Product = function(){
 	this.productCategory = "";
 	this.image = "";
 	this.price = "";
-  this.colorSize = [];
+  	this.colorSize = [];
 
 	this.addColorSize = function(newColorSize){
 		this.colorSize.push(newColorSize);
