@@ -19,8 +19,8 @@ body {
   width: 100%;
   color: #fff;
   font-size:3 6px;
-  -ms-transform: translate(0,-50%);  IE 9 
-    -webkit-transform: translate(0,-50%);  Safari 
+  -ms-transform: translate(0,-50%);  /*IE 9*/ 
+    -webkit-transform: translate(0,-50%);  /*Safari*/ 
     transform: translate(0,-50%);
 }
 
@@ -99,7 +99,7 @@ body {
   /*border-radius: 2px;
   display: inline-block;
   background: #fff;*/
-  color: #000;
+  color: #3a3a3a;
 }
 
 .grid figcaption .add-size {
@@ -108,20 +108,23 @@ body {
 
 .add-size span {
   margin-right: 20px;
-  /*font-size: 20px;*/
+  font-size: 20px;
 }
 
 .add-size span:hover {
   color: #727272;
   text-decoration: underline;
+  cursor: crosshair;
 }
 
 .size-style figure {
   overflow: hidden;
 }
 
-.size-style figure img {
+.size-style figure img:hover {
   transition: transform 0.4s;
+  cursor: zoom-in; 
+
 }
 
 .size-style figcaption {
