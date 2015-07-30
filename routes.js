@@ -29,8 +29,9 @@ function isAdmin(req, res, next){
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(session({
-	secret: 'my cat can eat a whole watermelon'
-}));
+   secret: process.env.SESSION_SECRET || "goldmorningshopsecret",
+   resave: false,
+   saveUninitialized: true }));
 
 passport.use(new LocalStrategy(
 	function(username, password, done) {
@@ -66,9 +67,17 @@ passport.deserializeUser(function(obj, done) {
 	app.put('/api/products/:productId', productsCtrl.handlePut);
 	app.delete('/api/products/:productId', productsCtrl.handleDelete);
 
-	app.post('/api/user/cart', cartCtrl.addProductToCart);
-	app.get('/api/user/cart', cartCtrl.getCart);
-	app.put('/api/user/cart/:id', cartCtrl.removeProductFromCart);
+	function cart(req, res, next){
+		if(!req.session.cart){
+			req.session.cart = [];
+			next();
+		}
+	next();
+	}
+
+	app.post('/api/user/cart', cart, cartCtrl.addProductToCart);
+	app.get('/api/user/cart', cart, cartCtrl.getCart);
+	app.put('/api/user/cart/:id', cart, cartCtrl.removeProductFromCart);
 
 	app.post('/api/user/order', orderCtrl.createOrder);
 	app.get('/api/admin/order/:id', orderCtrl.getOrder);

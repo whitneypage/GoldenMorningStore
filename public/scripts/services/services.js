@@ -5,7 +5,7 @@ app.service('cartService', function($http, $q) {
 	this.addProductToCart = function(data) {
 		return $http({
 			method: 'POST',
-			url: '/api/cart',
+			url: '/api/user/cart',
 			data: data
 		})
 	};
@@ -13,17 +13,14 @@ app.service('cartService', function($http, $q) {
 	this.getCart = function() {
 		return $http({
 			method: 'GET',
-			url: '/api/cart'
+			url: '/api/user/cart'   
 		})
 	};
 
-	this.removeProductFromCart = function() {
+	this.removeProductFromCart = function(id) {
 		return $http({
 			method: 'PUT',
-			url: '/api/cart/remove',
-			data: {
-				id: id
-			}
+			url: '/api/user/cart/' + id,
 		})
 	};
 }) 

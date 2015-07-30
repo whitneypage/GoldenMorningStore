@@ -18,6 +18,7 @@ var productSchema = mongoose.Schema({
  }]
 });
 
+
 productSchema.pre('save', function(next) {
 	var product = this;
 	product.dateCreated = Date.now();

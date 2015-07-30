@@ -1,5 +1,12 @@
 var app = angular.module('GoldMorning');
 
-app.controller('checkoutCtrl', function($scope) {
-	$scope.checkoutTest = "This is the checkoutTmpl.html. slangin rocks from the checkoutCtrl!"
-});//end checkoutCtrl
+app.controller('cartCtrl', function($scope, cart, cartService) {
+
+	$scope.cart = cart;
+
+	$scope.removeProductFromCart = function(product) {
+		cartService.removeProductFromCart(product);
+	}
+
+})
+
