@@ -46,10 +46,15 @@ app.service('ProductService', function($http, $q) {
 	
 	this.updateProduct = function(product){
         console.log('update product service hit')
+				console.log(product, " product from updateProductService in ProductService");
         var deferred = $q.defer();
         $http({
             method: 'PUT',
-            url: "/api/products",
+            url: "/api/products/",
+						data : {
+							_id : product._id,
+							product : product
+						}
         }).then(function(response) {
             deferred.resolve(response.data)
         });

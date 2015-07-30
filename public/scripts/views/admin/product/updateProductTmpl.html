@@ -55,7 +55,7 @@
 <img ng-src="{{specProduct.image}}" alt="please add pic">
         <div class="addImages">
             Upload Images:
-            <input class="addImageInput" type="text" ng-model="specProduct.image" placeholder="Upload Images" />
+            <input class="addImageInput" type="text" ng-model="NEEDTOCHANGE" placeholder="Upload Images" />
         </div>
 
         <br>
@@ -94,7 +94,7 @@
         </div>
         <br>
         <div class="addProductButton">
-            <button ng-click="addProduct()" ng-disabled="disableButton">Add Product</button>
+            <button ng-click="updateProduct(specProduct)" ng-disabled="disableButton">Update Product</button>
         </div>
     </div>
 </div>

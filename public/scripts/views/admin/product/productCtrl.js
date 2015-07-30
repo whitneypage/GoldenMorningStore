@@ -1,6 +1,6 @@
 var app = angular.module('GoldMorning');
 
-app.controller('productCtrl', function($scope, ProductService, $routeParams){
+app.controller('productCtrl', function($scope, ProductService){
 	
 	$scope.addProduct = function() {
     console.log($scope.product);
@@ -24,7 +24,7 @@ app.controller('productCtrl', function($scope, ProductService, $routeParams){
 		ProductService.getProduct($scope.product)
 	        .then(function(data) {
 	            console.log(data);   
-	    })
+	    });
 	};
 
 	$scope.updateProduct = function() {
