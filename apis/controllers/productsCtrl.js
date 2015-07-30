@@ -41,6 +41,7 @@ function(err, response){
 },// end handleGetOneProduct
 
    handlePost: function(req, res) {
+    console.log(111, req.body);
        Product.create(req.body, function(error, response) {
            if (error) {
                return res.status(500).json(error);

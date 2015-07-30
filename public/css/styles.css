@@ -35,11 +35,13 @@ body {
   z-index: 1;
 }
 
+/*PRODUCT GRID START*/
 
 #products {
-  padding: 100px 50px;
+ /* display: flex;*/
+  padding: 0px 20px;
   text-align: center;
-  width: 80%;
+  width: 90%;
   margin: 0px auto;
 }
 
@@ -50,7 +52,7 @@ body {
 /* START ADD TO CART HOVER */
 
 .grid {
-  padding: 20px 20px 100px 20px;
+  padding: 10px;
   max-width: 1300px;
   margin: 0 auto;
   list-style: none;
@@ -59,10 +61,8 @@ body {
 
 .grid li {
   display: inline-block;
-  width: 35%;
-  margin: 0;
-  padding: 20px;
-  /*text-align: left;*/
+  width: 100%;
+  margin: 25px auto;
   position: relative;
 }
 
@@ -73,7 +73,7 @@ body {
 
 .grid figure img {
   max-width: 100%;
-  display: block;
+  /*display: block;*/
   position: relative;
 }
 
@@ -108,7 +108,7 @@ body {
 
 .add-size span {
   margin-right: 20px;
-  font-size: 20px;
+  /*font-size: 20px;*/
 }
 
 .add-size span:hover {
@@ -142,7 +142,7 @@ body {
 
 .product-price {
   font-size: 18px;
-  margin: 0 auto;
+  margin: 5px auto;
 }
 
 /*.size-style figcaption a {

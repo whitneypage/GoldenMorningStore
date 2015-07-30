@@ -47,27 +47,46 @@
 
 <!-- Product Grid -->
 <div class="wrapper">
-	<div id="products">
+	<div product-modal id="products" class="row">
+		<div ng-repeat="product in products" class="col s3">
 
-		<ul class="grid size-style" ng-repeat="product in products">
-			<li ng-repeat="colorSize in product.colorSize">
-				<figure>
-					<img src="{{ colorSize.mainImg }}">
-					<figcaption>
-						<span class="bag">ADD TO BAG</span>
-						<div class="add-size">
-							<span>S</span>
-							<span>M</span>
-							<span>L</span>
-						</div>
-					</figcaption>
-				</figure>
+			<ul class="grid size-style">
+				<li ng-repeat="colorSize in product.colorSize">
+					<figure>
+						<img src="{{ colorSize.mainImg }}">
+						<figcaption>
+							<div class="add-size">
+								<span>S</span>
+								<span>M</span>
+								<span>L</span>
+							</div>
+							<span class="bag">ADD TO BAG |</span>
+						</figcaption>
+					</figure>
 
-				<p class="product-price">${{ product.price }}</p>
+					<p class="product-price">${{ product.price }}</p>
 
-			</li>
-		</ul>
+				</li>
+			</ul>
+
+		</div>
 	</div>
 </div>
-	<script src="js/materialize.js"></script>
+
+<!-- End Product Grid -->
+
+<!-- Start Product Modal -->
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+<!-- End Product Modal -->
+
 

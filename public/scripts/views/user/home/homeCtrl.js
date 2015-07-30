@@ -6,11 +6,28 @@ $scope.getProducts = function(){
 	ProductService.getProduct().then(function(data) {
 		console.log(data);
 		$scope.products = data;
-		$scope.products.colorSize.mainImage = $scope.products.image
 	})
 };
 
 $scope.getProducts();
 	
 	
-});//end homeCtrl
+});
+
+
+app.directive('productModal', function() {
+	var modal = function(scope, element, attrs) {
+		$(element).on('click', 'img', function() {
+			console.log('clicked!');
+			$('#modal1').openModal();
+		});
+	}
+
+	return {
+		restrict: 'A',
+		link: modal
+	}
+});
+
+
+//end homeCtrl
