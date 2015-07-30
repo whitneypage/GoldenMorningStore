@@ -114,14 +114,17 @@ body {
 .add-size span:hover {
   color: #727272;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .size-style figure {
   overflow: hidden;
 }
 
-.size-style figure img {
+.size-style figure img:hover {
   transition: transform 0.4s;
+  cursor: pointer; 
+
 }
 
 .size-style figcaption {
