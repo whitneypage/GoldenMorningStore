@@ -1,4 +1,4 @@
-var app = angular.module('GoldMorning', ['ngRoute']);
+var app = angular.module('GoldMorning', ['ngRoute', 'flow']);
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -34,6 +34,16 @@ app.config(function($routeProvider) {
 	.when('/admin/product', {
 		templateUrl : 'scripts/views/admin/product/productTmpl.html',
 		controller : 'productCtrl'
+	})
+	.when('/admin/product/:productId', {
+		templateUrl : 'scripts/views/admin/product/updateProductTmpl.html',
+		controller : 'UpdateProductCtrl',
+		resolve : {
+			product : function(ProductService, $route) {
+				var productId = $route.current.params.productId;
+				return ProductService.getOneProduct(productId);
+			}
+		}
 	})
 	.otherwise('/');
 });//end app.config in app.js
