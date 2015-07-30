@@ -50,9 +50,9 @@
 	<div id="products">
 
 		<ul class="grid size-style" ng-repeat="product in products">
-			<li>
+			<li ng-repeat="colorSize in product.colorSize">
 				<figure>
-					<img src="{{ product.image }}">
+					<img src="{{ colorSize.mainImg }}">
 					<figcaption>
 						<span class="bag">ADD TO BAG</span>
 						<div class="add-size">
