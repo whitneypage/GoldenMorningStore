@@ -1,5 +1,6 @@
 var Order = require('../models/orderSchema');
 var Product = require('../models/productsSchema');
+var Cart = require('../models/cartSchema');
 
 module.exports = {
 
@@ -7,7 +8,7 @@ module.exports = {
 
 	addProductToCart: function(req, res) {
 		req.session.cart.push(req.body);
-		res.send(req.session.cart);
+		res.send(req.session.cart); 
 	}
 
 	, getCart: function(req, res) {
