@@ -1626,14 +1626,11 @@ angular.module('flow.init', ['flow.provider'])
   .controller('flowCtrl', ['$scope', '$rootScope', '$attrs', '$parse', 'flowFactory',
   function ($scope, $rootScope, $attrs, $parse, flowFactory) {
 
-    $rootScope.flowFile = $scope.flow
 
     var options = angular.extend({}, $scope.$eval($attrs.flowInit));
 
     // use existing flow object or create a new one
     var flow  = $scope.$eval($attrs.flowObject) || flowFactory.create(options);
-
-    $scope.flowFile = flow;
 
     var catchAllHandler = function(eventName){
       var args = Array.prototype.slice.call(arguments);
