@@ -32,12 +32,29 @@ app.service('ProductService', function($http, $q) {
         return deferred.promise;
     }; // end ProductService.getProduct
 	
+	this.getOneProduct = function(productId) {
+		var deferred = $q.defer();
+		$http({
+			method: 'GET',
+			url: "/api/products/" + productId
+		}).then(function(response) {
+			console.log(response.data, " response.data from getOneProduct in ProductService")
+			deferred.resolve(response.data)
+		})//end .then
+		return deferred.promise;
+	};// end ProductService.getOneProduct
+	
 	this.updateProduct = function(product){
         console.log('update product service hit')
+				console.log(product, " product from updateProductService in ProductService");
         var deferred = $q.defer();
         $http({
             method: 'PUT',
-            url: "/api/products",
+            url: "/api/products/",
+						data : {
+							_id : product._id,
+							product : product
+						}
         }).then(function(response) {
             deferred.resolve(response.data)
         });
@@ -58,25 +75,22 @@ app.service('ProductService', function($http, $q) {
 	
 	//	**RH - MAY NOT NEED**  \\
 	
-//this.updateSmallQty = function(smallQtyObj){
-//	console.log(smallQtyObj, ' smallQtyObj from AdminService.updateSmallQty');
-//	
-//	//got mongo _id and new qty from front
-//	//will pick up here tomorrow >^.^<	
-//	
-////	var deferred = $q.defer();
-////	$http({
-////		method : 'PUT',
-////		url: "/api/produts/:productId",
-////		data: {
-////			_id : smallQtyObj.id,
-////			qty : smallQtyObj.qty
-////		}
-////	}).then(function(response) {
-////		deferred.resolve(response.data);
-////	});
-////	return deferred.promise;
-//};//end updateSmallQty
+this.updateSmallQty = function(smallQtyObj){
+	console.log(smallQtyObj, ' smallQtyObj from AdminService.updateSmallQty');
+	
+	var deferred = $q.defer();
+	$http({
+		method : 'PUT',
+		url: "/api/produts/:productId",
+		data: {
+			_id : smallQtyObj.id,
+			qty : smallQtyObj.qty
+		}
+	}).then(function(response) {
+		deferred.resolve(response.data);
+	});
+	return deferred.promise;
+};//end updateSmallQty
 	
 });// ********end AdminService*********
 
