@@ -14,4 +14,9 @@ $(document).ready(function(){
 
 	$(".button-collapse").sideNav();
 
+	$("product-modal").click(function(){
+		console.log("clicked");
+		$('#modal1').openModal();
+	});
+
 });

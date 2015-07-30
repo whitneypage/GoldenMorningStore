@@ -5,7 +5,7 @@ var productSchema = mongoose.Schema({
     productTitle: {type: String} 
 	, productDescription: {type: String}
 	, productCategory: {type: String}
-	, images: [{type: String}]
+	, images: {type: String}
 	, price: {type: Number}
 	, dateUpdated: {type: Date}
 	, colorSize: [{

@@ -2,7 +2,7 @@ var Product = function(){
 	this.productTitle = "";
 	this.productDescription = "";
 	this.productCategory = "";
-	this.image = "";
+	this.images = "";
 	this.price = "";
   	this.colorSize = [];
 
