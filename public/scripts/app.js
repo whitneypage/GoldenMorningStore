@@ -29,6 +29,9 @@ app.config(function($routeProvider) {
 		resolve : {
 			products : function(ProductService) {
 				return ProductService.getProduct();
+			},
+			cart: function(cartService) {
+				return cartService.getCart();
 			}
 		}
 	})

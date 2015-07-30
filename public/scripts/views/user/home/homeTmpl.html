@@ -55,10 +55,9 @@
 					<img src="{{ product.image }}">
 					<figcaption>
 						<span class="bag">ADD TO BAG</span>
-						<div class="add-size">
-							<span>S</span>
-							<span>M</span>
-							<span>L</span>
+						<div class="add-size" ng-repeat="size in sizes">
+						<!-- need to pass in "color" -->
+							<span><button ng-click="addProductToCart(product._id, color, size)">{{size}}</button></span>
 						</div>
 					</figcaption>
 				</figure>

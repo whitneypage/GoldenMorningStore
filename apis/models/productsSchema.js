@@ -18,8 +18,8 @@ var productSchema = mongoose.Schema({
 
 });
 
-productSchema.pre('save', function(){
+/*productSchema.pre('save', function(){
 		this.dateCreated = Date.now();
-});
+});*/
 
 module.exports = mongoose.model('Product', productSchema);
