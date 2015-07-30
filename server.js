@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var configDB = require('./apis/config/database.js');
+var session = require('express-session');
 
 var port = 1337;
 
@@ -17,6 +18,7 @@ mongoose.connect('mongodb://localhost:27017/GoldenMorningStore');
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname+'/public'));
+
 
 require('./routes.js')(app);
 

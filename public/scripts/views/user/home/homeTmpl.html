@@ -34,6 +34,7 @@
         <li><a href="#">DRESSES</a></li>
         <li><a href="#">TOPS</a></li>
         <li><a href="#">BOTTOMS</a></li>
+        <li><a href="#">ROMPERS</a></li>
         <li><a href="#">ACCESSORIES</a></li>
         <li><a href="#">BODY</a></li>
         <li><a href="#">YOUR BAG</a></li>
@@ -49,18 +50,16 @@
 <div class="wrapper">
 	<div product-modal id="products" class="row">
 		<div ng-repeat="product in products" class="col s3">
-
 			<ul class="grid size-style">
 				<li ng-repeat="colorSize in product.colorSize">
 					<figure>
 						<img src="{{ colorSize.mainImg }}">
 						<figcaption>
-							<div class="add-size">
-								<span>S</span>
-								<span>M</span>
-								<span>L</span>
+							<span class="bag">ADD TO BAG</span>
+							<div class="add-size" ng-repeat="size in sizes">
+							<!-- need to pass in "color" -->
+								<span ng-click="addProductToCart(product, colorSize, size)">{{size}}</span>
 							</div>
-							<span class="bag">ADD TO BAG |</span>
 						</figcaption>
 					</figure>
 
@@ -68,7 +67,6 @@
 
 				</li>
 			</ul>
-
 		</div>
 	</div>
 </div>
@@ -85,7 +83,7 @@
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
-  </div>
+</div>
 
 <!-- End Product Modal -->
 
