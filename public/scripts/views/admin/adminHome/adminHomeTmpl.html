@@ -1,1 +1,32 @@
-{{adminHomeTest}}
+<div ng-repeat="product in products">
+	<div>item: {{product.productTitle}}</div>
+	<div>description: {{product.productDescription}}</div>
+	<div>category: {{product.productCategory}}</div>
+	
+	<a class="waves-effect waves-light modal-trigger" ng-href="#/admin/product/{{product._id}}">
+	<img width="300px" height="300px" ng-src="{{product.image}}" alt="PLEASE UPLOAD A PICTURE"/>
+	</a>
+	
+	<div>price: ${{product.price}}</div>
+	<div ng-repeat="size in product.colorSize">
+		<div>color: {{size.color}}</div>
+		<div style="font-size: 1.4rem; font-weight:bold">Sizes</div>
+			<button ng-click="toggleShowEditSizes()">edit sizes</button>
+		<div>small: {{size.smallQty}}</div>
+		<input type="text" ng-show="showEditSizes" ng-model="size.smallQty">
+
+		<div>medium: {{size.mediumQty}}</div>
+		<div>large: {{size.largeQty}}</div>
+	</div>  <!--end ng-repeat size in product.cS-->
+		<i class="fa fa-times" ng-show="showEditSizes" ng-click="updateSmallQty(size._id, 	size.smallQty)"></i>
+	<br><br>
+</div>
+
+
+		<!--INDIVIDUAL PRODUCT MODAL SECTION-->
+		<div class="modal" id="modal1">
+			<div>product info</div>
+		</div>
+
+
+		<!--REMOVE INLINE STYLING -- USED ONLY FOR READABILITY RIGHT NOW-->

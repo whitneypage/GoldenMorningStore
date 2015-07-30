@@ -2,12 +2,12 @@
     <div class="addProductArea">
         <div class="addProductTitle">
             Add Product Title:
-            <input class="productTitleInput" placeholder="Enter the name of your product." ng-model="product.productTitle" />
+            <input class="productTitleInput" placeholder="Enter the name of your product." ng-model="specProduct.productTitle" />
         </div>
         <br>
         <div class="addProductDescription">
             Add Product Description:
-            <textarea class="productDescriptionInput" type="text" ng-model="product.productDescription" placeholder="Enter a description of your product."></textarea>
+            <textarea class="productDescriptionInput" type="text" ng-model="specProduct.productDescription" placeholder="Enter a description of your product."></textarea>
         </div>
 
 
@@ -25,37 +25,37 @@
 
           <form action="#">
             <p>
-              <input class="with-gap" name="group1" type="radio" id="test1" value="Dresses" ng-model="product.productCategory"/>
+              <input class="with-gap" name="group1" type="radio" id="test1" value="Dresses" ng-model="specProduct.productCategory"/>
               <label for="test1">Dresses</label>
             </p>
             <p>
-              <input class="with-gap" name="group1" type="radio" id="test2" value="Tops" ng-model="product.productCategory"/>
+              <input class="with-gap" name="group1" type="radio" id="test2" value="Tops" ng-model="specProduct.productCategory"/>
               <label for="test2">Tops</label>
             </p>
             <p>
-              <input class="with-gap" name="group1" type="radio" id="test3" value="Bottoms" ng-model="product.productCategory"/>
+              <input class="with-gap" name="group1" type="radio" id="test3" value="Bottoms" ng-model="specProduct.productCategory"/>
               <label for="test3">Bottoms</label>
             </p>
               <p>
-                <input class="with-gap" name="group1" type="radio" id="test4" value="Rompers/Jumpsuits" ng-model="product.productCategory"/>
+                <input class="with-gap" name="group1" type="radio" id="test4" value="Rompers/Jumpsuits" ng-model="specProduct.productCategory"/>
                 <label for="test4">Rompers/Jumpsuits</label>
             </p>
             <p>
-              <input class="with-gap" name="group1" type="radio" id="test5" value="Accessories" ng-model="product.productCategory"/>
+              <input class="with-gap" name="group1" type="radio" id="test5" value="Accessories" ng-model="specProduct.productCategory"/>
               <label for="test5">Accessories</label>
             </p>
             <p>
-              <input class="with-gap" name="group1" type="radio" id="test6" value="Soaps/Scrubs" ng-model="product.productCategory"/>
+              <input class="with-gap" name="group1" type="radio" id="test6" value="Soaps/Scrubs" ng-model="specProduct.productCategory"/>
               <label for="test6">Soaps/Scrubs</label>
             </p>
           </form>
         
 
         <br>
-
+<img ng-src="{{specProduct.image}}" alt="please add pic">
         <div class="addImages">
             Upload Images:
-            <input class="addImageInput" type="text" ng-model="product.image" placeholder="Upload Images" />
+            <input class="addImageInput" type="text" ng-model="NEEDTOCHANGE" placeholder="Upload Images" />
         </div>
 
         <br>
@@ -67,7 +67,7 @@
                 <th>Medium</th>
                 <th>Large</th>
             </tr>
-            <tr ng-repeat="colorSize in product.colorSize">
+            <tr ng-repeat="colorSize in specProduct.colorSize">
                 <td>
                     <input ng-model="colorSize.color">
                 </td>
@@ -90,11 +90,11 @@
         <br>
         <div class="addPrice">
             Add Price:
-            <input class="priceInput" placeholder="Enter Price" ng-model="product.price" />
+            <input class="priceInput" placeholder="Enter Price" ng-model="specProduct.price" />
         </div>
         <br>
         <div class="addProductButton">
-            <button ng-click="addProduct()" ng-disabled="disableButton">Add Product</button>
+            <button ng-click="updateProduct(specProduct)" ng-disabled="disableButton">Update Product</button>
         </div>
     </div>
 </div>

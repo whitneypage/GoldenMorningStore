@@ -9,13 +9,13 @@ module.exports = {
 	'AWS':
 	{
 		'AccessKeyID': 'AKIAIN3DOVMHKRHMZFWA',
-		'Secret Access Key': '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'
+		'SecretAccessKey': 'niNgeBgJosu3MuRtMsMyCeUOlKaX5mcZOSJtKQxl'
 	},
 
-	'AWS-Admin':
+	'AWSAdmin':
 	{
-		'Access Key ID': 'AKIAJ3GVOL67VFOYLSFA',
-    'Secret Access Key': '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'
+		'AccessKeyID': 'AKIAJ3GVOL67VFOYLSFA',
+    'SecretAccessKey': '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'
 	}
 
 }

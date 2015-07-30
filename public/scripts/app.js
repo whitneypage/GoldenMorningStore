@@ -20,7 +20,12 @@ app.config(function($routeProvider) {
 	})
 	.when('/admin/home', {
 		templateUrl : 'scripts/views/admin/adminHome/adminHomeTmpl.html',
-		controller : 'adminHomeCtrl'
+		controller : 'adminHomeCtrl',
+		resolve : {
+			products : function(ProductService) {
+				return ProductService.getProduct();
+			}
+		}
 	})
 	.when('/admin/orders', {
 		templateUrl : 'scripts/views/admin/orders/ordersTmpl.html',
@@ -29,6 +34,16 @@ app.config(function($routeProvider) {
 	.when('/admin/product', {
 		templateUrl : 'scripts/views/admin/product/productTmpl.html',
 		controller : 'productCtrl'
+	})
+	.when('/admin/product/:productId', {
+		templateUrl : 'scripts/views/admin/product/updateProductTmpl.html',
+		controller : 'UpdateProductCtrl',
+		resolve : {
+			product : function(ProductService, $route) {
+				var productId = $route.current.params.productId;
+				return ProductService.getOneProduct(productId);
+			}
+		}
 	})
 	.otherwise('/');
 });//end app.config in app.js
