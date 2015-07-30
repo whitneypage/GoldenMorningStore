@@ -4,7 +4,12 @@ app.config(function($routeProvider) {
 	$routeProvider
 	.when('/', {
 		templateUrl : 'scripts/views/user/home/homeTmpl.html',
-		controller : 'homeCtrl'
+		controller : 'homeCtrl',
+		resolve: {
+			cart: function(cartService) {
+				return cartService.getCart();
+			}
+		}
 	})
 	.when('/product', {
 		templateUrl : 'scripts/views/user/productModal/productModalTmpl.html',
@@ -27,11 +32,8 @@ app.config(function($routeProvider) {
 		templateUrl : 'scripts/views/admin/adminHome/adminHomeTmpl.html',
 		controller : 'adminHomeCtrl',
 		resolve : {
-			products : function(ProductService) {
+			products: function(ProductService) {
 				return ProductService.getProduct();
-			},
-			cart: function(cartService) {
-				return cartService.getCart();
 			}
 		}
 	})

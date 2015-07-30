@@ -6,7 +6,7 @@ var cartSchema = mongoose.Schema({
     /*also need a way to ensure that product inventory will reflect increases in qty if session ends or customers clear their cart*/
     productObject: [{
         /*not sure that this will work given that you're trying to pass in what appears below*/
-        product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true},
+        product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true}
         , color: {type: String}
         , size: {type: String}
     }]

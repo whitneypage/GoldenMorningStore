@@ -1,6 +1,6 @@
 var app = angular.module('GoldMorning');
 
-app.controller('homeCtrl', function($scope, ProductService, cart) {
+app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 
 
 
@@ -8,7 +8,7 @@ app.controller('homeCtrl', function($scope, ProductService, cart) {
 		ProductService.getProduct().then(function(data) {
 			console.log(data);
 			$scope.products = data;
-			$scope.products.colorSize.mainImage = $scope.products.image
+		/*	$scope.products.colorSize.mainImage = $scope.products.image*/
 		})
 	};
 
@@ -18,22 +18,22 @@ app.controller('homeCtrl', function($scope, ProductService, cart) {
 
 	$scope.cart = cart;
 
-	$scope.addProductToCart = function(product._id, color, size) {
-		/*create a product object by combining all parameters above*/
+	$scope.addProductToCart = function(product, colorSize, size) {
 		var productObject = {
-			refId: product._id
-			, imageUrl: product.mainImg
-			, name: product.productTitle
-			, color: color
+			name: product.productTitle
+			, refId: product._id
+			, imageUrl: colorSize.mainImg
+			, color: colorSize.color
 			, size: size
 			, price: product.price
 		};
-		/*add product object to cart array*/
+		console.log(productObject);
 		cartService.addProductToCart(productObject).then(function(response) {
+			console.log(response);
 			/*reset dynamic values to empty (cf. Mark)*/
 			$scope.cart = response.data;
 			/*pull down modal for a second or two*/
 		})
-	}
+	};
 
 });//end homeCtrl
