@@ -15,6 +15,10 @@ app.controller('productCtrl', function($scope, ProductService){
 		$scope.product.addColorSize(newColorSize);
 	}; 
 
+	$scope.addImg = function(){
+		$scope.product.addImg($scope.newImage);
+	}
+
   $scope.deleteColor = function(toBeDeleted) {
     $scope.product.deleteColorSize(toBeDeleted)
   }
@@ -43,5 +47,6 @@ app.controller('productCtrl', function($scope, ProductService){
 
 	$scope.product = new Product();
 	$scope.addColor();
+	$scope.addImg();
 
 });

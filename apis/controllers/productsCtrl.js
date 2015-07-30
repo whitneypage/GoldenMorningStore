@@ -52,7 +52,14 @@ function(err, response){
    },
 
    handlePut: function(req, res) {
-       Product.findByIdAndUpdate(req.params.productId, req.body, {new: true}, function(error, response) {
+       Product.findByIdAndUpdate(req.params.productId, {$set :{
+				 productTitle : req.body.product.productTitle,
+				 productDescription : req.body.product.productDescription,
+				 productCategory : req.body.product.productCategory,
+				 image : req.body.product.image,
+				 price : req.body.product.price,
+				 colorSize : req.body.product.colorSize
+			 }}, {new: true}, function(error, response) {
            if (error) {
                return res.status(500).json(error);
            } else {
