@@ -50,7 +50,7 @@ app.service('ProductService', function($http, $q) {
         var deferred = $q.defer();
         $http({
             method: 'PUT',
-            url: "/api/products/",
+            url: "/api/products/" + product._id,
 						data : {
 							_id : product._id,
 							product : product

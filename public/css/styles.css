@@ -37,6 +37,7 @@ body {
 
 
 #products {
+  display: flex;
   padding: 100px 50px;
   text-align: center;
   width: 80%;
@@ -58,7 +59,7 @@ body {
 }
 
 .grid li {
-  display: inline-block;
+ /* display: inline-block;*/
   width: 35%;
   margin: 0;
   padding: 20px;
@@ -73,7 +74,7 @@ body {
 
 .grid figure img {
   max-width: 100%;
-  display: block;
+  /*display: block;*/
   position: relative;
 }
 

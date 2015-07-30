@@ -2,12 +2,16 @@ var Product = function(){
 	this.productTitle = "";
 	this.productDescription = "";
 	this.productCategory = "";
-	this.images = "";
+	this.images = [];
 	this.price = "";
   	this.colorSize = [];
 
 	this.addColorSize = function(newColorSize){
 		this.colorSize.push(newColorSize);
+	}
+
+	this.addImg = function(newImage){
+		this.images.push(newImage);
 	}
 
 	this.deleteColorSize = function(toBeDeleted){
