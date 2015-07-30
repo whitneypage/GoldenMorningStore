@@ -1,14 +1,24 @@
 var app = angular.module('GoldMorning');
 
 app.controller('productCtrl', function($scope, ProductService){
+
+	$scope.flowFile = [];
+	// $scope.uploader;
 	
-	$scope.addProduct = function() {
-    console.log($scope.product);
+	$scope.addProduct = function(urlName) {
+		console.log("this shiz", urlName, $scope.uploader);
+		$scope.product.imageUrl = function(urlName){
+
+		}
 		ProductService.addProduct($scope.product)
 	        .then(function(data) {
 	            console.log(data);   
 	    })
 	};
+
+	$scope.go = function(x){
+		console.log('kittens', x)
+	}
 
 	$scope.addColor = function() {
 		var newColorSize = new ColorSize();
