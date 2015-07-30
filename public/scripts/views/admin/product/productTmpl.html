@@ -45,27 +45,13 @@
                 </p>
               </form>
             
-
             <br>
 
-            <!-- <div class="addImages">
-                Upload Images:
-                <input class="addImageInput" type="text" ng-model="product.image" placeholder="Upload Images" />
-            </div> -->
-
-
-
-            <button ng-click="">go</button>
-            <!-- <div ng-model="flowFile">{{$flow.files[0]}}</div> -->
               <span class="btn" flow-btn>Upload File</span>
-           <!--    <table> -->
-                <!-- <img flow-img="$flow.files[0]" /> -->
+
                 <div ng-repeat="image in uploader.flow.files">
-                    <img class="preview" ng-click="go($index)" flow-img="image"/><br>
+                    <h1>{{$index + 1}}</h1><img class="preview" flow-img="image"/><br>
                 </div>
-          <!--     </table> -->
-
-
             <br>
             <table>
                 <colgroup span="4" class="inPutTable"></colgroup>
@@ -74,7 +60,7 @@
                     <th>Small</th>
                     <th>Medium</th>
                     <th>Large</th>
-                    <th>Upload Main Image:<th>
+                    <th>Primary Image:<th>
                 </tr>
                 <tr ng-repeat="colorSize in product.colorSize">
                     <td>
@@ -89,18 +75,23 @@
                     <td>
                         <input ng-model="colorSize.largeQty">
                     </td>
-
-                        here
-                        {{uploader.flow.files[0].name}}
                     <td>
+                        <input ng-model="colorSize.imageNumber" placeholder="enter image number"></input>
 
-                        <div class="input-field col s12">
-                            <select ng-model="kk" ng-repeat="image in uploader.flow.files">
+                        <!-- <div class="input-field col s12">
+                            <select ng-model="something">
+                                <option ng-selected="{{image.name == something}}"
+                                        ng-repeat="image in uploader.flow.files"
+                                        value="{{image.name}}">
+                                  {{image.name}}
+                                </option>
+                            </select> -->
+                            <!-- <select ng-model="kk" ng-repeat="image in uploader.flow.files">
                               <option value="" disabled selected>Choose your option</option>
                               <option value="{{image.name}}">{{image.name}}</option>
                             </select>
-                            <label>Materialize Select</label>
-                        </div>
+                            <label>Materialize Select</label> -->
+                        <!-- </div> -->
                         <!-- <select ng-model="kk" ng-repeat="image in uploader.flow.files">
                           <option>{{image.name}}</option>
                         </select> -->
