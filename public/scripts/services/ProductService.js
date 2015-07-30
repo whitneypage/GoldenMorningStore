@@ -6,7 +6,7 @@ app.service('ProductService', function($http, $q) {
 	
 	//****TYTEBBS SERIVICES FROM OLD productService.js***//
 	
-	        this.addProduct = function(product){
+	this.addProduct = function(product){
           console.log("ProductInService", product);
         console.log('add product service hit')
         var deferred = $q.defer();
