@@ -25,8 +25,20 @@ module.exports = {
            } else {
                res.json(response);
            }
-       })
+       });
    },
+	
+		handleGetOneProduct :function(req, res) {
+	Product.findById( req.params.productId,
+function(err, response){
+	if (err) {
+		res.status(500).json(err);
+	} else {
+		console.log(response);
+		res.json(response);
+	}
+});
+},// end handleGetOneProduct
 
    handlePost: function(req, res) {
        Product.create(req.body, function(error, response) {
@@ -40,7 +52,14 @@ module.exports = {
    },
 
    handlePut: function(req, res) {
-       Product.findByIdAndUpdate(req.params.productId, req.body, {new: true}, function(error, response) {
+       Product.findByIdAndUpdate(req.params.productId, {$set :{
+				 productTitle : req.body.product.productTitle,
+				 productDescription : req.body.product.productDescription,
+				 productCategory : req.body.product.productCategory,
+				 image : req.body.product.image,
+				 price : req.body.product.price,
+				 colorSize : req.body.product.colorSize
+			 }}, {new: true}, function(error, response) {
            if (error) {
                return res.status(500).json(error);
            } else {
@@ -141,8 +160,18 @@ module.exports = {
     //        return res.json(response);
     //    }
     //  };
-   }
+   },
 
   
+	
+//	   RHHandlePut: function(req, res) {
+//       Product.findOneAndUpdate({colorSize._id :req.body._id}, {$set {, {new: true}, function(error, response) {
+//           if (error) {
+//               return res.status(500).json(error);
+//           } else {
+//               return res.json(response);
+//           }
+//       });
+//   },
 
-}
+};

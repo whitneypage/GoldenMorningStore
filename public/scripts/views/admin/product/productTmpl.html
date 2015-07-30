@@ -12,16 +12,6 @@
 
 
         <br>
-<!--         <div class="selectCategory">
-            Select Product Category:
-            <select class="addProductCategory" type="text" ng-model="product.productCategory">
-                <option value="shirts">Shirts</option>
-                <option value="pants">Pants</option>
-                <option value="shoes">Shoes</option>
-                <option value="socks">Socks</option>
-            </select>
-        </div>
-        <br> -->
 
           <form action="#">
             <p>
@@ -80,6 +70,7 @@
           </table>
         </div>
 
+
         <br>
         <table>
             <colgroup span="4" class="inPutTable"></colgroup>
@@ -88,7 +79,7 @@
                 <th>Small</th>
                 <th>Medium</th>
                 <th>Large</th>
-                <th>Upload Main Image:</th>
+                <th>Upload Main Image:<th>
             </tr>
             <tr ng-repeat="colorSize in product.colorSize">
                 <td>
@@ -103,6 +94,7 @@
                 <td>
                     <input ng-model="colorSize.largeQty">
                 </td>
+
                 <td>
                     <input ng-model="colorSize.mainImg">
                 </td>
