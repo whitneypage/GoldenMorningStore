@@ -148,6 +148,11 @@ body {
   margin: 5px auto;
 }
 
+.preview {
+  width: 200px;
+  height: auto;
+  display: inline-block;
+}
 /*.size-style figcaption a {
   position: absolute;
   bottom: 20px;

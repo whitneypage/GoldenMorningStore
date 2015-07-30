@@ -1,118 +1,130 @@
-<div>
-    <div class="addProductArea">
-        <div class="addProductTitle">
-            Add Product Title:
-            <input class="productTitleInput" placeholder="Enter the name of your product." ng-model="product.productTitle" />
-        </div>
-        <br>
-        <div class="addProductDescription">
-            Add Product Description:
-            <textarea class="productDescriptionInput" type="text" ng-model="product.productDescription" placeholder="Enter a description of your product."></textarea>
-        </div>
+<div flow-init="{target: '/api/upload', testChunks:false}"
+     flow-name="uploader.flow"
+     flow-files-added="processFiles($files)"
+     flow-files-submitted="$flow.upload()"
+     flow-file-success="$file.msg = $message">
+    <div>
+        <div class="addProductArea">
+            <div class="addProductTitle">
+                Add Product Title:
+                <input class="productTitleInput" placeholder="Enter the name of your product." ng-model="product.productTitle" />
+            </div>
+            <br>
+            <div class="addProductDescription">
+                Add Product Description:
+                <textarea class="productDescriptionInput" type="text" ng-model="product.productDescription" placeholder="Enter a description of your product."></textarea>
+            </div>
 
 
-        <br>
+            <br>
 
-          <form action="#">
-            <p>
-              <input class="with-gap" name="group1" type="radio" id="test1" value="Dresses" ng-model="product.productCategory"/>
-              <label for="test1">Dresses</label>
-            </p>
-            <p>
-              <input class="with-gap" name="group1" type="radio" id="test2" value="Tops" ng-model="product.productCategory"/>
-              <label for="test2">Tops</label>
-            </p>
-            <p>
-              <input class="with-gap" name="group1" type="radio" id="test3" value="Bottoms" ng-model="product.productCategory"/>
-              <label for="test3">Bottoms</label>
-            </p>
-              <p>
-                <input class="with-gap" name="group1" type="radio" id="test4" value="Rompers/Jumpsuits" ng-model="product.productCategory"/>
-                <label for="test4">Rompers/Jumpsuits</label>
-            </p>
-            <p>
-              <input class="with-gap" name="group1" type="radio" id="test5" value="Accessories" ng-model="product.productCategory"/>
-              <label for="test5">Accessories</label>
-            </p>
-            <p>
-              <input class="with-gap" name="group1" type="radio" id="test6" value="Soaps/Scrubs" ng-model="product.productCategory"/>
-              <label for="test6">Soaps/Scrubs</label>
-            </p>
-          </form>
-        
+              <form action="#">
+                <p>
+                  <input class="with-gap" name="group1" type="radio" id="test1" value="Dresses" ng-model="product.productCategory"/>
+                  <label for="test1">Dresses</label>
+                </p>
+                <p>
+                  <input class="with-gap" name="group1" type="radio" id="test2" value="Tops" ng-model="product.productCategory"/>
+                  <label for="test2">Tops</label>
+                </p>
+                <p>
+                  <input class="with-gap" name="group1" type="radio" id="test3" value="Bottoms" ng-model="product.productCategory"/>
+                  <label for="test3">Bottoms</label>
+                </p>
+                  <p>
+                    <input class="with-gap" name="group1" type="radio" id="test4" value="Rompers/Jumpsuits" ng-model="product.productCategory"/>
+                    <label for="test4">Rompers/Jumpsuits</label>
+                </p>
+                <p>
+                  <input class="with-gap" name="group1" type="radio" id="test5" value="Accessories" ng-model="product.productCategory"/>
+                  <label for="test5">Accessories</label>
+                </p>
+                <p>
+                  <input class="with-gap" name="group1" type="radio" id="test6" value="Soaps/Scrubs" ng-model="product.productCategory"/>
+                  <label for="test6">Soaps/Scrubs</label>
+                </p>
+              </form>
+            
 
-        <br>
+            <br>
 
-        <!-- <div class="addImages">
-            Upload Images:
-            <input class="addImageInput" type="text" ng-model="product.image" placeholder="Upload Images" />
-        </div> -->
-
-        <div flow-init="{target: '/api/upload', testChunks:false}"
-             flow-files-added="processFiles($files)"
-             flow-files-submitted="$flow.upload()"
-             flow-file-success="$file.msg = $message">
+            <!-- <div class="addImages">
+                Upload Images:
+                <input class="addImageInput" type="text" ng-model="product.image" placeholder="Upload Images" />
+            </div> -->
 
 
-          <span class="btn" flow-btn>Upload File</span>
 
-          <div class="alert" flow-drop>
-            Drag And Drop your file here
-          </div>
-
-          <table>
-            <!-- <img flow-img="$flow.files[0]" /> -->
-            <tr ng-repeat="file in $flow.files">
-                <td>{{$index+1}}</td>
-                <td>{{file.name}}</td>
-                <td>{{file.msg}}</td>
-            </tr>
-          </table>
-        </div>
+            <button ng-click="">go</button>
+            <!-- <div ng-model="flowFile">{{$flow.files[0]}}</div> -->
+              <span class="btn" flow-btn>Upload File</span>
+           <!--    <table> -->
+                <!-- <img flow-img="$flow.files[0]" /> -->
+                <div ng-repeat="image in uploader.flow.files">
+                    <img class="preview" ng-click="go($index)" flow-img="image"/><br>
+                </div>
+          <!--     </table> -->
 
 
-        <br>
-        <table>
-            <colgroup span="4" class="inPutTable"></colgroup>
-            <tr>
-                <th>Color</th>
-                <th>Small</th>
-                <th>Medium</th>
-                <th>Large</th>
-                <th>Upload Main Image:<th>
-            </tr>
-            <tr ng-repeat="colorSize in product.colorSize">
-                <td>
-                    <input ng-model="colorSize.color">
-                </td>
-                <td>
-                    <input ng-model="colorSize.smallQty">
-                </td>
-                <td>
-                    <input ng-model="colorSize.mediumQty">
-                </td>
-                <td>
-                    <input ng-model="colorSize.largeQty">
-                </td>
+            <br>
+            <table>
+                <colgroup span="4" class="inPutTable"></colgroup>
+                <tr>
+                    <th>Color</th>
+                    <th>Small</th>
+                    <th>Medium</th>
+                    <th>Large</th>
+                    <th>Upload Main Image:<th>
+                </tr>
+                <tr ng-repeat="colorSize in product.colorSize">
+                    <td>
+                        <input ng-model="colorSize.color">
+                    </td>
+                    <td>
+                        <input ng-model="colorSize.smallQty">
+                    </td>
+                    <td>
+                        <input ng-model="colorSize.mediumQty">
+                    </td>
+                    <td>
+                        <input ng-model="colorSize.largeQty">
+                    </td>
 
-                <td>
-                    <input ng-model="colorSize.mainImg">
-                </td>
-                <td><i class="fa fa-times" ng-click="deleteColor(colorSize)"></i></td>
-            </tr>
-        </table>
-        <br>
-        <div class="addcolorButton">
-            <button ng-click="addColor()" ng-disabled="disableButton">Add Color</button>
-        </div>
-        <br>
-        <div class="addPrice">
-            Add Price:
-            <input class="priceInput" placeholder="Enter Price" ng-model="product.price" />
-        </div>
-        <br>
-        <div class="addProductButton">
-            <button ng-click="addProduct()" ng-disabled="disableButton">Add Product</button>
+                        here
+                        {{uploader.flow.files[0].name}}
+                    <td>
+
+                        <div class="input-field col s12">
+                            <select ng-model="kk" ng-repeat="image in uploader.flow.files">
+                              <option value="" disabled selected>Choose your option</option>
+                              <option value="{{image.name}}">{{image.name}}</option>
+                            </select>
+                            <label>Materialize Select</label>
+                        </div>
+                        <!-- <select ng-model="kk" ng-repeat="image in uploader.flow.files">
+                          <option>{{image.name}}</option>
+                        </select> -->
+                        <!-- <a class='dropdown-button btn' href='#' data-beloworigin="true" data-activates='dropdown1'>Drop Me!</a>
+                      <ul id='dropdown1' class='dropdown-content' ng-repeat="image in uploader.flow.files">
+                        <li><a href="#!">{{image.name}}</a></li>
+                      </ul> -->
+                    </td>
+                    <td><i class="fa fa-times" ng-click="deleteColor(colorSize)"></i></td>
+                </tr>
+            </table>
+            <br>
+            <div class="addcolorButton">
+                <button ng-click="addColor()" ng-disabled="disableButton">Add Color</button>
+            </div>
+            <br>
+            <div class="addPrice">
+                Add Price:
+                <input class="priceInput" placeholder="Enter Price" ng-model="product.price" />
+            </div>
+            <br>
+            <div class="addProductButton">
+                <button ng-click="addProduct(uploader.flow)" ng-disabled="disableButton">Add Product</button>
+            </div>
         </div>
     </div>
 </div>

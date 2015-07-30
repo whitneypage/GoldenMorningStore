@@ -16,8 +16,8 @@ var productSchema = mongoose.Schema({
         largeQty: {type: Number},
         mainImg: {type: String}
  }]
-
 });
+
 
 productSchema.pre('save', function(next) {
 	var product = this;

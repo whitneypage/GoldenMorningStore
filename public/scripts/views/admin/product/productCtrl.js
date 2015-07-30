@@ -1,14 +1,26 @@
 var app = angular.module('GoldMorning');
 
 app.controller('productCtrl', function($scope, ProductService){
+
+
 	
-	$scope.addProduct = function() {
-    console.log($scope.product);
+	$scope.addProduct = function(flow) {
+		$scope.product.images = [];
+
+		for(var i = 0; i < flow.files.length; i++){
+			var name = flow.files[i].name.replace(/ /g, "+");
+			$scope.product.images.push("https://s3-us-west-2.amazonaws.com/goldmorning/"+name);
+		}
+		console.log("this shiz", flow, "$scope.product", $scope.product);
 		ProductService.addProduct($scope.product)
 	        .then(function(data) {
 	            console.log(data);   
 	    })
 	};
+
+	$scope.go = function(x){
+		console.log('kittens', x)
+	}
 
 	$scope.addColor = function() {
 		var newColorSize = new ColorSize();
