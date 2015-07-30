@@ -21,7 +21,7 @@ app.directive('productModal', function() {
 			console.log('clicked!');
 			$('#modal1').openModal();
 		});
-	}
+	};
 
 	return {
 		restrict: 'A',
