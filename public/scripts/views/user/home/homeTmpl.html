@@ -22,6 +22,7 @@
         <li><a href="#">DRESSES</a></li>
         <li><a href="#">TOPS</a></li>
         <li><a href="#">BOTTOMS</a></li>
+        <li><a href="#">ROMPERS</a></li>
         <li><a href="#">ACCESSORIES</a></li>
         <li><a href="#">BODY</a></li>
         <li><a href="#"><i class="material-icons">shopping_basket</i></a></li>
@@ -46,18 +47,46 @@
 
 <!-- Product Grid -->
 <div class="wrapper">
-	<div id="products">
-		<h4>PRODUCT GRID</h4>
-		<p>clothes and clothes and dresses and tops and bottoms Next level ethical crucifix, asymmetrical American Apparel High Life fap meditation drinking vinegar cornhole street art church-key wayfarers mixtape. Roof party cray mumblecore butcher tofu, raw denim +1 fap Odd Future Williamsburg narwhal leggings bespoke hashtag. Keytar paleo flannel scenester letterpress, iPhone semiotics banjo polaroid. Paleo raw denim Blue Bottle jean shorts, pug crucifix bicycle rights flannel whatever beard Tumblr. Bespoke Vice health goth kogi, put a bird on it 8-bit vinyl retro heirloom hella 90's farm-to-table slow-carb. Neutra kale chips keytar, McSweeney's 3 wolf moon distillery tofu mustache sriracha normcore Pitchfork. Ennui post-ironic gluten-free, four loko PBR&B artisan taxidermy.</p>
+	<div product-modal id="products" class="row">
+		<div ng-repeat="product in products" class="col s3">
 
-		<p>clothes and clothes and dresses and tops and bottoms Next level ethical crucifix, asymmetrical American Apparel High Life fap meditation drinking vinegar cornhole street art church-key wayfarers mixtape. Roof party cray mumblecore butcher tofu, raw denim +1 fap Odd Future Williamsburg narwhal leggings bespoke hashtag. Keytar paleo flannel scenester letterpress, iPhone semiotics banjo polaroid. Paleo raw denim Blue Bottle jean shorts, pug crucifix bicycle rights flannel whatever beard Tumblr. Bespoke Vice health goth kogi, put a bird on it 8-bit vinyl retro heirloom hella 90's farm-to-table slow-carb. Neutra kale chips keytar, McSweeney's 3 wolf moon distillery tofu mustache sriracha normcore Pitchfork. Ennui post-ironic gluten-free, four loko PBR&B artisan taxidermy.</p>
+			<ul class="grid size-style">
+				<li ng-repeat="colorSize in product.colorSize">
+					<figure>
+						<img src="{{ colorSize.mainImg }}">
+						<figcaption>
+							<div class="add-size">
+								<span>S</span>
+								<span>M</span>
+								<span>L</span>
+							</div>
+							<span class="bag">ADD TO BAG |</span>
+						</figcaption>
+					</figure>
 
-		<p>clothes and clothes and dresses and tops and bottoms Next level ethical crucifix, asymmetrical American Apparel High Life fap meditation drinking vinegar cornhole street art church-key wayfarers mixtape. Roof party cray mumblecore butcher tofu, raw denim +1 fap Odd Future Williamsburg narwhal leggings bespoke hashtag. Keytar paleo flannel scenester letterpress, iPhone semiotics banjo polaroid. Paleo raw denim Blue Bottle jean shorts, pug crucifix bicycle rights flannel whatever beard Tumblr. Bespoke Vice health goth kogi, put a bird on it 8-bit vinyl retro heirloom hella 90's farm-to-table slow-carb. Neutra kale chips keytar, McSweeney's 3 wolf moon distillery tofu mustache sriracha normcore Pitchfork. Ennui post-ironic gluten-free, four loko PBR&B artisan taxidermy.</p>
+					<p class="product-price">${{ product.price }}</p>
 
-		<p>clothes and clothes and dresses and tops and bottoms Next level ethical crucifix, asymmetrical American Apparel High Life fap meditation drinking vinegar cornhole street art church-key wayfarers mixtape. Roof party cray mumblecore butcher tofu, raw denim +1 fap Odd Future Williamsburg narwhal leggings bespoke hashtag. Keytar paleo flannel scenester letterpress, iPhone semiotics banjo polaroid. Paleo raw denim Blue Bottle jean shorts, pug crucifix bicycle rights flannel whatever beard Tumblr. Bespoke Vice health goth kogi, put a bird on it 8-bit vinyl retro heirloom hella 90's farm-to-table slow-carb. Neutra kale chips keytar, McSweeney's 3 wolf moon distillery tofu mustache sriracha normcore Pitchfork. Ennui post-ironic gluten-free, four loko PBR&B artisan taxidermy.</p>
+				</li>
+			</ul>
 
-		<p>clothes and clothes and dresses and tops and bottoms Next level ethical crucifix, asymmetrical American Apparel High Life fap meditation drinking vinegar cornhole street art church-key wayfarers mixtape. Roof party cray mumblecore butcher tofu, raw denim +1 fap Odd Future Williamsburg narwhal leggings bespoke hashtag. Keytar paleo flannel scenester letterpress, iPhone semiotics banjo polaroid. Paleo raw denim Blue Bottle jean shorts, pug crucifix bicycle rights flannel whatever beard Tumblr. Bespoke Vice health goth kogi, put a bird on it 8-bit vinyl retro heirloom hella 90's farm-to-table slow-carb. Neutra kale chips keytar, McSweeney's 3 wolf moon distillery tofu mustache sriracha normcore Pitchfork. Ennui post-ironic gluten-free, four loko PBR&B artisan taxidermy.</p>
+		</div>
 	</div>
 </div>
-	<script src="js/materialize.js"></script>
+
+<!-- End Product Grid -->
+
+<!-- Start Product Modal -->
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+<!-- End Product Modal -->
+
 

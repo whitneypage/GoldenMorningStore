@@ -1,6 +1,6 @@
 var cartCtrl = require('./apis/controllers/cartCtrl');
 var orderCtrl = require('./apis/controllers/orderCtrl');
-var productsCtrl = require('./apis/controllers/productsCtrl.js');
+var productsCtrl = require('./apis/controllers/productsCtrl');
 var userCtrl = require('./apis/controllers/userCtrl');
 var express = require('express');
 var passport = require('passport');
@@ -8,9 +8,12 @@ var LocalStrategy = require('passport-local');
 var session = require('express-session');
 var User = require('./apis/models/userSchema');
 var paypal = require('paypal-rest-sdk');
+var AWS = require('aws-sdk');
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
 
-
-
+var fs = require('fs');
+var config = require('./apis/config/keys');
 
 var app = express.Router();
 
@@ -51,11 +54,16 @@ passport.deserializeUser(function(obj, done) {
    done(null, obj);
 });
 
-  app.post('/api/admin', userCtrl.createAdmin);
+	app.post('/api/upload', multipartMiddleware, productsCtrl.uploadPhoto);
+	app.get('/api/upload', productsCtrl.addPicturesGet);
 
+	// app.post('/api/upload', productsCtrl.uploadPhoto)
+  app.post('/api/admin', userCtrl.createAdmin);
+  // app.get('/api/products/image', productsCtrl.uploadImage)
 	app.get('/api/products', productsCtrl.handleGetAll);
+	app.get('/api/products/:productId', productsCtrl.handleGetOneProduct);
 	app.post('/api/products', productsCtrl.handlePost);
-	app.put('/api/products', productsCtrl.handlePut);
+	app.put('/api/products/:productId', productsCtrl.handlePut);
 	app.delete('/api/products/:productId', productsCtrl.handleDelete);
 
 	app.post('/api/user/cart', cartCtrl.addProductToCart);

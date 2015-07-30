@@ -9,21 +9,68 @@
             Add Product Description:
             <textarea class="productDescriptionInput" type="text" ng-model="product.productDescription" placeholder="Enter a description of your product."></textarea>
         </div>
+
+
         <br>
-        <div class="selectCategory">
-            Select Product Category:
-            <select class="addProductCategory" type="text" ng-model="product.productCategory">
-                <option value="shirts">Shirts</option>
-                <option value="pants">Pants</option>
-                <option value="shoes">Shoes</option>
-                <option value="socks">Socks</option>
-            </select>
-        </div>
+
+          <form action="#">
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test1" value="Dresses" ng-model="product.productCategory"/>
+              <label for="test1">Dresses</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test2" value="Tops" ng-model="product.productCategory"/>
+              <label for="test2">Tops</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test3" value="Bottoms" ng-model="product.productCategory"/>
+              <label for="test3">Bottoms</label>
+            </p>
+              <p>
+                <input class="with-gap" name="group1" type="radio" id="test4" value="Rompers/Jumpsuits" ng-model="product.productCategory"/>
+                <label for="test4">Rompers/Jumpsuits</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test5" value="Accessories" ng-model="product.productCategory"/>
+              <label for="test5">Accessories</label>
+            </p>
+            <p>
+              <input class="with-gap" name="group1" type="radio" id="test6" value="Soaps/Scrubs" ng-model="product.productCategory"/>
+              <label for="test6">Soaps/Scrubs</label>
+            </p>
+          </form>
+        
+
         <br>
-        <div class="addImages">
+
+        <!-- <div class="addImages">
             Upload Images:
             <input class="addImageInput" type="text" ng-model="product.image" placeholder="Upload Images" />
+        </div> -->
+
+        <div flow-init="{target: '/api/upload', testChunks:false}"
+             flow-files-added="processFiles($files)"
+             flow-files-submitted="$flow.upload()"
+             flow-file-success="$file.msg = $message">
+
+
+          <span class="btn" flow-btn>Upload File</span>
+
+          <div class="alert" flow-drop>
+            Drag And Drop your file here
+          </div>
+
+          <table>
+            <!-- <img flow-img="$flow.files[0]" /> -->
+            <tr ng-repeat="file in $flow.files">
+                <td>{{$index+1}}</td>
+                <td>{{file.name}}</td>
+                <td>{{file.msg}}</td>
+            </tr>
+          </table>
         </div>
+
+
         <br>
         <table>
             <colgroup span="4" class="inPutTable"></colgroup>
@@ -32,6 +79,7 @@
                 <th>Small</th>
                 <th>Medium</th>
                 <th>Large</th>
+                <th>Upload Main Image:<th>
             </tr>
             <tr ng-repeat="colorSize in product.colorSize">
                 <td>
@@ -45,6 +93,10 @@
                 </td>
                 <td>
                     <input ng-model="colorSize.largeQty">
+                </td>
+
+                <td>
+                    <input ng-model="colorSize.mainImg">
                 </td>
                 <td><i class="fa fa-times" ng-click="deleteColor(colorSize)"></i></td>
             </tr>

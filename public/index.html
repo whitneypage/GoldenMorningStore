@@ -22,16 +22,6 @@
 	<!--SHOW ANGULAR VIEWS-->
 	<div ng-view></div>
 	
-	<!--PAYPAL BUTTON TEST-->
-	
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
-">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-
 	
 
 	<!-- Materialize Scripts -->
@@ -44,6 +34,7 @@
 	
 	<!--GOLDMORNING SPECIFIC SCRIPTS-->
 	<script src="scripts/app.js"></script>
+	<script src="bower_components/ng-flow/dist/ng-flow-standalone.min.js"></script>
 	<script src="scripts/views/admin/adminHome/adminHomeCtrl.js"></script>
 	<script src="scripts/views/admin/orders/ordersCtrl.js"></script>
 	<script src="scripts/views/admin/product/productCtrl.js"></script>
@@ -51,10 +42,18 @@
 	<script src="scripts/views/user/checkout/checkoutCtrl.js"></script>
 	<script src="scripts/views/user/home/homeCtrl.js"></script>
 	<script src="scripts/views/user/productModal/productModalCtrl.js"></script>
-    <script src="scripts/views/admin/product/productService.js"></script>
+
   	<script src="scripts/views/admin/product/productCtrl.js"></script>
   	<script src="scripts/views/admin/product/colorSize.js"></script>
   	<script src="scripts/views/admin/product/product.js"></script>
+  	<script src="scripts/services/ProductService.js"></script>
+  	<script src="scripts/views/admin/product/updateProductCtrl.js"></script>
+
+	<script src="scripts/views/admin/product/productCtrl.js"></script>
+	<script src="scripts/views/admin/product/colorSize.js"></script>
+	<script src="scripts/views/admin/product/product.js"></script>
+	<script src="scripts/services/ProductService.js"></script>
+
 
 </body>
 </html>
