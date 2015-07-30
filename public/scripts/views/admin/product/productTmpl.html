@@ -55,13 +55,13 @@
 
 
 
-            <button ng-click="go()">go</button>
+            <button ng-click="">go</button>
             <!-- <div ng-model="flowFile">{{$flow.files[0]}}</div> -->
               <span class="btn" flow-btn>Upload File</span>
            <!--    <table> -->
                 <!-- <img flow-img="$flow.files[0]" /> -->
                 <div ng-repeat="image in uploader.flow.files">
-                    <img class="preview" flow-img="image"/><br>
+                    <img class="preview" ng-click="go($index)" flow-img="image"/><br>
                 </div>
           <!--     </table> -->
 
@@ -90,8 +90,24 @@
                         <input ng-model="colorSize.largeQty">
                     </td>
 
+                        here
+                        {{uploader.flow.files[0].name}}
                     <td>
-                        <input ng-model="colorSize.mainImg">
+
+                        <div class="input-field col s12">
+                            <select ng-model="kk" ng-repeat="image in uploader.flow.files">
+                              <option value="" disabled selected>Choose your option</option>
+                              <option value="{{image.name}}">{{image.name}}</option>
+                            </select>
+                            <label>Materialize Select</label>
+                        </div>
+                        <!-- <select ng-model="kk" ng-repeat="image in uploader.flow.files">
+                          <option>{{image.name}}</option>
+                        </select> -->
+                        <!-- <a class='dropdown-button btn' href='#' data-beloworigin="true" data-activates='dropdown1'>Drop Me!</a>
+                      <ul id='dropdown1' class='dropdown-content' ng-repeat="image in uploader.flow.files">
+                        <li><a href="#!">{{image.name}}</a></li>
+                      </ul> -->
                     </td>
                     <td><i class="fa fa-times" ng-click="deleteColor(colorSize)"></i></td>
                 </tr>
