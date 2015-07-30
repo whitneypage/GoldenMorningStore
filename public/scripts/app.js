@@ -1,4 +1,4 @@
-var app = angular.module('GoldMorning', ['ngRoute']);
+var app = angular.module('GoldMorning', ['ngRoute', 'flow']);
 
 app.config(function($routeProvider) {
 	$routeProvider
