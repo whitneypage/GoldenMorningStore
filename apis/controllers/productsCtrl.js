@@ -116,14 +116,16 @@ function(err, response){
             if (error) {
               console.log(3333, error)
               return res.status(500).json(error);
+            } else {
+              return {src: 'https://s3.amaonaws.com/'+s3_bucket_name+'/'+s3_filename}
             }
-            var update = {
-              $push: {'pictures_array': {
-                name: s3_filename,
-                src: 'https://s3.amaonaws.com/'+s3_bucket_name+'/'+s3_filename
-              }}
-            };
-            var options = {new: true};
+            // var update = {
+            //   $push: {'pictures_array': {
+            //     name: s3_filename,
+            //     src: 'https://s3.amaonaws.com/'+s3_bucket_name+'/'+s3_filename
+            //   }}
+            // };
+            // var options = {new: true};
 
             // Product.findByIdAndUpdate(req.params.id, update, options, function(error, response) {
             //   if (error) {

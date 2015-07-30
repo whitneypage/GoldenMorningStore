@@ -58,26 +58,21 @@
             <input class="addImageInput" type="text" ng-model="product.image" placeholder="Upload Images" />
         </div> -->
 
+
         <div flow-init="{target: '/api/upload', testChunks:false}"
+             flow-name="uploader.flow"
              flow-files-added="processFiles($files)"
              flow-files-submitted="$flow.upload()"
              flow-file-success="$file.msg = $message">
 
-
           <span class="btn" flow-btn>Upload File</span>
 
-          <div class="alert" flow-drop>
-            Drag And Drop your file here
-          </div>
-
-          <table>
+       <!--    <table> -->
             <!-- <img flow-img="$flow.files[0]" /> -->
-            <tr ng-repeat="file in $flow.files">
-                <td>{{$index+1}}</td>
-                <td>{{file.name}}</td>
-                <td>{{file.msg}}</td>
-            </tr>
-          </table>
+            <div ng-repeat="image in uploader.flow.files">
+                <img class="preview" flow-img="image"/><br>
+            </div>
+      <!--     </table> -->
         </div>
 
         <br>
