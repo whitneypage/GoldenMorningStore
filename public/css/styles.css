@@ -37,10 +37,9 @@ body {
 
 
 #products {
-  display: flex;
-  padding: 100px 50px;
+  padding: 0px 20px;
   text-align: center;
-  width: 80%;
+  width: 90%;
   margin: 0px auto;
 }
 
@@ -51,7 +50,7 @@ body {
 /* START ADD TO CART HOVER */
 
 .grid {
-  padding: 20px 20px 100px 20px;
+  padding: 10px;
   max-width: 1300px;
   margin: 0 auto;
   list-style: none;
@@ -59,11 +58,9 @@ body {
 }
 
 .grid li {
- /* display: inline-block;*/
-  width: 35%;
+  display: inline-block;
+  width: 100%;
   margin: 0;
-  padding: 20px;
-  /*text-align: left;*/
   position: relative;
 }
 

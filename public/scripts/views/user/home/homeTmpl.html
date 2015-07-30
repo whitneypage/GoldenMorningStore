@@ -47,26 +47,28 @@
 
 <!-- Product Grid -->
 <div class="wrapper">
-	<div id="products">
+	<div id="products" class="row">
+		<div ng-repeat="product in products" class="col s4">
 
-		<ul class="grid size-style" ng-repeat="product in products">
-			<li>
-				<figure id="product-modal">
-					<img src="{{ product.image }}">
-					<figcaption>
-						<span class="bag">ADD TO BAG</span>
-						<div class="add-size">
-							<span>S</span>
-							<span>M</span>
-							<span>L</span>
-						</div>
-					</figcaption>
-				</figure>
+			<ul class="grid size-style">
+				<li>
+					<figure id="product-modal">
+						<img src="{{ product.image }}">
+						<figcaption>
+							<span class="bag">ADD TO BAG</span>
+							<div class="add-size">
+								<span>S</span>
+								<span>M</span>
+								<span>L</span>
+							</div>
+						</figcaption>
+					</figure>
 
-				<p class="product-price">${{ product.price }}</p>
-			</li>
-		</ul>
+					<p class="product-price">${{ product.price }}</p>
+				</li>
+			</ul>
 		<!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
+		</div>
 	</div>
 </div>
 
