@@ -47,51 +47,29 @@
 
 <!-- Product Grid -->
 <div class="wrapper">
-<<<<<<< HEAD
-	<div id="products" class="row">
-		<div ng-repeat="product in products" class="col s4">
+	<div product-modal id="products" class="row">
+		<div ng-repeat="product in products" class="col s3">
 
 			<ul class="grid size-style">
-				<li>
-					<figure id="product-modal">
-						<img src="{{ product.image }}">
+				<li ng-repeat="colorSize in product.colorSize">
+					<figure>
+						<img src="{{ colorSize.mainImg }}">
 						<figcaption>
-							<span class="bag">ADD TO BAG</span>
 							<div class="add-size">
 								<span>S</span>
 								<span>M</span>
 								<span>L</span>
 							</div>
+							<span class="bag">ADD TO BAG |</span>
 						</figcaption>
 					</figure>
 
 					<p class="product-price">${{ product.price }}</p>
+
 				</li>
 			</ul>
-		<!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
+
 		</div>
-=======
-	<div id="products">
-
-		<ul class="grid size-style" ng-repeat="product in products">
-			<li ng-repeat="colorSize in product.colorSize">
-				<figure>
-					<img src="{{ colorSize.mainImg }}">
-					<figcaption>
-						<span class="bag">ADD TO BAG</span>
-						<div class="add-size">
-							<span>S</span>
-							<span>M</span>
-							<span>L</span>
-						</div>
-					</figcaption>
-				</figure>
-
-				<p class="product-price">${{ product.price }}</p>
-
-			</li>
-		</ul>
->>>>>>> 5b15387c6feb99eadf00d129c2bf7e4b7d9af8e4
 	</div>
 </div>
 

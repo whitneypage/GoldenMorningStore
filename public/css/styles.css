@@ -35,8 +35,10 @@ body {
   z-index: 1;
 }
 
+/*PRODUCT GRID START*/
 
 #products {
+ /* display: flex;*/
   padding: 0px 20px;
   text-align: center;
   width: 90%;
@@ -60,7 +62,7 @@ body {
 .grid li {
   display: inline-block;
   width: 100%;
-  margin: 0;
+  margin: 25px auto;
   position: relative;
 }
 
@@ -106,7 +108,7 @@ body {
 
 .add-size span {
   margin-right: 20px;
-  font-size: 20px;
+  /*font-size: 20px;*/
 }
 
 .add-size span:hover {
@@ -140,7 +142,7 @@ body {
 
 .product-price {
   font-size: 18px;
-  margin: 0 auto;
+  margin: 5px auto;
 }
 
 /*.size-style figcaption a {
