@@ -1,4 +1,44 @@
+		
+		<!-- Product Grid -->
+<div class="wrapper">
+		
+	<h1>Hello Beaulah</h1>
+	<div id="products">
 
+		<ul class="grid size-style" ng-repeat="product in products">
+			<li ng-repeat="colorSize in product.colorSize">
+				<figure>
+						<img src="{{ colorSize.mainImg }}">
+					<figcaption>
+						<a class="waves-effect waves-light modal-trigger" ng-href="#/admin/product/{{product._id}}">
+							<span class="bag">Edit Product</span>
+						</a>
+					</figcaption>
+				</figure>
+				<a class="waves-effect waves-light modal-trigger" ng-href="#/admin/product/{{product._id}}">
+					<p>{{product.productTitle}}</p>
+				</a>
+				<p>details : {{product.productDescription}}</p>
+				<p>category : {{product.productCategory}}</p>
+				<h5>current selection</h5>
+					<p>Sm : {{colorSize.smallQty}} | Med : {{colorSize.mediumQty}} | Lg : {{colorSize.largeQty}}</p>
+				
+					
+				<p class="product-price">${{ product.price }}</p>
+
+			</li>
+		</ul>
+	</div>
+</div>
+	<script src="js/materialize.js"></script>
+
+
+
+		<!--REMOVE INLINE STYLING -- USED ONLY FOR READABILITY RIGHT NOW-->
+		
+			<!--OLD CODE - KEPT FOR REFERENCE -RH-->
+			
+	<!--
 <div ng-repeat="product in products">
 	<div>item: {{product.productTitle}}</div>
 	<div>description: {{product.productDescription}}</div>
@@ -18,16 +58,8 @@
 
 		<div>medium: {{size.mediumQty}}</div>
 		<div>large: {{size.largeQty}}</div>
-	</div>  <!--end ng-repeat size in product.cS-->
+	</div>  
 		<i class="fa fa-times" ng-show="showEditSizes" ng-click="updateSmallQty(size._id, 	size.smallQty)"></i>
 	<br><br>
 </div>
-
-
-		<!--INDIVIDUAL PRODUCT MODAL SECTION-->
-		<div class="modal" id="modal1">
-			<div>product info</div>
-		</div>
-
-
-		<!--REMOVE INLINE STYLING -- USED ONLY FOR READABILITY RIGHT NOW-->
+ -->	
