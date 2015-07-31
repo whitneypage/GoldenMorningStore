@@ -1,6 +1,6 @@
 var app = angular.module('GoldMorning');
 
-app.controller('productCtrl', function($scope, ProductService){
+app.controller('productCtrl', function($scope, ProductService, $location){
 
 	$scope.addProduct = function(flow) {
 
@@ -16,8 +16,9 @@ app.controller('productCtrl', function($scope, ProductService){
 		}
 		ProductService.addProduct($scope.product)
 	        .then(function(data) {
-	            console.log(data);   
-	    })
+	            console.log(data);
+	    });
+		$location.path('/admin/home');
 	};
 
 	$scope.go = function(x){
