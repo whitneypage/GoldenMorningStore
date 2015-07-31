@@ -25,7 +25,7 @@
         <li><a href="#">ROMPERS</a></li>
         <li><a href="#">ACCESSORIES</a></li>
         <li><a href="#">BODY</a></li>
-        <li><a href="#"><i class="material-icons">shopping_basket</i></a></li>
+        <li><div cart-modal><button>BAG</button></div></li>
        </ul>
 
     <!-- Navbar Collapses for Mobile -->
@@ -37,7 +37,9 @@
         <li><a href="#">ROMPERS</a></li>
         <li><a href="#">ACCESSORIES</a></li>
         <li><a href="#">BODY</a></li>
-        <li><a href="#">YOUR BAG</a></li>
+        <li><a href="#">
+          <>YOUR BAG</>
+        </a></li>
       </ul>
      </div>
  	</nav>
@@ -72,6 +74,25 @@
 </div>
 
 <!-- End Product Grid -->
+
+<!-- Start Shopping Bag Modal -->
+
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <h4>Shopping Bag</h4>
+      <div ng-repeat="product in cart.data">
+        <p>{{product.name}}</p>
+        <img src="{{product.imageUrl}}" />
+        
+      </div>
+  </div>
+  <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>
+
+
+<!-- End Shopping Bag Modal -->
 
 <!-- Start Product Modal -->
 

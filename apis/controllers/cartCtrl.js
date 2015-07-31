@@ -1,6 +1,6 @@
 var Order = require('../models/orderSchema');
 var Product = require('../models/productsSchema');
-var Cart = require('../models/cartSchema');
+/*var Cart = require('../models/cartSchema');*/
 
 module.exports = {
 
