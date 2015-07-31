@@ -14,7 +14,7 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 
 	$scope.getProducts();
 		
-	$scope.sizes = ["S", "M", "L"];	
+	$scope.sizes = ["L", "M", "S"];	
 
 	$scope.cart = cart;
 
@@ -38,10 +38,11 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 
 });
 
+// Product Modal CUSTOM DIRECTIVE
+
 app.directive('productModal', function() {
 	var modal = function(scope, element, attrs) {
 		$(element).on('click', 'img', function() {
-			console.log('clicked!');
 			$('#modal1').openModal();
 		});
 	}

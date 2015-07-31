@@ -60,7 +60,7 @@
 							<span class="bag">ADD TO BAG</span>
 							<div class="add-size" ng-repeat="size in sizes">
 							<!-- need to pass in "color" -->
-								<button ng-click="addProductToCart(product, colorSize, size)">{{size}}</button>
+								<span ng-click="addProductToCart(product, colorSize, size)">{{size}}</span>
 							</div>
 						</figcaption>
 					</figure>
@@ -106,7 +106,7 @@
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
-  </div>
+</div>
 
 <!-- End Product Modal -->
 
