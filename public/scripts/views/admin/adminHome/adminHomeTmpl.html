@@ -11,8 +11,8 @@
 						<img ng-src="{{ colorSize.mainImg }}" width="300px">
 					<figcaption>
 						<a product-modal class="waves-effect waves-light modal-trigger" ng-href="#/admin/product/{{product._id}}">
-							<span class="bag">Edit Product</span>
-						</a>
+							<span class="bag">Edit Product |</span>
+						</a>			
 					</figcaption>
 				</figure>
 				<a class="waves-effect waves-light modal-trigger" ng-href="#/admin/product/{{product._id}}">
@@ -23,6 +23,9 @@
 				<h5>current selection</h5>
 					<p>color : {{colorSize.color}}</p>
 					<p>Sm : {{colorSize.smallQty}} | Med : {{colorSize.mediumQty}} | Lg : {{colorSize.largeQty}}</p>
+					<p class="bag" style="color:red" ng-click="toggleConfirmDelete(product._id)">Delete Product</p>
+					
+						<p ng-click="deleteProduct(product._id)" ng-show="confirmDelete && (product._id === confirmId)">Are you sure you want to delete {{product.productTitle}}?  This will remove it from your collection.</p>
 				
 					
 				<p class="product-price">${{ product.price }}</p>
