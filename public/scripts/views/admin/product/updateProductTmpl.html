@@ -3,15 +3,16 @@
      flow-files-added="processFiles($files)"
      flow-files-submitted="$flow.upload()"
 		 flow-file-success="$file.msg = $message">
-  <div id="#modal2"> 
+  <div> 
     <div class="addProductArea">
+       	<a ng-href="#/admin/product/">Or add a new product!</a>
         <div class="addProductTitle">
-            Add Product Title:
+            Current Product Title:
             <input class="productTitleInput" placeholder="Enter the name of your product." ng-model="specProduct.productTitle" />
         </div>
         <br>
         <div class="addProductDescription">
-            Add Product Description:
+            Current Product Description:
             <textarea class="productDescriptionInput" type="text" ng-model="specProduct.productDescription" placeholder="Enter a description of your product."></textarea>
         </div>
 
