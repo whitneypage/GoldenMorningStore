@@ -29,9 +29,9 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		};
 		console.log(productObject);
 		cartService.addProductToCart(productObject).then(function(response) {
-			console.log(response);
+			console.log(response.data);
 			/*reset dynamic values to empty (cf. Mark)*/
-			$scope.cart = response.data;
+			cart = response.data;
 			/*pull down modal for a second or two*/
 		})
 	};
