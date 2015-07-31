@@ -11,6 +11,10 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		/*	$scope.products.colorSize.mainImage = $scope.products.image*/
 		})
 	};
+	// $scope.changeFilter = function(filter){
+	// 	$scope.productFilter = filter;
+	// }
+	// $scope.productFilter = "bottom";
 
 	$scope.getProducts();
 		
