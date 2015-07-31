@@ -73,6 +73,27 @@
 
 <!-- End Product Grid -->
 
+<!-- Start Shopping Bag Modal -->
+
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <h4>Shopping Bag</h4>
+      <div ng-repeat="product in cart.data">
+        <img src="{{product.imageUrl}}" />
+        <h6>{{product.name}}</h6>
+        <p>{{product.price}}</p>
+        <p>{{product.color}}</p>
+        <p>{{product.size}}</p>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Go to Checkout</a>
+    </div>
+</div>
+
+
+<!-- End Shopping Bag Modal -->
+
 <!-- Start Product Modal -->
 
 <div id="modal1" class="modal">
