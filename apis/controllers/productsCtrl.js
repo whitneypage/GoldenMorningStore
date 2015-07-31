@@ -54,10 +54,11 @@ function(err, response){
 
    handlePut: function(req, res) {
        Product.findByIdAndUpdate(req.params.productId, {$set :{
+				 dateCreated : req.body.dateCreated,
 				 productTitle : req.body.product.productTitle,
 				 productDescription : req.body.product.productDescription,
 				 productCategory : req.body.product.productCategory,
-				 image : req.body.product.image,
+				 images : req.body.product.images,
 				 price : req.body.product.price,
 				 colorSize : req.body.product.colorSize
 			 }}, {new: true}, function(error, response) {
