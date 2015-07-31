@@ -8,7 +8,7 @@
 		<ul class="grid size-style" ng-repeat="product in products">
 			<li ng-repeat="colorSize in product.colorSize">
 				<figure>
-						<img src="{{ colorSize.mainImg }}">
+						<img ng-src="{{ colorSize.mainImg }}" width="300px">
 					<figcaption>
 						<a product-modal class="waves-effect waves-light modal-trigger" ng-href="#/admin/product/{{product._id}}">
 							<span class="bag">Edit Product</span>
@@ -21,6 +21,7 @@
 				<p>details : {{product.productDescription}}</p>
 				<p>category : {{product.productCategory}}</p>
 				<h5>current selection</h5>
+					<p>color : {{colorSize.color}}</p>
 					<p>Sm : {{colorSize.smallQty}} | Med : {{colorSize.mediumQty}} | Lg : {{colorSize.largeQty}}</p>
 				
 					

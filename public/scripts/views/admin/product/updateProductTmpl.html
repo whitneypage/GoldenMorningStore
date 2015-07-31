@@ -60,6 +60,7 @@
         <br>
         <div ng-repeat="image in specProduct.images">	
         <img ng-src="{{image}}" alt="please add pic" width="300px">
+        <p>Image Number for Main Image: {{$index + 1}}</p>
         </div>	
         <div class="addImages">
             <br>
@@ -82,7 +83,7 @@
                 <th>Small</th>
                 <th>Medium</th>
                 <th>Large</th>
-                <th>Upload Main Image:</th>
+                <th>Set Main Image (via Image Number):</th>
             </tr>
             <tr ng-repeat="(key, colorSize) in specProduct.colorSize track by $id(colorSize)">
               	<td>
@@ -117,7 +118,7 @@
         </div>
         <br>
         <div class="addProductButton">
-            <button ng-click="updateProduct(specProduct, uploader.flow)" ng-disabled="disableButton">Update Product</button>
+            <button ng-click="updateProduct(specProduct, uploader.flow)" ng-disabled="disableButton"><a ng-href="#/admin/home">Update Product</a></button>
         </div>
     </div>
 	</div>
