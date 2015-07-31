@@ -58,10 +58,9 @@
 
 
         <br>
-        <div ng-repeat="image in specProduct.images">
-        	<img ng-src="{{image}}" >	
+        <div ng-repeat="image in specProduct.images">	
+        <img ng-src="{{image}}" alt="please add pic" width="300px">
         </div>	
-<img ng-src="{{specProduct.images[0]}}" alt="please add pic">
         <div class="addImages">
             <br>
 
@@ -87,7 +86,7 @@
             </tr>
             <tr ng-repeat="(key, colorSize) in specProduct.colorSize track by $id(colorSize)">
               	<td>
-               		<img ng-src="{{colorSize.mainImg}}"/>
+               		<img ng-src="{{colorSize.mainImg}}" width="300px"/>
                </td>
                 <td>
                     <input ng-model="colorSize.color">
