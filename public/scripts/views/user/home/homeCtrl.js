@@ -59,11 +59,11 @@ app.directive('productModal', function() {
 
 app.directive('cartModal', function() {
 	var modal = function(scope, element, attrs) {
-		$(element).on('click', 'button', function() {
+		$(element).on('click', 'i', function() {
 			console.log('clicked!');
 			$('#modal2').openModal();
 		});
-	}
+	};
 
 	return {
 		restrict: 'A',

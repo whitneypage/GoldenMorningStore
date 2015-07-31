@@ -35,6 +35,10 @@ body {
   z-index: 1;
 }
 
+nav a:hover {
+  cursor: pointer;
+}
+
 /*PRODUCT GRID START*/
 
 #products {
@@ -114,7 +118,7 @@ body {
 .add-size span:hover {
   color: #727272;
   text-decoration: underline;
-  cursor: crosshair;
+  cursor: pointer;
 }
 
 .size-style figure {
