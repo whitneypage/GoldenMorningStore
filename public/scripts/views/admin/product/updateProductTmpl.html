@@ -1,4 +1,9 @@
-<div>
+<div flow-init="{target: '/api/upload', testChunks:false}"
+     flow-name="uploader.flow"
+     flow-files-added="processFiles($files)"
+     flow-files-submitted="$flow.upload()"
+		 flow-file-success="$file.msg = $message">
+  <div id="#modal2"> 
     <div class="addProductArea">
         <div class="addProductTitle">
             Add Product Title:
@@ -23,7 +28,7 @@
         </div>
         <br> -->
 
-          <form action="#">
+          <form>
             <p>
               <input class="with-gap" name="group1" type="radio" id="test1" value="Dresses" ng-model="specProduct.productCategory"/>
               <label for="test1">Dresses</label>
@@ -51,9 +56,20 @@
           </form>
         
 
+
         <br>
-<img ng-src="{{specProduct.image}}" alt="please add pic">
+        <div ng-repeat="image in specProduct.images">
+        	<img ng-src="{{image}}" >	
+        </div>	
+<img ng-src="{{specProduct.images[0]}}" alt="please add pic">
         <div class="addImages">
+            <br>
+
+              <span class="btn" flow-btn>Upload File</span>
+
+                <div ng-repeat="image in uploader.flow.files">
+                    <h1>{{$index + 1}}</h1><img class="preview" flow-img="image"/><br>
+                </div>
             Upload Images:
             <input class="addImageInput" type="text" ng-model="NEEDTOCHANGE" placeholder="Upload Images" />
         </div>
@@ -62,13 +78,17 @@
         <table>
             <colgroup span="4" class="inPutTable"></colgroup>
             <tr>
+               	<th>Main Image</th>
                 <th>Color</th>
                 <th>Small</th>
                 <th>Medium</th>
                 <th>Large</th>
                 <th>Upload Main Image:</th>
             </tr>
-            <tr ng-repeat="colorSize in specProduct.colorSize">
+            <tr ng-repeat="(key, colorSize) in specProduct.colorSize track by $id(colorSize)">
+              	<td>
+               		<img ng-src="{{colorSize.mainImg}}"/>
+               </td>
                 <td>
                     <input ng-model="colorSize.color">
                 </td>
@@ -82,9 +102,9 @@
                     <input ng-model="colorSize.largeQty">
                 </td>
                 <td>
-                    <input ng-model="colorSize.mainImg">
+                    <input ng-model="colorSize.imageNumber">
                 </td>
-                <td><i class="fa fa-times" ng-click="deleteColor(colorSize)"></i></td>
+                <td><i class="fa fa-times" ng-click="deleteColor(key)"></i></td>
             </tr>
         </table>
         <br>
@@ -98,7 +118,8 @@
         </div>
         <br>
         <div class="addProductButton">
-            <button ng-click="updateProduct(specProduct)" ng-disabled="disableButton">Update Product</button>
+            <button ng-click="updateProduct(specProduct, uploader.flow)" ng-disabled="disableButton">Update Product</button>
         </div>
     </div>
+	</div>
 </div>

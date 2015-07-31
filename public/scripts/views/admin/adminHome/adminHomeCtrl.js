@@ -26,4 +26,20 @@ app.controller('adminHomeCtrl', function($scope, products, ProductService) {
 	};//end updateSmallQty
 	
 	
+	app.directive('productModal', function() {
+	var modal = function(scope, element, attrs) {
+		$(element).on('click', 'img', function() {
+			console.log('clicked!');
+			$('#modal2').openModal();
+		});
+	};
+
+	return {
+		restrict: 'A',
+		link: modal
+	}
+});//end app.directive 'productModal'
+
+	
+	
 });//end adminHomeCtrl

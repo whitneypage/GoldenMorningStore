@@ -45,6 +45,20 @@ app.directive('productModal', function() {
 		$(element).on('click', 'img', function() {
 			$('#modal1').openModal();
 		});
+	};
+
+	return {
+		restrict: 'A',
+		link: modal
+	}
+});
+
+app.directive('cartModal', function() {
+	var modal = function(scope, element, attrs) {
+		$(element).on('click', 'button', function() {
+			console.log('clicked!');
+			$('#modal2').openModal();
+		});
 	}
 
 	return {
