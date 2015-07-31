@@ -1,5 +1,7 @@
 var app = angular.module('GoldMorning', ['ngRoute', 'flow']);
 
+//This is just a comment
+
 app.config(function($routeProvider) {
 	$routeProvider
 	.when('/', {
