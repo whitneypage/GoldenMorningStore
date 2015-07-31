@@ -81,9 +81,11 @@
   <div class="modal-content">
     <h4>Shopping Bag</h4>
       <div ng-repeat="product in cart.data">
-        <p>{{product.name}}</p>
         <img src="{{product.imageUrl}}" />
-        
+        <h6>{{product.name}}</h6>
+        <p>{{product.price}}</p>
+        <p>{{product.color}}</p>
+        <p>{{product.size}}</p>
       </div>
   </div>
   <div class="modal-footer">
