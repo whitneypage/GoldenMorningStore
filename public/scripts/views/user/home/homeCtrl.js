@@ -45,7 +45,7 @@ app.directive('productModal', function() {
 		$(element).on('click', 'img', function() {
 			$('#modal1').openModal();
 		});
-	}
+	};
 
 	return {
 		restrict: 'A',

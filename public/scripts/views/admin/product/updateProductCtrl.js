@@ -37,11 +37,24 @@ app.controller('UpdateProductCtrl', function($scope, ProductService, $routeParam
 	    })
 	};
 
-	$scope.updateProduct = function(updatedProductObj) {
-		ProductService.updateProduct(updatedProductObj)
+	$scope.updateProduct = function(updatedProductObj, flow) {
+		console.log(updatedProductObj, " uPO from uPCtrl")
+		
+		for(var i = 0; i < flow.files.length; i++) {
+			var name = flow.files[i].name.replace(/ /g, "+");
+ 			$scope.specProduct.images.push("https://s3-us-west-2/amazonaws.com/goldmorning/" + name);
+		}// loops through flow files, pushes url to images array in product
+		
+		for(var i = 0; i < $scope.specProduct.colorSize.length; i++) {
+			$scope.specProduct.colorSize[i].mainImg = $scope.specProduct.images[($scope.specProduct.colorSize[i].imageNumber) - 1];
+		}
+		console.log($scope.specProduct, " $s.sP from after for loops in uPO ")
+		
+		
+		ProductService.updateProduct($scope.specProduct)
 	        .then(function(data) {
 	            console.log(data);   
-	    })
+	    });
 	};
 
 	$scope.deleteProduct = function() {
