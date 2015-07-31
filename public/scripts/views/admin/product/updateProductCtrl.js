@@ -42,7 +42,7 @@ app.controller('UpdateProductCtrl', function($scope, ProductService, $routeParam
 		
 		for(var i = 0; i < flow.files.length; i++) {
 			var name = flow.files[i].name.replace(/ /g, "+");
- 			$scope.specProduct.images.push("https://s3-us-west-2/amazonaws.com/goldmorning/" + name);
+ 			$scope.specProduct.images.push("https://s3-us-west-2.amazonaws.com/goldmorning/" + name);
 		}// loops through flow files, pushes url to images array in product
 		
 		for(var i = 0; i < $scope.specProduct.colorSize.length; i++) {
