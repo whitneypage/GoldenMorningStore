@@ -26,11 +26,17 @@ app.controller('adminHomeCtrl', function($scope, products, ProductService, $rout
 		
 	};//end updateSmallQty
 	
-	$scope.toggleConfirmDelete = function(mongoId) {
+	$scope.showConfirmDelete = function(mongoId) {
 		$scope.confirmId = mongoId;
 		console.log($scope.confirmId);
 		$scope.confirmDelete = true;
-	}
+	};// end showConfirmDelete
+	
+	$scope.hideConfirmDelete = function(mongoId){
+		$scope.confirmId = mongoId
+		$scope.confirmDelete = false;
+		$scope.confirmId = null;
+	};// end hideConfirmDelete
 	
 	
 	$scope.deleteProduct = function(mongoId){
@@ -40,6 +46,7 @@ app.controller('adminHomeCtrl', function($scope, products, ProductService, $rout
 			console.log("then from deleteProduct in adminHomeCtrl")
 			$scope.confirmDelete = false;
 			$route.reload();
+			$scope.confirmId = null;
 		})
 	}// end deleteProduct
 	
