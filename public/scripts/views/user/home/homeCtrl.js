@@ -40,7 +40,8 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 			$scope.cart = response.data;
 			// $scope.$apply();
 			/*pull down modal for a second or two*/
-		})
+			$scope.getTotal();
+		});
 	};
 
 	$scope.removeProductFromCart = function(id) {
@@ -50,10 +51,21 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 			console.log(response);
 			$scope.cart = response.data;
 			console.log("Cart 23r", $scope.cart);
-		})
+			$scope.getTotal();
+		});
 	};
 
-});
+	$scope.getTotal = function() {
+		var total = 0;
+		for(var i = 0; i < $scope.cart.length; i++) {
+		  total += $scope.cart[i].price;
+		}
+		$scope.total = total;
+	}; // end $scope.getTotal
+	
+});// end homeCtrl
+
+
 
 // Product Modal CUSTOM DIRECTIVE
 
