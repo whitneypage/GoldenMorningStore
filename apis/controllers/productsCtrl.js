@@ -167,6 +167,10 @@ function(err, response){
     //  };
    },
 
+   updateColorSize: function(req, res){
+    // Product.findOneAndUpdate(req.body.refId, colorSize{req.body.colorSizeId: })
+   }
+
   
 	
 //	   RHHandlePut: function(req, res) {
