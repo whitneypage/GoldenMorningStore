@@ -1,5 +1,0 @@
-var app = angular.module('GoldMorning');
-
-app.service('orderService', function($http, $q){
-
-});

@@ -4,14 +4,19 @@ ORDERS
 	<div>{{order.timePlaced}}</div>
 	<div>{{order.user}}</div>
 	<div>{{order.total}}</div>
-	<div>
+<!-- 	<div>
 		<select ng-options="option for option in paymentStatusOptions" ng-model="order.paymentStatus" material-select></select>
-	</div>
+	</div> -->
+
+
+	<select class="" ng-model="order.status" material-select watch>
+    <option ng-repeat="status in orderStatusOptions">{{status}}</option>
+	</select>
+
+
+
 	<div>
-		<select ng-options="option for option in orderStatusOptions" ng-model="order.status" material-select></select>
-	</div>
-	<div>
-		<div><button ng-click="updateOrder(order._id, order.paymentStatus, order.status)">update</button></div>
+		<div><button ng-click="updateOrder(order._id, order.status)">update</button></div>
 	</div>
 	<div ng-click="showOrder(order)">
 		<div ng-show="order.show">
