@@ -11,13 +11,20 @@ app.service('cartService', function($http, $q) {
 	};
 
 	this.getCart = function() {
-		return $http({
+		var dfd = $q.defer();
+		$http({
 			method: 'GET',
 			url: '/api/user/cart'   
-		})
+		}).then(function(res){
+			dfd.resolve(res.data);
+		}, function(err){
+			dfd.reject(err);
+		});
+		return dfd.promise;
 	};
 
 	this.removeProductFromCart = function(id) {
+		console.log("at remove in service");
 		return $http({
 			method: 'PUT',
 			url: '/api/user/cart/' + id,

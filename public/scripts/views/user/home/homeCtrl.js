@@ -36,17 +36,30 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		var productObject = {
 			name: product.productTitle
 			, refId: product._id
+			, colorSizeId: colorSize._id
 			, imageUrl: colorSize.mainImg
 			, color: colorSize.color
 			, size: size
 			, price: product.price
 		};
 		console.log(productObject);
+		console.log("colorSize", colorSize._id);
 		cartService.addProductToCart(productObject).then(function(response) {
-			console.log(response);
+			console.log(response.data);
 			/*reset dynamic values to empty (cf. Mark)*/
 			$scope.cart = response.data;
+			// $scope.$apply();
 			/*pull down modal for a second or two*/
+		})
+	};
+
+	$scope.removeProductFromCart = function(id) {
+		console.log("Cart", cart);
+		console.log("removing id", id);
+		cartService.removeProductFromCart(id).then(function(response) {
+			console.log(response);
+			$scope.cart = response.data;
+			console.log("Cart 23r", $scope.cart);
 		})
 	};
 
@@ -89,7 +102,7 @@ app.directive('productModal', function() {
 app.directive('cartModal', function() {
 	var modal = function(scope, element, attrs) {
 		$(element).on('click', 'i', function() {
-			console.log('clicked!');
+			console.log('clicked!', scope.cart);
 			$('#modal2').openModal();
 		});
 	};

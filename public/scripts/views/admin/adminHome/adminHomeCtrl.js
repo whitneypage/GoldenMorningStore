@@ -1,10 +1,11 @@
 var app = angular.module('GoldMorning');
 
-app.controller('adminHomeCtrl', function($scope, products, ProductService) {
+app.controller('adminHomeCtrl', function($scope, products, ProductService, $route) {
 	$scope.adminHomeTest = "This is the adminHomeTmpl.html. trappin hard from the adminHomeCtrl!"
 	//show and hide edit size inputs 
 	//defaults to hidden
-	$scope.showEditSizes = false;
+	$scope.confirmDelete = false;
+	
 	$scope.toggleShowEditSizes = function() {
 		$scope.showEditSizes = !$scope.showEditSizes;
 	};
@@ -25,6 +26,29 @@ app.controller('adminHomeCtrl', function($scope, products, ProductService) {
 		
 	};//end updateSmallQty
 	
+	$scope.showConfirmDelete = function(mongoId) {
+		$scope.confirmId = mongoId;
+		console.log($scope.confirmId);
+		$scope.confirmDelete = true;
+	};// end showConfirmDelete
+	
+	$scope.hideConfirmDelete = function(mongoId){
+		$scope.confirmId = mongoId
+		$scope.confirmDelete = false;
+		$scope.confirmId = null;
+	};// end hideConfirmDelete
+	
+	
+	$scope.deleteProduct = function(mongoId){
+		console.log(mongoId);
+		ProductService.deleteProduct(mongoId)
+		.then(function(data){
+			console.log("then from deleteProduct in adminHomeCtrl")
+			$scope.confirmDelete = false;
+			$route.reload();
+			$scope.confirmId = null;
+		})
+	}// end deleteProduct
 	
 	app.directive('productModal', function() {
 	var modal = function(scope, element, attrs) {

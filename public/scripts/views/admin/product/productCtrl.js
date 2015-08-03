@@ -1,6 +1,6 @@
 var app = angular.module('GoldMorning');
 
-app.controller('productCtrl', function($scope, ProductService){
+app.controller('productCtrl', function($scope, ProductService, $location){
 
 	$scope.addProduct = function(flow) {
 
@@ -16,13 +16,12 @@ app.controller('productCtrl', function($scope, ProductService){
 		}
 		ProductService.addProduct($scope.product)
 	        .then(function(data) {
-	            console.log(data);   
-	    })
-	};
+	            console.log(data); 
+	            $scope.product = new Product();  
 
-	$scope.go = function(x){
-		console.log('kittens', x, 'product', $scope.product)
-	}
+	    });
+		$location.path('/admin/home');
+	};
 
 	$scope.addColor = function() {
 		var newColorSize = new ColorSize();
