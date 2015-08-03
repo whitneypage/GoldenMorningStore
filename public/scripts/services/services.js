@@ -24,6 +24,7 @@ app.service('cartService', function($http, $q) {
 	};
 
 	this.removeProductFromCart = function(id) {
+		console.log("at remove in service");
 		return $http({
 			method: 'PUT',
 			url: '/api/user/cart/' + id,
