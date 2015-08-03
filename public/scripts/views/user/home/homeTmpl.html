@@ -19,6 +19,7 @@
        <a href="#" class="brand-logo">GM.S</a>
        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color: black">list</i></a>
        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
           <li><a ng-click="productFilter = ''">ALL</a></li>
           <li><a ng-click="productFilter = {productCategory: 'Dresses'}">DRESSES</a></li>
           <li><a ng-click="productFilter = {productCategory: 'Tops'}">TOPS</a></li>
@@ -79,12 +80,13 @@
 <div id="modal2" class="modal">
   <div class="modal-content">
     <h4>Shopping Bag</h4>
-      <div ng-repeat="product in cart.data">
+      <div ng-repeat="product in cart">
         <img src="{{product.imageUrl}}" />
         <h6>{{product.name}}</h6>
         <p>{{product.price}}</p>
         <p>{{product.color}}</p>
         <p>{{product.size}}</p>
+        <button ng-click="removeProductFromCart(product.refId)">x</button>
       </div>
   </div>
   <div class="modal-footer">
