@@ -16,14 +16,12 @@ app.controller('productCtrl', function($scope, ProductService, $location){
 		}
 		ProductService.addProduct($scope.product)
 	        .then(function(data) {
-	            console.log(data);
+	            console.log(data); 
+	            $scope.product = new Product();  
+
 	    });
 		$location.path('/admin/home');
 	};
-
-	$scope.go = function(x){
-		console.log('kittens', x, 'product', $scope.product)
-	}
 
 	$scope.addColor = function() {
 		var newColorSize = new ColorSize();
