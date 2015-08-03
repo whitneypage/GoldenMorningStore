@@ -47,8 +47,9 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		console.log("Cart", cart);
 		console.log("removing id", id);
 		cartService.removeProductFromCart(id).then(function(response) {
+			console.log(response);
 			$scope.cart = response.data;
-			console.log("Cart", cart);
+			console.log("Cart 23r", $scope.cart);
 		})
 	};
 
