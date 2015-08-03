@@ -11,6 +11,10 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		/*	$scope.products.colorSize.mainImage = $scope.products.image*/
 		})
 	};
+	// $scope.changeFilter = function(filter){
+	// 	$scope.productFilter = filter;
+	// }
+	// $scope.productFilter = "bottom";
 
 	$scope.getProducts();
 		
@@ -31,10 +35,15 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		cartService.addProductToCart(productObject).then(function(response) {
 			console.log(response.data);
 			/*reset dynamic values to empty (cf. Mark)*/
-			cart = response.data;
+			$scope.cart = response.data;
+			// $scope.$apply();
 			/*pull down modal for a second or two*/
 		})
 	};
+
+	/*$scope.removeProductFromCart = function(id) {
+		cartService.removeProductFromCart(id);
+	};*/
 
 });
 
@@ -44,6 +53,7 @@ app.directive('productModal', function() {
 	var modal = function(scope, element, attrs) {
 		$(element).on('click', 'img', function() {
 			$('#modal1').openModal();
+			console.log(scope.cart);
 		});
 	};
 
@@ -55,11 +65,11 @@ app.directive('productModal', function() {
 
 app.directive('cartModal', function() {
 	var modal = function(scope, element, attrs) {
-		$(element).on('click', 'button', function() {
-			console.log('clicked!');
+		$(element).on('click', 'i', function() {
+			console.log('clicked!', scope.cart);
 			$('#modal2').openModal();
 		});
-	}
+	};
 
 	return {
 		restrict: 'A',

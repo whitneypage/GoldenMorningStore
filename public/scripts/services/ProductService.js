@@ -61,12 +61,12 @@ app.service('ProductService', function($http, $q) {
         return deferred.promise;
     };// end ProductService.updateProduct
 	
-	this.deleteProduct = function(product){
+	this.deleteProduct = function(mongoId){
         console.log('delete product service hit')
         var deferred = $q.defer();
         $http({
             method: 'DELETE',
-            url: "/api/products",
+            url: "/api/products/" + mongoId,
         }).then(function(response) {
             deferred.resolve(response.data)
         });
