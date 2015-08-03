@@ -3,16 +3,17 @@
 <div class="wrapper">
 		
 	<h1>Hello Beaulah</h1>
+	<a ng-href="#/admin/product/">Add a new product</a>
 	<div id="products">
 
 		<ul class="grid size-style" ng-repeat="product in products">
 			<li ng-repeat="colorSize in product.colorSize">
 				<figure>
-						<img src="{{ colorSize.mainImg }}">
+						<img ng-src="{{ colorSize.mainImg }}" width="300px">
 					<figcaption>
 						<a product-modal class="waves-effect waves-light modal-trigger" ng-href="#/admin/product/{{product._id}}">
 							<span class="bag">Edit Product</span>
-						</a>
+						</a>			
 					</figcaption>
 				</figure>
 				<a class="waves-effect waves-light modal-trigger" ng-href="#/admin/product/{{product._id}}">
@@ -21,7 +22,12 @@
 				<p>details : {{product.productDescription}}</p>
 				<p>category : {{product.productCategory}}</p>
 				<h5>current selection</h5>
+					<p>color : {{colorSize.color}}</p>
 					<p>Sm : {{colorSize.smallQty}} | Med : {{colorSize.mediumQty}} | Lg : {{colorSize.largeQty}}</p>
+					<p class="bag" style="color:red" ng-click="showConfirmDelete(product._id)">Delete Product</p>
+					
+						<p ng-show="confirmDelete && (product._id === confirmId)">Are you sure you want to delete {{product.productTitle}}?  This will remove it from your collection.</p>
+						<button ng-click="deleteProduct(product._id)" ng-show="confirmDelete && (product._id === confirmId)">Yes, delete the item and all colors</button><button ng-click="hideConfirmDelete(product._id)" ng-show="confirmDelete && (product._id === confirmId)">No thanks</button>
 				
 					
 				<p class="product-price">${{ product.price }}</p>
