@@ -16,7 +16,8 @@ app.controller('productCtrl', function($scope, ProductService){
 		}
 		ProductService.addProduct($scope.product)
 	        .then(function(data) {
-	            console.log(data);   
+	            console.log(data); 
+	            $scope.product = new Product();  
 	    })
 	};
 
