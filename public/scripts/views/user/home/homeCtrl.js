@@ -26,12 +26,14 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		var productObject = {
 			name: product.productTitle
 			, refId: product._id
+			, colorSizeId: colorSize._id
 			, imageUrl: colorSize.mainImg
 			, color: colorSize.color
 			, size: size
 			, price: product.price
 		};
 		console.log(productObject);
+		console.log("colorSize", colorSize._id);
 		cartService.addProductToCart(productObject).then(function(response) {
 			console.log(response.data);
 			/*reset dynamic values to empty (cf. Mark)*/
@@ -41,9 +43,14 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		})
 	};
 
-	/*$scope.removeProductFromCart = function(id) {
-		cartService.removeProductFromCart(id);
-	};*/
+	$scope.removeProductFromCart = function(id) {
+		console.log("Cart", cart);
+		console.log("removing id", id);
+		cartService.removeProductFromCart(id).then(function(response) {
+			$scope.cart = response.data;
+			console.log("Cart", cart);
+		})
+	};
 
 });
 
