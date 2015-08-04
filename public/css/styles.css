@@ -175,3 +175,65 @@ nav a:hover {
 }*/
 
 
+.shopping-bag-title-container {
+  /*outline: 2px solid red;*/
+  height: 45px;
+  text-align: center;
+  /*border-bottom: 2px solid black;*/
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.each-product-container {
+  display: flex;
+  /*outline: 3px solid orange;*/
+ /* border-bottom: 1px solid black;*/
+  margin-bottom: 20px;
+}
+
+.cart-pic-container {
+  height: 100px;
+  width: 100px;
+  /*outline: 5px solid black;*/
+}
+
+.cart-pic {
+  height: 100%;
+  width: 100%;
+}
+
+.product-name {
+  font-size: 16px;
+}
+
+.product-info-box {
+  margin-top: 10px;
+  height: 50px;
+  /*outline: 4px solid blue;*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.product-name-and-info-box {
+  margin: 10px;
+  width: 80%;
+}
+
+.remove-product:hover {
+  cursor: pointer;
+}
+
+.individual-product-info-box {
+  /*outline: 1px solid green;*/
+  width: 65%;
+}
+
+.remove-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 10%;
+}

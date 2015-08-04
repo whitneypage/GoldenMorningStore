@@ -79,14 +79,36 @@
 
 <div id="modal2" class="modal">
   <div class="modal-content">
-    <h4>Shopping Bag</h4>
-      <div ng-repeat="product in cart">
-        <img src="{{product.imageUrl}}" />
-        <h6>{{product.name}}</h6>
-        <p>{{product.price}}</p>
-        <p>{{product.color}}</p>
-        <p>{{product.size}}</p>
-        <button ng-click="removeProductFromCart(product.refId)">x</button>
+    <div class="shopping-bag-title-container">
+      <h4>SHOPPING BAG</h4>
+    </div>
+      <div class="each-product-container" ng-repeat="product in cart">
+        <div class="cart-pic-container">
+          <img class="cart-pic" src="{{product.imageUrl}}" />
+        </div>
+        <div class="product-name-and-info-box">
+          <div class="product-name">{{product.name}}</div>
+          <div class="product-info-box">
+            <div class="individual-product-info-box">
+              <div><strong>Size</strong></div>
+              <div>{{product.size}}</div>
+            </div>
+            <div class="individual-product-info-box">
+              <div><strong>Color</strong></div>
+              <div>{{product.color}}</div>
+            </div>
+            <div class="individual-product-info-box">
+              <div><strong>Price</strong></div>
+              <div>${{product.price}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="individual-product-info-box remove-box">
+          <div class="remove-product" ng-click="removeProductFromCart(product.refId)">
+            <div>Remove</div>
+            <div>X</div>
+          </div>
+        </div>
       </div>
   </div>
   <div class="modal-footer">
