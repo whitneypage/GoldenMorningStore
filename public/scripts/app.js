@@ -14,10 +14,11 @@ app.config(function($routeProvider) {
 			}
 		}
 	})
-	.when('/product', {
-		templateUrl : 'scripts/views/user/productModal/productModalTmpl.html',
-		controller : 'productModalCtrl'
-	})
+	// .when('/product', {
+	// 	templateUrl : 'scripts/views/user/productModal/productModalTmpl.html',
+	// 	controller : 'productModalCtrl'
+	// })
+
 	.when('/cart', {
 		templateUrl : 'scripts/views/user/cart/cartTmpl.html',
 		controller: 'cartCtrl'

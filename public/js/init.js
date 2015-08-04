@@ -12,7 +12,27 @@ $(document).ready(function(){
 			 }
 		});
 
+	// $(window).bind('scroll', function() {
+	//    var navHeight = $( window ).height() - 70;
+	// 		 if ($(window).scrollTop() > navHeight) {
+	// 			 $('.adminNav').addClass('fixed');
+	// 		 }
+	// 		 else {
+	// 			 $('adminNav').removeClass('fixed');
+	// 		 }
+	// 	});
+
 	$(".button-collapse").sideNav();
+
+	$('.tooltipped').tooltip({delay: 50});
+
+	$('.dropdown-button').dropdown({
+		constrain_width: false,
+		gutter: 15,
+		belowOrigin: true
+	});
+
+
 	
 
 });

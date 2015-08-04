@@ -2,15 +2,25 @@ var app = angular.module('GoldMorning');
 
 app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 
+	$scope.openProductModal = false;
 
+	$scope.productModalData = function(product) {
+		console.log("test", product);
+		$scope.product = product;
+	}
+
+	$scope.open = function() {
+		$scope.openProductModal = !$scope.openProductModal
+		console.log('open clicked ', $scope.openProductModal)
+	}
 
 	$scope.getProducts = function(){
 		ProductService.getProduct().then(function(data) {
-			console.log(data);
+			console.log('get product', data);
 			$scope.products = data;
-		/*	$scope.products.colorSize.mainImage = $scope.products.image*/
 		})
 	};
+
 	// $scope.changeFilter = function(filter){
 	// 	$scope.productFilter = filter;
 	// }
@@ -58,18 +68,30 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 // Product Modal CUSTOM DIRECTIVE
 
 app.directive('productModal', function() {
-	var modal = function(scope, element, attrs) {
-		$(element).on('click', 'img', function() {
-			$('#modal1').openModal();
-			console.log(scope.cart);
-		});
-	};
+	// var modal = function(scope, element, attrs) {
+	// 	$(element).on('click', 'img', function() {
+	// 		$('#modal1').openModal();
+	// 	});
+	// };
 
 	return {
-		restrict: 'A',
-		link: modal
+		restrict: 'AE',
+		templateUrl: './scripts/views/user/home/productModalTmpl.html',
+		scope: {
+			showProductModal: '&',
+			open: '&',
+			openProductModal: '=',
+			product: '='
+		},
+		controller: function($scope) {
+			$scope.productModalData = function(product) {
+				$scope.product = product;
+			};
+		}
 	}
 });
+
+// Cart Modal Directive
 
 app.directive('cartModal', function() {
 	var modal = function(scope, element, attrs) {
