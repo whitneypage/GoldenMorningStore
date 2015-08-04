@@ -12,12 +12,9 @@ app.controller('checkoutCtrl', function($scope, cart, cartService) {
 	};
 	
 	$scope.getTotal = function() {
-		var total = 0;
-		for(var i = 0; i < $scope.cart.length; i++) {
-		  total += $scope.cart[i].price;
-		}
-		$scope.total = total;
-	}; // end $scope.getTotal
+		$scope.total = cartService.calculatePrice($scope.cart);
+	};// end getTotal;
+		
 
-});
+});// end checkoutCrtl
 

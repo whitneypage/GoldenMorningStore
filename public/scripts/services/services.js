@@ -30,7 +30,18 @@ app.service('cartService', function($http, $q) {
 			url: '/api/user/cart/' + id,
 		})
 	};
-}) 
+	
+	this.calculatePrice = function(cartObj) {
+		console.log(cartObj, " cartObj from cartService");
+		var total = 0; 
+		for(var i = 0; i < cartObj.length; i++) {
+		total += cartObj[i].price;
+	}
+		return total;
+	};// end calculatePrice
+});// end cartService
+
+
 
 app.service('orderService', function($http, $q) {
 
@@ -66,4 +77,4 @@ app.service('orderService', function($http, $q) {
 		})
 	};
 
-})
+});// end orderService
