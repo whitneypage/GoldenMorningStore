@@ -8,11 +8,15 @@ ORDERS
 		<select ng-options="option for option in paymentStatusOptions" ng-model="order.paymentStatus" material-select></select>
 	</div> -->
 
+	<div>
+		<select class="" ng-model="order.status" material-select watch>
+	    <option ng-repeat="status in orderStatusOptions">{{status}}</option></select>
+	</div>
 
-	<select class="" ng-model="order.status" material-select watch>
-    <option ng-repeat="status in orderStatusOptions">{{status}}</option>
-	</select>
-
+	<div>             
+        Notes:
+        <textarea type="text" ng-model="order.note" placeholder="Input any notes about the order."></textarea>
+    </div>
 
 
 	<div>
