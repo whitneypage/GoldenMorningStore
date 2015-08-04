@@ -33,12 +33,12 @@
     <!-- Navbar Collapses for Mobile -->
 
        <ul class="side-nav" id="mobile-demo">
-        <li><a href="#">DRESSES</a></li>
-        <li><a href="#">TOPS</a></li>
-        <li><a href="#">BOTTOMS</a></li>
-        <li><a href="#">ROMPERS</a></li>
-        <li><a href="#">ACCESSORIES</a></li>
-        <li><a href="#">BODY</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Dresses'}">DRESSES</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Tops'}">TOPS</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Bottoms'}">BOTTOMS</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Rompers'}">ROMPERS</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Accessories'}">ACCESSORIES</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Soaps/Scrubs'}">BODY</a></li>
         <li><a href="#">YOUR BAG</a></li>
       </ul>
      </div>
@@ -73,16 +73,18 @@
 	</div>
 </div>
 
-<product-modal
-  ng-show="openProductModal"
-  open-product-modal="openProductModal"
-  product="product"
-  open="open()"
-  product-modal-data="productModalData(product)">
-</product-modal>
+  <!-- PRODUCT MODAL DIRECTIVE -->
 
-<!-- End Product Grid -->
-</div>
+  <product-modal
+    ng-show="openProductModal"
+    open-product-modal="openProductModal"
+    product="product"
+    open="open()"
+    product-modal-data="productModalData(product)">
+  </product-modal>
+
+  <!-- END PRODUCT MODAL DIRECTIVE -->
+</div> <!-- End Product Grid -->
 
 <!-- Start Shopping Bag Modal -->
 

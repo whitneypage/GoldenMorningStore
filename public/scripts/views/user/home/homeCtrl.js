@@ -18,9 +18,9 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		ProductService.getProduct().then(function(data) {
 			console.log('get product', data);
 			$scope.products = data;
-		/*	$scope.products.colorSize.mainImage = $scope.products.image*/
 		})
 	};
+
 	// $scope.changeFilter = function(filter){
 	// 	$scope.productFilter = filter;
 	// }
@@ -83,16 +83,10 @@ app.directive('productModal', function() {
 			openProductModal: '=',
 			product: '='
 		},
-		// link: function(scope, elem, attrs) {
-		// 	$(element).on('click', 'img', function() {
-		// 		$('#modal1').openModal();
-		// 	});
-		// },
-		// link: modal,
 		controller: function($scope) {
-			$scope.showProductModal = function(product) {
+			$scope.productModalData = function(product) {
 				$scope.product = product;
-			}
+			};
 		}
 	}
 });
