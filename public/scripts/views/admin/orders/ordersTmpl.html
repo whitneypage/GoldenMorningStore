@@ -4,20 +4,28 @@ ORDERS
 	<div>{{order.timePlaced}}</div>
 	<div>{{order.user}}</div>
 	<div>{{order.total}}</div>
-	<div>
+<!-- 	<div>
 		<select ng-options="option for option in paymentStatusOptions" ng-model="order.paymentStatus" material-select></select>
-	</div>
+	</div> -->
+
 	<div>
-		<select ng-options="option for option in orderStatusOptions" ng-model="order.status" material-select></select>
+		<select class="" ng-model="order.status" material-select watch>
+	    <option ng-repeat="status in orderStatusOptions">{{status}}</option></select>
 	</div>
+
+	<div>             
+        Notes:
+        <textarea type="text" ng-model="order.note" placeholder="Input any notes about the order."></textarea>
+    </div>
+
+
 	<div>
-		<div><button ng-click="updateOrder(order._id, order.paymentStatus, order.status)">update</button></div>
+		<div><button ng-click="updateOrder(order._id, order.note, order.status)">update</button></div>
 	</div>
 	<div ng-click="showOrder(order)">
 		<div ng-show="order.show">
 			<div ng-repeat="product in order.products">
-				<!-- not sure what this last prop on product.product is called -->
-				{{product.product.productTitleField}}
+				{{product.productTitle}}
 			</div>
 		</div>
 	</div>
