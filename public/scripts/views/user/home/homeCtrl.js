@@ -27,8 +27,7 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 	// $scope.productFilter = "bottom";
 
 	$scope.getProducts();
-		
-	$scope.sizes = ["L", "M", "S"];	
+  $scope.noSmall = 
 
 	$scope.cart = cart;
 
