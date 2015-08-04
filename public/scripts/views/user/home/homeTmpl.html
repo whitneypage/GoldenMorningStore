@@ -27,18 +27,18 @@
           <li><a ng-click="productFilter = {productCategory: 'Rompers'}">ROMPERS</a></li>
           <li><a ng-click="productFilter = {productCategory: 'Accessories'}">ACCESSORIES</a></li>
           <li><a ng-click="productFilter = {productCategory: 'Soaps/Scrubs'}">BODY</a></li>
-          <li><a cart-modal><i class="material-icons">shopping_basket</i></a></li>
+          <li><a cart-modal ng-click="getTotal()"><i class="material-icons">shopping_basket</i></a></li>
        </ul>
 
     <!-- Navbar Collapses for Mobile -->
 
        <ul class="side-nav" id="mobile-demo">
-        <li><a href="#">DRESSES</a></li>
-        <li><a href="#">TOPS</a></li>
-        <li><a href="#">BOTTOMS</a></li>
-        <li><a href="#">ROMPERS</a></li>
-        <li><a href="#">ACCESSORIES</a></li>
-        <li><a href="#">BODY</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Dresses'}">DRESSES</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Tops'}">TOPS</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Bottoms'}">BOTTOMS</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Rompers'}">ROMPERS</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Accessories'}">ACCESSORIES</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Soaps/Scrubs'}">BODY</a></li>
         <li><a href="#">YOUR BAG</a></li>
       </ul>
      </div>
@@ -50,12 +50,12 @@
 
 <!-- Product Grid -->
 <div class="wrapper">
-	<div product-modal id="products" class="row">
-		<div ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter" class="col s12 m6 l4">
+	<div id="products" class="row">
+		<div product="product" ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter" class="col s12 m6 l4">
 			<ul class="grid size-style">
 				<li ng-repeat="colorSize in product.colorSize">
 					<figure>
-						<img src="{{ colorSize.mainImg }}">
+						<img ng-click="productModalData(product); open()" src="{{ colorSize.mainImg }}">
 						<figcaption>
 							<span class="bag">ADD TO BAG</span>
 							<div class="add-size" ng-repeat="size in sizes">
@@ -73,7 +73,18 @@
 	</div>
 </div>
 
-<!-- End Product Grid -->
+  <!-- PRODUCT MODAL DIRECTIVE -->
+
+  <product-modal
+    ng-show="openProductModal"
+    open-product-modal="openProductModal"
+    product="product"
+    open="open()"
+    product-modal-data="productModalData(product)">
+  </product-modal>
+
+  <!-- END PRODUCT MODAL DIRECTIVE -->
+</div> <!-- End Product Grid -->
 
 <!-- Start Shopping Bag Modal -->
 
@@ -110,27 +121,18 @@
           </div>
         </div>
       </div>
+      <h3>Total price: {{total}}</h3>
+      <button ng-click="decSizesFromCart()">Decrement Sizes</button>
   </div>
   <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Go to Checkout</a>
+      <a ng-href="/#/checkout" class=" modal-action modal-close waves-effect waves-green btn-flat">Go to Checkout</a>
     </div>
 </div>
 
 
 <!-- End Shopping Bag Modal -->
 
-<!-- Start Product Modal -->
 
-<div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-</div>
 
-<!-- End Product Modal -->
 
 

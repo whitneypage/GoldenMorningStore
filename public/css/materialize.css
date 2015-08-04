@@ -5895,8 +5895,8 @@ button.btn-floating {
     .dropdown-content li:hover, .dropdown-content li.active {
       background-color: #eee; }
     .dropdown-content li > a, .dropdown-content li > span {
-      font-size: 1.2rem;
-      color: #26a69a;
+      font-size: 1.0rem;
+      color: #3a3a3a;
       display: block;
       padding: 1rem 1rem; }
     .dropdown-content li > a > i {
@@ -6008,7 +6008,7 @@ a.waves-effect .waves-ripple {
   z-index: -1; }
 
 .modal {
-  display: none;
+/*  display: none;*/
   position: fixed;
   left: 0;
   right: 0;

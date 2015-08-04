@@ -12,6 +12,13 @@ body {
 	height: 100vh;
 }
 
+#adminHero {
+  background-image: url(../images/test2.jpg);
+  background-size: cover;
+  position: relative;
+  height: 50vh;
+}
+
 .headline-main {
   position: absolute;
   top: 45%;
@@ -32,7 +39,7 @@ body {
   position: fixed; 
   top: 0; 
   height: 70px; 
-  z-index: 1;
+  z-index: 998;
 }
 
 nav a:hover {
@@ -147,6 +154,16 @@ nav a:hover {
   transition: transform 0.4s, opacity 0.1s;
 }
 
+.adminEditBtn {
+  color: #3a3a3a;
+}
+
+.adminEditBtn:hover {
+  color: #727272;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 31.5em) {
   .grid {
     /*padding: 10px 10px 100px 10px;*/
@@ -174,6 +191,64 @@ nav a:hover {
   right: 20px;
 }*/
 
+.productModal {
+  top: 20%;
+  left: 25%;
+  background: #fff;
+  position: fixed;
+/*  left: 0;
+  right: 0;*/
+  background-color: #fafafa;
+  padding: 0;
+  max-height: 70%;
+  width: 55%;
+  margin: auto;
+  overflow-y: auto;
+  border-radius: 2px;
+  box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21); }
+   will-change: top, opacity; }
+  @media only screen and (max-width : 992px) {
+    .modal {
+      width: 80%; } }
+  .productModal h1, .productModal h2, .productModal h3, .productModal h4 {
+    margin-top: 0; }
+  .productModal .modal-content {
+    padding: 24px; }
+  .productModal .modal-close {
+    cursor: pointer; }
+  .productModal .modal-footer {
+    border-radius: 0 0 2px 2px;
+    background-color: #fafafa;
+    padding: 4px 6px;
+    height: 56px;
+    width: 100%; }
+    .productModal .modal-footer .btn, .productModal .modal-footer .btn-large, .productModal .modal-footer .btn-flat {
+      float: right;
+      margin: 6px 0; }
+}
+
+.productModal.modal-fixed-footer {
+  padding: 0;
+  height: 70%; }
+  .productModal.modal-fixed-footer .modal-content {
+    position: absolute;
+    height: calc(100% - 56px);
+    max-height: 100%;
+    width: 100%;
+    overflow-y: auto; }
+  .productModal.modal-fixed-footer .modal-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    position: absolute;
+    bottom: 0; }
+
+.modal.bottom-sheet {
+  top: auto;
+  bottom: -100%;
+  margin: 0;
+  width: 100%;
+  max-height: 45%;
+  border-radius: 0;
+  will-change: bottom, opacity; }
 
 .shopping-bag-title-container {
   /*outline: 2px solid red;*/

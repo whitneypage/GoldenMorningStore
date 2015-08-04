@@ -79,6 +79,28 @@ function(err, response){
            }
        });
    },
+	
+		decSize: function(req,res) {
+			var sizeToDec = req.body.sizeToDec;
+			Product.findById(req.body.productId, function(err, response) {
+				if(err) {
+					return res.status(500).json(err);
+				} if(response) {
+					for(var i = 0; i < response.colorSize.length; i ++) {
+						if(parseInt(response.colorSize[i]._id, 16) === parseInt(req.body.colorSizeId, 16)) {
+							response.colorSize[i][sizeToDec] = response.colorSize[i][sizeToDec] - 1;
+							response.save(function(err) {
+								if (err) {console.log(err, 'err from within response.save');}
+							})
+							console.log(response.colorSize[i][sizeToDec], sizeToDec, ' new qty');
+							res.send(response);
+						}
+					}
+				}
+			});
+		},//end decSize 
+
+		
 
    addPicturesGet: function(req, res) {
     flow.get(req, function(status, filename, original_filename, identifier) {

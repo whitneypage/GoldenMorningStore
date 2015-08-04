@@ -65,6 +65,7 @@ passport.deserializeUser(function(obj, done) {
 	app.get('/api/products/:productId', productsCtrl.handleGetOneProduct);
 	app.post('/api/products', productsCtrl.handlePost);
 	app.put('/api/products/:productId', productsCtrl.handlePut);
+	app.put('/api/products', productsCtrl.decSize);
 	app.delete('/api/products/:productId', productsCtrl.handleDelete);
 
 	function cart(req, res, next){
