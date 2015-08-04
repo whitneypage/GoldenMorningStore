@@ -250,11 +250,17 @@ nav a:hover {
   border-radius: 0;
   will-change: bottom, opacity; }
 
+.whole-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
 .shopping-bag-title-container {
   /*outline: 2px solid red;*/
   height: 45px;
   text-align: center;
-  /*border-bottom: 2px solid black;*/
+  border-bottom: 2px solid black;
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
@@ -262,13 +268,20 @@ nav a:hover {
 .each-product-container {
   display: flex;
   /*outline: 3px solid orange;*/
- /* border-bottom: 1px solid black;*/
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
   margin-bottom: 20px;
+  /*margin-top: 20px;*/
+  width: 70%;
 }
 
 .cart-pic-container {
   height: 100px;
   width: 100px;
+  min-height: 100px;
+  min-width: 100px;
+  max-height: 100px;
+  min-width: 100px;
   /*outline: 5px solid black;*/
 }
 
@@ -291,8 +304,8 @@ nav a:hover {
 }
 
 .product-name-and-info-box {
-  margin: 10px;
-  width: 80%;
+  margin: 10px 0 0 15px;
+  width: 40%;
 }
 
 .remove-product:hover {
@@ -301,7 +314,7 @@ nav a:hover {
 
 .individual-product-info-box {
   /*outline: 1px solid green;*/
-  width: 65%;
+  /*width: 65%;*/
 }
 
 .remove-box {
@@ -310,5 +323,35 @@ nav a:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 10%;
+  width: 5%;
+}
+
+.interior-product-container {
+  height: 100px;
+  /*outline: 2px dotted black;*/
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+/** {
+  outline: 1px solid black;
+}*/
+
+.size-container {
+  flex: 1;
+}
+
+.color-container {
+  flex: 1;
+}
+
+.price-container {
+  flex: 1;
+}
+
+.cart-total {
+  /*outline: 2px solid orange;*/
+  text-align: center;
 }

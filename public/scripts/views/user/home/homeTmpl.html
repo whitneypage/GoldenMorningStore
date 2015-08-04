@@ -93,40 +93,42 @@
     <div class="shopping-bag-title-container">
       <h4>SHOPPING BAG</h4>
     </div>
+    <div class="whole-cart">
       <div class="each-product-container" ng-repeat="product in cart">
-        <div class="cart-pic-container">
-          <img class="cart-pic" src="{{product.imageUrl}}" />
-        </div>
-        <div class="product-name-and-info-box">
-          <div class="product-name">{{product.name}}</div>
-          <div class="product-info-box">
-            <div class="individual-product-info-box">
-              <div><strong>Size</strong></div>
-              <div>{{product.size}}</div>
-            </div>
-            <div class="individual-product-info-box">
-              <div><strong>Color</strong></div>
-              <div>{{product.color}}</div>
-            </div>
-            <div class="individual-product-info-box">
-              <div><strong>Price</strong></div>
-              <div>${{product.price}}</div>
+        <div class="interior-product-container">
+          <div class="cart-pic-container">
+            <img class="cart-pic" src="{{product.imageUrl}}" />
+          </div>
+          <div class="product-name-and-info-box">
+            <div class="product-name">{{product.name}}</div>
+            <div class="product-info-box">
+              <div class="individual-product-info-box size-container">
+                <div><strong>Size</strong></div>
+                <div>{{product.size}}</div>
+              </div>
+              <div class="individual-product-info-box color-container">
+                <div><strong>Color</strong></div>
+                <div>{{product.color}}</div>
+              </div>
+              <div class="individual-product-info-box price-container">
+                <div><strong>Price</strong></div>
+                <div>${{product.price}}</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="individual-product-info-box remove-box">
+          <div class="individual-product-info-box remove-box">
           <div class="remove-product" ng-click="removeProductFromCart(product.refId)">
-            <div>Remove</div>
             <div>X</div>
           </div>
         </div>
+        </div>
       </div>
-      <h3>Total price: {{total}}</h3>
-      <button ng-click="decSizesFromCart()">Decrement Sizes</button>
-  </div>
-  <div class="modal-footer">
-      <a ng-href="/#/checkout" class=" modal-action modal-close waves-effect waves-green btn-flat">Go to Checkout</a>
+    </div>  
+    <div class="cart-total">
+      <div><h5><strong>Total: </strong>${{total}}</h5></div>
+      <a ng-href="/#/checkout">Checkout</a>
     </div>
+  </div>
 </div>
 
 
