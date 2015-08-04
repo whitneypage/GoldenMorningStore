@@ -43,7 +43,7 @@ module.exports = {
 
 	/*not sure exactly what this method will be for nor how it will be used...yet*/
 	, updateOrder: function(req, res) {
-		Order.findByIdAndUpdate(req.query._id, req.body, function(err, data) {
+		Order.findByIdAndUpdate(req.params.id, req.body, function(err, data) {
 			if(err) {
 				res.status(500).send(err);
 				console.log(err);

@@ -20,12 +20,11 @@ ORDERS
 
 
 	<div>
-		<div><button ng-click="updateOrder(order._id, order.status)">update</button></div>
+		<div><button ng-click="updateOrder(order._id, order.note, order.status)">update</button></div>
 	</div>
 	<div ng-click="showOrder(order)">
 		<div ng-show="order.show">
 			<div ng-repeat="product in order.products">
-				<!-- not sure what this last prop on product.product is called -->
 				{{product.productTitle}}
 			</div>
 		</div>

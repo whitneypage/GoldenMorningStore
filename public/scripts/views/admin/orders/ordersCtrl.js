@@ -10,11 +10,12 @@ app.controller('ordersCtrl', function($scope, orders, orderService) {
 	}
 
 	// $scope.paymentStatusOptions = ['processing', 'paid'];
-	$scope.orderStatusOptions = ['processing', 'shipping', 'on hold', 'delivered'];
+	$scope.orderStatusOptions = ['processing', 'shipped', 'on hold', 'canceled'];
 
-	$scope.updateOrder = function(orderId, paymentStatus, orderStatus) {
-		orderService.updateOrder(orderId, orderStatus).then(function(response) {
-			Materialize.toast('order updated', 1000);	
+	$scope.updateOrder = function(orderId, orderNote, orderStatus) {
+		orderService.updateOrder(orderId, orderNote, orderStatus).then(function(response) {
+			console.log(orderId, orderStatus, "this is from updateOrder");
+			Materialize.toast('order updated', 2000);	
 		})
 	};
 
