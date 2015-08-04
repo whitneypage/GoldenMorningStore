@@ -250,3 +250,12 @@ nav a:hover {
   border-radius: 0;
   will-change: bottom, opacity; }
 
+/*Orders Page*/
+
+.orderStatusDD {
+  width: 6%;
+}
+
+.notesArea {
+  width: 25%;
+}

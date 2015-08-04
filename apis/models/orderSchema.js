@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 
 var orderSchema = mongoose.Schema({
-    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
-    , products: [{
+    // user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+    // , 
+    products: [{
         product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product'}
         , size: {type: String}
         , colorSizeId: {type: String}

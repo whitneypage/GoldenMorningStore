@@ -1,20 +1,20 @@
 ORDERS
 <div ng-repeat="order in orders | filter:search:strict">
-	<div>{{order._id}}</div>
+	<div>Order ID #: {{order._id}}</div>
+	</br>
 	<div>{{order.timePlaced}}</div>
-	<div>{{order.user}}</div>
-	<div>{{order.total}}</div>
-<!-- 	<div>
-		<select ng-options="option for option in paymentStatusOptions" ng-model="order.paymentStatus" material-select></select>
-	</div> -->
-
-	<div>
+<!-- 	<div>{{order.user}}</div> -->
+	<div>Order Total: ${{order.total}}</div>
+	</br>
+	Order Status:
+	<div class="orderStatusDD">
 		<select class="" ng-model="order.status" material-select watch>
 	    <option ng-repeat="status in orderStatusOptions">{{status}}</option></select>
 	</div>
 
-	<div>             
-        Notes:
+	</br>
+	<div class="notesArea">
+	Notes:             
         <textarea type="text" ng-model="order.note" placeholder="Input any notes about the order."></textarea>
     </div>
 
@@ -25,7 +25,9 @@ ORDERS
 	<div ng-click="showOrder(order)">
 		<div ng-show="order.show">
 			<div ng-repeat="product in order.products">
-				{{product.productTitle}}
+				<div>{{product.productTitle}}</div>
+				<div>{{size}}</div>
+				<div>{{colorSizeId}}</div>
 			</div>
 		</div>
 	</div>
