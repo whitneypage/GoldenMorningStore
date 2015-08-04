@@ -1,13 +1,16 @@
 SHOPPING CART
-<div ng-repeat="product in cart.products">
-	<div class="product">
-		<div>
-			<img class="cart-images" src="{{product.image}}"
-			<p>{{product.productTitle}}</p>
-			<p>{{product.price}}</p>
-			<button ng-click="removeProductFromCart(product._id)">x</button>
-<!-- 			<p>{{product.productTitle}}</p>
-			<p>{{product.productTitle}}</p> -->
+
+<div ng-init="getTotal()">
+	<div ng-repeat="product in cart">
+		<div class="product">
+			<div>
+				<img class="cart-images" src="{{product.imageUrl}}" width="300px"/>
+				<p>{{product.name}} | {{product.color}} | {{product.size}} | {{product.price}} 
+				</p>			
+				<button ng-click="removeProductFromCart(product._id)">Remove item from cart</button>
+			</div>
 		</div>
 	</div>
+	<div>total price: {{total}}</div>
+	
 </div>

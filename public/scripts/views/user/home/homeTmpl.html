@@ -27,7 +27,7 @@
           <li><a ng-click="productFilter = {productCategory: 'Rompers'}">ROMPERS</a></li>
           <li><a ng-click="productFilter = {productCategory: 'Accessories'}">ACCESSORIES</a></li>
           <li><a ng-click="productFilter = {productCategory: 'Soaps/Scrubs'}">BODY</a></li>
-          <li><a cart-modal><i class="material-icons">shopping_basket</i></a></li>
+          <li><a cart-modal ng-click="getTotal()"><i class="material-icons">shopping_basket</i></a></li>
        </ul>
 
     <!-- Navbar Collapses for Mobile -->
@@ -99,9 +99,11 @@
         <p>{{product.size}}</p>
         <button ng-click="removeProductFromCart(product.refId)">x</button>
       </div>
+      <h3>Total price: {{total}}</h3>
+      <button ng-click="decSizesFromCart()">Decrement Sizes</button>
   </div>
   <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Go to Checkout</a>
+      <a ng-href="/#/checkout" class=" modal-action modal-close waves-effect waves-green btn-flat">Go to Checkout</a>
     </div>
 </div>
 
