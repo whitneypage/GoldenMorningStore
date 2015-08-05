@@ -10,7 +10,7 @@ app.service('orderService', function($http, $q){
 		})
 	};
 
-	this.getOrder = function(id) {
+	this.getOrderDetails = function(id) {
 		return $http({
 			method: 'GET',
 			url: '/api/admin/order/' + id

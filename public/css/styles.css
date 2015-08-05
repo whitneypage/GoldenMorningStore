@@ -440,3 +440,16 @@ nav a:hover {
   /*margin-top: 50px;*/
 }
 
+/*Orders Page*/
+
+.orderStatusDD {
+  width: 8%;
+}
+
+.notesArea {
+  width: 50%;
+}
+
+.moreInfoBox {
+  background-color: green;
+}
