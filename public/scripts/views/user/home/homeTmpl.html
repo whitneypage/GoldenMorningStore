@@ -60,7 +60,7 @@
 							<span class="bag">ADD TO BAG</span>
 							<div class="add-size" ng-repeat="size in sizes">
 							<!-- need to pass in "color" -->
-								<span ng-click="addProductToCart(product, colorSize, size)">{{size}}</span>
+								<span ng-click="addProductToCart(product, colorSize, size)" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">{{size}}</span>
 							</div>
 						</figcaption>
 					</figure>
