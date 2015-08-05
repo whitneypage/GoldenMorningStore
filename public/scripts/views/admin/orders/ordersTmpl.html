@@ -35,9 +35,17 @@
 
 	<hr>
 </div> -->
+
+<div class="row width80">
+		<input class="col s4" type="text" ng-model="search.$" placeholder="Enter order Id or username"/>
+
+		<select class="col s2 browser-default" ng-model="search.status" ng-options="option for option in orderStatusOptions"><option value=""disabled selected>Sort by order status</option></select> 
+</div>
+
+<select>Filter by Status:<option></option></select>
 <div class="container">
 <ul class="collapsible popout" data-collapsible="accordion" watch>
-    <li ng-repeat="order in orders">
+    <li ng-repeat="order in orders | filter:search">
         <div class="collapsible-header"></i>{{order._id}} {{order.status}}</div>
         <div class="collapsible-body">Order Status:
 			<div class="orderStatusDD">
@@ -50,9 +58,15 @@
 				        <textarea type="text" ng-model="order.note" placeholder="Input any notes about the order."></textarea>
 			</div>
 			<div class="moreInfoBox" ng-repeat="product in order.products">
-	            	{{order.total}}
-	            	{{product.size}}
-	                {{product.product.productTitle}}
+	            	Order Total: {{order.total}}
+	            	</br>
+	            	Product Size: {{product.size}}
+	            	</br>
+	            	Color: {{product.color}}
+	            	</br>
+	                Product Title: {{product.product.productTitle}}
+
+
 	        </div>
 		</div>
     </li>
