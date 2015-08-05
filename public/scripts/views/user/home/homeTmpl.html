@@ -57,10 +57,12 @@
 					<figure>
 						<img ng-click="productModalData(product); open()" src="{{ colorSize.mainImg }}">
 						<figcaption>
-							<span class="bag">ADD TO BAG</span>
-							<div class="add-size" ng-repeat="size in sizes">
-							<!-- need to pass in "color" -->
-								<span ng-click="addProductToCart(product, colorSize, size)" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">{{size}}</span>
+							<span ng-show="!emailList"class="bag">ADD TO BAG</span>
+              <div class="add-size">
+                <span ng-click="addProductToCart(product, colorSize, size)" ng-if="colorSize.smallQty > 0" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">S</span>
+                <span ng-click="addProductToCart(product, colorSize, size)" ng-if="colorSize.mediumQty > 0" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">M</span>
+                <span ng-click="addProductToCart(product, colorSize, size)" ng-if="colorSize.largeQty > 0" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">L</span>
+                <span ng-model="emaiList" ng-if="colorSize.smallQty <= 0 && colorSize.mediumQty <= 0 && colorSize.largeQty <= 0">Want to see this item return?</span>
 							</div>
 						</figcaption>
 					</figure>
