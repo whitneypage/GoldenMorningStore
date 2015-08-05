@@ -397,7 +397,11 @@ nav a:hover {
 
 .checkout-button {
   color: black;
-  outline: 1px solid #5e5e5e;
+  border: 1px solid #5e5e5e;
   padding: 5px 10px 5px 10px;
   /*margin-top: 50px;*/
 }
+
+/*.checkout-button:hover {
+  outline: 1px solid #5e5e5e;
+}*/
