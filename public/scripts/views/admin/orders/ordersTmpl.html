@@ -1,34 +1,60 @@
-ORDERS
+<!-- ORDERS
 <div ng-repeat="order in orders | filter:search:strict">
 	<div>Order ID #: {{order._id}}</div>
 	</br>
 	<div>{{order.timePlaced}}</div>
-<!-- 	<div>{{order.user}}</div> -->
 	<div>Order Total: ${{order.total}}</div>
 	</br>
 	Order Status:
 	<div class="orderStatusDD">
 		<select class="" ng-model="order.status" material-select watch>
-	    <option ng-repeat="status in orderStatusOptions">{{status}}</option></select>
+	    	<option ng-repeat="status in orderStatusOptions">{{status}}</option>
+		</select>
 	</div>
-
+		<div class="notesArea">
+					Notes:             
+				        <textarea type="text" ng-model="order.note" placeholder="Input any notes about the order."></textarea>
+		</div>
 	</br>
-	<div class="notesArea">
-	Notes:             
-        <textarea type="text" ng-model="order.note" placeholder="Input any notes about the order."></textarea>
-    </div>
 
 
 	<div>
 		<div><button ng-click="updateOrder(order._id, order.note, order.status)">update</button></div>
 	</div>
-	<div ng-click="showOrder(order)">
-		<div ng-show="order.show">
-			<div ng-repeat="product in order.products">
-				<div>{{product.productTitle}}</div>
-				<div>{{size}}</div>
-				<div>{{colorSizeId}}</div>
+
+	<div ng-click="showOrder(order)"> MORE INFO
+	        <div ng-show="order.show">
+	            <div class="moreInfoBox" ng-repeat="product in order.products">
+	            	{{order.total}}
+	            	{{product.size}}
+	                {{product.product.productTitle}}
+	            </div>
+	        </div>
+    </div>	
+			
+
+	<hr>
+</div> -->
+<div class="container">
+<ul class="collapsible popout" data-collapsible="accordion" watch>
+    <li ng-repeat="order in orders">
+        <div class="collapsible-header"></i>{{order._id}} {{order.status}}</div>
+        <div class="collapsible-body">Order Status:
+			<div class="orderStatusDD">
+				<select class="" ng-model="order.status" material-select watch>
+			    	<option ng-repeat="status in orderStatusOptions">{{status}}</option>
+				</select>
 			</div>
+			<div class="notesArea">
+					Notes:             
+				        <textarea type="text" ng-model="order.note" placeholder="Input any notes about the order."></textarea>
+			</div>
+			<div class="moreInfoBox" ng-repeat="product in order.products">
+	            	{{order.total}}
+	            	{{product.size}}
+	                {{product.product.productTitle}}
+	        </div>
 		</div>
-	</div>
+    </li>
+</ul>
 </div>

@@ -17,8 +17,7 @@ module.exports = {
 	}
 
 	, getOrder: function(req, res) {
-		Order.find(req.query)
-		/*the line below should be changed later*/
+		Order.findById(req.params.id)
 		.populate('products.product')
 		.exec(function(err, data) {
 			if(err) {
@@ -32,7 +31,7 @@ module.exports = {
 
 	, getAllOrders: function(req, res) {
 		Order.find({})
-		.populate('orders')
+		.populate('products.product')
 		.exec(function(err, result) {
 			if(err) {
 				res.status(500).json(err);

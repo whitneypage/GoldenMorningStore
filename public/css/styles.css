@@ -253,9 +253,13 @@ nav a:hover {
 /*Orders Page*/
 
 .orderStatusDD {
-  width: 6%;
+  width: 8%;
 }
 
 .notesArea {
-  width: 25%;
+  width: 50%;
+}
+
+.moreInfoBox {
+  background-color: green;
 }
