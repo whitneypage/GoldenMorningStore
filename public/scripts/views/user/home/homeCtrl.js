@@ -21,6 +21,8 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		})
 	};
 
+	
+
 	// $scope.changeFilter = function(filter){
 	// 	$scope.productFilter = filter;
 	// }

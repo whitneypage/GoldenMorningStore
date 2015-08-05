@@ -32,7 +32,24 @@ $(document).ready(function(){
 		belowOrigin: true
 	});
 
+	$('.slider').slider();
 
+	$('.thumbnail').live("click", function() {
+        $('#mainImage').hide();
+        $('#imageWrap').css('background-image', "url('ajax-loader.gif')");
+        var i = $('<img />').attr('src',this.href).load(function() {
+            $('#mainImage').attr('src', i.attr('src'));
+            $('#imageWrap').css('background-image', 'none');
+            $('#mainImage').fadeIn();
+        });
+        return false; 
+    });
+	
+	
 	
 
 });
+
+// $(function() {
+// 		$('.slider').slider();
+// 	});
