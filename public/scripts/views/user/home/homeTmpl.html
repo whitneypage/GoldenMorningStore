@@ -91,7 +91,7 @@
 <div id="modal2" class="modal">
   <div class="modal-content">
     <div class="shopping-bag-title-container">
-      <h4>SHOPPING BAG</h4>
+      <div>SHOPPING BAG</div>
     </div>
     <div class="whole-cart">
       <div class="each-product-container" ng-repeat="product in cart">
@@ -103,15 +103,15 @@
             <div class="product-name">{{product.name}}</div>
             <div class="product-info-box">
               <div class="individual-product-info-box size-container">
-                <div><strong>Size</strong></div>
+                <div class="product-category-name">SIZE</div>
                 <div>{{product.size}}</div>
               </div>
               <div class="individual-product-info-box color-container">
-                <div><strong>Color</strong></div>
+                <div class="product-category-name">COLOR</div>
                 <div>{{product.color}}</div>
               </div>
               <div class="individual-product-info-box price-container">
-                <div><strong>Price</strong></div>
+                <div class="product-category-name">PRICE</div>
                 <div>${{product.price}}</div>
               </div>
             </div>
@@ -125,8 +125,8 @@
       </div>
     </div>  
     <div class="cart-total">
-      <div><h5><strong>Total: </strong>${{total}}</h5></div>
-      <a ng-href="/#/checkout">Checkout</a>
+      <div class="total-price"><h5>TOTAL: ${{total}}</h5></div>
+      <a ng-href="/#/checkout" class="checkout-button">CHECKOUT</a>
     </div>
   </div>
 </div>
