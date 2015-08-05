@@ -268,3 +268,158 @@ nav a:hover {
     background: url('ajax-loader.gif') center center no-repeat; 
 }
 
+.whole-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #2e2e2e;
+}
+
+.shopping-bag-title-container {
+  /*outline: 2px solid red;*/
+  height: 45px;
+  text-align: center;
+  border-bottom: 1.5px solid #5E5E5E;
+  border-bottom-width: 20%;
+  padding-bottom: 65px;
+  margin-top: -10px;
+  margin-bottom: 15px;
+  font-weight: 300;
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  color: #2e2e2e;
+  letter-spacing: 1.1px;
+
+}
+
+.each-product-container {
+  display: flex;
+  /*outline: 3px solid orange;*/
+  padding-bottom: 15px;
+  /*border-bottom: 1px solid black;*/
+  margin-bottom: 15px;
+  /*margin-top: 20px;*/
+  width: 70%;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: #2e2e2e;
+}
+
+.product-category-name {
+  font-weight: 300;
+  color: #5e5e5e;
+}
+
+.each-product-container:not(:last-child) {
+  border-bottom: 1px solid #9E9E9E;
+}
+
+.each-product-container:last-child {
+  padding-bottom: 20px;
+}
+
+.cart-pic-container {
+  height: 100px;
+  width: 100px;
+  min-height: 100px;
+  min-width: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  /*outline: 5px solid black;*/
+}
+
+.cart-pic {
+  height: 100%;
+  width: 100%;
+}
+
+.product-name {
+  font-size: 16px;
+}
+
+.product-info-box {
+  margin-top: 10px;
+  height: 50px;
+  /*outline: 4px solid blue;*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.product-name-and-info-box {
+  margin: 10px 0 0 60px;
+  width: 40%;
+}
+
+.remove-product:hover {
+  cursor: pointer;
+}
+
+.individual-product-info-box {
+  /*outline: 1px solid green;*/
+  /*width: 65%;*/
+}
+
+.remove-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 2%;
+  margin-left: 45px;
+  /*outline: 3px solid black;*/
+}
+
+.interior-product-container {
+  height: 100px;
+  /*outline: 2px dotted black;*/
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+/*
+* {
+  color: #5E5E5E;
+  outline: 1px solid black;
+}*/
+
+.size-container {
+  flex: 1;
+}
+
+.color-container {
+  flex: 1.5;
+}
+
+.price-container {
+  flex: 1;
+}
+
+.cart-total {
+  border-top: 1.5px solid #5E5E5E;
+  margin-top: -20px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  /*outline: 2px solid orange;*/
+  text-align: center;
+  /*border-top: 2px solid black;*/
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1.1px;
+}
+
+.total-price {
+  margin-bottom: 15px;
+}
+
+.checkout-button {
+  color: black;
+  border: 1px solid #5e5e5e;
+  padding: 5px 10px 5px 10px;
+  /*margin-top: 50px;*/
+}
+
+/*.checkout-button:hover {
+  outline: 1px solid #5e5e5e;
+}*/
