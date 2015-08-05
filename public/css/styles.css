@@ -42,6 +42,14 @@ body {
   z-index: 998;
 }
 
+nav {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+nav li {
+  font-weight: 300;
+}
+
 nav a:hover {
   cursor: pointer;
 }
@@ -97,12 +105,6 @@ nav a:hover {
   color: #000;
 }
 
-.grid figcaption h5 {
-  margin: 0;
-  padding: 0;
-  color: #fff;
-}
-
 
 .grid figcaption .bag {
   float: left;
@@ -113,19 +115,37 @@ nav a:hover {
   color: #3a3a3a;
 }
 
-.grid figcaption .add-size {
-  float: right;
-}
 
 .add-size span {
+  float: right;
   margin-right: 20px;
   font-size: 20px;
+  font-weight: 300;
 }
 
-.add-size span:hover {
+.inStock:hover {
   color: #727272;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.outOfStock {
+  color: #989898;
+}
+
+.outOfStock:hover {
+  cursor: default;
+  text-decoration: none;
+}
+
+.test input {
+  margin-left: 10px;
+}
+
+.test span{
+  color: #3a3a3a;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .size-style figure {
@@ -139,7 +159,7 @@ nav a:hover {
 }
 
 .size-style figcaption {
-  height: 20%;
+  height: 25%;
   width: 100%;
   top: auto;
   bottom: 0;
@@ -249,4 +269,7 @@ nav a:hover {
   max-height: 45%;
   border-radius: 0;
   will-change: bottom, opacity; }
+
+
+ 
 

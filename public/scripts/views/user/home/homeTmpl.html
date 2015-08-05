@@ -57,13 +57,26 @@
 					<figure>
 						<img ng-click="productModalData(product); open()" src="{{ colorSize.mainImg }}">
 						<figcaption>
-							<span ng-show="!emailList"class="bag">ADD TO BAG</span>
-							<div class="add-size">
-							<span ng-click="addProductToCart(product, colorSize, size)" ng-if="colorSize.smallQty > 0">S</span>
-              <span ng-click="addProductToCart(product, colorSize, size)" ng-if="colorSize.mediumQty > 0">M</span>
-              <span ng-click="addProductToCart(product, colorSize, size)" ng-if="colorSize.largeQty > 0">L</span>
-								<span ng-model="emaiList" ng-if="colorSize.smallQty <= 0 && colorSize.mediumQty <= 0 && colorSize.largeQty <= 0">Want to see this item return?</span>
+						<!-- 	<p class="bag">ADD TO BAG</p> -->
+							<div class="add-size" ng-show="!anyAvailable(colorSize)">
+              <p class="bag">ADD TO BAG</p>
+
+              <span class="inStock" ng-show="inStock(colorSize.largeQty)"  ng-click="addProductToCart(product, colorSize, sizes[2])">L</span>
+              <span class="outOfStock" ng-show="!inStock(colorSize.largeQty)">L</span>
+
+              <span class="inStock" ng-show="inStock(colorSize.mediumQty)" ng-click="addProductToCart(product, colorSize, sizes[1])">M</span>
+              <span class="outOfStock" ng-show="!inStock(colorSize.mediumQty)">M</span>
+
+							<span class="inStock" ng-show="inStock(colorSize.smallQty)" ng-click="addProductToCart(product, colorSize, sizes[0])">S</span>
+              <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)">S</span>
+
 							</div>
+
+              <div class="test" ng-show="anyAvailable(colorSize)">
+                <span>WANT TO SEE THIS ITEM COME BACK?</span>
+                <input ng-model="comeBackEmail" type="email" placeholder=" Enter Email Here" />
+              </div>
+
 						</figcaption>
 					</figure>
 
@@ -94,7 +107,7 @@
   <div class="modal-content">
     <h4>Shopping Bag</h4>
       <div ng-repeat="product in cart">
-        <img src="{{product.imageUrl}}" />
+        <img src="{{product.images}}" />
         <h6>{{product.name}}</h6>
         <p>{{product.price}}</p>
         <p>{{product.color}}</p>
