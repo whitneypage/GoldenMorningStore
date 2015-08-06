@@ -1,10 +1,13 @@
 var Order = require('../models/orderSchema');
 var Product = require('../models/productsSchema');
+var Paypal = require('paypal-rest-sdk');
+var session = require('express-session');
 
 module.exports = {
 
 	/*to be invoked when a customer has purchased the products in their cart*/
 	createOrder: function(req, res) {
+		console.log(1111, req.body);
 		new Order(req.body)
 		.save(function(err, data) {
 			if(err) {
@@ -16,8 +19,7 @@ module.exports = {
 	}
 
 	, getOrder: function(req, res) {
-		Order.find(req.query)
-		/*the line below should be changed later*/
+		Order.findById(req.params.id)
 		.populate('products.product')
 		.exec(function(err, data) {
 			if(err) {
@@ -30,8 +32,8 @@ module.exports = {
 	}
 
 	, getAllOrders: function(req, res) {
-		Palette.find({})
-		.populate('orders')
+		Order.find({})
+		.populate('products.product')
 		.exec(function(err, result) {
 			if(err) {
 				res.status(500).json(err);
@@ -42,13 +44,41 @@ module.exports = {
 
 	/*not sure exactly what this method will be for nor how it will be used...yet*/
 	, updateOrder: function(req, res) {
-		Order.findByIdAndUpdate(req.query._id, req.body, function(err, data) {
+		Order.findByIdAndUpdate(req.params.id, req.body, function(err, data) {
 			if(err) {
 				res.status(500).send(err);
 				console.log(err);
 			}
 			res.send(data);
 		})
+	}
+
+	, pmtCreate: function(req, res) {
+			Paypal.payment.create(req.body.payment, function (error, payment) {
+	  if (error) {
+	    console.log(error);
+	  } else {
+	    res.json(payment)
+	  }
+	});
+}
+
+
+
+	, pmtExecute: function(req, res){
+		// var paymentId = session.payment.id;
+	 //  var payerId = req.params.payerId;
+		// console.log('pmt EXECUTE!!!', 'paymentId', paymentId, 'payerId', payerId)
+
+	  var details = { "payer_id": "EC-6XD92317T3033605D" };
+	  console.log("DETAILS", details)
+	  Paypal.payment.execute("PAY-7AS67526M92359017KXBNQKA", details, function (error, payment) {
+	    if (error) {
+	      console.log(error);
+	    } else {
+	      res.send("Hell yeah!");
+	    }
+	  });
 	}
 
 };

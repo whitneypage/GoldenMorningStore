@@ -1,4 +1,4 @@
-var app = angular.module('GoldMorning', ['ngRoute', 'flow']);
+var app = angular.module('GoldMorning', ['ngRoute', 'ui.materialize', 'flow']);
 
 //This is just a comment
 //More comments
@@ -14,10 +14,11 @@ app.config(function($routeProvider) {
 			}
 		}
 	})
-	.when('/product', {
-		templateUrl : 'scripts/views/user/productModal/productModalTmpl.html',
-		controller : 'productModalCtrl'
-	})
+	// .when('/product', {
+	// 	templateUrl : 'scripts/views/user/productModal/productModalTmpl.html',
+	// 	controller : 'productModalCtrl'
+	// })
+
 	.when('/cart', {
 		templateUrl : 'scripts/views/user/cart/cartTmpl.html',
 		controller: 'cartCtrl'
@@ -34,7 +35,7 @@ app.config(function($routeProvider) {
 	.when('/admin/home', {
 		templateUrl : 'scripts/views/admin/adminHome/adminHomeTmpl.html',
 		controller : 'adminHomeCtrl',
-		resolve : {
+		resolve: {
 			products: function(ProductService) {
 				return ProductService.getProduct();
 			}
@@ -42,7 +43,12 @@ app.config(function($routeProvider) {
 	})
 	.when('/admin/orders', {
 		templateUrl : 'scripts/views/admin/orders/ordersTmpl.html',
-		controller : 'ordersCtrl'
+		controller : 'ordersCtrl',
+		resolve: {
+			orders: function(orderService) {
+				return orderService.getAllOrders();
+			}
+		}
 	})
 	.when('/admin/product', {
 		templateUrl : 'scripts/views/admin/product/productTmpl.html',
@@ -57,6 +63,19 @@ app.config(function($routeProvider) {
 				return ProductService.getOneProduct(productId);
 			}
 		}
+	})
+	.when('/user/paypal', {
+		templateUrl: 'scripts/views/user/checkout/checkoutTmpl.html',
+		controller: 'checkoutCtrl',
+		resolve: {
+			cart: function(cartService) {
+				return cartService.getCart();
+			}
+		}
+	})
+	.when('/admin/login', {
+		templateUrl : 'scripts/views/admin/login/adminLogin.html',
+		controller : 'adminLoginCtrl'
 	})
 	.otherwise('/');
 });//end app.config in app.js

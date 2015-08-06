@@ -1,6 +1,6 @@
 var Order = require('../models/orderSchema');
 var Product = require('../models/productsSchema');
-/*var Cart = require('../models/cartSchema');*/
+var Cart = require('../models/cartSchema');
 
 module.exports = {
 
@@ -17,7 +17,7 @@ module.exports = {
 
 	, removeProductFromCart: function(req, res) {
 		for(var i = 0; i < req.session.cart.length; i++) {
-			if(req.session.cart[i].id === req.params.id) {
+			if(req.session.cart[i].refId === req.params.id) {
 				req.session.cart.splice(i, 1);
 				break;
 			}
@@ -26,8 +26,14 @@ module.exports = {
 	}
 
 	/*, emptyCart: function(req, res){
-		req.session.cart = [];
-		res.send(req.session.cart);
+		Cart.findByIdAndRemove(req.params.id, function(err, result) {
+			if(err){
+				res.status(500).json(err);
+			}
+			else {
+				res.json(result);
+			}
+		})
 	}*/
 
  

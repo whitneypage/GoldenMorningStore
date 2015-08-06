@@ -27,18 +27,18 @@
           <li><a ng-click="productFilter = {productCategory: 'Rompers'}">ROMPERS</a></li>
           <li><a ng-click="productFilter = {productCategory: 'Accessories'}">ACCESSORIES</a></li>
           <li><a ng-click="productFilter = {productCategory: 'Soaps/Scrubs'}">BODY</a></li>
-          <li><a cart-modal><i class="material-icons">shopping_basket</i></a></li>
+          <li><a cart-modal ng-click="getTotal()"><i class="material-icons">shopping_basket</i></a></li>
        </ul>
 
     <!-- Navbar Collapses for Mobile -->
 
        <ul class="side-nav" id="mobile-demo">
-        <li><a href="#">DRESSES</a></li>
-        <li><a href="#">TOPS</a></li>
-        <li><a href="#">BOTTOMS</a></li>
-        <li><a href="#">ROMPERS</a></li>
-        <li><a href="#">ACCESSORIES</a></li>
-        <li><a href="#">BODY</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Dresses'}">DRESSES</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Tops'}">TOPS</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Bottoms'}">BOTTOMS</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Rompers'}">ROMPERS</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Accessories'}">ACCESSORIES</a></li>
+        <li><a ng-click="productFilter = {productCategory: 'Soaps/Scrubs'}">BODY</a></li>
         <li><a href="#">YOUR BAG</a></li>
       </ul>
      </div>
@@ -47,21 +47,34 @@
 
 <!-- Nav End -->
 
-
+<main>
 <!-- Product Grid -->
 <div class="wrapper">
-	<div product-modal id="products" class="row">
-		<div ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter" class="col s12 m6 l4">
+	<div id="products" class="row">
+		<div product="product" ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter" class="col s12 m6 l4">
 			<ul class="grid size-style">
 				<li ng-repeat="colorSize in product.colorSize">
 					<figure>
-						<img src="{{ colorSize.mainImg }}">
+						<img ng-click="productModalData(product); open()" src="{{ colorSize.mainImg }}">
 						<figcaption>
-							<span class="bag">ADD TO BAG</span>
-							<div class="add-size" ng-repeat="size in sizes">
-							<!-- need to pass in "color" -->
-								<span ng-click="addProductToCart(product, colorSize, size)">{{size}}</span>
+							<div class="add-size" ng-show="!anyAvailable(colorSize)">
+              <p class="bag">ADD TO BAG</p>
+
+              <span class="inStock" ng-show="inStock(colorSize.largeQty)"  ng-click="addProductToCart(product, colorSize, sizes[2])" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">L</span>
+              <span class="outOfStock" ng-show="!inStock(colorSize.largeQty)">L</span>
+
+              <span class="inStock" ng-show="inStock(colorSize.mediumQty)" ng-click="addProductToCart(product, colorSize, sizes[1])" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">M</span>
+              <span class="outOfStock" ng-show="!inStock(colorSize.mediumQty)">M</span>
+
+							<span class="inStock" ng-show="inStock(colorSize.smallQty)" ng-click="addProductToCart(product, colorSize, sizes[0])" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">S</span>
+              <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)">S</span>
 							</div>
+
+              <div class="test" ng-show="anyAvailable(colorSize)">
+                <span>WANT TO SEE THIS ITEM COME BACK?</span>
+                <input ng-model="comeBackEmail" type="email" placeholder=" Enter Email Here" />
+              </div>
+
 						</figcaption>
 					</figure>
 
@@ -72,43 +85,97 @@
 		</div>
 	</div>
 </div>
+</main>
 
-<!-- End Product Grid -->
+  <!-- PRODUCT MODAL DIRECTIVE -->
+
+  <product-modal
+    ng-show="openProductModal"
+    open-product-modal="openProductModal"
+    product="product"
+    open="open()"
+    product-modal-data="productModalData(product)">
+  </product-modal>
+
+  <!-- END PRODUCT MODAL DIRECTIVE -->
+</div> <!-- End Product Grid -->
 
 <!-- Start Shopping Bag Modal -->
 
 <div id="modal2" class="modal">
   <div class="modal-content">
-    <h4>Shopping Bag</h4>
-      <div ng-repeat="product in cart">
-        <img src="{{product.imageUrl}}" />
-        <h6>{{product.name}}</h6>
-        <p>{{product.price}}</p>
-        <p>{{product.color}}</p>
-        <p>{{product.size}}</p>
-        <button ng-click="removeProductFromCart(product.refId)">x</button>
-      </div>
-  </div>
-  <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Go to Checkout</a>
+    <div class="shopping-bag-title-container">
+      <div>SHOPPING BAG</div>
     </div>
+    <div class="whole-cart">
+      <div class="each-product-container" ng-repeat="product in cart">
+        <div class="interior-product-container">
+          <div class="cart-pic-container">
+            <img class="cart-pic" src="{{product.imageUrl}}" />
+          </div>
+          <div class="product-name-and-info-box">
+            <div class="product-name">{{product.name}}</div>
+            <div class="product-info-box">
+              <div class="individual-product-info-box size-container">
+                <div class="product-category-name">SIZE</div>
+                <div>{{product.size}}</div>
+              </div>
+              <div class="individual-product-info-box color-container">
+                <div class="product-category-name">COLOR</div>
+                <div>{{product.color}}</div>
+              </div>
+              <div class="individual-product-info-box price-container">
+                <div class="product-category-name">PRICE</div>
+                <div>${{product.price}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="individual-product-info-box remove-box">
+          <div class="remove-product" ng-click="removeProductFromCart(product.refId)">
+            <div>X</div>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </div>  
+    <div class="cart-total">
+      <div class="total-price"><h5>TOTAL: ${{total}}</h5></div>
+      <a ng-href="/#/checkout" class="checkout-button">CHECKOUT</a>
+    </div>
+  </div>
 </div>
 
 
 <!-- End Shopping Bag Modal -->
 
-<!-- Start Product Modal -->
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l8 s12">
+        <h5>CONNECT</h5>
+          <span><a href="https://instagram.com/goldmorning/?hl=en"><i class="fa fa-instagram fa-2x"></i></a></span>
+          <span><a href="http://goldmorningblog.com/"><i class="fa fa-tumblr fa-2x"></i></a></span>
+          <span><a href="https://www.pinterest.com/beulah_anne/goldmorning-shop/"><i class="fa fa-pinterest fa-2x"></i></a></span>
+            </div>
+              <div class="col l2 offset-l2 s12" id="contact">
+                <h6>CONTACT</h6>
+                <ul>
+                  <li><a href="#!">ABOUT</a></li>
+                  <li><a href="#!">SHOP POLICIES</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2015 copyright text
+          <a class="right" href="/#/admin/login">ADMIN LOGIN</a>
+        </div>
+      </div>
+</footer>
 
-<div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-</div>
 
-<!-- End Product Modal -->
+
 
 

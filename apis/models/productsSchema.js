@@ -15,7 +15,8 @@ var productSchema = mongoose.Schema({
         mediumQty: {type: Number},
         largeQty: {type: Number},
         mainImg: {type: String},
-				imageNumber : {type: Number}
+				imageNumber : {type: Number},
+        wantList: [{type: String}]
  }]
 });
 

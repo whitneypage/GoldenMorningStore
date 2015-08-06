@@ -5,7 +5,22 @@ app.service('ProductService', function($http, $q) {
 
 	
 	//****TYTEBBS SERIVICES FROM OLD productService.js***//
-	
+	this.createPayment = function(x){
+		return $http({
+			method: 'POST',
+			url: '/api/paypal',
+			data: {payment: x}
+		});
+	};
+
+	this.executePayment = function(x){
+		return $http({
+			method: 'GET',
+			url: "/api/paypal/"
+			// url: "/api/paypal/" + x.related_resources[0].authorization.id
+		});
+	};
+
 	this.addProduct = function(product){
           console.log("ProductInService", product);
         console.log('add product service hit')
@@ -75,22 +90,65 @@ app.service('ProductService', function($http, $q) {
 	
 	//	**RH - MAY NOT NEED**  \\
 	
-this.updateSmallQty = function(smallQtyObj){
-	console.log(smallQtyObj, ' smallQtyObj from AdminService.updateSmallQty');
+//this.updateSmallQty = function(smallQtyObj){
+//	console.log(smallQtyObj, ' smallQtyObj from AdminService.updateSmallQty');
+//	
+//	var deferred = $q.defer();
+//	$http({
+//		method : 'PUT',
+//		url: "/api/produts/:productId",
+//		data: {
+//			_id : smallQtyObj.id,
+//			qty : smallQtyObj.qty
+//		}
+//	}).then(function(response) {
+//		deferred.resolve(response.data);
+//	});
+//	return deferred.promise;
+//};//end updateSmallQty
+//	
 	
-	var deferred = $q.defer();
-	$http({
-		method : 'PUT',
-		url: "/api/produts/:productId",
-		data: {
-			_id : smallQtyObj.id,
-			qty : smallQtyObj.qty
+	this.decrementSize = function(cartObj) {
+		for(var i = 0; i < cartObj.length; i++) {
+			if(cartObj[i].size === "S"){
+				console.log('cartObj[i] IS S, within decrementSize');
+				$http({
+					method: 'PUT',
+					url: "api/products/",
+					data: {
+						productId : cartObj[i].refId,
+						colorSizeId : cartObj[i].colorSizeId,
+						sizeToDec : 'smallQty',
+					}
+				});
+			}// end if cartObj[i] is small
+			else if(cartObj[i].size === "M"){
+				console.log('cartObj[i] IS M, within decrementSize');
+				$http({
+					method : "PUT",
+					url: "api/products/",
+					data: {
+						productId : cartObj[i].refId,
+						colorSizeId : cartObj[i].colorSizeId,
+						sizeToDec : 'mediumQty'
+					}
+				});
+			} // end if cartObj[i] is medium
+			else if(cartObj[i].size === "L") {
+				console.log('cartObj[i] is L');
+				$http({
+					method : "PUT",
+					url : "api/products/",
+					data : {
+						productId : cartObj[i].refId,
+						colorSizeId : cartObj[i].colorSizeId,
+						sizeToDec : 'largeQty'
+					}
+				});
+			}// end if cartObj[i] is large
 		}
-	}).then(function(response) {
-		deferred.resolve(response.data);
-	});
-	return deferred.promise;
-};//end updateSmallQty
+	};
+	
 	
 });// ********end AdminService*********
 

@@ -11,20 +11,36 @@ var paypal = require('paypal-rest-sdk');
 var AWS = require('aws-sdk');
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
-
 var fs = require('fs');
 var config = require('./apis/config/keys');
 
+
 var app = express.Router();
 
-module.exports = function(app){
+exports.init = function(c){
+	config = c;
+	paypal.configure(c.api);
+};
+
+exports.app = function(app){
+
+
+function cart(req, res, next){
+	if(!req.session.cart){
+		req.session.cart = [];
+		next();
+	}
+next();
+};
 
 function isAdmin(req, res, next){
 	if(req.user){return next()}
 	else {
     res.status(500).send('not an admin')
   }
-}
+};
+
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -57,7 +73,7 @@ passport.deserializeUser(function(obj, done) {
 
 	app.post('/api/upload', multipartMiddleware, productsCtrl.uploadPhoto);
 	app.get('/api/upload', productsCtrl.addPicturesGet);
-
+  app.post('/api/colorSize', productsCtrl.updateColorSize)
 	// app.post('/api/upload', productsCtrl.uploadPhoto)
   app.post('/api/admin', userCtrl.createAdmin);
   // app.get('/api/products/image', productsCtrl.uploadImage)
@@ -65,16 +81,11 @@ passport.deserializeUser(function(obj, done) {
 	app.get('/api/products/:productId', productsCtrl.handleGetOneProduct);
 	app.post('/api/products', productsCtrl.handlePost);
 	app.put('/api/products/:productId', productsCtrl.handlePut);
+	app.put('/api/products', productsCtrl.decSize);
 	app.delete('/api/products/:productId', productsCtrl.handleDelete);
-
-	function cart(req, res, next){
-		if(!req.session.cart){
-			req.session.cart = [];
-			next();
-		}
-	next();
-	}
-
+  
+  app.get('/api/paypal/', orderCtrl.pmtExecute);
+	app.post('/api/paypal', orderCtrl.pmtCreate);
 	app.post('/api/user/cart', cart, cartCtrl.addProductToCart);
 	app.get('/api/user/cart', cart, cartCtrl.getCart);
 	app.put('/api/user/cart/:id', cart, cartCtrl.removeProductFromCart);
@@ -84,4 +95,6 @@ passport.deserializeUser(function(obj, done) {
 
 	app.get('/api/admin/orders', orderCtrl.getAllOrders);
 	app.put('/api/admin/order/:id', orderCtrl.updateOrder);
+ 
+
 };

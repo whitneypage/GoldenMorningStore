@@ -12,4 +12,5 @@ app.controller('cartCtrl', function($scope, ProductService) {
 		})
 	};
 
+
 })//end cartCtrl

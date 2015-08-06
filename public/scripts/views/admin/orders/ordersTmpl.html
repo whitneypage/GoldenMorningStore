@@ -1,24 +1,74 @@
-ORDERS
+<!-- ORDERS
 <div ng-repeat="order in orders | filter:search:strict">
-	<div>{{order._id}}</div>
+	<div>Order ID #: {{order._id}}</div>
+	</br>
 	<div>{{order.timePlaced}}</div>
-	<div>{{order.user}}</div>
-	<div>{{order.total}}</div>
-	<div>
-		<select ng-options="option for option in paymentStatusOptions" ng-model="order.paymentStatus" material-select></select>
+	<div>Order Total: ${{order.total}}</div>
+	</br>
+	Order Status:
+	<div class="orderStatusDD">
+		<select class="" ng-model="order.status" material-select watch>
+	    	<option ng-repeat="status in orderStatusOptions">{{status}}</option>
+		</select>
 	</div>
-	<div>
-		<select ng-options="option for option in orderStatusOptions" ng-model="order.status" material-select></select>
-	</div>
-	<div>
-		<div><button ng-click="updateOrder(order._id, order.paymentStatus, order.status)">update</button></div>
-	</div>
-	<div ng-click="showOrder(order)">
-		<div ng-show="order.show">
-			<div ng-repeat="product in order.products">
-				<!-- not sure what this last prop on product.product is called -->
-				{{product.product.productTitleField}}
-			</div>
+		<div class="notesArea">
+					Notes:             
+				        <textarea type="text" ng-model="order.note" placeholder="Input any notes about the order."></textarea>
 		</div>
+	</br>
+
+
+	<div>
+		<div><button ng-click="updateOrder(order._id, order.note, order.status)">update</button></div>
 	</div>
+
+	<div ng-click="showOrder(order)"> MORE INFO
+	        <div ng-show="order.show">
+	            <div class="moreInfoBox" ng-repeat="product in order.products">
+	            	{{order.total}}
+	            	{{product.size}}
+	                {{product.product.productTitle}}
+	            </div>
+	        </div>
+    </div>	
+			
+
+	<hr>
+</div> -->
+
+<div class="row width80">
+		<input class="col s4" type="text" ng-model="search.$" placeholder="Enter order Id or username"/>
+
+		<select class="col s2 browser-default" ng-model="search.status" ng-options="option for option in orderStatusOptions"><option value=""disabled selected>Sort by order status</option></select> 
+</div>
+
+<select>Filter by Status:<option></option></select>
+<div class="container">
+<ul class="collapsible popout" data-collapsible="accordion" watch>
+    <li ng-repeat="order in orders | filter:search">
+        <div class="collapsible-header"></i>{{order._id}} {{order.status}}</div>
+        <div class="collapsible-body">Order Status:
+			<div class="orderStatusDD">
+				<select class="" ng-model="order.status" material-select watch>
+			    	<option ng-repeat="status in orderStatusOptions">{{status}}</option>
+				</select>
+			</div>
+			<div class="notesArea">
+					Notes:             
+				        <textarea type="text" ng-model="order.note" placeholder="Input any notes about the order."></textarea>
+			</div>
+			<div class="moreInfoBox" ng-repeat="product in order.products">
+	            	Order Total: {{order.total}}
+	            	</br>
+	            	Product Size: {{product.size}}
+	            	</br>
+	            	Color: {{product.color}}
+	            	</br>
+	                Product Title: {{product.product.productTitle}}
+
+
+	        </div>
+		</div>
+    </li>
+</ul>
 </div>
