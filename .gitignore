@@ -34,4 +34,6 @@ public/bower_components
 ../../.DS_Store
 
 keys.js
+config.json
 bower_components
+

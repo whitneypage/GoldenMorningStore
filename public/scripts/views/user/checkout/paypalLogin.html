@@ -1,20 +1,7 @@
-SHOPPING CART
-<div ng-init="getTotal()">
-	<div ng-repeat="product in cart">
-		<div class="product">
-			<div>
-				<img class="cart-images" src="{{product.imageUrl}}" width="300px"/>
-				<p>{{product.name}} | {{product.color}} | {{product.size}} | {{product.price}} 
-				</p>			
-				<button ng-click="removeProductFromCart(product._id)">Remove item from cart</button>
-			</div>
-		</div>
-	</div>
-	<div>total price: {{total}}</div>	
-</div>
-dfdsfsfsadfsadfasdf
 <div>
+	item: {{product.transactions[0].description}}  ${{product.transactions[0].amount.total}}
 	<div>
+		{{name}}
 		<button ng-click="paypal()">pay with paypal</button>
 	</div>
 	<div>
