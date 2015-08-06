@@ -49,6 +49,41 @@ app.controller('adminHomeCtrl', function($scope, products, ProductService, $rout
 			$scope.confirmId = null;
 		})
 	}// end deleteProduct
+
+
+var payment = {
+  "intent": "sale",
+  "payer": {
+    "payment_method": "paypal"
+  },
+  "redirect_urls": {
+    "return_url": "http://localhost:1337/#/amdin/home",
+    "cancel_url": "http://google.com/"
+  },
+  "transactions": [{
+    "amount": {
+      "total": "5.00",
+      "currency": "USD"
+    },
+    "description": "My awesome payment"
+  }]
+};
+
+	$scope.orderDetails = {};
+
+	$scope.sendPmt = function(){
+		console.log('pmt sent', payment);
+	  ProductService.createPayment(payment).then(function(data){
+	  	console.log('from paypal', data)
+	  	$scope.orderDetails = data.data.transactions[0];
+	  });
+	};
+
+	$scope.confirmPmt = function(){
+		ProductService.executePayment($scope.orderDetails).then(function(data){
+			console.log(data);
+		})
+	};
 	
 	app.directive('productModal', function() {
 	var modal = function(scope, element, attrs) {

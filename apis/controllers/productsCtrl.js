@@ -4,7 +4,7 @@ var AWS = require('aws-sdk');
 var config = require('../config/keys');
 var fs = require('fs');
 var photBucket = new AWS.S3({params: {Bucket: 'goldmorning'}});
-console.log(55555, config)
+
 // AWS.config.accessKeyId = config.AWSAdmin.accessKeyID;
 // AWS.config.secretAccessKey = config.AWSAdmin.SecretAccessKey;
 // AWS.config.region = 'us-west-2';
@@ -18,6 +18,10 @@ AWS.config.update({
 var ACCESS_CONTROL_ALLOW_ORIGIN = false;
 
 module.exports = {
+  testFunction: function(x){
+    console.log("hi" + x);
+  },
+  
    handleGetAll: function(req, res) {
     Product.find({}, function(err, response) {
            if (err) {

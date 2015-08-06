@@ -81,7 +81,7 @@
   <div class="modal-content">
     <h4>Shopping Bag</h4>
       <div ng-repeat="product in cart">
-        <img src="{{product.imageUrl}}" />
+        <img src="{{product.imageUrl}}" class="preview" />
         <h6>{{product.name}}</h6>
         <p>{{product.price}}</p>
         <p>{{product.color}}</p>
@@ -90,6 +90,7 @@
       </div>
   </div>
   <div class="modal-footer">
+    <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppppcmcvdam.png" alt="Pay with PayPal, PayPal Credit or any major credit card" />
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Go to Checkout</a>
     </div>
 </div>

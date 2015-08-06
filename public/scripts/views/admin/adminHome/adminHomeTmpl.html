@@ -3,6 +3,12 @@
 <div class="wrapper">
 		
 	<h1>Hello Beaulah</h1>
+	<button ng-click="sendPmt()">create pmt</button> <br>
+	item description: {{orderDetails.description}}, ${{orderDetails.amount.total}};
+	<button ng-click="confirmPmt()">confirm payment</button>
+
+
+
 	<a ng-href="#/admin/product/">Add a new product</a>
 	<div id="products">
 

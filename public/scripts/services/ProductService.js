@@ -5,7 +5,22 @@ app.service('ProductService', function($http, $q) {
 
 	
 	//****TYTEBBS SERIVICES FROM OLD productService.js***//
-	
+	this.createPayment = function(x){
+		return $http({
+			method: 'POST',
+			url: '/api/paypal',
+			data: {payment: x}
+		});
+	};
+
+	this.executePayment = function(x){
+		return $http({
+			method: 'GET',
+			url: "/api/paypal/"
+			// url: "/api/paypal/" + x.related_resources[0].authorization.id
+		});
+	};
+
 	this.addProduct = function(product){
           console.log("ProductInService", product);
         console.log('add product service hit')
