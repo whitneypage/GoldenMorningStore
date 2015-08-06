@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 	$(".button-collapse").sideNav();
 
-	$('.tooltipped').tooltip({delay: 50});
+	$('.tooltipped').tooltip({delay: 20});
 
 	$('.dropdown-button').dropdown({
 		constrain_width: false,
@@ -33,17 +33,6 @@ $(document).ready(function(){
 	});
 
 	$('.slider').slider();
-
-	$('.thumbnail').live("click", function() {
-        $('#mainImage').hide();
-        $('#imageWrap').css('background-image', "url('ajax-loader.gif')");
-        var i = $('<img />').attr('src',this.href).load(function() {
-            $('#mainImage').attr('src', i.attr('src'));
-            $('#imageWrap').css('background-image', 'none');
-            $('#mainImage').fadeIn();
-        });
-        return false; 
-    });
 	
 	
 	

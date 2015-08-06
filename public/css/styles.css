@@ -26,6 +26,7 @@ body {
   width: 100%;
   color: #fff;
   font-size:3 6px;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.5);
   -ms-transform: translate(0,-50%);  /*IE 9*/ 
     -webkit-transform: translate(0,-50%);  /*Safari*/ 
     transform: translate(0,-50%);
@@ -362,6 +363,7 @@ form button:hover {
 
 /*START ADMIN HOME*/
 
+
 .adminEditBtn {
   color: #3a3a3a;
 }
@@ -376,6 +378,37 @@ form button:hover {
     height: 420px; 
     background: url('ajax-loader.gif') center center no-repeat; 
 }
+
+.addProductArea {
+  font-weight: lighter;
+  margin: 50px auto;
+}
+
+.addProductArea h5, h3 {
+  color: #545454;
+}
+
+.addProductArea h2 {
+  font-weight: lighter;
+}
+
+table th {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+#addProductButton a {
+  background-color: #3a3a3a;
+  font-size: 20px;
+}
+
+#addProductButton a:hover {
+  background-color: #727272;
+}
+
+/*  .btn:hover, .btn-large:hover {
+    background-color: #2bbbad; }
+}*/
 
 /*START SHOPPING BAG MODAL*/
 
