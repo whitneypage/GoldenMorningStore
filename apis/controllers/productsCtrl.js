@@ -189,16 +189,6 @@ function(err, response){
     //  };
    },
 
-  
-	
-//	   RHHandlePut: function(req, res) {
-//       Product.findOneAndUpdate({colorSize._id :req.body._id}, {$set {, {new: true}, function(error, response) {
-//           if (error) {
-//               return res.status(500).json(error);
-//           } else {
-//               return res.json(response);
-//           }
-//       });
-//   },
+
 
 };
