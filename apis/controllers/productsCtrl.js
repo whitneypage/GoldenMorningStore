@@ -5,10 +5,6 @@ var config = require('../config/keys');
 var fs = require('fs');
 var photBucket = new AWS.S3({params: {Bucket: 'goldmorning'}});
 
-// AWS.config.accessKeyId = config.AWSAdmin.accessKeyID;
-// AWS.config.secretAccessKey = config.AWSAdmin.SecretAccessKey;
-// AWS.config.region = 'us-west-2';
-
 AWS.config.update({
   accessKeyId: config.AWSAdmin.AccessKeyID,
   secretAccessKey: config.AWSAdmin.SecretAccessKey,
@@ -18,10 +14,6 @@ AWS.config.update({
 var ACCESS_CONTROL_ALLOW_ORIGIN = false;
 
 module.exports = {
-  testFunction: function(x){
-    console.log("hi" + x);
-  },
-  
    handleGetAll: function(req, res) {
     Product.find({}, function(err, response) {
            if (err) {
@@ -32,28 +24,28 @@ module.exports = {
        });
    },
 	
-		handleGetOneProduct :function(req, res) {
-	Product.findById( req.params.productId,
-function(err, response){
-	if (err) {
-		res.status(500).json(err);
-	} else {
-		console.log(response);
-		res.json(response);
-	}
-});
-},// end handleGetOneProduct
+	handleGetOneProduct :function(req, res) {
+  	Product.findById( req.params.productId,
+    function(err, response){
+    	if (err) {
+    		res.status(500).json(err);
+    	} else {
+    		console.log(response);
+    		res.json(response);
+    	}
+    });
+  },// end handleGetOneProduct
 
-   handlePost: function(req, res) {
+  handlePost: function(req, res) {
     console.log(111, req.body);
-       Product.create(req.body, function(error, response) {
-           if (error) {
-               return res.status(500).json(error);
-           } else {
-            console.log("new Product", response);
-               return res.json(response);
-           }
-       });
+      Product.create(req.body, function(error, response) {
+        if (error) {
+          return res.status(500).json(error);
+        } else {
+          console.log("new Product", response);
+          return res.json(response);
+        }
+      });
    },
 
    handlePut: function(req, res) {
@@ -74,14 +66,14 @@ function(err, response){
        });
    },
 
-   handleDelete: function(req, res) {
-       Product.findByIdAndRemove(req.params.productId, function(error, response) {
-           if (error) {
-               return res.status(500).json(error);
-           } else {
-               return res.json(response);
-           }
-       });
+  handleDelete: function(req, res) {
+    Product.findByIdAndRemove(req.params.productId, function(error, response) {
+      if (error) {
+        return res.status(500).json(error);
+          } else {
+            return res.json(response);
+          }
+      });
    },
 
    addPicturesGet: function(req, res) {
@@ -90,13 +82,11 @@ function(err, response){
       if (ACCESS_CONTROL_ALLOW_ORIGIN) {
         res.header("Access-Control-Allow-Origin", "*");
       }
-
       if (status == 'found') {
         status = 200;
       } else {
         status = 204;
       }
-
       res.status(status).send();
     });
   },
@@ -107,7 +97,6 @@ function(err, response){
       if(ACCESS_CONTROL_ALLOW_ORIGIN) {
         res.header("Access-Control-Allow-Origin", "*");
       }
-
       var s3_filename = file.name;
       var s3_bucket_name = 'goldmorning';
       var s3bucket = new AWS.S3();
@@ -132,43 +121,9 @@ function(err, response){
             } else {
               return {src: 'https://s3.amaonaws.com/'+s3_bucket_name+'/'+s3_filename}
             }
-            // var update = {
-            //   $push: {'pictures_array': {
-            //     name: s3_filename,
-            //     src: 'https://s3.amaonaws.com/'+s3_bucket_name+'/'+s3_filename
-            //   }}
-            // };
-            // var options = {new: true};
-
-            // Product.findByIdAndUpdate(req.params.id, update, options, function(error, response) {
-            //   if (error) {
-            //        console.log(999999, error)
-            //        return res.status(500).json(error);
-            //    } else {
-            //        return res.json(response);
-            //    }
-            // })
           })
-          
-          // return res.json(file_buffer);
         }
       })
-
-
-    // var buf = new Buffer(req.body.image.replace(/^data:image\/\w+;base64,/, ""), 'base64');
-    // var file = req.body.file;
-    // photoBucket.upload({
-    //   ACL: 'public-read',
-    //   Body: buf,
-    //   Key: file.name,
-    //   ContentType: file.type
-    // }), function(error, response) {
-    //    if (error) {
-    //        return res.status(500).json(error);
-    //    } else {
-    //        return res.json(response);
-    //    }
-    //  };
    },
 
    updateColorSize: function(req, res){

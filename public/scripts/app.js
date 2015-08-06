@@ -58,6 +58,10 @@ app.config(function($routeProvider) {
 			}
 		}
 	})
+	.when('/user/paypal', {
+		templateUrl: 'scripts/views/user/checkout/paypalLogin.html',
+		controller: 'cartCtrl'
+	})
 	.otherwise('/');
 });//end app.config in app.js
 

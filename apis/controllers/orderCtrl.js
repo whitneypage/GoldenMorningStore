@@ -54,23 +54,10 @@ module.exports = {
 	}
 
 	, pmtCreate: function(req, res) {
-		// console.log("req.body", req.body)
 			Paypal.payment.create(req.body.payment, function (error, payment) {
 	  if (error) {
 	    console.log(error);
 	  } else {
-	    if(payment.payer.payment_method === 'paypal') {
-	      var redirectUrl;
-	      for(var i=0; i < payment.links.length; i++) {
-	        var link = payment.links[i];
-	        if (link.method === 'REDIRECT') {
-	          redirectUrl = link.href;
-	        }
-	        // console.log('232434343434343434343434343')
-	        // res.redirect(redirectUrl);
-	      }
-	    }
-	    session.payment = payment;
 	    res.json(payment)
 	  }
 	});
