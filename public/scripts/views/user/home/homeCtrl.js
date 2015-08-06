@@ -29,7 +29,22 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 	// $scope.productFilter = "bottom";
 
 	$scope.getProducts();
-  $scope.noSmall = 
+
+  $scope.sizes = ["S", "M", "L"];
+
+  $scope.inStock = function(selected) {
+      if (selected > 0) {
+        return true
+      } 
+  }
+
+  $scope.anyAvailable = function(colorSize) {
+      if (colorSize.smallQty <= 0 && colorSize.mediumQty <= 0 && colorSize.largeQty <= 0) {
+        return true
+      }
+  }
+
+  $scope.available = true;
 
 	$scope.cart = cart;
 

@@ -57,13 +57,24 @@
 					<figure>
 						<img ng-click="productModalData(product); open()" src="{{ colorSize.mainImg }}">
 						<figcaption>
-							<span ng-show="!emailList"class="bag">ADD TO BAG</span>
-              <div class="add-size">
-                <span ng-click="addProductToCart(product, colorSize, size)" ng-if="colorSize.smallQty > 0" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">S</span>
-                <span ng-click="addProductToCart(product, colorSize, size)" ng-if="colorSize.mediumQty > 0" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">M</span>
-                <span ng-click="addProductToCart(product, colorSize, size)" ng-if="colorSize.largeQty > 0" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">L</span>
-                <span ng-model="emaiList" ng-if="colorSize.smallQty <= 0 && colorSize.mediumQty <= 0 && colorSize.largeQty <= 0">Want to see this item return?</span>
+							<div class="add-size" ng-show="!anyAvailable(colorSize)">
+              <p class="bag">ADD TO BAG</p>
+
+              <span class="inStock" ng-show="inStock(colorSize.largeQty)"  ng-click="addProductToCart(product, colorSize, sizes[2])" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">L</span>
+              <span class="outOfStock" ng-show="!inStock(colorSize.largeQty)">L</span>
+
+              <span class="inStock" ng-show="inStock(colorSize.mediumQty)" ng-click="addProductToCart(product, colorSize, sizes[1])" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">M</span>
+              <span class="outOfStock" ng-show="!inStock(colorSize.mediumQty)">M</span>
+
+							<span class="inStock" ng-show="inStock(colorSize.smallQty)" ng-click="addProductToCart(product, colorSize, sizes[0])" onclick="Materialize.toast('ITEM ADDED TO BAG', 4000, 'rounded')">S</span>
+              <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)">S</span>
 							</div>
+
+              <div class="test" ng-show="anyAvailable(colorSize)">
+                <span>WANT TO SEE THIS ITEM COME BACK?</span>
+                <input ng-model="comeBackEmail" type="email" placeholder=" Enter Email Here" />
+              </div>
+
 						</figcaption>
 					</figure>
 
@@ -93,21 +104,46 @@
 
 <div id="modal2" class="modal">
   <div class="modal-content">
-    <h4>Shopping Bag</h4>
-      <div ng-repeat="product in cart">
-        <img src="{{product.imageUrl}}" />
-        <h6>{{product.name}}</h6>
-        <p>{{product.price}}</p>
-        <p>{{product.color}}</p>
-        <p>{{product.size}}</p>
-        <button ng-click="removeProductFromCart(product.refId)">x</button>
-      </div>
-      <h3>Total price: {{total}}</h3>
-      <button ng-click="decSizesFromCart()">Decrement Sizes</button>
-  </div>
-  <div class="modal-footer">
-      <a ng-href="/#/checkout" class=" modal-action modal-close waves-effect waves-green btn-flat">Go to Checkout</a>
+    <div class="shopping-bag-title-container">
+      <div>SHOPPING BAG</div>
     </div>
+    <div class="whole-cart">
+      <div class="each-product-container" ng-repeat="product in cart">
+        <div class="interior-product-container">
+          <div class="cart-pic-container">
+            <img class="cart-pic" src="{{product.imageUrl}}" />
+          </div>
+          <div class="product-name-and-info-box">
+            <div class="product-name">{{product.name}}</div>
+            <div class="product-info-box">
+              <div class="individual-product-info-box size-container">
+                <div class="product-category-name">SIZE</div>
+                <div>{{product.size}}</div>
+              </div>
+              <div class="individual-product-info-box color-container">
+                <div class="product-category-name">COLOR</div>
+                <div>{{product.color}}</div>
+              </div>
+              <div class="individual-product-info-box price-container">
+                <div class="product-category-name">PRICE</div>
+                <div>${{product.price}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="individual-product-info-box remove-box">
+          <div class="remove-product" ng-click="removeProductFromCart(product.refId)">
+            <div>X</div>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </div>  
+    <div class="cart-total">
+      <div class="total-price"><h5>TOTAL: ${{total}}</h5></div>
+      <a ng-href="/#/checkout" class="checkout-button">CHECKOUT</a>
+    </div>
+  </div>
 </div>
 
 
