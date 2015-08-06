@@ -548,5 +548,41 @@ form button:hover {
 }
 
 
+/*Admin Buttons*/
+
+.admin-delete-product{
+	border: 1px solid rgba(255, 13, 13, .8);
+/*	background-color: rgba(255, 234, 0, .3);*/
+	border-radius: 12px;
+	color: rgba(255, 13, 13, .95);
+	text-decoration: none;
+	margin : 20px;
+	padding: 5px 10px 5px 10px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.admin-delete-button {
+	background-color: rgba(255, 13, 13, .5);
+	border-radius: 12px;
+	color: #ffffff;
+	text-decoration: none;
+	margin : 20px;
+	padding: 10px 20px 10px 20px;
+	display: inline-block;
+	cursor : pointer;
+}
+
+.admin-cancel-delete-button{
+	border: 1px solid rgba(0, 146, 14, .3);
+/*	background-color: rgba(255, 234, 0, .3);*/
+	border-radius: 12px;
+	color: rgba(0, 146, 14, .95);
+	text-decoration: none;
+	margin : 20px;
+	padding: 10px 20px 10px 20px;
+	display: inline-block;
+	cursor: pointer;
+}
 
 
