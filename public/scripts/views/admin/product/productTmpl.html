@@ -3,21 +3,31 @@
      flow-files-added="processFiles($files)"
      flow-files-submitted="$flow.upload()"
 	 flow-file-success="$file.msg = $message">
-    <div>
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/#/admin/home" class="brand-logo">GM.S</a>
+    </div>
+  </nav>
+
+    <div class="container">
         <div class="addProductArea">
-            <div class="addProductTitle">
-                Add Product Title:
-                <input class="productTitleInput" placeholder="Enter the name of your product." ng-model="product.productTitle" />
+          <h2 class="right-align animated slideInRight">ADD NEW ITEM</h2><br><br>
+            <div class="addProductTitle" input-field>
+                <h5>ITEM TITLE</h5>
+                <input type="text" class="productTitleInput" placeholder=" name your item" ng-model="product.productTitle" />
             </div>
+
             <br>
+            
             <div class="addProductDescription">
-                Add Product Description:
-                <textarea class="productDescriptionInput" type="text" ng-model="product.productDescription" placeholder="Enter a description of your product."></textarea>
+                <h5>ITEM DESCRIPTION</h5>
+                <textarea class="productDescriptionInput" type="text" ng-model="product.productDescription" placeholder=" enter a description of your item"></textarea>
             </div>
 
 
             <br>
-
+              <h5>ITEM CATEGORY</h5>
               <form action="#">
                 <p>
                   <input class="with-gap" name="group1" type="radio" id="test1" value="Dresses" ng-model="product.productCategory"/>
@@ -47,36 +57,39 @@
             
             <br>
 
-              <span class="btn" flow-btn>Upload File</span>
+              <span class="btn" flow-btn>UPLOAD PHOTOS</span>
 
-                <div ng-repeat="image in uploader.flow.files">
-                    <h1>{{$index + 1}}</h1><img class="preview" flow-img="image"/><br>
+              <div class="row">
+                <div class="col l3 s12" ng-repeat="image in uploader.flow.files">
+                    <h5>{{$index + 1}}</h5><img class="preview" flow-img="image"/><br>
                 </div>
+              </div>
             <br>
+
             <table>
                 <colgroup span="4" class="inPutTable"></colgroup>
                 <tr>
-                    <th>Color</th>
-                    <th>Small</th>
-                    <th>Medium</th>
-                    <th>Large</th>
-                    <th>Primary Image:<th>
+                    <th>COLOR</th>
+                    <th>SMALL</th>
+                    <th>MEDIUM</th>
+                    <th>LARGE</th>
+                    <th>MAIN IMAGE:<th>
                 </tr>
                 <tr ng-repeat="colorSize in product.colorSize">
                     <td>
-                        <input ng-model="colorSize.color">
+                        <input type="text" ng-model="colorSize.color">
                     </td>
                     <td>
-                        <input ng-model="colorSize.smallQty">
+                        <input type="number" ng-model="colorSize.smallQty">
                     </td>
                     <td>
-                        <input ng-model="colorSize.mediumQty">
+                        <input type="number" ng-model="colorSize.mediumQty">
                     </td>
                     <td>
-                        <input ng-model="colorSize.largeQty">
+                        <input type="number" ng-model="colorSize.largeQty">
                     </td>
                     <td>
-                        <input ng-model="colorSize.imageNumber" placeholder="enter image number"></input>
+                        <input type="text" ng-model="colorSize.imageNumber" placeholder=" main image number"></input>
 
                         <!-- <div class="input-field col s12">
                             <select ng-model="something">
@@ -105,16 +118,19 @@
             </table>
             <br>
             <div class="addcolorButton">
-                <button ng-click="addColor()" ng-disabled="disableButton">Add Color</button>
+                <span class="btn" ng-click="addColor()" ng-disabled="disableButton">Add Color</span>
             </div>
             <br>
-            <div class="addPrice">
-                Add Price:
-                <input class="priceInput" placeholder="Enter Price" ng-model="product.price" />
-            </div>
             <br>
-            <div class="addProductButton">
-                <button ng-click="addProduct(uploader.flow)" ng-disabled="disableButton">Add Product</button>
+          <div class="input-field">
+            <h5>ITEM PRICE</h5><br>
+            <span><i class="fa fa-usd"></i></span>
+            <input id="itemPrice" class="priceInput" ng-model="product.price" />
+          </div>
+            <br>
+            <br>
+            <div id="addProductButton" class="center-align">
+                <a class="btn-large waves-effect waves-light" ng-click="addProduct(uploader.flow)" ng-disabled="disableButton" onclick="Materialize.toast('get it girl', 3000, 'rounded')">I'M DONE</a>
             </div>
         </div>
     </div>
