@@ -366,6 +366,7 @@ form button:hover {
 
 .adminEditBtn {
   color: #3a3a3a;
+  font-size: 20px;
 }
 
 .adminEditBtn:hover {
@@ -379,6 +380,66 @@ form button:hover {
     background: url('ajax-loader.gif') center center no-repeat; 
 }
 
+.btn-flat:hover {
+  color: #727272;
+}
+
+.wrapper p {
+  font-size: 17px;
+}
+
+.admin-delete-product {
+  border: 1px solid rgba(255, 13, 13, .5);
+/*  background-color: rgba(255, 234, 0, .3);*/
+  border-radius: 2px;
+  color: rgba(255, 13, 13, .85);
+  text-decoration: none;
+  margin : 10px;
+  padding: 5px 10px 5px 10px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.admin-delete-product:hover {
+  color: #fff;
+  background-color: rgba(255, 13, 13, .5);
+}
+
+.admin-delete-button {
+  background-color: rgba(255, 13, 13, .5);
+  border-radius: 2px;
+  color: #ffffff;
+  font-weight: lighter;
+  text-decoration: none;
+  margin : 4px;
+  padding: 8px 20px 8px 20px;
+  display: inline-block;
+  cursor : pointer;
+}
+
+.admin-delete-button:hover {
+  background-color: rgba(255, 13, 13, .75);
+}
+
+.admin-cancel-delete-button {
+  border: 1px solid #80cbc4;
+/*  background-color: rgba(255, 234, 0, .3);*/
+  border-radius: 2px;
+  color: #4db6ac;
+  text-decoration: none;
+  margin : 4px;
+  padding: 5px 20px 5px 20px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.admin-cancel-delete-button:hover {
+  color: #fff;
+  background-color: #4db6ac;
+}
+
+
+/* ADD PRODUCT AREA */
 .addProductArea {
   font-weight: lighter;
   margin: 50px auto;
@@ -406,9 +467,6 @@ table th {
   background-color: #727272;
 }
 
-/*  .btn:hover, .btn-large:hover {
-    background-color: #2bbbad; }
-}*/
 
 /*START SHOPPING BAG MODAL*/
 
@@ -578,44 +636,6 @@ table th {
 
 .moreInfoBox {
   background-color: green;
-}
-
-
-/*Admin Buttons*/
-
-.admin-delete-product{
-	border: 1px solid rgba(255, 13, 13, .8);
-/*	background-color: rgba(255, 234, 0, .3);*/
-	border-radius: 12px;
-	color: rgba(255, 13, 13, .95);
-	text-decoration: none;
-	margin : 20px;
-	padding: 5px 10px 5px 10px;
-	display: inline-block;
-	cursor: pointer;
-}
-
-.admin-delete-button {
-	background-color: rgba(255, 13, 13, .5);
-	border-radius: 12px;
-	color: #ffffff;
-	text-decoration: none;
-	margin : 20px;
-	padding: 10px 20px 10px 20px;
-	display: inline-block;
-	cursor : pointer;
-}
-
-.admin-cancel-delete-button{
-	border: 1px solid rgba(0, 146, 14, .3);
-/*	background-color: rgba(255, 234, 0, .3);*/
-	border-radius: 12px;
-	color: rgba(0, 146, 14, .95);
-	text-decoration: none;
-	margin : 20px;
-	padding: 10px 20px 10px 20px;
-	display: inline-block;
-	cursor: pointer;
 }
 
 
