@@ -64,6 +64,11 @@ app.config(function($routeProvider) {
 			}
 		}
 	})
+	.when('/admin/login', {
+		templateUrl : 'scripts/views/admin/login/adminLogin.html',
+		controller : 'adminLoginCtrl'
+	})
+	
 	.otherwise('/');
 });//end app.config in app.js
 
