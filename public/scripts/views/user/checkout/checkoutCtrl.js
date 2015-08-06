@@ -1,13 +1,14 @@
 var app = angular.module('GoldMorning');
 
-app.controller('cartCtrl', function($scope, cart, cartService) {
+app.controller('checkoutCtrl', function($scope, cart, cartService) {
 
 	$scope.cart = cart;
+	
+	console.log($scope.cart, " $scope.cart from checkoutCtrl");
 
 	$scope.removeProductFromCart = function(product) { 
 		cartService.removeProductFromCart(product);
 	};
-
 	var payment = {
 	  "intent": "sale",
 	  "payer": {
@@ -32,6 +33,10 @@ app.controller('cartCtrl', function($scope, cart, cartService) {
 	    "description": "My awesome payment"
 	  }]
 	};
+
+	$scope.name = "andy";
+
+	$scope.product = payment;
 
 	$scope.orderDetails = {};
 
@@ -63,5 +68,13 @@ app.controller('cartCtrl', function($scope, cart, cartService) {
 		})
 	};
 
-});
+	
+	$scope.getTotal = function() {
+		$scope.total = cartService.calculatePrice($scope.cart);
+	};// end getTotal;
+		
+	$scope.getTotal();
+
+});// end checkoutCrtl
+
 

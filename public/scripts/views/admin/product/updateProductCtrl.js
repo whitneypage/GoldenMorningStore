@@ -1,6 +1,6 @@
 var app = angular.module('GoldMorning');
 
-app.controller('UpdateProductCtrl', function($scope, ProductService, $routeParams, product){
+app.controller('UpdateProductCtrl', function($scope, ProductService, $routeParams, product, $location){
 		//take productId passed from route via $routeParams and assign to $scope.specProductId
 	$scope.specProductId = $routeParams.productId;
 	//console.log($scope.specProductId, " from UpdateProductCtrl in angular");
@@ -55,6 +55,7 @@ app.controller('UpdateProductCtrl', function($scope, ProductService, $routeParam
 	        .then(function(data) {
 	            console.log(data);   
 	    });
+		$location.path('/admin/home');
 	};
 
 	$scope.deleteProduct = function() {
