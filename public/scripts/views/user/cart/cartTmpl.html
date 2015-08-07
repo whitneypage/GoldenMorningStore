@@ -11,20 +11,18 @@
             	<div class="mobile-product-name">{{product.name}}</div>
             	<div class="mobile-product-info-box">
               		<div class="mobile-individual-product-info-box size-container">
-                		<div class="mobile-product-category-name">SIZE</div>
-                			<div>{{product.size}}</div>
+                		<div class="mobile-product-category-name">SIZE | {{product.size}}</div>
+                			<div></div>
               			</div>
               			<div class="mobile-individual-product-info-box color-container">
-                			<div class="mobile-product-category-name">COLOR</div>
-                			<div>{{product.color}}</div>
+                			<div class="mobile-product-category-name">COLOR | {{product.color}}</div>
               			</div>
               			<div class="mobile-individual-product-info-box price-container">
-                			<div class="mobile-product-category-name">PRICE</div>
-                			<div>${{product.price}}</div>
+                			<div class="mobile-product-category-name">PRICE | ${{product.price}}</div>
               			</div>
             		</div>
           		</div>
-	          	<div class="mobile-individual-product-info-box remove-box">
+	          	<div class="mobile-individual-product-info-box mobile-remove-box">
 	          		<div class="mobile-remove-product" ng-click="removeProductFromCart(product.refId)">
 	            		<div>X</div>
 	        		</div>
