@@ -67,6 +67,8 @@ app.controller('cartCtrl', function($scope, ProductService, cart, cartService) {
 
 	$scope.getTotal = function() {
 		$scope.total = cartService.calculatePrice($scope.cart);
+		console.log($scope.cart);
+		console.log($scope.total);
 	}; // end $scope.getTotal
 	
 		$scope.decSizesFromCart = function() {

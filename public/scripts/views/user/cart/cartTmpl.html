@@ -1,7 +1,7 @@
 <div class="mobile-shopping-bag-title-container">
     <div>BAG</div>
 </div>
-<div class="mobile-whole-cart">
+<div ng-init="getTotal()" class="mobile-whole-cart">
   	<div class="mobile-each-product-container" ng-repeat="product in cart">
       	<div class="mobile-interior-product-container">
           	<div class="mobile-cart-pic-container">
