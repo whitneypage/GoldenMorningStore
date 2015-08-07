@@ -1,4 +1,4 @@
-var app = angular.module('GoldMorning', ['ngRoute', 'ui.materialize', 'flow']);
+var app = angular.module('GoldMorning', ['ngRoute', 'ui.materialize', 'flow', 'angular-carousel']);
 
 //This is just a comment
 //More comments
