@@ -445,6 +445,12 @@ form button:hover {
   margin: 50px auto;
 }
 
+.productTitleInput, .productDescriptionInput, td, .priceInput {
+  font-weight: normal;
+  color: #3a3a3a;
+}
+
+
 .addProductArea h5, h3 {
   color: #545454;
 }
@@ -863,4 +869,76 @@ table th {
   padding: 5px 10px 5px 10px;
   /*margin-top: 50px;*/
 }
+/*START CHECKOUT PAGE*/
+.checkout {
+  width: 80%;
+  padding: 20px;
+}
+
+#checkOutHead {
+  margin: 25px 20px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #727272;
+  font-weight: lighter;
+}
+#orderGrid {
+  border-bottom: 1px solid #727272;
+  font-weight: normal;
+}
+
+#imageSum {
+  margin: 20px auto;
+  text-align: center;
+}
+
+#orderTotal {
+  font-weight: lighter;
+}
+
+#imageSumP {
+  margin-top: 0px;
+  margin-bottom: 15px;
+  font-size: 17px;
+  font-weight: lighter;
+}
+
+.removeOrder {
+  color: #3a3a3a;
+  font-weight: lighter;
+  font-size: 15px;
+  margin: 15px auto;
+}
+
+.removeOrder:hover {
+  color: #4db6ac;
+  cursor: pointer;
+}
+
+#payHead {
+  color: #5e5e5e;
+}
+
+.paypal {
+  cursor: pointer;
+}
+
+#payOptions1, #payOptions2 {
+  text-align: center;
+}
+ #payOptions1 {
+  border-right: 1px solid #3a3a3a;
+ }
+
+/* #payOptions2 {
+  margin-top: 100px;
+ }*/
+
+#placeOrder a {
+  background-color: #454545;
+  font-size: 18px;
+}
+
+
+
+/*END CHECKOUT PAGE*/
 

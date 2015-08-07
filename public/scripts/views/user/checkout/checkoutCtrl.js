@@ -7,8 +7,12 @@ app.controller('checkoutCtrl', function($scope, cart, cartService) {
 	console.log($scope.cart, " $scope.cart from checkoutCtrl");
 
 	$scope.removeProductFromCart = function(product) { 
-		cartService.removeProductFromCart(product);
+		cartService.removeProductFromCart(product).then(function(response) {
+			$scope.cart = response.data;
+			$scope.getTotal($scope.cart);
+		});
 	};
+
 	var payment = {
 	  "intent": "sale",
 	  "payer": {
