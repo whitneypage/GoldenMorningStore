@@ -633,6 +633,21 @@ table th {
   }
 }*/
 
+
+/*begin product modal styling*/
+
+.product-photo-and-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.product-object {
+  height: 24em;
+  width: 24em;
+  outline: 2px solid red;
+}
+
 .carousel {
   width: 300px;
   height: 300px;

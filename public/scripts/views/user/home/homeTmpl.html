@@ -47,19 +47,27 @@
                     <li ng-repeat="colorSize in product.colorSize">
                         <figure>
                             <img href='#productModal' ng-src="{{ colorSize.mainImg }}" ng-click="passInProduct(product)" modal>
+                            <!--begin product modal-->
                             <div id="productModal" class="modal">
                                 <div class="modal-content">
                                     <h4>{{selectedProduct.productTitle}}</h4>
-                                    <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
-                                        <li ng-repeat="photo in selectedProduct.images">
-                                            <img class="carousel_img" ng-src="{{ photo }}" />
-                                        </li>
-                                    </ul>
-                                    <div class="test" rn-carousel-indicators ng-if="selectedProduct.images.length > 1" slides="selectedProduct.images" rn-carousel-index="index1">
-                                        <div class="rn-carousel-indicator">
-                                            <span ng-repeat="slide in slides" ng-class="{active: $index==index}" ng-click="goToSlide($index)"></span>
+                                      <div class="product-photo-and-info">
+                                        <div class="product-photo-box">
+                                          <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
+                                              <li ng-repeat="photo in selectedProduct.images">
+                                                  <img class="carousel_img" ng-src="{{ photo }}" />
+                                              </li>
+                                          </ul>
+                                          <div class="test" rn-carousel-indicators ng-if="selectedProduct.images.length > 1" slides="selectedProduct.images" rn-carousel-index="index1">
+                                              <div class="rn-carousel-indicator">
+                                                  <span ng-repeat="slide in slides" ng-class="{active: $index==index}" ng-click="goToSlide($index)"></span>
+                                              </div>
+                                          </div>
                                         </div>
-                                    </div>
+                                        <div class="product-info">
+                                          <div class="product-object">{{selectedProduct}}</div>
+                                        </div>
+                                      </div>
                                 </div>
                             </div>
                             <!-- end product modal -->
