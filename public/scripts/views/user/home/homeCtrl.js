@@ -14,6 +14,11 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		console.log('open clicked ', $scope.openProductModal)
 	}
 
+  $scope.passInProduct = function(product) {
+  $scope.selectedProduct = product;
+  console.log($scope.selectedProduct);
+}
+
 	$scope.getProducts = function(){
 		ProductService.getProduct().then(function(data) {
 			console.log('get product', data);
@@ -21,14 +26,30 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		})
 	};
 
+	
+
 	// $scope.changeFilter = function(filter){
 	// 	$scope.productFilter = filter;
 	// }
 	// $scope.productFilter = "bottom";
 
 	$scope.getProducts();
-		
-	$scope.sizes = ["L", "M", "S"];	
+
+  $scope.sizes = ["S", "M", "L"];
+
+  $scope.inStock = function(selected) {
+      if (selected > 0) {
+        return true
+      } 
+  }
+
+  $scope.anyAvailable = function(colorSize) {
+      if (colorSize.smallQty <= 0 && colorSize.mediumQty <= 0 && colorSize.largeQty <= 0) {
+        return true
+      }
+  }
+
+  $scope.available = true;
 
 	$scope.cart = cart;
 
@@ -74,7 +95,6 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		};//end decSizesFromCart
 	
 });// end homeCtrl
-
 
 
 // Product Modal CUSTOM DIRECTIVE

@@ -2,19 +2,22 @@ var app = angular.module('GoldMorning');
 
 app.controller('ordersCtrl', function($scope, orders, orderService) {
 
-	$scope.orders = orders;
+	$scope.orders = orders.data;
+	console.log($scope.orders);
 
 	$scope.showOrder = function(order) {
-		order.show = !order.show;
-	}
+        order.show = !order.show;
+    }
 
-	$scope.paymentStatusOptions = ['processing', 'paid'];
-	$scope.orderStatusOptions = ['processing', 'shipping', 'on hold', 'delivered'];
 
-	$scope.updateOrder = function(orderId, paymentStatus, orderStatus) {
-		orderService.updateOrder(orderId, paymentStatus, orderStatus).then(function(response) {
-			Materialize.toast('order updated', 1000);	
+
+	$scope.orderStatusOptions = ['processing', 'shipped', 'on hold', 'canceled'];
+
+	$scope.updateOrder = function(orderId, orderNote, orderStatus) {
+		orderService.updateOrder(orderId, orderNote, orderStatus).then(function(response) {
+			Materialize.toast('order updated', 2000);	
 		})
 	};
+
 
 });

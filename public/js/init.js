@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 	$(".button-collapse").sideNav();
 
-	$('.tooltipped').tooltip({delay: 50});
+	$('.tooltipped').tooltip({delay: 20});
 
 	$('.dropdown-button').dropdown({
 		constrain_width: false,
@@ -32,7 +32,13 @@ $(document).ready(function(){
 		belowOrigin: true
 	});
 
-
+	$('.slider').slider();
+	
+	
 	
 
 });
+
+// $(function() {
+// 		$('.slider').slider();
+// 	});

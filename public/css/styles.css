@@ -26,6 +26,7 @@ body {
   width: 100%;
   color: #fff;
   font-size:3 6px;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.5);
   -ms-transform: translate(0,-50%);  /*IE 9*/ 
     -webkit-transform: translate(0,-50%);  /*Safari*/ 
     transform: translate(0,-50%);
@@ -40,6 +41,14 @@ body {
   top: 0; 
   height: 70px; 
   z-index: 998;
+}
+
+nav {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+nav li {
+  font-weight: 300;
 }
 
 nav a:hover {
@@ -97,12 +106,6 @@ nav a:hover {
   color: #000;
 }
 
-.grid figcaption h5 {
-  margin: 0;
-  padding: 0;
-  color: #fff;
-}
-
 
 .grid figcaption .bag {
   float: left;
@@ -113,19 +116,37 @@ nav a:hover {
   color: #3a3a3a;
 }
 
-.grid figcaption .add-size {
-  float: right;
-}
 
 .add-size span {
+  float: right;
   margin-right: 20px;
   font-size: 20px;
+  font-weight: 300;
 }
 
-.add-size span:hover {
+.inStock:hover {
   color: #727272;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.outOfStock {
+  color: #989898;
+}
+
+.outOfStock:hover {
+  cursor: default;
+  text-decoration: none;
+}
+
+.test input {
+  margin-left: 10px;
+}
+
+.test span{
+  color: #3a3a3a;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .size-style figure {
@@ -139,7 +160,7 @@ nav a:hover {
 }
 
 .size-style figcaption {
-  height: 20%;
+  height: 25%;
   width: 100%;
   top: auto;
   bottom: 0;
@@ -153,16 +174,8 @@ nav a:hover {
   transform: translateY(0px);
   transition: transform 0.4s, opacity 0.1s;
 }
+/*END ADD-TO-CART HOVER*/
 
-.adminEditBtn {
-  color: #3a3a3a;
-}
-
-.adminEditBtn:hover {
-  color: #727272;
-  text-decoration: underline;
-  cursor: pointer;
-}
 
 @media screen and (max-width: 31.5em) {
   .grid {
@@ -191,27 +204,33 @@ nav a:hover {
   right: 20px;
 }*/
 
+/*END PRODUCT GRID*/
+
+/*START PRODUCT MODAL*/
+
 .productModal {
-  top: 20%;
-  left: 25%;
+  top: 15%;
+  left: 20%;
   background: #fff;
   position: fixed;
-/*  left: 0;
-  right: 0;*/
+  left: 0;
+  right: 0;
   background-color: #fafafa;
   padding: 0;
   max-height: 70%;
-  width: 55%;
+  width: 60%;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
-  box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21); }
+  box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21); 
    will-change: top, opacity; }
   @media only screen and (max-width : 992px) {
-    .modal {
+    .productModal {
       width: 80%; } }
+
   .productModal h1, .productModal h2, .productModal h3, .productModal h4 {
-    margin-top: 0; }
+    margin: 0 auto;
+    text-align: center; }
   .productModal .modal-content {
     padding: 24px; }
   .productModal .modal-close {
@@ -225,7 +244,8 @@ nav a:hover {
     .productModal .modal-footer .btn, .productModal .modal-footer .btn-large, .productModal .modal-footer .btn-flat {
       float: right;
       margin: 6px 0; }
-}
+
+
 
 .productModal.modal-fixed-footer {
   padding: 0;
@@ -248,7 +268,207 @@ nav a:hover {
   width: 100%;
   max-height: 45%;
   border-radius: 0;
-  will-change: bottom, opacity; }
+  will-change: bottom, opacity; 
+}
+/*END PRODUCT MODAL*/
+
+/*START FOOTER*/
+
+footer .container, footer a {
+  color: #454545;
+  font-size: 14px;
+}
+.page-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+footer #contact {
+  text-align: right;
+  line-height: 1.2;
+  color: #454545;
+}
+
+footer h6, footer h5 {
+  font-weight: 200;
+  margin: 0;
+}
+
+footer span{
+  margin-right: 10px;
+}
+
+.footer-copyright a {
+  font-size: 15px;
+}
+.footer-copyright a:hover {
+  color: #6bbbb6;
+}
+
+/*END FOOTER*/
+
+/*START ADMIN LOGIN*/
+
+.admin {
+  height: 100vh;
+  background: url("../images/E11.jpg") 75% 80% no-repeat;
+  background-size: cover;
+}
+
+#adminLogin {
+  width: 50%;
+  margin: 0 auto;
+  padding: 40px;
+  padding-top: 60px;
+}
+
+#adminLogin h1{
+  color: #fff;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding: 20px;
+  font-weight: lighter;
+  text-shadow: 0 5px 15px rgba(0,0,0,1.5);
+}
+
+#loginForm input, #loginForm label {
+  color: #fff;
+  font-size: 18px;
+  font-weight: lighter;
+}
+
+form button {
+  float: right;
+  font-size: 18px;
+  background-color: transparent;
+  color: #fff;
+  box-shadow: none;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  font-weight: lighter;
+  padding: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+form button:hover {
+  cursor: pointer;
+  background-color: #fff;
+  opacity: 0.5;
+  color: #000;
+  font-weight: normal;
+}
+
+/*END ADMIN LOGIN*/
+
+/*START ADMIN HOME*/
+
+
+.adminEditBtn {
+  color: #3a3a3a;
+  font-size: 20px;
+}
+
+.adminEditBtn:hover {
+  color: #727272;
+  text-decoration: underline;
+  cursor: pointer;
+}
+#imageWrap { 
+    width: 640px; 
+    height: 420px; 
+    background: url('ajax-loader.gif') center center no-repeat; 
+}
+
+.btn-flat:hover {
+  color: #727272;
+}
+
+.wrapper p {
+  font-size: 17px;
+}
+
+.admin-delete-product {
+  border: 1px solid rgba(255, 13, 13, .5);
+/*  background-color: rgba(255, 234, 0, .3);*/
+  border-radius: 2px;
+  color: rgba(255, 13, 13, .85);
+  text-decoration: none;
+  margin : 10px;
+  padding: 5px 10px 5px 10px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.admin-delete-product:hover {
+  color: #fff;
+  background-color: rgba(255, 13, 13, .5);
+}
+
+.admin-delete-button {
+  background-color: rgba(255, 13, 13, .5);
+  border-radius: 2px;
+  color: #ffffff;
+  font-weight: lighter;
+  text-decoration: none;
+  margin : 4px;
+  padding: 8px 20px 8px 20px;
+  display: inline-block;
+  cursor : pointer;
+}
+
+.admin-delete-button:hover {
+  background-color: rgba(255, 13, 13, .75);
+}
+
+.admin-cancel-delete-button {
+  border: 1px solid #80cbc4;
+/*  background-color: rgba(255, 234, 0, .3);*/
+  border-radius: 2px;
+  color: #4db6ac;
+  text-decoration: none;
+  margin : 4px;
+  padding: 5px 20px 5px 20px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.admin-cancel-delete-button:hover {
+  color: #fff;
+  background-color: #4db6ac;
+}
+
+
+/* ADD PRODUCT AREA */
+.addProductArea {
+  font-weight: lighter;
+  margin: 50px auto;
+}
+
+.addProductArea h5, h3 {
+  color: #545454;
+}
+
+.addProductArea h2 {
+  font-weight: lighter;
+}
+
+table th {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+#addProductButton a {
+  background-color: #3a3a3a;
+  font-size: 20px;
+}
+
+#addProductButton a:hover {
+  background-color: #727272;
+}
+
+
+/*START SHOPPING BAG MODAL*/
 
 .whole-cart {
   display: flex;
@@ -402,6 +622,72 @@ nav a:hover {
   padding: 5px 10px 5px 10px;
   /*margin-top: 50px;*/
 }
+/*
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+  .carousel {
+    width: 180px;
+    height: 180px;
+  }
+}*/
+
+.carousel {
+  width: 300px;
+  height: 300px;
+}
+
+.carousel_img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.rn-carousel-indicator span{
+  font-size: 17px;
+  width: 300px;
+
+}
+
+.rn-carousel-control {
+  font-size: 55px;
+}
+
+.test {
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.rn-carousel-control.rn-carousel-control-next {
+    font-size: 45px;
+    margin-right: 290px;
+    color: rgb(255, 255, 255);
+}
+
+.rn-carousel-control.rn-carousel-control-prev {
+    font-size: 45px;
+    margin-left: 5px;
+    color: rgb(255, 255, 255);
+}
+
+/*END SHOPPING BAG MODAL*/
+
+/*START ORDERS PAGE*/
+
+.orderStatusDD {
+  width: 8%;
+}
+
+.notesArea {
+  width: 50%;
+}
+
+.moreInfoBox {
+  background-color: green;
+}
+
+
 
 /*.checkout-button:hover {
   outline: 1px solid #5e5e5e;
@@ -577,3 +863,4 @@ nav a:hover {
   padding: 5px 10px 5px 10px;
   /*margin-top: 50px;*/
 }
+
