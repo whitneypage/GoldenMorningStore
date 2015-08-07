@@ -43,15 +43,7 @@ function cart(req, res, next){
 		next();
 	}
 next();
-};
-
-function isAdmin(req, res, next){
-	if(req.user){return next()}
-	else {
-    res.status(500).send('not an admin')
-  }
-};
-
+}
 
 
 app.use(passport.initialize());
@@ -94,7 +86,7 @@ passport.deserializeUser(function(obj, done) {
 	
 	app.post('/api/upload', multipartMiddleware, productsCtrl.uploadPhoto);
 	app.get('/api/upload', productsCtrl.addPicturesGet);
-  app.post('/api/colorSize', auth, productsCtrl.updateColorSize)
+  app.post('/api/colorSize', auth, productsCtrl.updateColorSize);
 	// app.post('/api/upload', productsCtrl.uploadPhoto)
 
   // app.get('/api/products/image', productsCtrl.uploadImage)
