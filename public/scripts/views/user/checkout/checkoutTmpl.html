@@ -3,7 +3,7 @@ SHOPPING CART
 	<div ng-repeat="product in cart">
 		<div class="product">
 			<div>
-				<img class="cart-images" src="{{product.imageUrl}}" width="300px"/>
+				<img class="cart-images" ng-src="{{product.imageUrl}}" width="300px"/>
 				<p>{{product.name}} | {{product.color}} | {{product.size}} | {{product.price}} 
 				</p>			
 				<button ng-click="removeProductFromCart(product._id)">Remove item from cart</button>
