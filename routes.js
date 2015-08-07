@@ -79,11 +79,16 @@ passport.deserializeUser(function(obj, done) {
    done(null, obj);
 });
 
+	app.post('/api/admin', userCtrl.createAdmin);
+	app.get('/api/admin/loggedin', userCtrl.checkLoggedIn);
+	
+	
+	
 	app.post('/api/upload', multipartMiddleware, productsCtrl.uploadPhoto);
 	app.get('/api/upload', productsCtrl.addPicturesGet);
   app.post('/api/colorSize', auth, productsCtrl.updateColorSize)
 	// app.post('/api/upload', productsCtrl.uploadPhoto)
-  app.post('/api/admin', userCtrl.createAdmin);
+
   // app.get('/api/products/image', productsCtrl.uploadImage)
 	app.get('/api/products', productsCtrl.handleGetAll);
 	app.get('/api/products/:productId', productsCtrl.handleGetOneProduct);
