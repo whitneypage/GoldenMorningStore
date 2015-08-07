@@ -34,7 +34,7 @@
                 <li><a ng-click="productFilter = {productCategory: 'Rompers'}">ROMPERS</a></li>
                 <li><a ng-click="productFilter = {productCategory: 'Accessories'}">ACCESSORIES</a></li>
                 <li><a ng-click="productFilter = {productCategory: 'Soaps/Scrubs'}">BODY</a></li>
-                <li><a href="#">YOUR BAG</a></li>
+                <li><a href="/#/cart"><i class="material-icons">shopping_basket</i></a></li>
             </ul>
         </div>
     </nav>
@@ -46,8 +46,8 @@
                 <ul class="grid size-style">
                     <li ng-repeat="colorSize in product.colorSize">
                         <figure>
-                            <img href='#demoModal' ng-src="{{ colorSize.mainImg }}" ng-click="passInProduct(product)" modal>
-                            <div id="demoModal" class="modal">
+                            <img href='#productModal' ng-src="{{ colorSize.mainImg }}" ng-click="passInProduct(product)" modal>
+                            <div id="productModal" class="modal">
                                 <div class="modal-content">
                                     <h4>{{selectedProduct.productTitle}}</h4>
                                     <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
@@ -62,6 +62,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- end product modal -->
                             <figcaption>
                                 <div class="add-size" ng-show="!anyAvailable(colorSize)">
                                     <p class="bag">ADD TO BAG</p>
