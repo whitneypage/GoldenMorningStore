@@ -258,11 +258,11 @@ nav a:hover {
 }
 
 .shopping-bag-title-container {
-  /*outline: 2px solid red;*/
+  outline: 2px solid red;
   height: 45px;
   text-align: center;
   border-bottom: 1.5px solid #5E5E5E;
-  border-bottom-width: 20%;
+  /*border-bottom-width: 20%;*/
   padding-bottom: 65px;
   margin-top: -10px;
   margin-bottom: 15px;
@@ -307,7 +307,7 @@ nav a:hover {
   min-width: 100px;
   max-height: 100px;
   min-width: 100px;
-  /*outline: 5px solid black;*/
+  outline: 5px solid black;
 }
 
 .cart-pic {
@@ -322,7 +322,7 @@ nav a:hover {
 .product-info-box {
   margin-top: 10px;
   height: 50px;
-  /*outline: 4px solid blue;*/
+  outline: 4px solid blue;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -338,7 +338,7 @@ nav a:hover {
 }
 
 .individual-product-info-box {
-  /*outline: 1px solid green;*/
+  outline: 1px solid green;
   /*width: 65%;*/
 }
 
@@ -355,7 +355,7 @@ nav a:hover {
 
 .interior-product-container {
   height: 100px;
-  /*outline: 2px dotted black;*/
+  outline: 2px dotted black;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -405,3 +405,164 @@ nav a:hover {
 /*.checkout-button:hover {
   outline: 1px solid #5e5e5e;
 }*/
+
+/*iphone 4 display*/
+/*@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+    .product-name-and-info-box {
+      margin: 0;
+    }
+    .product-info-box {
+      flex-direction: column;
+      color: red;
+      /*margin-left: 0;*/
+ /*   }
+    .interior-product-container {
+      flex-direction: column;
+      margin: 50px;*/
+      /*justify-content: center;*/
+     /* align-items: center;
+    }
+}*/
+
+/*iphone5 display*/
+/*@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .product-info-box {
+      flex-direction: column;
+      color: red;
+    }
+  }*/
+
+/** {
+  outline: 1px solid black;
+}*/
+
+.mobile-shopping-bag-title-container {
+  outline: 2px solid red;
+  height: 45px;
+  text-align: center;
+  border-bottom: 1.5px solid #5E5E5E;
+  border-bottom-width: 20%;
+  padding-bottom: 65px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: 300;
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  color: #2e2e2e;
+  letter-spacing: 1.1px;
+}
+
+.mobile-whole-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #2e2e2e;
+}
+
+.mobile-each-product-container {
+  display: flex;
+  outline: 3px solid orange;
+  /*padding-bottom: 15px;*/
+  /*border-bottom: 1px solid black;*/
+  /*margin-bottom: 15px;*/
+  /*margin-top: 20px;*/
+  width: 70%;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: #2e2e2e;
+  height: 300px;
+  justify-content: center;
+  /*overflow: auto;*/
+}
+
+.mobile-interior-product-container {
+  height: 100%;
+  outline: 2px dotted black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*margin: 50px;*/
+}
+
+.mobile-cart-pic-container {
+  height: 100px;
+  width: 100px;
+  min-height: 100px;
+  min-width: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  outline: 5px solid black;
+}
+
+.mobile-cart-pic {
+  height: 100%;
+  width: 100%;
+}
+
+.mobile-product-name-and-info-box {
+  /*margin: 10px 0 0 60px;
+  width: 40%;*/
+}
+
+.mobile-product-name {
+  font-size: 16px;
+}
+
+.mobile-product-info-box {
+  /*margin-top: 10px;
+  height: 150px;
+*/  outline: 4px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mobile-product-category-name {
+  font-weight: 300;
+  color: #5e5e5e;
+}
+
+.mobile-remove-box {
+  /*display: flex;
+  flex-direction: column;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*text-align: center;*/
+  /*width: 2%;*/
+ /* margin-left: 45px;*/
+  /*outline: 3px solid black;*/
+}
+
+.mobile-remove-product:hover {
+  cursor: pointer;
+}
+
+.mobile-cart-total {
+  border-top: 1.5px solid #5E5E5E;
+  margin-top: -20px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  /*outline: 2px solid orange;*/
+  text-align: center;
+  /*border-top: 2px solid black;*/
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1.1px;
+}
+
+.mobile-total-price {
+  margin-bottom: 15px;
+}
+
+.mobile-checkout-button {
+  color: black;
+  border: 1px solid #5e5e5e;
+  padding: 5px 10px 5px 10px;
+  /*margin-top: 50px;*/
+}
