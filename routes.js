@@ -14,6 +14,14 @@ var multipartMiddleware = multipart();
 var fs = require('fs');
 var config = require('./apis/config/keys');
 
+var auth = function(req, res, next) {
+	if (!req.isAuthenticated()){
+		res.send(401);}
+	else {
+		next();
+	}
+};// end auth middleware to limit route access
+
 
 var app = express.Router();
 
@@ -73,7 +81,7 @@ passport.deserializeUser(function(obj, done) {
 
 	app.post('/api/upload', multipartMiddleware, productsCtrl.uploadPhoto);
 	app.get('/api/upload', productsCtrl.addPicturesGet);
-  app.post('/api/colorSize', productsCtrl.updateColorSize)
+  app.post('/api/colorSize', auth, productsCtrl.updateColorSize)
 	// app.post('/api/upload', productsCtrl.uploadPhoto)
   app.post('/api/admin', userCtrl.createAdmin);
   // app.get('/api/products/image', productsCtrl.uploadImage)
@@ -95,6 +103,22 @@ passport.deserializeUser(function(obj, done) {
 
 	app.get('/api/admin/orders', orderCtrl.getAllOrders);
 	app.put('/api/admin/order/:id', orderCtrl.updateOrder);
+	
+	//		PROTECTED ROUTES -- ANYTHING TO MODIFY PRODUCTS / VIEW ADMIN ORDERS 
+//		**ORIGINAL, UNPROTECTED ROUTES LEFT IN FOR DEV PURPOSES
+//		**UN COMMENT THESE ROUTES AND REMOVE THEIR UNPROTECTED PAIRS BEFORE RELEASE
+//	app.post('/api/colorSize', auth, productsCtrl.updateColorSize)
+	
+//	app.post('/api/products', auth, productsCtrl.handlePost);
+//	app.put('/api/products/:productId', auth, productsCtrl.handlePut);
+//	app.put('/api/products', auth, productsCtrl.decSize);
+//	app.delete('/api/products/:productId', auth, productsCtrl.handleDelete);
+	
+//	app.get('/api/admin/order/:id', auth, orderCtrl.getOrder);
+	
+//	app.get('/api/admin/orders', auth, orderCtrl.getAllOrders);
+//	app.put('/api/admin/order/:id', auth, orderCtrl.updateOrder);
+
  
 
-};
+};// end routes.js
