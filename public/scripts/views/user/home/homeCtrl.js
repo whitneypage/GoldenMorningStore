@@ -14,6 +14,11 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 		console.log('open clicked ', $scope.openProductModal)
 	}
 
+  $scope.passInProduct = function(product) {
+  $scope.selectedProduct = product;
+  console.log($scope.selectedProduct);
+}
+
 	$scope.getProducts = function(){
 		ProductService.getProduct().then(function(data) {
 			console.log('get product', data);
@@ -92,7 +97,6 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 });// end homeCtrl
 
 
-
 // Product Modal CUSTOM DIRECTIVE
 
 app.directive('productModal', function() {
@@ -123,7 +127,7 @@ app.directive('productModal', function() {
 
 app.directive('cartModal', function() {
 	var modal = function(scope, element, attrs) {
-		$(element).on('click', 'i', function() {
+		$(element).on('click', function() {
 			console.log('clicked!', scope.cart);
 			$('#modal2').openModal();
 		});

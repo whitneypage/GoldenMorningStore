@@ -1,4 +1,4 @@
-var app = angular.module('GoldMorning', ['ngRoute', 'ui.materialize', 'flow']);
+var app = angular.module('GoldMorning', ['ngRoute', 'ui.materialize', 'flow', 'angular-carousel']);
 
 //This is just a comment
 //More comments
@@ -21,7 +21,12 @@ app.config(function($routeProvider) {
 
 	.when('/cart', {
 		templateUrl : 'scripts/views/user/cart/cartTmpl.html',
-		controller: 'cartCtrl'
+		controller: 'cartCtrl',
+		resolve: {
+			cart: function(cartService) {
+				return cartService.getCart();
+			}
+		}
 	})
 	.when('/checkout', {
 		templateUrl : 'scripts/views/user/checkout/checkoutTmpl.html',
@@ -64,11 +69,19 @@ app.config(function($routeProvider) {
 			}
 		}
 	})
+	.when('/user/paypal', {
+		templateUrl: 'scripts/views/user/checkout/checkoutTmpl.html',
+		controller: 'checkoutCtrl',
+		resolve: {
+			cart: function(cartService) {
+				return cartService.getCart();
+			}
+		}
+	})
 	.when('/admin/login', {
 		templateUrl : 'scripts/views/admin/login/adminLogin.html',
 		controller : 'adminLoginCtrl'
 	})
-	
 	.otherwise('/');
 });//end app.config in app.js
 

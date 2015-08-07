@@ -366,6 +366,7 @@ form button:hover {
 
 .adminEditBtn {
   color: #3a3a3a;
+  font-size: 20px;
 }
 
 .adminEditBtn:hover {
@@ -379,6 +380,66 @@ form button:hover {
     background: url('ajax-loader.gif') center center no-repeat; 
 }
 
+.btn-flat:hover {
+  color: #727272;
+}
+
+.wrapper p {
+  font-size: 17px;
+}
+
+.admin-delete-product {
+  border: 1px solid rgba(255, 13, 13, .5);
+/*  background-color: rgba(255, 234, 0, .3);*/
+  border-radius: 2px;
+  color: rgba(255, 13, 13, .85);
+  text-decoration: none;
+  margin : 10px;
+  padding: 5px 10px 5px 10px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.admin-delete-product:hover {
+  color: #fff;
+  background-color: rgba(255, 13, 13, .5);
+}
+
+.admin-delete-button {
+  background-color: rgba(255, 13, 13, .5);
+  border-radius: 2px;
+  color: #ffffff;
+  font-weight: lighter;
+  text-decoration: none;
+  margin : 4px;
+  padding: 8px 20px 8px 20px;
+  display: inline-block;
+  cursor : pointer;
+}
+
+.admin-delete-button:hover {
+  background-color: rgba(255, 13, 13, .75);
+}
+
+.admin-cancel-delete-button {
+  border: 1px solid #80cbc4;
+/*  background-color: rgba(255, 234, 0, .3);*/
+  border-radius: 2px;
+  color: #4db6ac;
+  text-decoration: none;
+  margin : 4px;
+  padding: 5px 20px 5px 20px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.admin-cancel-delete-button:hover {
+  color: #fff;
+  background-color: #4db6ac;
+}
+
+
+/* ADD PRODUCT AREA */
 .addProductArea {
   font-weight: lighter;
   margin: 50px auto;
@@ -406,9 +467,6 @@ table th {
   background-color: #727272;
 }
 
-/*  .btn:hover, .btn-large:hover {
-    background-color: #2bbbad; }
-}*/
 
 /*START SHOPPING BAG MODAL*/
 
@@ -424,7 +482,7 @@ table th {
   height: 45px;
   text-align: center;
   border-bottom: 1.5px solid #5E5E5E;
-  border-bottom-width: 20%;
+  /*border-bottom-width: 20%;*/
   padding-bottom: 65px;
   margin-top: -10px;
   margin-bottom: 15px;
@@ -487,7 +545,8 @@ table th {
   /*outline: 4px solid blue;*/
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
 .product-name-and-info-box {
@@ -563,6 +622,54 @@ table th {
   padding: 5px 10px 5px 10px;
   /*margin-top: 50px;*/
 }
+/*
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+  .carousel {
+    width: 180px;
+    height: 180px;
+  }
+}*/
+
+.carousel {
+  width: 300px;
+  height: 300px;
+}
+
+.carousel_img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.rn-carousel-indicator span{
+  font-size: 17px;
+  width: 300px;
+
+}
+
+.rn-carousel-control {
+  font-size: 55px;
+}
+
+.test {
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.rn-carousel-control.rn-carousel-control-next {
+    font-size: 45px;
+    margin-right: 290px;
+    color: rgb(255, 255, 255);
+}
+
+.rn-carousel-control.rn-carousel-control-prev {
+    font-size: 45px;
+    margin-left: 5px;
+    color: rgb(255, 255, 255);
+}
 
 /*END SHOPPING BAG MODAL*/
 
@@ -581,41 +688,179 @@ table th {
 }
 
 
-/*Admin Buttons*/
 
-.admin-delete-product{
-	border: 1px solid rgba(255, 13, 13, .8);
-/*	background-color: rgba(255, 234, 0, .3);*/
-	border-radius: 12px;
-	color: rgba(255, 13, 13, .95);
-	text-decoration: none;
-	margin : 20px;
-	padding: 5px 10px 5px 10px;
-	display: inline-block;
-	cursor: pointer;
+/*.checkout-button:hover {
+  outline: 1px solid #5e5e5e;
+}*/
+
+/*iphone 4 display*/
+/*@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+    .product-name-and-info-box {
+      margin: 0;
+    }
+    .product-info-box {
+      flex-direction: column;
+      color: red;
+      /*margin-left: 0;*/
+ /*   }
+    .interior-product-container {
+      flex-direction: column;
+      margin: 50px;*/
+      /*justify-content: center;*/
+     /* align-items: center;
+    }
+}*/
+
+/*iphone5 display*/
+/*@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .product-info-box {
+      flex-direction: column;
+      color: red;
+    }
+  }*/
+
+/** {
+  outline: 1px solid black;
+}*/
+
+.mobile-shopping-bag-title-container {
+  /*outline: 2px solid red;*/
+  height: 45px;
+  text-align: center;
+  border-bottom: 1.5px solid #5E5E5E;
+  border-bottom-width: 20%;
+  padding-bottom: 65px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: 300;
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  color: #2e2e2e;
+  letter-spacing: 1.1px;
 }
 
-.admin-delete-button {
-	background-color: rgba(255, 13, 13, .5);
-	border-radius: 12px;
-	color: #ffffff;
-	text-decoration: none;
-	margin : 20px;
-	padding: 10px 20px 10px 20px;
-	display: inline-block;
-	cursor : pointer;
+.mobile-whole-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #2e2e2e;
 }
 
-.admin-cancel-delete-button{
-	border: 1px solid rgba(0, 146, 14, .3);
-/*	background-color: rgba(255, 234, 0, .3);*/
-	border-radius: 12px;
-	color: rgba(0, 146, 14, .95);
-	text-decoration: none;
-	margin : 20px;
-	padding: 10px 20px 10px 20px;
-	display: inline-block;
-	cursor: pointer;
+.mobile-each-product-container {
+  display: flex;
+  /*outline: 3px solid orange;
+*/  padding-bottom: 1.5em;
+  /*border-bottom: 1px solid black;
+  margin-bottom: 1.5em;*/
+  /*margin-top: 20px;*/
+  width: 70%;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: #2e2e2e;
+  /*height: 300px;*/
+  justify-content: center;
+  /*overflow: auto;*/
 }
 
+.mobile-interior-product-container {
+  height: 100%;
+  /*outline: 2px dotted black;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: .1em solid #2e2e2e;
+  padding-bottom: 1em;
+  /*margin: 50px;*/
+}
+
+.mobile-cart-pic-container {
+  height: 10em;
+  width: 10em;
+  /*min-height: 100px;
+  min-width: 100px;
+  max-height: 100px;
+  min-width: 100px;*/
+  /*outline: 5px solid black;*/
+}
+
+.mobile-cart-pic {
+  height: 100%;
+  width: 100%;
+}
+
+.mobile-product-name-and-info-box {
+  /*margin: 10px 0 0 60px;
+  width: 40%;*/
+}
+
+.mobile-product-name {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: .5em;
+  margin-top: .5em;
+  /*font-weight: 400;*/
+}
+
+.mobile-product-info-box {
+  /*margin-top: 10px;
+  height: 150px;
+*/  /*outline: 4px solid blue;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.mobile-product-category-name {
+  font-weight: 300;
+  color: #5e5e5e;
+}
+
+.mobile-remove-box {
+  margin-top: .7em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 2%;
+  /*margin-left: 45px;*/
+  /*outline: 3px solid black;*/
+  font-size: 16px;
+  /*font-weight: 400;*/
+}
+
+.mobile-remove-product:hover {
+  cursor: pointer;
+}
+
+.mobile-cart-total {
+  border-top: 1.5px solid #5E5E5E;
+  margin-top: -20px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  /*outline: 2px solid orange;*/
+  text-align: center;
+  /*border-top: 2px solid black;*/
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1.1px;
+}
+
+.mobile-total-price {
+  margin-bottom: 15px;
+}
+
+.mobile-checkout-button {
+  color: black;
+  border: 1px solid #5e5e5e;
+  padding: 5px 10px 5px 10px;
+  /*margin-top: 50px;*/
+}
 

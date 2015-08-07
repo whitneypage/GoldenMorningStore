@@ -17,7 +17,14 @@
 <div class="animated fadeIn">
 	<div id="modal1" class="productModal">
 	      <h4>{{ product.productTitle }}</h4>
-	   <div class="carousel" ng-repeat="image in product.images">
+
+        <ul rn-carousel class="image"> HEY 
+          <li ng-repeat="image in product.images">
+            <img class="carousel_img" ng-src="{{ image }}"/>
+          </li>
+        </ul>
+
+<!--    <div class="carousel" ng-repeat="image in product.images">
 	      	<a class="thumbnail" href="{{ image }}"><img ng-src="{{ image }}" /></a>
 
 	      </div>
@@ -25,7 +32,7 @@
 	      <div id="imageWrap">
 	      		<img ng-src="https://s3-us-west-2.amazonaws.com/goldmorning/bottoms2.jpg" alt="Main Image" id="mainImage"/>
 			</div>
-	      <p>{{ product.price }}</p>
+ -->	      <p>{{ product.price }}</p>
 	 </div>
 </div>
 

@@ -74,25 +74,42 @@
 						</a>			
 					</figcaption>
 				</figure>
-				<a class="waves-effect waves-light modal-trigger" ng-href="#/admin/product/{{product._id}}">
-					<p>{{product.productTitle}}</p>
-				</a>
-				<p>DETAILS : {{product.productDescription}}</p>
-				<p>category : {{product.productCategory}}</p>
-				<h5>current selection</h5>
-					<p>color : {{colorSize.color}}</p>
-					<p>Sm : {{colorSize.smallQty}} | Med : {{colorSize.mediumQty}} | Lg : {{colorSize.largeQty}}</p>
-					<p class="admin-delete-product" ng-click="showConfirmDelete(product._id)">Delete Product</p>
-					
-						<p ng-show="confirmDelete && (product._id === confirmId)">Are you sure you want to delete {{product.productTitle}}?  This will remove it from your collection.</p>
-						<div class="admin-delete-button" ng-click="deleteProduct(product._id)" ng-show="confirmDelete && (product._id === confirmId)">Yes, delete the item and all colors</div><div ng-click="hideConfirmDelete(product._id)" class="admin-cancel-delete-button" ng-show="confirmDelete && (product._id === confirmId)">No thanks</div>
 				
+				<a class="btn-flat" ng-href="#/admin/product/{{product._id}}">
+						<h5>{{product.productTitle}}</h5>
+				</a>
+
+				<p>DETAILS: {{product.productDescription}}<br>
+				CATEGORY: {{product.productCategory}}<br>
+				COLOR: {{colorSize.color}}<br></p>
+
+				<p>S: {{colorSize.smallQty}} | M: {{colorSize.mediumQty}} | L: {{colorSize.largeQty}}</p>
+				
+				<p class="admin-delete-product" ng-click="showConfirmDelete(product._id)">DELETE</p>
+						
+				<p class="confirm" ng-show="confirmDelete && (product._id === confirmId)">are you sure you want to delete {{product.productTitle}}?</p>
+				
+				<div class="admin-delete-button" 
+				ng-click="deleteProduct(product._id)" 
+				ng-show="confirmDelete && (product._id === confirmId)">
+
+				YES, DELETE THIS ITEM AND ALL COLORS
+				</div>
+
+				<div class="admin-cancel-delete-button" 
+				ng-click="hideConfirmDelete(product._id)" 
+				ng-show="confirmDelete && (product._id === confirmId)">
+				
+				NO THANK YOU
+				</div>
 					
+						
 				<p class="product-price">${{ product.price }}</p>
 
 			</li>
 		</ul>
 	</div>	
+</div>
 </div>
 	
 
