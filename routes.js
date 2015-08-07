@@ -13,6 +13,8 @@ var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 var fs = require('fs');
 var config = require('./apis/config/keys');
+var mongoose = require('mongoose');
+var connectMongo = require('connect-mongo');
 
 var auth = function(req, res, next) {
 	if (!req.isAuthenticated()){
@@ -24,6 +26,8 @@ var auth = function(req, res, next) {
 
 
 var app = express.Router();
+var MongoStore = connectMongo(session);
+
 
 exports.init = function(c){
 	config = c;
@@ -53,9 +57,13 @@ function isAdmin(req, res, next){
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(session({
-   secret: process.env.SESSION_SECRET || "goldmorningshopsecret",
-   resave: false,
-   saveUninitialized: true }));
+	secret: process.env.SESSION_SECRET || "goldmorningshopsecret",
+	resave: false,
+	saveUninitialized: true, 
+	store : new MongoStore({
+		mongooseConnection : mongoose.connection
+})	
+}));
 
 passport.use(new LocalStrategy(
 	function(username, password, done) {
