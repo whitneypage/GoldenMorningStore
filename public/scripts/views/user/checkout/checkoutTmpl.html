@@ -1,5 +1,4 @@
 SHOPPING CART
-
 <div ng-init="getTotal()">
 	<div ng-repeat="product in cart">
 		<div class="product">
@@ -11,6 +10,24 @@ SHOPPING CART
 			</div>
 		</div>
 	</div>
-	<div>total price: {{total}}</div>
-	
+	<div>total price: {{total}}</div>	
+</div>
+dfdsfsfsadfsadfasdf
+<div>
+	<div>
+		<button ng-click="paypal()">pay with paypal</button>
+	</div>
+	<div>
+		<p>Guest Checkout</p>
+		Name: <input placeholder="Name">
+		Email: <input placeholder="Email">
+		Address: <input placeholder="Address">
+		City: <input placeholder="City">
+		State: <input placeholder="State">
+		Zip: <input placeholder="Zip">
+		CC Number: <input placeholder="CC">
+		Exp Date: <input placeholder="Exp Date">
+		CCV: <input placeholder="CCV">
+	</div>
+	<button ng-click="submitCC()">Submit Payment</button>
 </div>

@@ -1,5 +1,7 @@
 var Order = require('../models/orderSchema');
 var Product = require('../models/productsSchema');
+var Paypal = require('paypal-rest-sdk');
+var session = require('express-session');
 
 module.exports = {
 
@@ -17,8 +19,7 @@ module.exports = {
 	}
 
 	, getOrder: function(req, res) {
-		Order.find(req.query)
-		/*the line below should be changed later*/
+		Order.findById(req.params.id)
 		.populate('products.product')
 		.exec(function(err, data) {
 			if(err) {
@@ -32,7 +33,7 @@ module.exports = {
 
 	, getAllOrders: function(req, res) {
 		Order.find({})
-		.populate('orders')
+		.populate('products.product')
 		.exec(function(err, result) {
 			if(err) {
 				res.status(500).json(err);
@@ -50,6 +51,34 @@ module.exports = {
 			}
 			res.send(data);
 		})
+	}
+
+	, pmtCreate: function(req, res) {
+			Paypal.payment.create(req.body.payment, function (error, payment) {
+	  if (error) {
+	    console.log(error);
+	  } else {
+	    res.json(payment)
+	  }
+	});
+}
+
+
+
+	, pmtExecute: function(req, res){
+		// var paymentId = session.payment.id;
+	 //  var payerId = req.params.payerId;
+		// console.log('pmt EXECUTE!!!', 'paymentId', paymentId, 'payerId', payerId)
+
+	  var details = { "payer_id": "EC-6XD92317T3033605D" };
+	  console.log("DETAILS", details)
+	  Paypal.payment.execute("PAY-7AS67526M92359017KXBNQKA", details, function (error, payment) {
+	    if (error) {
+	      console.log(error);
+	    } else {
+	      res.send("Hell yeah!");
+	    }
+	  });
 	}
 
 };
