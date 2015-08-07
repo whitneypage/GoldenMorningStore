@@ -98,7 +98,7 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 
 app.directive('cartModal', function() {
 	var modal = function(scope, element, attrs) {
-		$(element).on('click', 'i', function() {
+		$(element).on('click', function() {
 			console.log('clicked!', scope.cart);
 			$('#modal2').openModal();
 		});

@@ -12,6 +12,7 @@
   </div>
 
 <!-- End Header -->
+
     <!-- Nav Start -->
     <nav id="nav">
         <div class="nav-wrapper">
@@ -98,7 +99,7 @@
             <div class="each-product-container" ng-repeat="product in cart">
                 <div class="interior-product-container">
                     <div class="cart-pic-container">
-                        <img class="cart-pic" src="{{product.imageUrl}}" />
+                        <img class="cart-pic" ng-src="{{product.imageUrl}}" />
                     </div>
                     <div class="product-name-and-info-box">
                         <div class="product-name">{{product.name}}</div>
@@ -128,7 +129,7 @@
         <div class="cart-total">
             <div class="total-price">
                 <h5>TOTAL: ${{total}}</h5></div>
-            <a ng-href="/#/checkout" class="checkout-button">CHECKOUT</a>
+            <a ng-href="/#/checkout" class="checkout-button" onClick="$('#modal2').closeModal();">CHECKOUT</a>
         </div>
     </div>
 </div>

@@ -1,33 +1,115 @@
-SHOPPING CART
-<div ng-init="getTotal()">
-	<div ng-repeat="product in cart">
-		<div class="product">
-			<div>
-				<img class="cart-images" src="{{product.imageUrl}}" width="300px"/>
-				<p>{{product.name}} | {{product.color}} | {{product.size}} | {{product.price}} 
-				</p>			
-				<button ng-click="removeProductFromCart(product._id)">Remove item from cart</button>
+<div class="wrapper">
+	<h3 id="checkOutHead" class="right-align animated fadeIn">SHIPPING SOON</h3>
+	<div class="checkout container">
+		<div ng-init="getTotal()">
+			<div class="row" id="orderGrid">
+				<div ng-repeat="product in cart" id="imageSum" class="col l3 s12">
+						<img class="cart-images" ng-src="{{product.imageUrl}}" width="250px" />
+						<p id="imageSumP">{{product.name}} <br>
+						{{product.color}} | {{product.size}} | $ {{product.price}} 
+						</p>			
+						<a class="removeOrder" ng-click="removeProductFromCart(product.refId)">REMOVE FROM CART</a>
+					</div>
+				</div>
 			</div>
+
+			<h4 id="orderTotal" class="center-align">ORDER TOTAL: $ {{total}}</h4>
+
+			<br>	
+	
+	<div class="row">
+
+		<div class="col l8 s12" id="payOptions1">
+			<h5 id="payHead">CHECKOUT AS GUEST</h5><br>
+			
+			<div class="row">
+					<form class="col l12 s12">
+
+						<div class="row">
+							<div class="input-field col s5">
+									<input type="text" placeholder="NAME">
+							</div>
+							<div class="input-field col s6">
+								<input type="email" placeholder="EMAIL"><br>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s9">
+								<input type="text" placeholder="STREET ADDRESS">
+							</div>
+							<div class="input-field col s2">
+								<input type="checkbox" id="bill" ng-model="checked">
+								<label for="bill">DIFFERENT THAN BILLING</label>
+							</div>
+						</div>
+
+						<div class="row">
+								<div class="input-field col s5">
+									<input type="text" placeholder="CITY">
+								</div>
+								<div class="input-field col s4">
+									<input type="text" placeholder="STATE">
+								</div>
+								<div class="input-field col s2">
+									<input type="text" placeholder="ZIP">
+								</div>
+						</div>
+
+						<!-- hidden billing address form -->
+
+						<div class="row" ng-show="checked">
+							<div class="input-field col s9">
+								<input type="text" placeholder="BILLING ADDRESS">
+							</div>
+						</div>
+
+						<div class="row" ng-show="checked">
+								<div class="input-field col s5">
+									<input type="text" placeholder="CITY">
+								</div>
+								<div class="input-field col s4">
+									<input type="text" placeholder="STATE">
+								</div>
+								<div class="input-field col s2">
+									<input type="text" placeholder="ZIP">
+								</div>
+						</div>
+
+						<!-- end of billing address form -->
+
+						<div class="row">
+							<div class="input-field col s10">
+								<input type="text" placeholder="CREDIT CARD #">
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s4">
+								<input type="text" placeholder="EXP DATE">
+							</div>
+							<div class="input-field col s4">
+								<input type="text" placeholder="CCV">
+							</div>
+						</div>
+
+					</form>
+				</div>
+
+					<div id="placeOrder">
+						<a class="btn-large waves-effect waves-light" ng-click="submitCC()">PLACE ORDER</a>
+					</div>
+
+			</div>
+			
+			<div class="col l4 s12" id="payOptions2">
+				<h5 id="payHead">CHECKOUT WITH PAYPAL</h5><br>
+				<img class="paypal" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" alt="PayPal" ng-click="paypal()">
+			</div>
+
 		</div>
+			
 	</div>
-	<div>total price: {{total}}</div>	
+
 </div>
-dfdsfsfsadfsadfasdf
-<div>
-	<div>
-		<button ng-click="paypal()">pay with paypal</button>
-	</div>
-	<div>
-		<p>Guest Checkout</p>
-		Name: <input placeholder="Name">
-		Email: <input placeholder="Email">
-		Address: <input placeholder="Address">
-		City: <input placeholder="City">
-		State: <input placeholder="State">
-		Zip: <input placeholder="Zip">
-		CC Number: <input placeholder="CC">
-		Exp Date: <input placeholder="Exp Date">
-		CCV: <input placeholder="CCV">
-	</div>
-	<button ng-click="submitCC()">Submit Payment</button>
 </div>
