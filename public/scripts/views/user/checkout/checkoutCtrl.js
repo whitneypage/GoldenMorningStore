@@ -1,6 +1,6 @@
 var app = angular.module('GoldMorning');
 
-app.controller('checkoutCtrl', function($scope, cart, cartService) {
+app.controller('checkoutCtrl', function($window, $scope, cart, cartService) {
 
 	$scope.cart = cart;
 	
@@ -9,6 +9,7 @@ app.controller('checkoutCtrl', function($scope, cart, cartService) {
 	$scope.removeProductFromCart = function(product) { 
 		cartService.removeProductFromCart(product);
 	};
+
 	var payment = {
 	  "intent": "sale",
 	  "payer": {
@@ -34,12 +35,56 @@ app.controller('checkoutCtrl', function($scope, cart, cartService) {
 	  }]
 	};
 
-	$scope.name = "andy";
-
 	$scope.product = payment;
 
 	$scope.orderDetails = {};
 
+	$scope.paypalCheckout = function(){
+		var products = [];
+		var total = $scope.getTotal();
+		for(var i = 0; i < cart.length; i++){
+			var newProduct = {
+				product: cart[i].refId,
+				size: cart[i].size,
+				color: cart[i].color,
+				colorSizeId: cart[i].colorSizeId
+			};
+			products.push(newProduct);
+		}
+		var order = {products: products, total: total};
+		cartService.createOrder(order).then(function(data){
+			var payment = {
+			  "intent": "sale",
+			  "payer": {
+			    "payment_method": "paypal"
+			  },
+			  "redirect_urls": {
+			    "return_url": "http://localhost:1337/#/thankyou",
+			    "cancel_url": "http://localhost:1337/#/cancel"
+			  },
+			  "transactions": [{
+			    "amount": {
+			      "total": $scope.total,
+			      "currency": "USD"
+			    },
+			    "description": "GoldMorningStore order # " + data.data._id
+			  }]
+			};
+			cartService.createPmt(payment).then(function(data){
+				
+				console.log("response from paypal payment create request", data)
+		      var redirectUrl;
+		      for(var i=0; i < data.data.links.length; i++) {
+		        var link = data.data.links[i];
+		        if (link.method === 'REDIRECT') {
+		          redirectUrl = link.href;
+		        }
+		      }
+		      // $window.location.href = redirectUrl;
+				});
+		});
+	};
+	
 	$scope.sendPmt = function(){
 		console.log('pmt sent', payment);
 		Paypal.payment.create(req.body.payment, function (error, payment) {
