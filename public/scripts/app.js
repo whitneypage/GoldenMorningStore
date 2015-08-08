@@ -23,7 +23,7 @@ app.config(function($routeProvider) {
 		templateUrl : 'scripts/views/user/cart/cartTmpl.html',
 		controller: 'cartCtrl'
 	})
-	.when('/thankyou/?:paypalId/', {
+	.when('/thankyou/:paypalId/', {
 		templateUrl : 'scripts/views/user/checkout/confirm.html',
 		controller : 'cartCtrl', 
 	})

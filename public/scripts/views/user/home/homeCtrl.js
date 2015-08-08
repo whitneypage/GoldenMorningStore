@@ -2,12 +2,9 @@ var app = angular.module('GoldMorning');
 
 app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 
-	$scope.openProductModal = false;
-
-	$scope.productModalData = function(product) {
-		console.log("test", product);
-		$scope.product = product;
-	}
+	$scope.scroll = function() {
+    console.log("clicked");
+  }
 
 	$scope.open = function() {
 		$scope.openProductModal = !$scope.openProductModal
@@ -97,37 +94,11 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 });// end homeCtrl
 
 
-// Product Modal CUSTOM DIRECTIVE
-
-app.directive('productModal', function() {
-	// var modal = function(scope, element, attrs) {
-	// 	$(element).on('click', 'img', function() {
-	// 		$('#modal1').openModal();
-	// 	});
-	// };
-
-	return {
-		restrict: 'AE',
-		templateUrl: './scripts/views/user/home/productModalTmpl.html',
-		scope: {
-			showProductModal: '&',
-			open: '&',
-			openProductModal: '=',
-			product: '='
-		},
-		controller: function($scope) {
-			$scope.productModalData = function(product) {
-				$scope.product = product;
-			};
-		}
-	}
-});
-
 // Cart Modal Directive
 
 app.directive('cartModal', function() {
 	var modal = function(scope, element, attrs) {
-		$(element).on('click', 'i', function() {
+		$(element).on('click', function() {
 			console.log('clicked!', scope.cart);
 			$('#modal2').openModal();
 		});
