@@ -23,7 +23,11 @@ app.config(function($routeProvider) {
 		templateUrl : 'scripts/views/user/cart/cartTmpl.html',
 		controller: 'cartCtrl'
 	})
-	.when('/checkout', {
+	.when('/thankyou/?:paypalId/', {
+		templateUrl : 'scripts/views/user/checkout/confirm.html',
+		controller : 'cartCtrl', 
+	})
+		.when('/checkout/', {
 		templateUrl : 'scripts/views/user/checkout/checkoutTmpl.html',
 		controller : 'checkoutCtrl', 
 		resolve: {
@@ -61,15 +65,6 @@ app.config(function($routeProvider) {
 			product : function(ProductService, $route) {
 				var productId = $route.current.params.productId;
 				return ProductService.getOneProduct(productId);
-			}
-		}
-	})
-	.when('/user/paypal', {
-		templateUrl: 'scripts/views/user/checkout/checkoutTmpl.html',
-		controller: 'checkoutCtrl',
-		resolve: {
-			cart: function(cartService) {
-				return cartService.getCart();
 			}
 		}
 	})

@@ -9,8 +9,6 @@ app.controller('ordersCtrl', function($scope, orders, orderService) {
         order.show = !order.show;
     }
 
-
-
 	$scope.orderStatusOptions = ['processing', 'shipped', 'on hold', 'canceled'];
 
 	$scope.updateOrder = function(orderId, orderNote, orderStatus) {

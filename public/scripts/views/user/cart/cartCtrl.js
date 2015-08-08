@@ -1,6 +1,6 @@
 var app = angular.module('GoldMorning');
 
-app.controller('cartCtrl', function($scope, ProductService) {
+app.controller('cartCtrl', function($scope, ProductService, $routeParams) {
 
 	$scope.test = "fee";
 
@@ -12,5 +12,8 @@ app.controller('cartCtrl', function($scope, ProductService) {
 		})
 	};
 
+var paypalId = ['{' + $routeParams.paypalId.replace(/=/ -g, ': \"').replace(/&/ -g, '\"}, {') + '}']
+
+console.log(paypalId)
 
 })//end cartCtrl

@@ -56,5 +56,12 @@ app.service('cartService', function($http, $q) {
 		})
 	}
 
+	// this.paymentSuccess = function(payerId){
+	// 	return $http({
+	// 		method: 'GET',
+	// 		url: '/api/paypal/success/' + payerId
+	// 	})
+	// }
+
 });// end cartService
 

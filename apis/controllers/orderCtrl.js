@@ -58,11 +58,23 @@ module.exports = {
 	  if (error) {
 	    console.log(error);
 	  } else {
+	  	console.log('PAYMENT', payment);
 	    res.json(payment)
-	  }
+		}
 	});
 }
 
+, successGet: function(req, res){
+		var payerId = req.params.id;
+		Paypal.payment.get(payerId, function(error, payerInfo){
+			  if(error){
+			    console.error(error);
+			  } else {
+			    console.log('payerInfo', payerInfo);
+			  	res.json(payerInfo)
+			  }
+		});
+}
 
 
 	, pmtExecute: function(req, res){
