@@ -13,6 +13,8 @@ var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 var fs = require('fs');
 var config = require('./apis/config/keys');
+var mongoose = require('mongoose');
+var connectMongo = require('connect-mongo');
 
 var auth = function(req, res, next) {
 	if (!req.isAuthenticated()){
@@ -24,6 +26,8 @@ var auth = function(req, res, next) {
 
 
 var app = express.Router();
+var MongoStore = connectMongo(session);
+
 
 exports.init = function(c){
 	config = c;
@@ -39,23 +43,19 @@ function cart(req, res, next){
 		next();
 	}
 next();
-};
-
-function isAdmin(req, res, next){
-	if(req.user){return next()}
-	else {
-    res.status(500).send('not an admin')
-  }
-};
-
+}
 
 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(session({
-   secret: process.env.SESSION_SECRET || "goldmorningshopsecret",
-   resave: false,
-   saveUninitialized: true }));
+	secret: process.env.SESSION_SECRET || "goldmorningshopsecret",
+	resave: false,
+	saveUninitialized: true, 
+	store : new MongoStore({
+		mongooseConnection : mongoose.connection
+})	
+}));
 
 passport.use(new LocalStrategy(
 	function(username, password, done) {
@@ -86,7 +86,7 @@ passport.deserializeUser(function(obj, done) {
 	
 	app.post('/api/upload', multipartMiddleware, productsCtrl.uploadPhoto);
 	app.get('/api/upload', productsCtrl.addPicturesGet);
-  app.post('/api/colorSize', auth, productsCtrl.updateColorSize)
+  app.post('/api/colorSize', auth, productsCtrl.updateColorSize);
 	// app.post('/api/upload', productsCtrl.uploadPhoto)
 
   // app.get('/api/products/image', productsCtrl.uploadImage)
