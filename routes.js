@@ -86,7 +86,7 @@ passport.deserializeUser(function(obj, done) {
 	
 	app.post('/api/upload', multipartMiddleware, productsCtrl.uploadPhoto);
 	app.get('/api/upload', productsCtrl.addPicturesGet);
-  app.post('/api/colorSize', auth, productsCtrl.updateColorSize);
+  app.post('/api/colorSize', productsCtrl.updateColorSize);
 	// app.post('/api/upload', productsCtrl.uploadPhoto)
 
   // app.get('/api/products/image', productsCtrl.uploadImage)

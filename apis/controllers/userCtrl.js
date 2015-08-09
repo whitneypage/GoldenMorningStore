@@ -17,7 +17,7 @@ module.exports = {
 	},
 	
 	loginAdmin : function(req, res) {
-		res.send(req.user)
+		res.send(req.user);
 	}
 	
 };// end module.exports
