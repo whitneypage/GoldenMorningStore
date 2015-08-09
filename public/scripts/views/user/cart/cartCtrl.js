@@ -79,6 +79,4 @@ app.controller('cartCtrl', function($scope, ProductService, cart, cartService, $
 			ProductService.decrementSize($scope.cart);
 		};//end decSizesFromCart
 
->>>>>>> 1295d06402d901fd6b34ed1ea2fc67669950e19e
-
 })//end cartCtrl

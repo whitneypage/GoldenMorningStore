@@ -1,6 +1,6 @@
 var app = angular.module('GoldMorning');
 
-app.controller('checkoutCtrl', function($window, $rootScope, $scope, cart, cartService) {
+app.controller('checkoutCtrl', function($window, $routeParams, $scope, cart, cartService) {
 
 	$scope.cart = cart;
 	
@@ -62,7 +62,7 @@ app.controller('checkoutCtrl', function($window, $rootScope, $scope, cart, cartS
 			    "payment_method": "paypal"
 			  },
 			  "redirect_urls": {
-			    "return_url": "http://localhost:1337/#/thankyou/",
+			    "return_url": "http://localhost:1337/#/thankyou",
 			    "cancel_url": "http://localhost:1337/#/cancel"
 			  },
 			  "transactions": [{
@@ -105,6 +105,9 @@ app.controller('checkoutCtrl', function($window, $rootScope, $scope, cart, cartS
 	};// end getTotal;
 		
 	$scope.getTotal();
+
+	$scope.name = 'test';
+	$scope.payerId = $routeParams.param1.payerID;
 
 });// end checkoutCrtl
 

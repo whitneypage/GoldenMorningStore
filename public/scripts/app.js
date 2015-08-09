@@ -23,9 +23,9 @@ app.config(function($routeProvider) {
 		templateUrl : 'scripts/views/user/cart/cartTmpl.html',
 		controller: 'cartCtrl'
 	})
-	.when('/thankyou/:paypalId/', {
+	.when('/thankyou', {
 		templateUrl : 'scripts/views/user/checkout/confirm.html',
-		controller : 'cartCtrl', 
+		controller : 'checkoutCtrl', 
 	})
 		.when('/checkout/', {
 		templateUrl : 'scripts/views/user/checkout/checkoutTmpl.html',
@@ -72,6 +72,6 @@ app.config(function($routeProvider) {
 		templateUrl : 'scripts/views/admin/login/adminLogin.html',
 		controller : 'adminLoginCtrl'
 	})
-	.otherwise('/');
+	// .otherwise('/');
 });//end app.config in app.js
 
