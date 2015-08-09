@@ -1,4 +1,4 @@
-var app = angular.module('GoldMorning', ['ngRoute', 'ui.materialize', 'flow', 'angular-carousel']);
+var app = angular.module('GoldMorning', ['ngRoute', 'ui.materialize', 'flow', 'angular-carousel', 'smoothScroll']);
 
 app.config(function($routeProvider) {
 	$routeProvider
