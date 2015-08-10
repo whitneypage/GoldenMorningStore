@@ -39,5 +39,29 @@ app.service('cartService', function($http, $q) {
 	}
 		return total;
 	};// end calculatePrice
+
+	this.createOrder = function(cartObj){
+		return $http({
+			method: 'POST',
+			url: '/api/user/order',
+			data: cartObj
+		})
+	}
+
+	this.createPmt = function(paymentObj){
+		return $http({
+			method: 'POST',
+			url: '/api/paypal',
+			data: {payment: paymentObj}
+		})
+	}
+
+	// this.paymentSuccess = function(payerId){
+	// 	return $http({
+	// 		method: 'GET',
+	// 		url: '/api/paypal/success/' + payerId
+	// 	})
+	// }
+
 });// end cartService
 

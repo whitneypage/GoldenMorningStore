@@ -1,6 +1,6 @@
 var app = angular.module('GoldMorning');
 
-app.controller('cartCtrl', function($scope, ProductService, cart, cartService) {
+app.controller('cartCtrl', function($scope, ProductService, cart, cartService, $routeParams) {
 
 	$scope.openProductModal = false;
 
@@ -20,6 +20,10 @@ app.controller('cartCtrl', function($scope, ProductService, cart, cartService) {
 			$scope.products = data;
 		})
 	};
+
+// var paypalId = ['{' + $routeParams.paypalId.replace(/=/ -g, ': \"').replace(/&/ -g, '\"}, {') + '}']
+
+// console.log(paypalId)
 
 	// $scope.changeFilter = function(filter){
 	// 	$scope.productFilter = filter;
@@ -67,11 +71,12 @@ app.controller('cartCtrl', function($scope, ProductService, cart, cartService) {
 
 	$scope.getTotal = function() {
 		$scope.total = cartService.calculatePrice($scope.cart);
+		console.log($scope.cart);
+		console.log($scope.total);
 	}; // end $scope.getTotal
 	
 		$scope.decSizesFromCart = function() {
 			ProductService.decrementSize($scope.cart);
 		};//end decSizesFromCart
-
 
 })//end cartCtrl
