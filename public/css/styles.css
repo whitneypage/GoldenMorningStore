@@ -36,6 +36,10 @@ body {
   font-weight: 100;
 }
 
+.headline-main i:hover {
+  cursor: pointer;
+}
+
 .fixed {
   position: fixed; 
   top: 0; 
@@ -890,7 +894,9 @@ table th {
   /*padding: .5em 1em .5em 1em;*/
   /*margin-top: 50px;*/
 }
+
 /*START CHECKOUT PAGE*/
+
 .checkout {
   width: 80%;
   padding: 20px;

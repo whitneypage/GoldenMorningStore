@@ -1,5 +1,5 @@
 <div class="wrapper">
-	<h3 id="checkOutHead" class="right-align animated fadeIn">SHIPPING SOON</h3>
+	<h2 id="checkOutHead" class="right-align animated fadeIn">SHIPPING SOON</h2>
 	<div class="checkout container">
 		<div ng-init="getTotal()">
 			<div class="row" id="orderGrid">
@@ -104,7 +104,15 @@
 			
 			<div class="col l4 s12" id="payOptions2">
 				<h5 id="payHead">CHECKOUT WITH PAYPAL</h5><br>
-				<img class="paypal" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" alt="PayPal" ng-click="paypalCheckout()">
+				<img class="paypal" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" alt="PayPal" ng-click="paypalCheckout(); loading=true">
+
+				<br>
+				<br>
+				
+				<div class="progress animated fadeIn" ng-show="loading">
+      		<div class="indeterminate"></div>
+  			</div>
+        
 			</div>
 
 		</div>
