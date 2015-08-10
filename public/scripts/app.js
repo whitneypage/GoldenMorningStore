@@ -75,3 +75,9 @@ app.config(function($routeProvider) {
 	.otherwise('/');
 });//end app.config in app.js
 
+app.run(function ($rootScope, $window) {
+ $rootScope.$on("$routeChangeSuccess", function(event){
+    $window.scrollTo(0,0);
+})
+})
+
