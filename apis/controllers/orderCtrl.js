@@ -53,16 +53,64 @@ module.exports = {
 		})
 	}
 
+	, updateOrderByPaymentId: function(req, res){
+		var PayerID = {payer_id: req.body.PayerID};
+		// console.log("paymentId88888", req.params.id, "payerid8888", PayerID)
+		Paypal.payment.execute(req.params.id, PayerID, function(error, payment){
+		  if(error){
+		    console.error(error);
+		  } else {
+		  	var cust = payment.payer.payer_info;
+		  	var orderObj = {
+		  		customer: {
+		  			name: {
+		  				first: cust.first_name,
+		  				last: cust.last_name
+		  			},
+		  			email: cust.email,
+		  			payerId: cust.payer_id,
+		  			shippingAddress: {
+		  				street: cust.shipping_address.line1,
+		  				city: cust.shipping_address.city,
+		  				state: cust.shipping_address.state,
+		  				zip: cust.shipping_address.postal_code,
+		  				country: cust.shipping_address.country_code
+		  			}
+		  		}
+		  	};
+				Order.findOneAndUpdate(req.query.id, orderObj, function(err, data){
+					if(err) {
+						res.status(500).send(err);
+						console.log(err);
+					}
+					res.json(data);
+				})
+		  }
+		});
+	}
+
 	, pmtCreate: function(req, res) {
 			Paypal.payment.create(req.body.payment, function (error, payment) {
 	  if (error) {
 	    console.log(error);
 	  } else {
+	  	console.log('PAYMENT', payment);
 	    res.json(payment)
-	  }
+		}
 	});
 }
 
+, successGet: function(req, res){
+		var payerId = req.params.id;
+		Paypal.payment.get(payerId, function(error, payerInfo){
+			  if(error){
+			    console.error(error);
+			  } else {
+			    console.log('payerInfo', payerInfo);
+			  	res.json(payerInfo)
+			  }
+		});
+}
 
 
 	, pmtExecute: function(req, res){
