@@ -15,6 +15,7 @@ var fs = require('fs');
 var config = require('./apis/config/keys');
 var mongoose = require('mongoose');
 var connectMongo = require('connect-mongo');
+var flash = require('connect-flash');
 
 var auth = function(req, res, next) {
 	if (!req.isAuthenticated()){
@@ -24,9 +25,10 @@ var auth = function(req, res, next) {
 	}
 };// end auth middleware to limit route access
 
+var MongoStore = connectMongo(session);
 
 var app = express.Router();
-var MongoStore = connectMongo(session);
+
 
 
 exports.init = function(c){
@@ -34,7 +36,7 @@ exports.init = function(c){
 	paypal.configure(c.api);
 };
 
-exports.app = function(app){
+exports.app = function(app, passport){
 
 
 function cart(req, res, next){
@@ -46,16 +48,18 @@ next();
 }
 
 
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(session({
 	secret: process.env.SESSION_SECRET || "goldmorningshopsecret",
 	resave: false,
 	saveUninitialized: true, 
 	store : new MongoStore({
 		mongooseConnection : mongoose.connection
-})	
+	})	
 }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 passport.use(new LocalStrategy(
 	function(username, password, done) {
@@ -79,7 +83,28 @@ passport.deserializeUser(function(obj, done) {
    done(null, obj);
 });
 
-	app.post('/api/admin', userCtrl.createAdmin);
+	//RH LOGIN ROUTES
+	
+		app.get('/api/login', function(req, res) {
+		res.render('login.ejs', {message : req.flash('loginMessage')});
+	});
+	
+	app.get('/api/register', function(req, res) {
+		res.render('register.ejs', {message : 				req.flash('signupMessage')});
+	});// end get registration page
+	//app.post('/api/register', passport.authenticate('local-signup', {
+//		successRedirect : '/#/admin/home',
+//		failureRedirect : '/',
+//		failureFlash : true
+//	}));
+	
+	app.get('/api/logout', function(req, res){
+		res.logout();
+		res.redirect('/#/');
+	});
+	
+	
+	app.post('/api/register', userCtrl.createAdmin);
 	app.get('/api/admin/loggedin', userCtrl.checkLoggedIn);
 	
 	
