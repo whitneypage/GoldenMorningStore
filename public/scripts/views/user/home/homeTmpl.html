@@ -52,7 +52,6 @@
                             <!--begin product modal-->
                             <div id="productModal" class="modal">
                                 <div class="modal-content">
-                            
                                       <div class="product-photo-and-info">
                                         <div class="product-photo-box">
                                           <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
@@ -77,26 +76,17 @@
                                                   <option ng-repeat="colorOption in selectedProduct.colorSize">{{colorOption.color}}</option>
                                                 </select>
                                               </div>
-                                              <div class="product-modal-size-dropdown">
-                                                <select ng-show="!anyAvailable(colorSize)" ng-model="colorSize" material-select watch >
-                                                  <option>
-                                                    <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)"></span>
-                                                    <span class="inStock" ng-show="inStock(colorSize.smallQty)"></span>
-                                                  </option>
-                                                  <option>
-                                                    <span class="outOfStock" ng-show="!inStock(colorSize.mediumQty)"></span>
-                                                    <span class="inStock" ng-show="inStock(colorSize.mediumQty)"></span>
-                                                  </option>
-                                                  <option>
-                                                    <span class="outOfStock" ng-show="!inStock(colorSize.largeQty)"></span>
-                                                    <span class="inStock" ng-show="inStock(colorSize.largeQty)"></span>
-                                                  </option>
-                                                </select>
+                                              <div class="product-modal-size-buttons">
+                                                <div ng-model="colorSize" ng-repeat="colors in selectedProduct.colorSize.color">
+                                                  <button ng-if="colorSize.smallQty">S</button>
+                                                  <button ng-if="colorSize.mediumQty">M</button>
+                                                  <button ng-if="colorSize.largeQty">L</button>
+                                                </div>
                                               </div>
                                             </div>
 
                                             <button>ADD TO BAG</button>
-                                            <div class="product-modal-description">{{selectedProduct.productDescription}}</div>
+                                            <div class="product-modal-description">PRODUCT DETAILS<br>{{selectedProduct.productDescription}}</div>
                                           </div>
                                         </div>
                                       </div>
@@ -114,7 +104,7 @@
                                     <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)">S</span>
                                 </div>
                                 <div class="test" ng-show="anyAvailable(colorSize)">
-                                    <span>WANT TO SEE THIS ITEM COME BACK?</span>
+                                    <span>SOLD OUT <strong>| </strong> WANT TO SEE THIS ITEM COME BACK ?</span>
                                     <form ng-submit="findColorSizeIndex(colorSize._id)" onsubmit="Materialize.toast('THANKS! WE WILL KEEP YOU IN THE LOOP!', 2500, 'rounded')">
                                         <input ng-model="emailList.wantEmail" type="email" placeholder=" Enter Email Here" />
                                     </form>
