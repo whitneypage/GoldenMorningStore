@@ -52,7 +52,7 @@
                             <!--begin product modal-->
                             <div id="productModal" class="modal">
                                 <div class="modal-content">
-                                    <h4>{{selectedProduct.productTitle}}</h4>
+                           <!--          <h4>{{selectedProduct.productTitle}}</h4> -->
                                       <div class="product-photo-and-info">
                                         <div class="product-photo-box">
                                           <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
@@ -67,7 +67,7 @@
                                           </div>
                                         </div>
                                         <div class="product-info">
-                                          <div class="product-object">{{selectedProduct}}</div>
+                                          <div class="product-object">{{selectedProduct.productTitle}} </div>
                                         </div>
                                       </div>
                                 </div>
@@ -84,7 +84,7 @@
                                     <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)">S</span>
                                 </div>
                                 <div class="test" ng-show="anyAvailable(colorSize)">
-                                    <span>WANT TO SEE THIS ITEM COME BACK?</span>
+                                    <span>SOLD OUT <strong>| </strong> WANT TO SEE THIS ITEM COME BACK ?</span>
                                     <form ng-submit="findColorSizeIndex(colorSize._id)" onsubmit="Materialize.toast('THANKS! WE WILL KEEP YOU IN THE LOOP!', 2500, 'rounded')">
                                         <input ng-model="emailList.wantEmail" type="email" placeholder=" Enter Email Here" />
                                     </form>
