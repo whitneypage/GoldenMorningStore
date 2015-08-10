@@ -55,7 +55,6 @@ module.exports = {
 
 	, updateOrderByPaymentId: function(req, res){
 		var PayerID = {payer_id: req.body.PayerID};
-		// console.log("paymentId88888", req.params.id, "payerid8888", PayerID)
 		Paypal.payment.execute(req.params.id, PayerID, function(error, payment){
 		  if(error){
 		    console.error(error);
@@ -111,22 +110,5 @@ module.exports = {
 			  }
 		});
 }
-
-
-	, pmtExecute: function(req, res){
-		// var paymentId = session.payment.id;
-	 //  var payerId = req.params.payerId;
-		// console.log('pmt EXECUTE!!!', 'paymentId', paymentId, 'payerId', payerId)
-
-	  var details = { "payer_id": "EC-6XD92317T3033605D" };
-	  console.log("DETAILS", details)
-	  Paypal.payment.execute("PAY-7AS67526M92359017KXBNQKA", details, function (error, payment) {
-	    if (error) {
-	      console.log(error);
-	    } else {
-	      res.send("Hell yeah!");
-	    }
-	  });
-	}
 
 };
