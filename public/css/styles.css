@@ -59,6 +59,10 @@ nav a:hover {
   color: #424242;
 }
 
+.bag {
+  margin-right: 8px;
+}
+
 nav .brand-logo {
   color: #424242;
 }
