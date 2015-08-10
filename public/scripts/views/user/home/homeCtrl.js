@@ -6,6 +6,17 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
     console.log("clicked");
   }
 
+$scope.emailList = {};
+
+  $scope.findColorSizeIndex = function(color) {
+    console.log(color);
+    console.log($scope.emailList.wantEmail);
+    ProductService.findColorSizeIndex(color, $scope.emailList.wantEmail ).then(function(response) {
+      console.log(response);
+           $scope.emailList.wantEmail = "";
+    })
+  }
+
 	$scope.open = function() {
 		$scope.openProductModal = !$scope.openProductModal
 		console.log('open clicked ', $scope.openProductModal)
@@ -22,14 +33,7 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 			console.log('get product', data);
 			$scope.products = data;
 		})
-	};
-
-	
-
-	// $scope.changeFilter = function(filter){
-	// 	$scope.productFilter = filter;
-	// }
-	// $scope.productFilter = "bottom";
+	}
 
 	$scope.getProducts();
 
