@@ -55,6 +55,13 @@ nav a:hover {
   cursor: pointer;
 }
 
+.bagIcon {
+  color: #424242;
+}
+
+nav .brand-logo {
+  color: #424242;
+}
 /*PRODUCT GRID START*/
 
 #products {
@@ -120,9 +127,10 @@ nav a:hover {
 .add-size span {
   float: right;
   margin-right: 20px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 300;
 }
+
 
 .inStock:hover {
   color: #727272;
@@ -643,11 +651,14 @@ table th {
   height: 100%;
 }
 
+.rn-carousel-indicator {
+   background-color: rgba(0, 0, 0, 0.1);
+  
+}
 
 .rn-carousel-indicator span{
   font-size: 17px;
   width: 300px;
-
 }
 
 .rn-carousel-control {
