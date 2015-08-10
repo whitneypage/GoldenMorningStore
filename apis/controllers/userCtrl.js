@@ -12,6 +12,30 @@ module.exports = {
 		});
 	},// end createAdmin
 	
+	addUser : function(user, next) {
+		if(!user) {
+			
+		}
+		console.log(user, " user from within addUser");
+	var newUser = new User({
+		email : user.email.toLowerCase(),
+		password : user.password
+	});
+
+	newUser.save(function(err) {
+		if (err) {
+			return next(err);
+		}
+		next(null);
+	});
+},   // end addUser
+	
+	findUser : function(email, next) {
+		User.findOne({email : email.toLowerCase()}, function(err, user){
+			next(err, user);
+		});
+	},//end find user
+	
 	checkLoggedIn: function(req, res) {
 		res.send(req.isAuthenticated() ? req.user : '0');
 	},

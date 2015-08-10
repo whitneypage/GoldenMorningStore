@@ -15,7 +15,8 @@ var passport = require('passport');
 var connectMongo = require('connect-mongo');
 var flash = require('connect-flash');
 var morgan = require('morgan');
-
+var connectMongo = require('connect-mongo');
+var flash = require('connect-flash');
 // var routes = require('./routes');
 // var configJSON = fs.readFileSync(__dirname + "/apis/config/config.json");
 // var paypalConfig = JSON.parse(configJSON.toString());
@@ -23,6 +24,7 @@ var morgan = require('morgan');
 var port = 1337;
 
 mongoose.connect('mongodb://localhost:27017/GoldenMorningStore');
+var MongoStore = connectMongo(session);
 
 require('./apis/config/passport')(passport);
 
@@ -42,24 +44,28 @@ routes.init(paypalConfig);
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+	extended : true
+}));
 app.use(cors());
 app.use(express.static(__dirname+'/public'));
+app.use(flash());
 
 app.set('view engine', 'ejs'); // for making the login and register pages
 
 //RH MOVING PASSPORT THINGS HERE
 
 
-//app.use(session({
-//	secret: "goldmorningshopsecret",
-//	resave: false,
-//	saveUninitialized: true, 
-////	store : new MongoStore({
-////		mongooseConnection : mongoose.connection
-////	})	
-//}));
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(session({
+	secret: "goldmorningshopsecret",
+	resave: false,
+	saveUninitialized: true, 
+	store : new MongoStore({
+		mongooseConnection : mongoose.connection
+	})	
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 routes.app(app, passport);

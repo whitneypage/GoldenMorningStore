@@ -14,8 +14,7 @@ var multipartMiddleware = multipart();
 var fs = require('fs');
 var config = require('./apis/config/keys');
 var mongoose = require('mongoose');
-var connectMongo = require('connect-mongo');
-var flash = require('connect-flash');
+
 
 var auth = function(req, res, next) {
 	if (!req.isAuthenticated()){
@@ -25,7 +24,7 @@ var auth = function(req, res, next) {
 	}
 };// end auth middleware to limit route access
 
-var MongoStore = connectMongo(session);
+
 
 var app = express.Router();
 
@@ -49,39 +48,39 @@ next();
 
 
 
-app.use(session({
-	secret: process.env.SESSION_SECRET || "goldmorningshopsecret",
-	resave: false,
-	saveUninitialized: true, 
-	store : new MongoStore({
-		mongooseConnection : mongoose.connection
-	})	
-}));
+//app.use(session({
+//	secret: process.env.SESSION_SECRET || "goldmorningshopsecret",
+//	resave: false,
+//	saveUninitialized: true, 
+//	store : new MongoStore({
+//		mongooseConnection : mongoose.connection
+//	})	
+//}));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 
-passport.use(new LocalStrategy(
-	function(username, password, done) {
-		User.findOne({ email: username }, function(err, user) {
-			if(err) {return done(err); }
-			if(!user) {
-				return done(null, false, {message: 'Incorrect username.'});
-			}
-			if(!user.validPassword(password)) {
-				return done(null, false, {message: 'Incorrect username.'});
-			}
-		return done(null, user);
-		});
-	}
-));
 
-passport.serializeUser(function(user, done) {
-   done(null, user);
-});
-passport.deserializeUser(function(obj, done) {
-   done(null, obj);
-});
+//passport.use(new LocalStrategy(
+//	function(username, password, done) {
+//		User.findOne({ email: username }, function(err, user) {
+//			if(err) {return done(err); }
+//			if(!user) {
+//				return done(null, false, {message: 'Incorrect username.'});
+//			}
+//			if(!user.validPassword(password)) {
+//				return done(null, false, {message: 'Incorrect username.'});
+//			}
+//		return done(null, user);
+//		});
+//	}
+//));
+
+//passport.serializeUser(function(user, done) {
+//   done(null, user);
+//});
+//passport.deserializeUser(function(obj, done) {
+//   done(null, obj);
+//});
 
 	//RH LOGIN ROUTES
 	
@@ -89,14 +88,35 @@ passport.deserializeUser(function(obj, done) {
 		res.render('login.ejs', {message : req.flash('loginMessage')});
 	});
 	
+		app.post('/api/login', passport.authenticate('local-login', {
+			successRedirect : '/#/admin/home',
+			failureRedirect : '/api/login',
+			failureFlash : true
+		}));
+			
+					
+
+	
+	
 	app.get('/api/register', function(req, res) {
 		res.render('register.ejs', {message : 				req.flash('signupMessage')});
 	});// end get registration page
-	//app.post('/api/register', passport.authenticate('local-signup', {
-//		successRedirect : '/#/admin/home',
-//		failureRedirect : '/',
-//		failureFlash : true
-//	}));
+	 
+	app.post('/api/register', passport.authenticate('local-signup', {
+		successRedirect : '/api/login',
+		failureRedirect : '/#/admin/home',
+		failureFlash : true
+	}));
+	
+//		app.post('/api/register', function(req, res) {
+//			userCtrl.addUser(req.body, function(err) {
+//				if(err) {
+//					console.log(err, ' err from app.post');
+//					return res.redirect('/api/register');
+//				}
+//				res.redirect('/#/');
+//			});
+//		});
 	
 	app.get('/api/logout', function(req, res){
 		res.logout();
@@ -117,10 +137,10 @@ passport.deserializeUser(function(obj, done) {
   // app.get('/api/products/image', productsCtrl.uploadImage)
 	app.get('/api/products', productsCtrl.handleGetAll);
 	app.get('/api/products/:productId', productsCtrl.handleGetOneProduct);
-	app.post('/api/products', productsCtrl.handlePost);
-	app.put('/api/products/:productId', productsCtrl.handlePut);
-	app.put('/api/products', productsCtrl.decSize);
-	app.delete('/api/products/:productId', productsCtrl.handleDelete);
+//	app.post('/api/products', productsCtrl.handlePost);
+//	app.put('/api/products/:productId', productsCtrl.handlePut);
+//	app.put('/api/products', productsCtrl.decSize);
+//	app.delete('/api/products/:productId', productsCtrl.handleDelete);
   
   app.get('/api/paypal/', orderCtrl.pmtExecute);
 	app.post('/api/paypal', orderCtrl.pmtCreate);
@@ -141,10 +161,10 @@ passport.deserializeUser(function(obj, done) {
 //		**UN COMMENT THESE ROUTES AND REMOVE THEIR UNPROTECTED PAIRS BEFORE RELEASE
 //	app.post('/api/colorSize', auth, productsCtrl.updateColorSize)
 	
-//	app.post('/api/products', auth, productsCtrl.handlePost);
-//	app.put('/api/products/:productId', auth, productsCtrl.handlePut);
-//	app.put('/api/products', auth, productsCtrl.decSize);
-//	app.delete('/api/products/:productId', auth, productsCtrl.handleDelete);
+	app.post('/api/products', auth, productsCtrl.handlePost);
+	app.put('/api/products/:productId', auth, productsCtrl.handlePut);
+	app.put('/api/products', auth, productsCtrl.decSize);
+	app.delete('/api/products/:productId', auth, productsCtrl.handleDelete);
 	
 //	app.get('/api/admin/order/:id', auth, orderCtrl.getOrder);
 	

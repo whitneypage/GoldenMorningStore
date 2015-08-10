@@ -24,16 +24,16 @@
     <% } %>
 			
 			
-				<form action="/api/register" method="post" class="col s12">
+				<form action="/api/register" method="POST" class="col s12" novalidate>
 					<div class="row">
 							<div class="input-field l8 s12 animated slideInDown">
-								<input style="color:black" type="email" name="email">
+								<input style="color:black" type="text" name="email" id="email">
 								<label for="email">EMAIL</label>
 							</div>
 					 </div>
 					<div class="row">
 								<div class="input-field l8 s12 animated slideInUp">
-									<input style="color:black" type="password" name="password">
+									<input style="color:black" type="password" name="password" id = "password">
 									<label for="password">PASSWORD</label>
 							</div>
 					</div>
