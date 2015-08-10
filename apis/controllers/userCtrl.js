@@ -14,6 +14,10 @@ module.exports = {
 	
 	checkLoggedIn: function(req, res) {
 		res.send(req.isAuthenticated() ? req.user : '0');
+	},
+	
+	loginAdmin : function(req, res) {
+		res.send(req.user)
 	}
 	
 };// end module.exports

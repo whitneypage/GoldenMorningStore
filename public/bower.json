@@ -17,7 +17,7 @@
     "angular": "~1.4.3",
     "angular-materialize": "*",
     "ng-flow": "~2",
-    "ngSmoothScroll": "~1.7.1"
+    "ngSmoothScroll": "~1.7.1",
     "angular-carousel": "~0.3.12"
   }
 }

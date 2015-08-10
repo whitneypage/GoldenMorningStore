@@ -10,6 +10,7 @@ var configDB = require('./apis/config/database.js');
 var session = require('express-session');
 var fs = require('fs');
 var productsCtrl = require('./apis/controllers/productsCtrl');
+
 // var routes = require('./routes');
 // var configJSON = fs.readFileSync(__dirname + "/apis/config/config.json");
 // var paypalConfig = JSON.parse(configJSON.toString());
@@ -32,6 +33,7 @@ routes.init(paypalConfig);
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname+'/public'));
+
 
 
 routes.app(app);
