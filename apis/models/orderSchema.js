@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var customerSchema = require('./customerSchema');
 
 var orderSchema = mongoose.Schema({
     user: {type: String}, 
@@ -13,6 +14,8 @@ var orderSchema = mongoose.Schema({
     , timePlaced: {type: Date}
     , shippingDate: {type: Date}
     , note: {type: String}
+    , paymentId: {type: String}
+    , customer: [customerSchema]
 });
 
 orderSchema.pre('save', function(next) {

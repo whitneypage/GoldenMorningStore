@@ -106,9 +106,10 @@ passport.deserializeUser(function(obj, done) {
 
 	app.post('/api/user/order', orderCtrl.createOrder);
 	app.get('/api/admin/order/:id', orderCtrl.getOrder);
+	app.put('/api/admin/order/:id', orderCtrl.updateOrder);
+	app.put('/api/user/order/:id', orderCtrl.updateOrderByPaymentId);
 
 	app.get('/api/admin/orders', orderCtrl.getAllOrders);
-	app.put('/api/admin/order/:id', orderCtrl.updateOrder);
 	
 	//		PROTECTED ROUTES -- ANYTHING TO MODIFY PRODUCTS / VIEW ADMIN ORDERS 
 //		**ORIGINAL, UNPROTECTED ROUTES LEFT IN FOR DEV PURPOSES

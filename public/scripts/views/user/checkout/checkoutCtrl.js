@@ -1,6 +1,6 @@
 var app = angular.module('GoldMorning');
 
-app.controller('checkoutCtrl', function($window, $routeParams, $scope, cart, cartService) {
+app.controller('checkoutCtrl', function($window, $routeParams, $scope, cart, cartService, orderService) {
 
 	$scope.cart = cart;
 	
@@ -55,7 +55,8 @@ app.controller('checkoutCtrl', function($window, $routeParams, $scope, cart, car
 			products.push(newProduct);
 		}
 		var order = {products: products, total: total};
-		cartService.createOrder(order).then(function(data){
+		cartService.createOrder(order).then(function(orderData){
+			var order_Id = orderData.data._id;
 			var payment = {
 			  "intent": "sale",
 			  "payer": {
@@ -70,19 +71,21 @@ app.controller('checkoutCtrl', function($window, $routeParams, $scope, cart, car
 			      "total": $scope.total,
 			      "currency": "USD"
 			    },
-			    "description": "GoldMorningShop order # " + data.data._id
+			    "description": "GoldMorningShop order # " + order_Id
 			  }]
 			};
-			cartService.createPmt(payment).then(function(data){
-				console.log("response from paypal payment create request", data)
-		      var redirectUrl;
-		      for(var i=0; i < data.data.links.length; i++) {
-		        var link = data.data.links[i];
-		        if (link.method === 'REDIRECT') {
-		          redirectUrl = link.href;
-		        }
-		      }
-		      $window.location.href = redirectUrl;
+			cartService.createPmt(payment).then(function(paymentData){
+				console.log("response from paypal payment create request", paymentData)
+				orderService.updateOrder(order_Id, paymentData).then(function(){
+			      var redirectUrl;
+			      for(var i=0; i < paymentData.data.links.length; i++) {
+			        var link = paymentData.data.links[i];
+			        if (link.method === 'REDIRECT') {
+			          redirectUrl = link.href;
+			        }
+			      }
+			      $window.location.href = redirectUrl;
+					});
 				});
 		});
 	};
@@ -91,7 +94,7 @@ app.controller('checkoutCtrl', function($window, $routeParams, $scope, cart, car
 		cartService.paymentSuccess($scope.payerId).then(function(data){
 			console.log("after paypal confirmation", data)
 		})
-	}
+	};
 
 	$scope.confirmPmt = function(){
 		ProductService.executePayment($scope.orderDetails).then(function(data){
@@ -107,7 +110,13 @@ app.controller('checkoutCtrl', function($window, $routeParams, $scope, cart, car
 	$scope.getTotal();
 
 	$scope.name = 'test';
-	$scope.payerId = $routeParams.param1.payerID;
+	var getParams = function(){
+		if($routeParams.payerID){
+			console.log('routeparams')
+		}
+	};
+	getParams();
+	// $scope.payerId = $routeParams.param1.payerID;
 
 });// end checkoutCrtl
 

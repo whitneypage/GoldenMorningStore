@@ -25,9 +25,9 @@ app.config(function($routeProvider) {
 	})
 	.when('/thankyou', {
 		templateUrl : 'scripts/views/user/checkout/confirm.html',
-		controller : 'checkoutCtrl', 
+		controller : 'thankyouCtrl', 
 	})
-		.when('/checkout/', {
+		.when('/checkout', {
 		templateUrl : 'scripts/views/user/checkout/checkoutTmpl.html',
 		controller : 'checkoutCtrl', 
 		resolve: {
@@ -72,6 +72,6 @@ app.config(function($routeProvider) {
 		templateUrl : 'scripts/views/admin/login/adminLogin.html',
 		controller : 'adminLoginCtrl'
 	})
-	// .otherwise('/');
+	.otherwise('/');
 });//end app.config in app.js
 
