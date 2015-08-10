@@ -52,7 +52,7 @@
                             <!--begin product modal-->
                             <div id="productModal" class="modal">
                                 <div class="modal-content">
-                                    <h4>{{selectedProduct.productTitle}}</h4>
+                            
                                       <div class="product-photo-and-info">
                                         <div class="product-photo-box">
                                           <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
@@ -67,7 +67,15 @@
                                           </div>
                                         </div>
                                         <div class="product-info">
-                                          <div class="product-object">{{selectedProduct}}</div>
+                                          <div class="product-object">
+                                            <div class="product-modal-title">{{selectedProduct.productTitle}}</div>
+                                            <div class="product-modal-price">${{selectedProduct.price}}</div>
+
+                                            <select class="" ng-model="colorSize.color" material-select watch>
+                                              <option ng-repeat="colorOption in selectedProduct.colorSize">{{colorOption.color}}</option>
+                                            </select>
+
+                                          </div>
                                         </div>
                                       </div>
                                 </div>
