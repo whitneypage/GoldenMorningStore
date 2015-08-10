@@ -634,17 +634,23 @@ table th {
 
 /*begin product modal styling*/
 
-
+.product-description {
+  width: 100%;
+}
 
 .product-photo-box {
-  height: 24em;
   width: 24em;
+  overflow: auto;
 }
 
 .product-photo-and-info {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.product-info {
+
 }
 
 .product-object {
@@ -666,12 +672,28 @@ table th {
 .product-modal-price {
   font-size: 14px;
   text-align: left;
+}
 
+.product-modal-color-size {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-modal-color-dropdown{
+  width: 70%;
+}
+
+.product-modal-size-dropdown {
+  width: 20%;
+}
+
+.product-image {
+  width: 100%;
 }
 
 .carousel {
-  width: 300px;
-  height: 300px;
+  width: 30em;
+  height: 30em;
 }
 
 .carousel_img {

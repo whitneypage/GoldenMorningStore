@@ -56,7 +56,7 @@
                                       <div class="product-photo-and-info">
                                         <div class="product-photo-box">
                                           <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
-                                              <li ng-repeat="photo in selectedProduct.images">
+                                              <li ng-repeat="photo in selectedProduct.images" class="product-image">
                                                   <img class="carousel_img" ng-src="{{ photo }}" />
                                               </li>
                                           </ul>
@@ -71,10 +71,32 @@
                                             <div class="product-modal-title">{{selectedProduct.productTitle}}</div>
                                             <div class="product-modal-price">${{selectedProduct.price}}</div>
 
-                                            <select class="" ng-model="colorSize.color" material-select watch>
-                                              <option ng-repeat="colorOption in selectedProduct.colorSize">{{colorOption.color}}</option>
-                                            </select>
+                                            <div class="product-modal-color-size">
+                                              <div class="product-modal-color-dropdown">
+                                                <select ng-model="colorSize.color" material-select watch>
+                                                  <option ng-repeat="colorOption in selectedProduct.colorSize">{{colorOption.color}}</option>
+                                                </select>
+                                              </div>
+                                              <div class="product-modal-size-dropdown">
+                                                <select ng-show="!anyAvailable(colorSize)" ng-model="colorSize" material-select watch >
+                                                  <option>
+                                                    <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)"></span>
+                                                    <span class="inStock" ng-show="inStock(colorSize.smallQty)"></span>
+                                                  </option>
+                                                  <option>
+                                                    <span class="outOfStock" ng-show="!inStock(colorSize.mediumQty)"></span>
+                                                    <span class="inStock" ng-show="inStock(colorSize.mediumQty)"></span>
+                                                  </option>
+                                                  <option>
+                                                    <span class="outOfStock" ng-show="!inStock(colorSize.largeQty)"></span>
+                                                    <span class="inStock" ng-show="inStock(colorSize.largeQty)"></span>
+                                                  </option>
+                                                </select>
+                                              </div>
+                                            </div>
 
+                                            <button>ADD TO BAG</button>
+                                            <div class="product-modal-description">{{selectedProduct.productDescription}}</div>
                                           </div>
                                         </div>
                                       </div>
