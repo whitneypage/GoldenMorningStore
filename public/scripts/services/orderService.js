@@ -10,7 +10,7 @@ app.service('orderService', function($http, $q){
 		})
 	};
 
-	this.getOrder = function(id) {
+	this.getOrderDetails = function(id) {
 		return $http({
 			method: 'GET',
 			url: '/api/admin/order/' + id
@@ -24,15 +24,21 @@ app.service('orderService', function($http, $q){
 		})
 	};
 
-	this.updateOrder = function(id, note, orderStatus) {
+	this.updateOrder = function(id, orderObj) {
 		console.log('in service');
 		return $http({
 			method: 'PUT',
 			url: '/api/admin/order/' + id,
-			data: {
-				status: orderStatus,
-				note: note
-			}
+			data: orderObj
+		})
+	};
+
+	this.updateOrderByPaymentId = function(orderObj){
+		console.log(orderObj.paymentId)
+		return $http({
+			method: 'PUT',
+			url: '/api/user/order/' + orderObj.paymentId,
+			data: orderObj
 		})
 	};
 

@@ -3,18 +3,20 @@
 
 <div id="adminHero">
 		<div class="headline-main">
-			<h1 id="hello">HELLO BEULAH</h1>
-			<i class="fa fa-chevron-down fa-3x" onClick="scroll(0, 400);"></i>
+			<h1 id="hello" class="animated fadeInUp">HELLO BEULAH</h1>
+      <div scroll-to="adminNav" duration="1800">
+        <i class="fa fa-chevron-down fa-3x"></i>
+      </div>
 		</div>
 	</div>
 
 <!-- NAVBAR START -->
 <nav class="adminNav">
-     <div class="nav-wrapper">
+     <div id= "adminNav" class="nav-wrapper">
        <a href="#/admin/home" class="brand-logo">GM.S</a>
        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color: black">list</i></a>
        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a ng-href="#/admin/product/" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="ADD NEW PRODUCT"><i class="fa fa-plus"></i></a></li>
+          <li><a ng-href="#/admin/product/"><i class="fa fa-plus"></i></a></li>
 
 <!-- DROPDOWN TRIGGER -->
           <li><a class="dropdown-button" data-activates='dropdown1'>FILTER BY</a></li>
@@ -74,25 +76,42 @@
 						</a>			
 					</figcaption>
 				</figure>
-				<a class="waves-effect waves-light modal-trigger" ng-href="#/admin/product/{{product._id}}">
-					<p>{{product.productTitle}}</p>
-				</a>
-				<p>DETAILS : {{product.productDescription}}</p>
-				<p>category : {{product.productCategory}}</p>
-				<h5>current selection</h5>
-					<p>color : {{colorSize.color}}</p>
-					<p>Sm : {{colorSize.smallQty}} | Med : {{colorSize.mediumQty}} | Lg : {{colorSize.largeQty}}</p>
-					<p class="bag" style="color:red" ng-click="showConfirmDelete(product._id)">Delete Product</p>
-					
-						<p ng-show="confirmDelete && (product._id === confirmId)">Are you sure you want to delete {{product.productTitle}}?  This will remove it from your collection.</p>
-						<button ng-click="deleteProduct(product._id)" ng-show="confirmDelete && (product._id === confirmId)">Yes, delete the item and all colors</button><button ng-click="hideConfirmDelete(product._id)" ng-show="confirmDelete && (product._id === confirmId)">No thanks</button>
 				
+				<a class="btn-flat" ng-href="#/admin/product/{{product._id}}">
+						<h5>{{product.productTitle}}</h5>
+				</a>
+
+				<p>DETAILS: {{product.productDescription}}<br>
+				CATEGORY: {{product.productCategory}}<br>
+				COLOR: {{colorSize.color}}<br></p>
+
+				<p>S: {{colorSize.smallQty}} | M: {{colorSize.mediumQty}} | L: {{colorSize.largeQty}}</p>
+				
+				<p class="admin-delete-product" ng-click="showConfirmDelete(product._id)">DELETE</p>
+						
+				<p class="confirm" ng-show="confirmDelete && (product._id === confirmId)">are you sure you want to delete {{product.productTitle}}?</p>
+				
+				<div class="admin-delete-button" 
+				ng-click="deleteProduct(product._id)" 
+				ng-show="confirmDelete && (product._id === confirmId)">
+
+				YES, DELETE THIS ITEM AND ALL COLORS
+				</div>
+
+				<div class="admin-cancel-delete-button" 
+				ng-click="hideConfirmDelete(product._id)" 
+				ng-show="confirmDelete && (product._id === confirmId)">
+				
+				NO THANK YOU
+				</div>
 					
+						
 				<p class="product-price">${{ product.price }}</p>
 
 			</li>
 		</ul>
 	</div>	
+</div>
 </div>
 	
 

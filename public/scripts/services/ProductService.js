@@ -2,10 +2,39 @@ var app = angular.module('GoldMorning');
 
 app.service('ProductService', function($http, $q) {
 
+  this.findColorSizeIndex = function(color, email) {
+    var deferred = $q.defer();
+    $http({
+      method: 'POST',
+      url: '/api/products/colorSizeIndex',
+      data: {
+        colorSizeId: color,
+        wantList: email
+      }
+    }).then(function(response) {
+      deferred.resolve(response.data)
+    })
+    return deferred.promise;
+  };
 
 	
 	//****TYTEBBS SERIVICES FROM OLD productService.js***//
-	
+	this.createPayment = function(x){
+		return $http({
+			method: 'POST',
+			url: '/api/paypal',
+			data: {payment: x}
+		});
+	};
+
+	this.executePayment = function(x){
+		return $http({
+			method: 'GET',
+			url: "/api/paypal/"
+			// url: "/api/paypal/" + x.related_resources[0].authorization.id
+		});
+	};
+
 	this.addProduct = function(product){
           console.log("ProductInService", product);
         console.log('add product service hit')

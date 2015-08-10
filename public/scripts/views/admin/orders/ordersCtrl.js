@@ -6,17 +6,17 @@ app.controller('ordersCtrl', function($scope, orders, orderService) {
 	console.log($scope.orders);
 
 	$scope.showOrder = function(order) {
-		order.show = !order.show;
-	}
+        order.show = !order.show;
+    }
 
-	// $scope.paymentStatusOptions = ['processing', 'paid'];
 	$scope.orderStatusOptions = ['processing', 'shipped', 'on hold', 'canceled'];
 
 	$scope.updateOrder = function(orderId, orderNote, orderStatus) {
-		orderService.updateOrder(orderId, orderNote, orderStatus).then(function(response) {
-			console.log(orderId, orderStatus, "this is from updateOrder");
+		var orderObj = {note: orderNote, status: orderStatus};
+		orderService.updateOrder(orderId, orderObj).then(function(response) {
 			Materialize.toast('order updated', 2000);	
 		})
 	};
+
 
 });

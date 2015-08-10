@@ -2,33 +2,55 @@ var app = angular.module('GoldMorning');
 
 app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 
-	$scope.openProductModal = false;
+	$scope.scroll = function() {
+    console.log("clicked");
+  }
 
-	$scope.productModalData = function(product) {
-		console.log("test", product);
-		$scope.product = product;
-	}
+$scope.emailList = {};
+
+  $scope.findColorSizeIndex = function(color) {
+    console.log(color);
+    console.log($scope.emailList.wantEmail);
+    ProductService.findColorSizeIndex(color, $scope.emailList.wantEmail ).then(function(response) {
+      console.log(response);
+           $scope.emailList.wantEmail = "";
+    })
+  }
 
 	$scope.open = function() {
 		$scope.openProductModal = !$scope.openProductModal
 		console.log('open clicked ', $scope.openProductModal)
 	}
 
+  $scope.passInProduct = function(product) {
+  $scope.selectedProduct = product;
+  console.log($scope.selectedProduct);
+}
+
 	$scope.getProducts = function(){
 		ProductService.getProduct().then(function(data) {
 			console.log('get product', data);
 			$scope.products = data;
 		})
-	};
-
-	// $scope.changeFilter = function(filter){
-	// 	$scope.productFilter = filter;
-	// }
-	// $scope.productFilter = "bottom";
+	}
 
 	$scope.getProducts();
-		
-	$scope.sizes = ["L", "M", "S"];	
+
+  $scope.sizes = ["S", "M", "L"];
+
+  $scope.inStock = function(selected) {
+      if (selected > 0) {
+        return true
+      } 
+  }
+
+  $scope.anyAvailable = function(colorSize) {
+      if (colorSize.smallQty <= 0 && colorSize.mediumQty <= 0 && colorSize.largeQty <= 0) {
+        return true
+      }
+  }
+
+  $scope.available = true;
 
 	$scope.cart = cart;
 
@@ -76,38 +98,11 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
 });// end homeCtrl
 
 
-
-// Product Modal CUSTOM DIRECTIVE
-
-app.directive('productModal', function() {
-	// var modal = function(scope, element, attrs) {
-	// 	$(element).on('click', 'img', function() {
-	// 		$('#modal1').openModal();
-	// 	});
-	// };
-
-	return {
-		restrict: 'AE',
-		templateUrl: './scripts/views/user/home/productModalTmpl.html',
-		scope: {
-			showProductModal: '&',
-			open: '&',
-			openProductModal: '=',
-			product: '='
-		},
-		controller: function($scope) {
-			$scope.productModalData = function(product) {
-				$scope.product = product;
-			};
-		}
-	}
-});
-
 // Cart Modal Directive
 
 app.directive('cartModal', function() {
 	var modal = function(scope, element, attrs) {
-		$(element).on('click', 'i', function() {
+		$(element).on('click', function() {
 			console.log('clicked!', scope.cart);
 			$('#modal2').openModal();
 		});

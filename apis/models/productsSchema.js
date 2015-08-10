@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 
 var productSchema = mongoose.Schema({
-  productTitle: {type: String} 
+      productTitle: {type: String} 
     , productDescription: {type: String}
     , productCategory: {type: String}
     , images: [{type: String}]
@@ -10,12 +10,13 @@ var productSchema = mongoose.Schema({
     , dateUpdated: {type: Date, default: Date.now()}
     , dateCreated: {type: Date}
     , colorSize: [{
-      color: {type: String} ,
-      smallQty: {type: Number},
+        color: {type: String} ,
+        smallQty: {type: Number},
         mediumQty: {type: Number},
         largeQty: {type: Number},
         mainImg: {type: String},
-				imageNumber : {type: Number}
+				imageNumber : {type: Number},
+        wantList: [{type: String}]
  }]
 });
 

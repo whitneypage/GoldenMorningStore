@@ -1,4 +1,4 @@
-var app = angular.module('GoldMorning', ['ngRoute', 'ui.materialize', 'flow']);
+var app = angular.module('GoldMorning', ['ngRoute', 'ui.materialize', 'flow', 'angular-carousel', 'smoothScroll']);
 
 //This is just a comment
 //More comments
@@ -23,7 +23,11 @@ app.config(function($routeProvider) {
 		templateUrl : 'scripts/views/user/cart/cartTmpl.html',
 		controller: 'cartCtrl'
 	})
-	.when('/checkout', {
+	.when('/thankyou', {
+		templateUrl : 'scripts/views/user/checkout/confirm.html',
+		controller : 'thankyouCtrl', 
+	})
+		.when('/checkout', {
 		templateUrl : 'scripts/views/user/checkout/checkoutTmpl.html',
 		controller : 'checkoutCtrl', 
 		resolve: {
@@ -64,6 +68,16 @@ app.config(function($routeProvider) {
 			}
 		}
 	})
+	.when('/admin/login', {
+		templateUrl : 'scripts/views/admin/login/adminLogin.html',
+		controller : 'adminLoginCtrl'
+	})
 	.otherwise('/');
 });//end app.config in app.js
+
+app.run(function ($rootScope, $window) {
+ $rootScope.$on("$routeChangeSuccess", function(event){
+    $window.scrollTo(0,0);
+})
+})
 
