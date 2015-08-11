@@ -15,7 +15,7 @@ app.controller('ordersCtrl', function($scope, orders, orderService) {
 		var orderObj = {note: orderNote, status: orderStatus};
 		orderService.updateOrder(orderId, orderObj).then(function(response) {
 			console.log(response, "updating order - made it to front Order Ctrl");
-			Materialize.toast('order updated', 2000);	
+			Materialize.toast('ORDER UPDATED YO', 2000);	
 		})
 	};
 
