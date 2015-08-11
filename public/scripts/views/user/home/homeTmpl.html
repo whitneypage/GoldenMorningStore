@@ -8,6 +8,7 @@
      <!--  <div class="downArrow" scroll-to="nav" duration="1800">
         <i class="fa fa-chevron-down fa-3x animated fadeInDown"></i>      
         </div> -->
+      </div>
     </div>
   </div>
 
@@ -50,13 +51,14 @@
                 <li ng-repeat="colorSize in product.colorSize">
                         <figure>
                             <img href='#productModal' ng-src="{{ colorSize.mainImg }}" ng-click="passInProduct(product)" modal>
+                            
                             <!--begin product modal-->
                             <div id="productModal" class="modal">
                                 <div class="modal-content">
                                       <div class="product-photo-and-info">
                                         <div class="product-photo-box">
                                           <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
-                                              <li ng-repeat="photo in selectedProduct.images">
+                                              <li ng-repeat="photo in selectedProduct.images" class="product-image">
                                                   <img class="carousel_img" ng-src="{{ photo }}" />
                                               </li>
                                           </ul>
@@ -67,12 +69,50 @@
                                           </div>
                                         </div>
                                         <div class="product-info">
-                                          <div class="product-object">{{selectedProduct.productTitle}} </div>
+                                          <div class="product-object">
+                                            <div class="product-modal-title">{{selectedProduct.productTitle}}</div>
+                                            <div class="product-modal-price">
+                                              <div class="product-modal-keyword">PRICE</div>
+                                              <div class="product-modal-price-price">${{selectedProduct.price}}</div>
+                                            </div>
+                                            <div class="product-modal-description">
+                                              <div class="product-modal-keyword">PRODUCT DETAILS</div>
+                                              <div>{{selectedProduct.productDescription}}</div>
+                                            </div>
+                                              <!--angular dropdown with "select"-->
+                                              <div class="product-modal-color-dropdown"> 
+                                                <div class="product-modal-keyword product-modal-color-keyword">COLOR</div>
+                                                <select ng-model="colorSize.color" material-select watch> 
+                                                  <option value="blue" disable selected>blue</option>
+                                                  <option ng-repeat="colorOption in selectedProduct.colorSize">{{colorOption.color}}</option>
+                                                </select>
+                                              </div>
+
+                                              <!--Materialize dropdown-->
+                                            <!--dropdown trigger-->
+                                              <!-- <a class="product-modal-color-dropdown" data-activates="product-modal-color-dropdown">COLOR</a>
+                                            dropdown structure
+                                              <ul>
+                                                <li ng-repeat="colorOption in selectedProduct.colorSize" ng-model="colorSize.color">{{colorOption.color}}</li>
+                                                <li class="divider"></li>
+                                              </ul> -->
+                                              <div class="product-modal-size-container">
+                                                <div class="product-modal-keyword">SIZE</div>
+                                                <div class="product-modal-size-buttons" ng-model="size" ng-repeat="colorSize in selectedProduct.colorSize">
+                                                  <div class="product-modal-individual-size-button" ng-if="colorSize.smallQty">S</div>
+                                                  <div class="product-modal-individual-size-button" ng-if="colorSize.mediumQty">M</div>
+                                                  <div class="product-modal-individual-size-button" ng-if="colorSize.largeQty">L</div>
+                                                </div>
+                                              </div>
+                                            <div class="product-modal-add-to-bag" ng-click="addProductToCart(product, colorSize, size"><p>ADD TO BAG</p></div>
+                                            
+                                          </div>
                                         </div>
                                       </div>
                                 </div>
                             </div>
                             <!-- end product modal -->
+
                             <figcaption>
                                 <div class="add-size" ng-show="!anyAvailable(colorSize) && !ifNotClothing(product)">
                                     <p class="bag">ADD TO BAG</p>
@@ -84,8 +124,8 @@
                                     <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)">S</span>
                                 </div>
                                 <div class="soldOut" ng-show="anyAvailable(colorSize)">
-                                    <span>SOLD OUT <strong>| WANT TO SEE THIS ITEM COME BACK ?</strong> </span>
-                                    <form ng-submit="findColorSizeIndex(colorSize._id)" onsubmit="Materialize.toast('THANKS! WE WILL KEEP YOU IN THE LOOP!', 2500, 'rounded')">
+                                    <span>SOLD OUT <strong>| WANT THIS BACK IN THE SHOP ?</strong> </span>
+                                    <form ng-submit="findColorSizeIndex(colorSize._id)" toast="submit" message="THANKS! YOU'LL BE THE FIRST TO KNOW." duration="3000">
                                         <input ng-model="emailList.wantEmail" type="email" placeholder=" Enter Email Here" />
                                     </form>
                                 </div>
@@ -151,6 +191,8 @@
     </div>
 </div>
 <!-- End Shopping Bag Modal -->
+
+<!-- START FOOTER -->
 
 
 <footer class="page-footer">

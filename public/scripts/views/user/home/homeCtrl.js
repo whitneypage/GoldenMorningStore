@@ -24,6 +24,7 @@ $scope.emailList = {};
 
   $scope.passInProduct = function(product) {
   $scope.selectedProduct = product;
+  console.log("p", product);
   console.log($scope.selectedProduct);
 }
 

@@ -27,7 +27,7 @@ app.config(function($routeProvider) {
         return cartService.getCart();
       }
     }
-	})
+  })
 	.when('/thankyou', {
 		templateUrl : 'scripts/views/user/checkout/confirm.html',
 		controller : 'thankyouCtrl', 
