@@ -66,53 +66,77 @@
 
 <div class="wrapper">
 	<div id="products" class="row">
-	<div ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter" class="col s12 m6 l4">
-		<ul class="grid size-style">
-			<li ng-repeat="colorSize in product.colorSize">
-				<figure>
-						<img ng-src="{{ colorSize.mainImg }}">
-					<figcaption>
-						<a ng-href="#/admin/product/{{product._id}}">
-							<span class="adminEditBtn">EDIT PRODUCT</span>
-						</a>			
-					</figcaption>
-				</figure>
-				
-				<a class="btn-flat" ng-href="#/admin/product/{{product._id}}">
-						<h5>{{product.productTitle}}</h5>
-				</a>
-
-				<p>DETAILS: {{product.productDescription}}<br>
-				CATEGORY: {{product.productCategory}}<br>
-				COLOR: {{colorSize.color}}<br></p>
-
-				<p>S: {{colorSize.smallQty}} | M: {{colorSize.mediumQty}} | L: {{colorSize.largeQty}}</p>
-				
-				<p class="admin-delete-product" ng-click="showConfirmDelete(product._id)">DELETE</p>
-						
-				<p class="confirm" ng-show="confirmDelete && (product._id === confirmId)">are you sure you want to delete {{product.productTitle}}?</p>
-				
-				<div class="admin-delete-button" 
-				ng-click="deleteProduct(product._id)" 
-				ng-show="confirmDelete && (product._id === confirmId)">
-
-				YES, DELETE THIS ITEM AND ALL COLORS
-				</div>
-
-				<div class="admin-cancel-delete-button" 
-				ng-click="hideConfirmDelete(product._id)" 
-				ng-show="confirmDelete && (product._id === confirmId)">
-				
-				NO THANK YOU
-				</div>
+		<div ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter" class="col s12 m6 l4">
+			<ul class="grid size-style">
+				<li ng-repeat="colorSize in product.colorSize">
+					<figure class="adminFigure">
+							<img ng-src="{{ colorSize.mainImg }}">
+						<figcaption>
+							<a ng-href="#/admin/product/{{product._id}}">
+								<span class="adminEditBtn">EDIT ITEM</span>
+							</a>			
+						</figcaption>
+					</figure>
 					
-						
-				<p class="product-price">${{ product.price }}</p>
+					<a class="btn-flat" ng-href="#/admin/product/{{product._id}}">
+							<h5>{{product.productTitle}}</h5>
+					</a>
 
-			</li>
-		</ul>
-	</div>	
-</div>
+					<p>DETAILS: {{product.productDescription}}<br>
+					CATEGORY: {{product.productCategory}}<br>
+					COLOR: {{colorSize.color}}<br></p>
+
+					<p>S: {{colorSize.smallQty}} | M: {{colorSize.mediumQty}} | L: {{colorSize.largeQty}}
+					<br>
+					<span ng-show="onWait(colorSize.wantList.length)" id="numberWait">{{ colorSize.wantList.length }}</span>
+					<span class="showWait" ng-show="onWait(colorSize.wantList.length)" ng-href="#waitList" ng-click="passInEmail(product)" modal>ON WAITLIST</span>
+					</p>
+
+					<!-- WAITLIST MODAL -->
+
+					<div class="modal" id="waitList">
+						<h4>WAITLISTED FOR {{ WL.productTitle }}</h4><br>
+						<table class="centered responsive-table">
+				        <thead>
+				          <tr>
+				              <th data-field="id">EMAIL</th>
+				          </tr>
+				        </thead>
+
+				        <tbody ng-repeat="name in emails">
+				          <tr ng-repeat="email in name.wantList track by $index">
+				            <td>{{ email }}</td>
+				          </tr>
+				        </tbody>
+				      </table>
+
+					</div>
+					
+					<p class="admin-delete-product" ng-click="showConfirmDelete(product._id)">DELETE</p>
+							
+					<p class="confirm" ng-show="confirmDelete && (product._id === confirmId)">are you sure you want to delete {{product.productTitle}}?</p>
+					
+					<div class="admin-delete-button" 
+					ng-click="deleteProduct(product._id)" 
+					ng-show="confirmDelete && (product._id === confirmId)">
+
+					YES, DELETE THIS ITEM AND ALL COLORS
+					</div>
+
+					<div class="admin-cancel-delete-button" 
+					ng-click="hideConfirmDelete(product._id)" 
+					ng-show="confirmDelete && (product._id === confirmId)">
+					
+					NO THANK YOU
+					</div>
+						
+							
+					<p class="product-price">${{ product.price }}</p>
+
+				</li>
+			</ul>
+		</div>	
+	</div>
 </div>
 	
 

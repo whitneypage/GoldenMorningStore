@@ -2,6 +2,8 @@ var Order = require('../models/orderSchema');
 var Product = require('../models/productsSchema');
 var Paypal = require('paypal-rest-sdk');
 var session = require('express-session');
+var configAuth = require('../config/keys');
+var sendgrid = require('sendgrid')(configAuth.sendGridAuth.apiKey);
 
 module.exports = {
 
@@ -44,10 +46,29 @@ module.exports = {
 
 	/*not sure exactly what this method will be for nor how it will be used...yet*/
 	, updateOrder: function(req, res) {
-		Order.findByIdAndUpdate(req.params.id, req.body, function(err, data) {
+		console.log('THIS IS IMPORTANT TO ME:   ', req.body, 'THIS IS IMPORTANT TOO:  ', req.params)
+		Order.findByIdAndUpdate(req.params.id, req.body, {new: true},  function(err, data) {
 			if(err) {
 				res.status(500).send(err);
 				console.log(err);
+			} else {
+
+				//email upon order status update - shipped
+			var email     = new sendgrid.Email({
+				to:       'tylertebbs20@gmail.com',
+				from:     'tylertebbs20@yahoo.com',
+				subject:  'Congrats, your item has been shipped',
+				text:     'Hello myself'
+			});
+			sendgrid.send(email, function(err, json) {
+				if (err) { return console.error(err); }
+				console.log(json);
+			});
+
+				//end email upon order status update -shipped
+
+
+
 			}
 			res.send(data);
 		})
@@ -55,11 +76,24 @@ module.exports = {
 
 	, updateOrderByPaymentId: function(req, res){
 		var PayerID = {payer_id: req.body.PayerID};
-		// console.log("paymentId88888", req.params.id, "payerid8888", PayerID)
 		Paypal.payment.execute(req.params.id, PayerID, function(error, payment){
 		  if(error){
 		    console.error(error);
 		  } else {
+
+		  	//email upon order
+			var email     = new sendgrid.Email({
+				to:       'tylertebbs20@gmail.com',
+				from:     'tylertebbs20@yahoo.com',
+				subject:  'Congrats, someone just made an order',
+				text:     'Hello myself'
+			});
+			sendgrid.send(email, function(err, json) {
+				if (err) { return console.error(err); }
+				console.log(json);
+			});
+		  	// end email upon order
+
 		  	var cust = payment.payer.payer_info;
 		  	var orderObj = {
 		  		customer: {
@@ -92,7 +126,7 @@ module.exports = {
 	, pmtCreate: function(req, res) {
 			Paypal.payment.create(req.body.payment, function (error, payment) {
 	  if (error) {
-	    console.log(error);
+	    console.log(error.response.details);
 	  } else {
 	  	console.log('PAYMENT', payment);
 	    res.json(payment)
@@ -111,22 +145,5 @@ module.exports = {
 			  }
 		});
 }
-
-
-	, pmtExecute: function(req, res){
-		// var paymentId = session.payment.id;
-	 //  var payerId = req.params.payerId;
-		// console.log('pmt EXECUTE!!!', 'paymentId', paymentId, 'payerId', payerId)
-
-	  var details = { "payer_id": "EC-6XD92317T3033605D" };
-	  console.log("DETAILS", details)
-	  Paypal.payment.execute("PAY-7AS67526M92359017KXBNQKA", details, function (error, payment) {
-	    if (error) {
-	      console.log(error);
-	    } else {
-	      res.send("Hell yeah!");
-	    }
-	  });
-	}
 
 };

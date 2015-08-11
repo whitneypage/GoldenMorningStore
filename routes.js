@@ -16,6 +16,7 @@ var config = require('./apis/config/keys');
 var mongoose = require('mongoose');
 
 
+
 var auth = function(req, res, next) {
 	if (!req.isAuthenticated()){
 		res.send(401);}
@@ -84,9 +85,6 @@ passport.deserializeUser(function(obj, done) {
 
 	//RH LOGIN ROUTES
 	
-
-	
-	
 //		ROUTES FOR REGISTRATION -- COMMENTED OUT BC THEY DON'T ALWAYS NEED TO BE PRESENT
 //		CAN OPEN THEN FOR HER TO REGISTER THEN CLOSE THEM AGAIN
 //	app.get('/api/register', function(req, res) {
@@ -128,7 +126,7 @@ passport.deserializeUser(function(obj, done) {
 	app.delete('/api/products/:productId', productsCtrl.handleDelete);
   app.post('/api/products/colorSizeIndex', productsCtrl.findColorSizeIndex);
  
-  app.get('/api/paypal/', orderCtrl.pmtExecute);
+  // app.get('/api/paypal/', orderCtrl.pmtExecute);
 	app.post('/api/paypal', orderCtrl.pmtCreate);
 	app.get('/api/paypal/success/:id', orderCtrl.successGet);
 	app.post('/api/user/cart', cart, cartCtrl.addProductToCart);
