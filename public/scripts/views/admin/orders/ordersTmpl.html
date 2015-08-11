@@ -53,11 +53,13 @@
 			    	<option ng-repeat="status in orderStatusOptions">{{status}}</option>
 				</select>
 			</div>
+			Date Ordered: {{order.timePlaced}}
 			<div class="notesArea">
 					Notes:             
 				        <textarea type="text" ng-model="order.note" placeholder="Input any notes about the order."></textarea>
 			</div>
-			Order Total: {{order.total}}
+
+
 			</br>
 			<!-- add update button here -->
 			<div>
@@ -65,8 +67,6 @@
             </div>
 
             <!-- End update button -->
-
-
 
 
 			<h3>Order Info:</h3>
@@ -77,17 +77,17 @@
             	</br>
             	Color: {{product.color}}
             	</br>
-	    </div>
-	    <div>
-            	</br>
-	        <h3>Purchaser Info</h3>
-	       <div class="purchaseInfoContainer" ng-repeat="customer in order.customer">
-	    		Purchaser Name: {{customer.name.first}} {{customer.name.last}}
-	        	</br>
-	        	Shipping Address: {{customer.shippingAddress.street}}, {{customer.shippingAddress.city}}, {{customer.shippingAddress.state}},  {{customer.shippingAddress.zip}}
-	        	</br>
-	        	Email: {{customer.email}}
-	      	</div>
+		    </div>
+		    <div>
+	            	</br>
+		        <h3>Purchaser Info:</h3>
+		       <div class="purchaseInfoContainer" ng-repeat="customer in order.customer">
+		    		Purchaser Name: {{customer.name.first}} {{customer.name.last}}
+		        	</br>
+		        	Shipping Address: {{customer.shippingAddress.street}}, {{customer.shippingAddress.city}}, {{customer.shippingAddress.state}},  {{customer.shippingAddress.zip}}
+		        	</br>
+		        	Email: {{customer.email}}
+		      	</div>
 	    </div>
 		</div>
     </li>

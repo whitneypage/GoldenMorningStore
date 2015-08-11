@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var customerSchema = require('./customerSchema');
+var cartSchema = require('./orderSchema');
 
 var orderSchema = mongoose.Schema({
     user: {type: String}, 
@@ -9,7 +10,7 @@ var orderSchema = mongoose.Schema({
         , color: {type: String}
         , colorSizeId: {type: String}
     }]
-    , total: {type: Number}
+    , total: [cartSchema]
     , status: {type: String, enum: ['approved', 'pending', 'shipped', 'delivered', 'on hold', 'canceled'], default: 'pending'}
     , timePlaced: {type: Date}
     , shippingDate: {type: Date}

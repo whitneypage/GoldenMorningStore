@@ -4,6 +4,8 @@ var Paypal = require('paypal-rest-sdk');
 var session = require('express-session');
 var configAuth = require('../config/keys');
 var sendgrid = require('sendgrid')(configAuth.sendGridAuth.apiKey);
+var Email = sendgrid.Email;
+
 
 module.exports = {
 
@@ -54,12 +56,14 @@ module.exports = {
 			} else {
 
 				//email upon order status update - shipped
-			var email     = new sendgrid.Email({
-				to:       'tylertebbs20@gmail.com',
-				from:     'tylertebbs20@yahoo.com',
-				subject:  'Congrats, your item has been shipped',
-				text:     'Hello myself'
+			var email = new Email({
+			    to:         to_address,
+			    from:       from_address,
+			    subject:    subject,
+			    text:       text_body,
+			    html:       html_body
 			});
+
 			sendgrid.send(email, function(err, json) {
 				if (err) { return console.error(err); }
 				console.log(json);
@@ -89,7 +93,8 @@ module.exports = {
 				text:     'Hello myself'
 			});
 			sendgrid.send(email, function(err, json) {
-				if (err) { return console.error(err); }
+				if (err) { return console.error(err); 
+				}
 				console.log(json);
 			});
 		  	// end email upon order
