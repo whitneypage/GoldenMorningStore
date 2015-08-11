@@ -27,10 +27,13 @@
 
 						<div class="row">
 							<div class="input-field col s5">
-									<input type="text" placeholder="NAME">
+									<input type="text" placeholder="FIRST NAME" ng-model="firstName">
+							</div>
+							<div class="input-field col s5">
+									<input type="text" placeholder="LAST NAME" ng-model="lastName">
 							</div>
 							<div class="input-field col s6">
-								<input type="email" placeholder="EMAIL"><br>
+								<input type="email" placeholder="EMAIL" ng-model="email"><br>
 							</div>
 						</div>
 
@@ -60,19 +63,19 @@
 
 						<div class="row" ng-show="checked">
 							<div class="input-field col s9">
-								<input type="text" placeholder="BILLING ADDRESS">
+								<input type="text" placeholder="BILLING ADDRESS" ng-model="street">
 							</div>
 						</div>
 
 						<div class="row" ng-show="checked">
 								<div class="input-field col s5">
-									<input type="text" placeholder="CITY">
+									<input type="text" placeholder="CITY" ng-model="city">
 								</div>
 								<div class="input-field col s4">
-									<input type="text" placeholder="STATE">
+									<input type="text" placeholder="STATE" ng-model="state">
 								</div>
 								<div class="input-field col s2">
-									<input type="text" placeholder="ZIP">
+									<input type="text" placeholder="ZIP" ng-model="zip">
 								</div>
 						</div>
 
@@ -80,16 +83,22 @@
 
 						<div class="row">
 							<div class="input-field col s10">
-								<input type="text" placeholder="CREDIT CARD #">
+								<input type="text" placeholder="CREDIT CARD #" ng-model="creditCard">
+							</div>
+							<div class="input-field col s10">
+								<input type="text" placeholder="CREDIT CARD TYPE" ng-model="ccType">
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s4">
-								<input type="text" placeholder="EXP DATE">
+								<input type="text" placeholder="EXP MONTH" ng-model="expireMonth">
 							</div>
 							<div class="input-field col s4">
-								<input type="text" placeholder="CCV">
+								<input type="text" placeholder="EXP YEAR" ng-model="expireYear">
+							</div>
+							<div class="input-field col s4">
+								<input type="text" placeholder="CCV" ng-model="ccv">
 							</div>
 						</div>
 
@@ -97,7 +106,7 @@
 				</div>
 
 					<div id="placeOrder">
-						<a class="btn-large waves-effect waves-light" ng-click="submitCC()">PLACE ORDER</a>
+						<a class="btn-large waves-effect waves-light" ng-click="guestCheckout()">PLACE ORDER</a>
 					</div>
 
 			</div>

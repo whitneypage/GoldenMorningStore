@@ -77,16 +77,18 @@
             	</br>
             	Color: {{product.color}}
             	</br>
-	        </div>
+	    </div>
+	    <div>
             	</br>
 	        <h3>Purchaser Info</h3>
-	        <div class="purchaseInfoContainer">
-	    		Purchaser Name: {{purchaseInfo.customer.name}}
+	       <div class="purchaseInfoContainer" ng-repeat="customer in order.customer">
+	    		Purchaser Name: {{customer.name.first}} {{customer.name.last}}
 	        	</br>
-	        	Shipping Address: {{purchaseInfo.customer.shippingAddresss}}
+	        	Shipping Address: {{customer.shippingAddress.street}}, {{customer.shippingAddress.city}}, {{customer.shippingAddress.state}},  {{customer.shippingAddress.zip}}
 	        	</br>
-	        	Email: {{purchaseInfo.customer.email}}
-	        </div>
+	        	Email: {{customer.email}}
+	      	</div>
+	    </div>
 		</div>
     </li>
 </ul>

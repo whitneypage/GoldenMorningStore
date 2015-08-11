@@ -100,7 +100,7 @@ passport.deserializeUser(function(obj, done) {
 	app.delete('/api/products/:productId', productsCtrl.handleDelete);
   app.post('/api/products/colorSizeIndex', productsCtrl.findColorSizeIndex);
  
-  app.get('/api/paypal/', orderCtrl.pmtExecute);
+  // app.get('/api/paypal/', orderCtrl.pmtExecute);
 	app.post('/api/paypal', orderCtrl.pmtCreate);
 	app.get('/api/paypal/success/:id', orderCtrl.successGet);
 	app.post('/api/user/cart', cart, cartCtrl.addProductToCart);
