@@ -35,7 +35,8 @@
     "mongoose": "^4.1.0",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
-    "paypal-rest-sdk": "^1.6.0"
+    "paypal-rest-sdk": "^1.6.0",
+    "sendgrid": "^1.9.2"
   },
   "devDependencies": {
     "gulp-image-resize": "^0.6.0"

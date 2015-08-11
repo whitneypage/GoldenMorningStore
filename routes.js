@@ -16,6 +16,7 @@ var config = require('./apis/config/keys');
 var mongoose = require('mongoose');
 var connectMongo = require('connect-mongo');
 
+
 var auth = function(req, res, next) {
 	if (!req.isAuthenticated()){
 		res.send(401);}
@@ -79,6 +80,7 @@ passport.deserializeUser(function(obj, done) {
    done(null, obj);
 });
 
+
 	app.post('/api/admin', userCtrl.createAdmin);
 	app.get('/api/admin/loggedin', userCtrl.checkLoggedIn);
 	
@@ -96,8 +98,9 @@ passport.deserializeUser(function(obj, done) {
 	app.put('/api/products/:productId', productsCtrl.handlePut);
 	app.put('/api/products', productsCtrl.decSize);
 	app.delete('/api/products/:productId', productsCtrl.handleDelete);
-  
-  // app.get('/api/paypal/', orderCtrl.pmtExecute);
+  app.post('/api/products/colorSizeIndex', productsCtrl.findColorSizeIndex);
+ 
+  app.get('/api/paypal/', orderCtrl.pmtExecute);
 	app.post('/api/paypal', orderCtrl.pmtCreate);
 	app.get('/api/paypal/success/:id', orderCtrl.successGet);
 	app.post('/api/user/cart', cart, cartCtrl.addProductToCart);

@@ -55,6 +55,17 @@ nav a:hover {
   cursor: pointer;
 }
 
+.bagIcon {
+  color: #424242;
+}
+
+.bag {
+  margin-right: 8px;
+}
+
+nav .brand-logo {
+  color: #424242;
+}
 /*PRODUCT GRID START*/
 
 #products {
@@ -123,6 +134,7 @@ nav a:hover {
   font-size: 20px;
   font-weight: 300;
 }
+
 
 .inStock:hover {
   color: #727272;
@@ -218,7 +230,7 @@ nav a:hover {
 .aboutDes {
  font-family: 'Palanquin', sans-serif;
   font-weight: 100;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
   margin-top: 65px;
   margin-left: 30px;
@@ -231,7 +243,7 @@ nav a:hover {
 .policies {
   font-family: 'Palanquin', sans-serif;
   font-weight: 100;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
   margin: 25px 75px 25px 75px;
 }
@@ -244,7 +256,7 @@ nav a:hover {
 
 footer .container, footer a {
   color: #454545;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .page-footer {
@@ -272,11 +284,11 @@ footer h6, footer h5 {
 .foot {
   margin: 0px 95px;
   color: #454545;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .footer-copyright a {
-  font-size: 13px;
+  font-size: 15px;
 }
 .footer-copyright a:hover {
   color: #6bbbb6;
@@ -611,7 +623,7 @@ table th {
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
-  .carousel {
+  ., {
     width: 180px;
     height: 180px;
   }
@@ -634,8 +646,8 @@ table th {
 }
 
 .carousel {
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
 }
 
 .carousel_img {
@@ -643,11 +655,14 @@ table th {
   height: 100%;
 }
 
+.rn-carousel-indicator {
+   background-color: rgba(0, 0, 0, 0.1);
+  
+}
 
 .rn-carousel-indicator span{
   font-size: 17px;
   width: 300px;
-
 }
 
 .rn-carousel-control {
@@ -661,7 +676,7 @@ table th {
 
 .rn-carousel-control.rn-carousel-control-next {
     font-size: 45px;
-    margin-right: 290px;
+    margin-right: 400px;
     color: rgb(255, 255, 255);
 }
 
@@ -676,7 +691,7 @@ table th {
 /*START ORDERS PAGE*/
 
 .orderStatusDD {
-  width: 8%;
+  width: 25%;
 }
 
 .notesArea {
@@ -684,7 +699,7 @@ table th {
 }
 
 .moreInfoBox {
-  background-color: green;
+ 
 }
 
 

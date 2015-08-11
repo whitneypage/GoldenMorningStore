@@ -2,6 +2,20 @@ var app = angular.module('GoldMorning');
 
 app.service('ProductService', function($http, $q) {
 
+  this.findColorSizeIndex = function(color, email) {
+    var deferred = $q.defer();
+    $http({
+      method: 'POST',
+      url: '/api/products/colorSizeIndex',
+      data: {
+        colorSizeId: color,
+        wantList: email
+      }
+    }).then(function(response) {
+      deferred.resolve(response.data)
+    })
+    return deferred.promise;
+  };
 
 	
 	//****TYTEBBS SERIVICES FROM OLD productService.js***//

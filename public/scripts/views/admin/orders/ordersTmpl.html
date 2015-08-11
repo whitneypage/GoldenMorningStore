@@ -46,7 +46,7 @@
 <div class="container">
 <ul class="collapsible popout" data-collapsible="accordion" watch>
     <li ng-repeat="order in orders | filter:search">
-        <div class="collapsible-header"></i>{{order._id}} {{order.status}}</div>
+        <div class="collapsible-header"></i>Order Id#: {{order._id}}, Order Status: {{order.status}}</div>
         <div class="collapsible-body">Order Status:
 			<div class="orderStatusDD">
 				<select class="" ng-model="order.status" material-select watch>
@@ -57,16 +57,35 @@
 					Notes:             
 				        <textarea type="text" ng-model="order.note" placeholder="Input any notes about the order."></textarea>
 			</div>
+			Order Total: {{order.total}}
+			</br>
+			<!-- add update button here -->
+			<div>
+                <button ng-click="updateOrder(order._id, order.note, order.status)" ng-disabled="disableButton">Update Order</button>
+            </div>
+
+            <!-- End update button -->
+
+
+
+
+			<h3>Order Info:</h3>
 			<div class="moreInfoBox" ng-repeat="product in order.products">
-	            	Order Total: {{order.total}}
-	            	</br>
-	            	Product Size: {{product.size}}
-	            	</br>
-	            	Color: {{product.color}}
-	            	</br>
-	                Product Title: {{product.product.productTitle}}
-
-
+            	Product Title: {{product.product.productTitle}}
+				</br>
+            	Product Size: {{product.size}}
+            	</br>
+            	Color: {{product.color}}
+            	</br>
+	        </div>
+            	</br>
+	        <h3>Purchaser Info</h3>
+	        <div class="purchaseInfoContainer">
+	    		Purchaser Name: {{purchaseInfo.customer.name}}
+	        	</br>
+	        	Shipping Address: {{purchaseInfo.customer.shippingAddresss}}
+	        	</br>
+	        	Email: {{purchaseInfo.customer.email}}
 	        </div>
 		</div>
     </li>
