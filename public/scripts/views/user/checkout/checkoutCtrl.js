@@ -88,7 +88,7 @@ app.controller('checkoutCtrl', function($window, $routeParams, $scope, cart, car
 					});
 				});
 		});
-	};
+	};//end paypalCheckout
 
 	var paymentSuccess = function(){
 		cartService.paymentSuccess($scope.payerId).then(function(data){

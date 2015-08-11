@@ -17,7 +17,7 @@ app.config(function($routeProvider) {
 	// .when('/product', {
 	// 	templateUrl : 'scripts/views/user/productModal/productModalTmpl.html',
 	// 	controller : 'productModalCtrl'
-	// })
+	// }) 
 
 	.when('/cart', {
 		templateUrl : 'scripts/views/user/cart/cartTmpl.html',
@@ -42,7 +42,13 @@ app.config(function($routeProvider) {
 		resolve: {
 			products: function(ProductService) {
 				return ProductService.getProduct();
-			}
+			},
+//			//				THIS RESTRICTS ACCESS IF NOT LOGGED IN.  
+////				IF NOT LOGGED IN, REDIRECTS TO LOGIN PAGE
+////				COMMENTED OUT FOR DEV PURPOSES
+//			loggedin : function(UserService) {
+//				return UserService.checkLoggedin();
+//			}
 		}
 	})
 	.when('/admin/orders', {
@@ -51,12 +57,29 @@ app.config(function($routeProvider) {
 		resolve: {
 			orders: function(orderService) {
 				return orderService.getAllOrders();
-			}
+			},
+//			//				THIS RESTRICTS ACCESS IF NOT LOGGED IN.  
+////				IF NOT LOGGED IN, REDIRECTS TO LOGIN PAGE
+////				COMMENTED OUT FOR DEV PURPOSES
+//			loggedin : function(UserService) {
+//				return UserService.checkLoggedin();
+//			}
 		}
 	})
 	.when('/admin/product', {
 		templateUrl : 'scripts/views/admin/product/productTmpl.html',
-		controller : 'productCtrl'
+		controller : 'productCtrl',
+		resolve : {
+			loggedin : function(UserService) {
+				return UserService.checkLoggedin();
+			},
+//			//				THIS RESTRICTS ACCESS IF NOT LOGGED IN.  
+////				IF NOT LOGGED IN, REDIRECTS TO LOGIN PAGE
+////				COMMENTED OUT FOR DEV PURPOSES
+//			loggedin : function(UserService) {
+//				return UserService.checkLoggedin();
+//			}
+		}
 	})
 	.when('/admin/product/:productId', {
 		templateUrl : 'scripts/views/admin/product/updateProductTmpl.html',
@@ -65,13 +88,21 @@ app.config(function($routeProvider) {
 			product : function(ProductService, $route) {
 				var productId = $route.current.params.productId;
 				return ProductService.getOneProduct(productId);
-			}
+			},
+//			//				THIS RESTRICTS ACCESS IF NOT LOGGED IN.  
+////				IF NOT LOGGED IN, REDIRECTS TO LOGIN PAGE
+////				COMMENTED OUT FOR DEV PURPOSES
+//			loggedin : function(UserService) {
+//				return UserService.checkLoggedin();
+//			}
 		}
 	})
-	.when('/admin/login', {
-		templateUrl : 'scripts/views/admin/login/adminLogin.html',
-		controller : 'adminLoginCtrl'
-	})
-	.otherwise('/');
+	.otherwise('/');	
+	////UNUSED ROUTE, COMMENTED OUT 
+//	.when('/admin/login', {
+//		templateUrl : 'scripts/views/admin/login/adminLogin.html',
+//		controller : 'adminLoginCtrl'
+//	})
+
 });//end app.config in app.js
 

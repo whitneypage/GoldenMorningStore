@@ -119,7 +119,7 @@ app.use(passport.session());
 //		});
 	
 	app.get('/api/logout', function(req, res){
-		res.logout();
+		req.logout();
 		res.redirect('/#/');
 	});
 	
@@ -137,10 +137,10 @@ app.use(passport.session());
   // app.get('/api/products/image', productsCtrl.uploadImage)
 	app.get('/api/products', productsCtrl.handleGetAll);
 	app.get('/api/products/:productId', productsCtrl.handleGetOneProduct);
-//	app.post('/api/products', productsCtrl.handlePost);
-//	app.put('/api/products/:productId', productsCtrl.handlePut);
-//	app.put('/api/products', productsCtrl.decSize);
-//	app.delete('/api/products/:productId', productsCtrl.handleDelete);
+	app.post('/api/products', productsCtrl.handlePost);
+	app.put('/api/products/:productId', productsCtrl.handlePut);
+	app.put('/api/products', productsCtrl.decSize);
+	app.delete('/api/products/:productId', productsCtrl.handleDelete);
   
   app.get('/api/paypal/', orderCtrl.pmtExecute);
 	app.post('/api/paypal', orderCtrl.pmtCreate);
@@ -161,10 +161,10 @@ app.use(passport.session());
 //		**UN COMMENT THESE ROUTES AND REMOVE THEIR UNPROTECTED PAIRS BEFORE RELEASE
 //	app.post('/api/colorSize', auth, productsCtrl.updateColorSize)
 	
-	app.post('/api/products', auth, productsCtrl.handlePost);
-	app.put('/api/products/:productId', auth, productsCtrl.handlePut);
-	app.put('/api/products', auth, productsCtrl.decSize);
-	app.delete('/api/products/:productId', auth, productsCtrl.handleDelete);
+//	app.post('/api/products', auth, productsCtrl.handlePost);
+//	app.put('/api/products/:productId', auth, productsCtrl.handlePut);
+//	app.put('/api/products', auth, productsCtrl.decSize);
+//	app.delete('/api/products/:productId', auth, productsCtrl.handleDelete);
 	
 //	app.get('/api/admin/order/:id', auth, orderCtrl.getOrder);
 	

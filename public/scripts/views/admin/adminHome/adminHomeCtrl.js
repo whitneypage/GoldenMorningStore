@@ -5,6 +5,9 @@ app.controller('adminHomeCtrl', function($scope, products, ProductService, $rout
 	//show and hide edit size inputs 
 	//defaults to hidden
 	$scope.confirmDelete = false;
+
+	
+
 	
 	$scope.toggleShowEditSizes = function() {
 		$scope.showEditSizes = !$scope.showEditSizes;
