@@ -1,6 +1,6 @@
 var app = angular.module('GoldMorning');
 
-app.service('UserService', function($http, $q, $location){
+app.service('UserService', function($http, $q, $location, $window){
 	this.checkLoggedin = function(){
 		console.log('checkLoggedIn Hit')
 		var deferred = $q.defer();
@@ -17,7 +17,7 @@ app.service('UserService', function($http, $q, $location){
 			else {
 			console.log('logged in within else of UserService.checkLoggedin');
 				deferred.reject();
-				$location.path('/admin/login');
+				$window.location.href = '/api/login';
 			}
 		});
 	};// end checkLoggedin
