@@ -22,7 +22,7 @@ app.service('ProductService', function($http, $q) {
 	};
 
 	this.addProduct = function(product){
-          console.log("ProductInService", product);
+        console.log("ProductInService", product);
         console.log('add product service hit')
         var deferred = $q.defer();
         $http({

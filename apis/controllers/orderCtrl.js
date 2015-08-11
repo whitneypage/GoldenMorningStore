@@ -44,7 +44,8 @@ module.exports = {
 
 	/*not sure exactly what this method will be for nor how it will be used...yet*/
 	, updateOrder: function(req, res) {
-		Order.findByIdAndUpdate(req.params.id, req.body, function(err, data) {
+		console.log('THIS IS IMPORTANT TO ME:   ', req.body, 'THIS IS IMPORTANT TOO:  ', req.params)
+		Order.findByIdAndUpdate(req.params.id, req.body, {new: true},  function(err, data) {
 			if(err) {
 				res.status(500).send(err);
 				console.log(err);
@@ -91,7 +92,7 @@ module.exports = {
 	, pmtCreate: function(req, res) {
 			Paypal.payment.create(req.body.payment, function (error, payment) {
 	  if (error) {
-	    console.log(error);
+	    console.log(error.response.details);
 	  } else {
 	  	console.log('PAYMENT', payment);
 	    res.json(payment)
