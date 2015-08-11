@@ -658,47 +658,97 @@ table th {
 .product-object {
   height: 24em;
   width: 24em;
-  outline: 2px solid red;
+  /*outline: 2px solid red;*/
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: left;
+  margin-left: 1.5em;
 }
 
 .product-modal-title {
   font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  font-size: 32px;
+  font-weight: 200;
+  font-size: 28px;
+  text-transform: uppercase;
   text-align: left;
-  flex: 2;
+  border-bottom: 1px solid #2e2e2e;
+  padding-bottom: -1em;
 }
 
 .product-modal-price {
-  font-size: 22px;
+  font-size: 20px;
   text-align: left;
-  flex: 1;
+   font-family: 'Poppins', sans-serif;
+   font-weight: 400;
+   /*border-bottom: 1px solid #2e2e2e;*/
+   /*outline: 1px solid red;*/
 }
 
-.product-modal-color-size {
+/*.product-modal-price-price {
+  width: 9%;
+  border-bottom: 1px solid #2e2e2e;
+}*/
+
+.product-modal-keyword {
+  text-align: left;
+  font-weight: 300;
+  font-size: 14px;
+  margin-top: .5em;
+}
+
+/*.product-modal-color-size {*/
   /*display: flex;
   justify-content: space-between;*/
-  flex: 3;
+  /*flex: 3;
+}*/
+
+.product-modal-color-keyword {
+  margin-bottom: -.4em;
 }
 
 .product-modal-color-dropdown{
-  width: 70%;
-  height: 10px;
+  width: 60%;
+  font-weight: 400;
+  /*border-bottom: 1px solid #2e2e2e;*/
+}
+
+.select-dropdown {
+  margin-top: -.5em;
+  outline: 3px solid red;
+}
+
+.product-modal-size-container {
+  margin-top: -.5em;
 }
 
 .product-modal-size-buttons {
-  width: 70%;
-  height: 10px;
+  /*outline: 1px solid red;*/
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  margin: -.5em 0 .4em 0;
+}
+ 
+.product-modal-individual-size-button:hover {
+  /*outline: 1px solid #5E5E5E;*/
+  cursor: pointer;
+}
+
+.product-modal-add-to-bag {
+  border: 1px solid #5E5E5E;
+  width: 100%;
+  font-size: 20px;
+  padding: .5em 0 1em 0;
 }
 
 .product-modal-description {
-  outline: 1px solid red;
-  margin-top: .5em;
-  flex: 3;
+  /*outline: 1px solid red;*/
+  margin-top: -.5em;
+  text-align: left;
+ /* border-bottom: 1px solid #2e2e2e;*/
+  padding-bottom: 1em;
 }
 
 .product-image {
