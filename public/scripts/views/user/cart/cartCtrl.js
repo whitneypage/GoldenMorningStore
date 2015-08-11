@@ -7,12 +7,12 @@ app.controller('cartCtrl', function($scope, ProductService, cart, cartService, $
 	$scope.productModalData = function(product) {
 		console.log("test", product);
 		$scope.product = product;
-	}
+	};
 
 	$scope.open = function() {
 		$scope.openProductModal = !$scope.openProductModal
 		console.log('open clicked ', $scope.openProductModal)
-	}
+	};
 
 	$scope.getProducts = function(){
 		ProductService.getProduct().then(function(data) {
@@ -33,6 +33,8 @@ app.controller('cartCtrl', function($scope, ProductService, cart, cartService, $
 	$scope.getProducts();
 		
 	$scope.sizes = ["L", "M", "S"];	
+
+	/*$scope.size = size;*/
 
 	$scope.cart = cart;
 
@@ -58,6 +60,12 @@ app.controller('cartCtrl', function($scope, ProductService, cart, cartService, $
 		});
 	};
 
+  $scope.ifNotClothing = function (product) {
+      if (product.productCategory === "Accessories" || product.productCategory === "Soaps/Scrubs") {
+        return true
+      }
+  };
+
 	$scope.removeProductFromCart = function(id) {
 		console.log("Cart", cart);
 		console.log("removing id", id);
@@ -71,7 +79,7 @@ app.controller('cartCtrl', function($scope, ProductService, cart, cartService, $
 
 	$scope.getTotal = function() {
 		$scope.total = cartService.calculatePrice($scope.cart);
-		console.log($scope.cart);
+		console.log("cart", $scope.cart);
 		console.log($scope.total);
 	}; // end $scope.getTotal
 	

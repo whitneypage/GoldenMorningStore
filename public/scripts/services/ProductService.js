@@ -55,7 +55,7 @@ app.service('ProductService', function($http, $q) {
             method: 'GET',
             url: "/api/products",
         }).then(function(response) {
-            console.log('I got the data I requested');
+            console.log('I got the data I requested', response.data);
             deferred.resolve(response.data)
         });
         return deferred.promise;

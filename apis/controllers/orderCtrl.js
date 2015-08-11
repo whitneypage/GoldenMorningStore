@@ -76,7 +76,7 @@ module.exports = {
 
 	, updateOrderByPaymentId: function(req, res){
 		var PayerID = {payer_id: req.body.PayerID};
-		Paypal.payment.execute(req.params.id, PayerID, function(error, payment){
+		Paypal.payment.execute(req.params.id, PayerID, {new: true}, function(error, payment){
 		  if(error){
 		    console.error(error);
 		  } else {
@@ -127,7 +127,7 @@ module.exports = {
 		console.log('SENDING TO PAYPAL', req.body.payment)
 			Paypal.payment.create(req.body.payment, function (error, payment) {
 	  if (error) {
-	    console.log(error.response.details);
+	    console.log('PAYMENT CREATION ERROR:', error);
 	  } else {
 	  	console.log('PAYMENT', payment);
 	    res.json(payment)

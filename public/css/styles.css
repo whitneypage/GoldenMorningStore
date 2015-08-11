@@ -5,8 +5,9 @@ body {
 }
 
 
+
 #hero {
-	background-image: url(../images/test.jpg);
+	background-image: url(../images/GMLogo.jpg);
 	background-size: cover;
 	position: relative;
 	height: 100vh;
@@ -36,6 +37,12 @@ body {
   font-weight: 100;
 }
 
+
+.headline-main i:hover {
+  cursor: pointer;
+}
+
+
 .fixed {
   position: fixed; 
   top: 0; 
@@ -59,12 +66,10 @@ nav a:hover {
   color: #424242;
 }
 
-.bag {
-  margin-right: 8px;
-}
 
-nav .brand-logo {
-  color: #424242;
+nav img {
+  margin-top: 10px;
+  margin-left: 10px;
 }
 /*PRODUCT GRID START*/
 
@@ -120,10 +125,10 @@ nav .brand-logo {
 
 .grid figcaption .bag {
   float: left;
-  margin: 3px 5px;
-  /*border-radius: 2px;
-  display: inline-block;
-  background: #fff;*/
+  margin-top: 10px;
+  margin-right: -30px;
+  font-size: 20px;
+  font-weight: 300;
   color: #3a3a3a;
 }
 
@@ -131,6 +136,7 @@ nav .brand-logo {
 .add-size span {
   float: right;
   margin-right: 20px;
+  margin-top: 10px;
   font-size: 20px;
   font-weight: 300;
 }
@@ -151,14 +157,26 @@ nav .brand-logo {
   text-decoration: none;
 }
 
-.test input {
+.soldOut input {
   margin-left: 10px;
 }
 
-.test span{
+.soldOut span{
   color: #3a3a3a;
   font-size: 14px;
   font-weight: 300;
+}
+
+.accessoriesAdd {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 300;
+  color: black;
+}
+
+.accessoriesAdd:hover {
+  color: #727272;
+  cursor: pointer;
 }
 
 .size-style figure {
@@ -300,7 +318,7 @@ footer h6, footer h5 {
 
 .admin {
   height: 100vh;
-  background: url("../images/E11.jpg") 75% 80% no-repeat;
+  background: url("../images/admin-bg2.jpg") 75% 80% no-repeat;
   background-size: cover;
 }
 
@@ -349,6 +367,13 @@ form button:hover {
   font-weight: normal;
 }
 
+.rh-admin-input {
+
+	background : rgba(185,159,121, .1);
+	border : none;
+	border-bottom : 1px solid #fff
+}
+
 /*END ADMIN LOGIN*/
 
 /*START ADMIN HOME*/
@@ -364,11 +389,34 @@ form button:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-#imageWrap { 
+
+.showWait {
+  color: #6a6a6a;
+  font-size: 17px;
+  margin: 20px auto;
+}
+
+#numberWait {
+  color: #6a6a6a;
+  font-size: 17px;
+  margin: 20px auto;
+}
+
+.showWait:hover {
+  color: #4db6ac;
+  cursor: pointer;
+}
+
+#waitList h4 {
+  margin: 10px auto;
+  font-weight: lighter;
+}
+
+/*#imageWrap { 
     width: 640px; 
     height: 420px; 
     background: url('ajax-loader.gif') center center no-repeat; 
-}
+}*/
 
 .btn-flat:hover {
   color: #727272;
@@ -577,6 +625,7 @@ table th {
   flex-direction: row;
   width: 100%;
   justify-content: center;
+  /*padding-bottom: 20px;*/
 }
 /*
 * {
@@ -633,21 +682,140 @@ table th {
 
 /*begin product modal styling*/
 
+.product-description {
+  width: 100%;
+}
+
+.product-photo-box {
+  width: 24em;
+  overflow: auto;
+}
+
 .product-photo-and-info {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
+/*.product-info {
+  display: flex;
+  flex-direction: column;
+  
+}*/
+
 .product-object {
   height: 24em;
   width: 24em;
-  outline: 2px solid red;
+  /*outline: 2px solid red;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  margin-left: 1.5em;
 }
 
+.product-modal-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  font-size: 28px;
+  text-transform: uppercase;
+  text-align: left;
+  border-bottom: 1px solid #2e2e2e;
+  padding-bottom: -1em;
+}
+
+.product-modal-price {
+  font-size: 20px;
+  text-align: left;
+   font-family: 'Poppins', sans-serif;
+   font-weight: 400;
+   /*border-bottom: 1px solid #2e2e2e;*/
+   /*outline: 1px solid red;*/
+}
+
+/*.product-modal-price-price {
+  width: 9%;
+  border-bottom: 1px solid #2e2e2e;
+}*/
+
+.product-modal-keyword {
+  text-align: left;
+  font-weight: 300;
+  font-size: 14px;
+  margin-top: .5em;
+}
+
+/*.product-modal-color-size {*/
+  /*display: flex;
+  justify-content: space-between;*/
+  /*flex: 3;
+}*/
+
+.product-modal-color-keyword {
+  margin-bottom: -.4em;
+}
+
+.product-modal-color-dropdown{
+  width: 60%;
+  font-weight: 400;
+  /*border-bottom: 1px solid #2e2e2e;*/
+}
+
+.select-dropdown {
+  margin-top: -.5em;
+  outline: 3px solid red;
+}
+
+.product-modal-size-container {
+  margin-top: -.5em;
+}
+
+.product-modal-size-buttons {
+  /*outline: 1px solid red;*/
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  margin: -.5em 0 .4em 0;
+}
+ 
+.product-modal-individual-size-button:hover {
+  /*outline: 1px solid #5E5E5E;*/
+  cursor: pointer;
+}
+
+.product-modal-add-to-bag {
+  border: 1px solid #5E5E5E;
+  width: 100%;
+  font-size: 20px;
+  padding-top: -1em;
+  
+}
+
+.product-modal-add-to-bag p{
+  font-size: 20px;
+  line-height: .6em;
+}
+
+.product-modal-description {
+  /*outline: 1px solid red;*/
+  margin-top: -.5em;
+  text-align: left;
+ /* border-bottom: 1px solid #2e2e2e;*/
+  padding-bottom: 1em;
+}
+
+.product-image {
+  width: 100%;
+}
+
+/** {
+  outline: 2px solid;
+}*/
+
 .carousel {
-  width: 350px;
-  height: 350px;
+  width: 30em;
+  height: 30em;
 }
 
 .carousel_img {
@@ -671,7 +839,7 @@ table th {
 
 .carouselControl {
   width: 300px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgb(0,0,0);
 }
 
 .rn-carousel-control.rn-carousel-control-next {
@@ -892,7 +1060,7 @@ table th {
   /*border-top: 2px solid black;*/
   font-family: 'Poppins', sans-serif;
   letter-spacing: 1.1px;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 
 .mobile-total-price {
@@ -902,10 +1070,13 @@ table th {
 .mobile-checkout-button {
   color: black;
   border: 1px solid #5e5e5e;
+  padding: .5em 1em .5em 1em;
   /*padding: .5em 1em .5em 1em;*/
   /*margin-top: 50px;*/
 }
+
 /*START CHECKOUT PAGE*/
+
 .checkout {
   width: 80%;
   padding: 20px;
@@ -917,6 +1088,15 @@ table th {
   border-bottom: 1px solid #727272;
   font-weight: lighter;
 }
+
+.orderCell {
+  height: 385px;
+  width: 1140px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+
 #orderGrid {
   border-bottom: 1px solid #727272;
   font-weight: normal;
@@ -954,16 +1134,35 @@ table th {
   color: #5e5e5e;
 }
 
+#payOptions1, #payOptions2 {
+  text-align: center;
+}
+
+#payOptions1 i {
+  color: #4a4a4a;
+  cursor: pointer;
+}
+
+#payOptions2 {
+  border-left: 1px solid #3a3a3a;
+}
+
+.checkoutForm {
+  margin: 100px auto;
+  padding: 20px;
+  border-top: 1px solid #3a3a3a;
+}
+
+.checkoutForm h3 {
+  font-weight: lighter;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 .paypal {
   cursor: pointer;
 }
 
-#payOptions1, #payOptions2 {
-  text-align: center;
-}
- #payOptions1 {
-  border-right: 1px solid #3a3a3a;
- }
 
 /* #payOptions2 {
   margin-top: 100px;
