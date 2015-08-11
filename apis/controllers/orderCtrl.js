@@ -56,6 +56,12 @@ module.exports = {
 			} else {
 
 				//email upon order status update - shipped
+			
+
+
+
+
+
 			var email = new Email({
 			    to:         to_address,
 			    from:       from_address,

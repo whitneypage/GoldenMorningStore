@@ -116,23 +116,31 @@
 							<!-- end of billing address form -->
 
 					<div class="row">
-						<div class="input-field col s4">
-							<a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown ng-model="ccType">TYPE</a>
+						<div class="input-field col s2">
+							<span class="btn-flat" href="javascript:void(0);" data-activates="ccType" ng-model="ccType" dropdown data-constrainwidth="false" data-gutter="15" data-beloworigin="true">TYPE</span>
+
+							<ul id="ccType" class="dropdown-content">
+						    <li><a href="javascript:void(0);">VISA</a></li>
+						    <li><a href="javascript:void(0);">MASTERCARD</a></li>
+						    <li><a href="javascript:void(0);">AMEX</a></li>
+						    <li><a href="javascript:void(0);">DISCOVER</a></li>
+							</ul>
 						</div>
-						<div class="input-field col s10">
-							<input type="text" pattern="[0-9]{13,16}" placeholder="CREDIT CARD #" ng-model="creditCard" required>
+
+						<div class="input-field col s5">
+							<input type="text" pattern="[0-9]{13,16}" placeholder=" CREDIT CARD #" ng-model="creditCard" required>
+						</div>
+						<div class="input-field col s2">
+							<input type="text" placeholder=" EXP XX" ng-model="expireMonth">
+						</div>
+						<div class="input-field col s2">
+							<input type="text" placeholder=" YR XXXX" ng-model="expireYear">
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="input-field col s4">
-							<input type="text" placeholder="EXP MONTH" ng-model="expireMonth">
-						</div>
-						<div class="input-field col s4">
-							<input type="text" placeholder="EXP YEAR" ng-model="expireYear">
-						</div>
-						<div class="input-field col s4">
-							<input type="text" placeholder="CCV" ng-model="ccv">
+						<div class="input-field col s3 offset-s8">
+							<input type="text" placeholder=" CCV" ng-model="ccv">
 						</div>
 					</div>
 

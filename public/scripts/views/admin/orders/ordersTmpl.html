@@ -1,95 +1,103 @@
-<!-- ORDERS
-<div ng-repeat="order in orders | filter:search:strict">
-	<div>Order ID #: {{order._id}}</div>
-	</br>
-	<div>{{order.timePlaced}}</div>
-	<div>Order Total: ${{order.total}}</div>
-	</br>
-	Order Status:
-	<div class="orderStatusDD">
-		<select class="" ng-model="order.status" material-select watch>
-	    	<option ng-repeat="status in orderStatusOptions">{{status}}</option>
-		</select>
-	</div>
-		<div class="notesArea">
-					Notes:             
-				        <textarea type="text" ng-model="order.note" placeholder="Input any notes about the order."></textarea>
+
+<h3 class="goHome left-align animated fadeIn"><a href="/#/admin/home">GM.S</a></h3>
+
+<div class="container">
+
+<div class="mainOrders">
+<h2 class="right-align animated slideInRight">ORDERS</h2><br><br>
+	<div class="row">
+		<div class="input-field col s4 offset-s4">
+			<input type="text" ng-model="search.$" placeholder=" SEARCH BY order id or email"/>
 		</div>
-	</br>
-
-
-	<div>
-		<div><button ng-click="updateOrder(order._id, order.note, order.status)">update</button></div>
+		<div class="input-field col s3">
+			<select class="browser-default" ng-model="search.status" ng-options="option for option in orderStatusOptions"><option value=""disabled selected>SORT BY order status</option></select> 
+		</div>
 	</div>
 
-	<div ng-click="showOrder(order)"> MORE INFO
-	        <div ng-show="order.show">
-	            <div class="moreInfoBox" ng-repeat="product in order.products">
-	            	{{order.total}}
-	            	{{product.size}}
-	                {{product.product.productTitle}}
-	            </div>
-	        </div>
-    </div>	
+	<div class="orderView">
+		<ul class="collapsible popout" data-collapsible="accordion" watch>
+		    <li ng-repeat="order in orders | filter:search">
+		      
+		      <div class="collapsible-header" id="orderHeader">
+		       <p><i class="fa fa-angle-double-right"></i>
+		       	ORDER ID# : <strong>{{order._id}}</strong>
+		   		 | STATUS : <strong>{{order.status}}</strong>
+		       </p>
+		      </div>
+		       
+		     <div class="container collapsible-body" id="orderDetails">
+
+			      <div class="row">
+			       	<div class="col s3">
+							<h5 class="center-align">ORDER STATUS:</h5>
+						</div>
+						<div class="col s3">
+							<select class="browser-default" ng-model="order.status" material-select watch>
+						    	<option ng-repeat="status in orderStatusOptions">{{status}}</option>
+							</select>
+						</div>
+						<div class="col s3 offset-s3">
+							<h6>DATE ORDERED:</h6>{{ order.timePlaced }}
+						</div>
+					</div>
+
+					<div class="row">	
+						<div class="col s5">	
+							<h5>ORDER DETAILS:</h5>
+								<div class="moreInfoBox" ng-repeat="product in order.products">
+									<div class="oneInfoBox">
+					            	<span>ITEM NAME:</span> {{product.product.productTitle}}
+										<br>
+					            	<span>SIZE:</span> {{product.size}}
+					            	<br>
+					            	<span>COLOR:</span> {{product.color}}
+					            </div>
+
+						    	</div>
+					   </div>
+				      <div class="col s6">
+					      <h5>BUYER DETAILS:</h5>
+					       <div class="purchaseInfoContainer" ng-repeat="customer in order.customer">
+					    		BUYER NAME: {{customer.name.first}} {{customer.name.last}}
+					        	<br>
+					        	SHIPPING ADDRESS: {{customer.shippingAddress.street}}, {{customer.shippingAddress.city}}, {{customer.shippingAddress.state}},  {{customer.shippingAddress.zip}}
+					        	<br>
+					        	EMAIL: {{customer.email}}
+					      </div>
+					   </div>
+
+
+
+					</div>
 			
 
-	<hr>
-</div> -->
+					<div class="row">
+						<div class="col s8">
+							<h5>NOTES</h5>             
+								<textarea class="productDescriptionInput" type="text" ng-model="order.note" placeholder=" special requests, reminders, etc"></textarea>
+						</div>
+					</div>
 
-<div class="row width80">
-		<input class="col s4" type="text" ng-model="search.$" placeholder="Enter order Id or username"/>
 
-		<select class="col s2 browser-default" ng-model="search.status" ng-options="option for option in orderStatusOptions"><option value=""disabled selected>Sort by order status</option></select> 
+				
+
+				<div class="orderDetailTotal">
+					<h5>ORDER TOTAL: {{order.total}}</h5>
+				</div>
+				
+				<br>
+					<!-- add update button here -->
+				<div id="updateOrder" class="center-align">
+			   	<a class="btn waves-effect waves-light" ng-click="updateOrder(order._id, order.note, order.status)" ng-disabled="disableButton">UPDATE ORDER</a>
+			   </div>
+
+
+			</div>
+
+		        <!-- End update button -->
+		 </li>
+		</ul>
+	</div>
+
 </div>
-
-<select>Filter by Status:<option></option></select>
-<div class="container">
-<ul class="collapsible popout" data-collapsible="accordion" watch>
-    <li ng-repeat="order in orders | filter:search">
-        <div class="collapsible-header"></i>Order Id#: {{order._id}}, Order Status: {{order.status}}</div>
-        <div class="collapsible-body">Order Status:
-			<div class="orderStatusDD">
-				<select class="" ng-model="order.status" material-select watch>
-			    	<option ng-repeat="status in orderStatusOptions">{{status}}</option>
-				</select>
-			</div>
-			Date Ordered: {{order.timePlaced}}
-			<div class="notesArea">
-					Notes:             
-				        <textarea type="text" ng-model="order.note" placeholder="Input any notes about the order."></textarea>
-			</div>
-
-
-			</br>
-			<!-- add update button here -->
-			<div>
-                <button ng-click="updateOrder(order._id, order.note, order.status)" ng-disabled="disableButton">Update Order</button>
-            </div>
-
-            <!-- End update button -->
-
-
-			<h3>Order Info:</h3>
-			<div class="moreInfoBox" ng-repeat="product in order.products">
-            	Product Title: {{product.product.productTitle}}
-				</br>
-            	Product Size: {{product.size}}
-            	</br>
-            	Color: {{product.color}}
-            	</br>
-		    </div>
-		    <div>
-	            	</br>
-		        <h3>Purchaser Info:</h3>
-		       <div class="purchaseInfoContainer" ng-repeat="customer in order.customer">
-		    		Purchaser Name: {{customer.name.first}} {{customer.name.last}}
-		        	</br>
-		        	Shipping Address: {{customer.shippingAddress.street}}, {{customer.shippingAddress.city}}, {{customer.shippingAddress.state}},  {{customer.shippingAddress.zip}}
-		        	</br>
-		        	Email: {{customer.email}}
-		      	</div>
-	    </div>
-		</div>
-    </li>
-</ul>
 </div>

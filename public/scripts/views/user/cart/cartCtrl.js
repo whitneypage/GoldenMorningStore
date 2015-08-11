@@ -34,8 +34,6 @@ app.controller('cartCtrl', function($scope, ProductService, cart, cartService, $
 		
 	$scope.sizes = ["L", "M", "S"];	
 
-	// $scope.size = size;
-
 	$scope.cart = cart;
 
 	$scope.addProductToCart = function(product, colorSize, size) {
@@ -79,7 +77,7 @@ app.controller('cartCtrl', function($scope, ProductService, cart, cartService, $
 
 	$scope.getTotal = function() {
 		$scope.total = cartService.calculatePrice($scope.cart);
-		console.log($scope.cart);
+		console.log("cart", $scope.cart);
 		console.log($scope.total);
 	}; // end $scope.getTotal
 	
