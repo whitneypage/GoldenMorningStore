@@ -1,4 +1,4 @@
-var app = angular.module('GoldMorning', ['ngRoute', 'ui.materialize', 'flow', 'angular-carousel']);
+var app = angular.module('GoldMorning', ['ngRoute', 'ui.materialize', 'flow', 'angular-carousel', 'smoothScroll']);
 
 //This is just a comment
 //More comments
@@ -105,4 +105,10 @@ app.config(function($routeProvider) {
 //	})
 
 });//end app.config in app.js
+
+app.run(function ($rootScope, $window) {
+ $rootScope.$on("$routeChangeSuccess", function(event){
+    $window.scrollTo(0,0);
+})
+})
 

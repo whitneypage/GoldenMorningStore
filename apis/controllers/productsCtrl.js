@@ -150,7 +150,7 @@ module.exports = {
 
    updateColorSize: function(req, res){
     // Product.findOneAndUpdate(req.body.refId, colorSize{req.body.colorSizeId: })
-   }
+   },
 
   
 	
@@ -165,4 +165,23 @@ module.exports = {
 //   },
 
 
+
+    findColorSizeIndex: function(req, res) {
+      var indexOfColorSize;
+      Product.findOne({"colorSize._id": req.body.colorSizeId })
+      .exec(function(error, response) {
+        for (var i = 0; i < response.colorSize.length; i++) {
+          if(response.colorSize[i]._id.toString() === req.body.colorSizeId) {
+             response.colorSize[i].wantList.push(req.body.wantList);
+             response.save(function(err) {
+              if (error) {
+                  return res.status(500).json(error);
+              } else {
+                  return res.json(response);
+              }
+            })
+          } 
+        };
+      })
+    }
 };
