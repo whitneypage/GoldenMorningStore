@@ -515,6 +515,19 @@ table th {
 
 /*START ADMIN ORDERS*/
 
+.goHome {
+  font-weight: lighter;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.goHome:hover a {
+  color: #4db6ac;
+}
+ .goHome a {
+  color: #454545;
+ }
+
 .mainOrders {
   margin: 50px auto;
   color: #4a4a4a;
