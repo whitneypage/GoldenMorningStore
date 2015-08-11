@@ -9,9 +9,14 @@
 			<div class="row" id="orderGrid">
 				<div ng-repeat="product in cart" id="imageSum" class="col l3 s12">
 						<img class="cart-images" ng-src="{{product.imageUrl}}" width="250px" />
-						<p id="imageSumP">{{product.name}} <br>
+						<p ng-show="!ifNotClothing(product)" id="imageSumP">{{product.name}} <br>
 						{{product.color}} | {{product.size}} | $ {{product.price}} 
-						</p>			
+						</p>	
+
+            <p ng-show="ifNotClothing(product)" id="imageSumP">{{product.name}} <br>
+            {{product.color}} | OS | $ {{product.price}} 
+            </p>		
+
 						<a class="removeOrder" ng-click="removeProductFromCart(product.refId)">REMOVE FROM CART</a>
 					</div>
 				</div>

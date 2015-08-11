@@ -5,8 +5,9 @@ body {
 }
 
 
+
 #hero {
-	background-image: url(../images/test.jpg);
+	background-image: url(../images/GMLogo.jpg);
 	background-size: cover;
 	position: relative;
 	height: 100vh;
@@ -36,9 +37,11 @@ body {
   font-weight: 100;
 }
 
+
 .headline-main i:hover {
   cursor: pointer;
 }
+
 
 .fixed {
   position: fixed; 
@@ -63,12 +66,10 @@ nav a:hover {
   color: #424242;
 }
 
-.bag {
-  margin-right: 8px;
-}
 
-nav .brand-logo {
-  color: #424242;
+nav img {
+  margin-top: 10px;
+  margin-left: 10px;
 }
 /*PRODUCT GRID START*/
 
@@ -124,10 +125,10 @@ nav .brand-logo {
 
 .grid figcaption .bag {
   float: left;
-  margin: 3px 5px;
-  /*border-radius: 2px;
-  display: inline-block;
-  background: #fff;*/
+  margin-top: 10px;
+  margin-right: -30px;
+  font-size: 20px;
+  font-weight: 300;
   color: #3a3a3a;
 }
 
@@ -135,6 +136,7 @@ nav .brand-logo {
 .add-size span {
   float: right;
   margin-right: 20px;
+  margin-top: 10px;
   font-size: 20px;
   font-weight: 300;
 }
@@ -155,14 +157,26 @@ nav .brand-logo {
   text-decoration: none;
 }
 
-.test input {
+.soldOut input {
   margin-left: 10px;
 }
 
-.test span{
+.soldOut span{
   color: #3a3a3a;
   font-size: 14px;
   font-weight: 300;
+}
+
+.accessoriesAdd {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 300;
+  color: black;
+}
+
+.accessoriesAdd:hover {
+  color: #727272;
+  cursor: pointer;
 }
 
 .size-style figure {
@@ -304,7 +318,7 @@ footer h6, footer h5 {
 
 .admin {
   height: 100vh;
-  background: url("../images/E11.jpg") 75% 80% no-repeat;
+  background: url("../images/admin-bg2.jpg") 75% 80% no-repeat;
   background-size: cover;
 }
 
@@ -351,6 +365,13 @@ form button:hover {
   opacity: 0.5;
   color: #000;
   font-weight: normal;
+}
+
+.rh-admin-input {
+
+	background : rgba(185,159,121, .1);
+	border : none;
+	border-bottom : 1px solid #fff
 }
 
 /*END ADMIN LOGIN*/
@@ -1049,6 +1070,7 @@ table th {
 .mobile-checkout-button {
   color: black;
   border: 1px solid #5e5e5e;
+  padding: .5em 1em .5em 1em;
   /*padding: .5em 1em .5em 1em;*/
   /*margin-top: 50px;*/
 }
