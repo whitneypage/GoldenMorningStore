@@ -55,22 +55,19 @@ module.exports = {
 
 				//email upon order status update - shipped
 			var email     = new sendgrid.Email({
-				to:       'tylertebbs20@gmail.com',
-				from:     'tylertebbs20@yahoo.com',
+				to:       'andykj@gmail.com',
+				from:     'andykj@gmail.com',
 				subject:  'Congrats, your item has been shipped',
 				text:     'Hello myself'
 			});
-			sendgrid.send(email, function(err, json) {
-				if (err) { return console.error(err); }
-				console.log(json);
-			});
+			sendgrid.send(email);
 
 				//end email upon order status update -shipped
 
 
 
 			}
-			res.send(data);
+			res.json(data);
 		})
 	}
 
