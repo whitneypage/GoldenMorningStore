@@ -58,6 +58,12 @@ app.controller('cartCtrl', function($scope, ProductService, cart, cartService, $
 		});
 	};
 
+  $scope.ifNotClothing = function (product) {
+      if (product.productCategory === "Accessories" || product.productCategory === "Soaps/Scrubs") {
+        return true
+      }
+  };
+
 	$scope.removeProductFromCart = function(id) {
 		console.log("Cart", cart);
 		console.log("removing id", id);

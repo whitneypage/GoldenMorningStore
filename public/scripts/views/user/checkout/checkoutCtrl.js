@@ -102,6 +102,12 @@ app.controller('checkoutCtrl', function($window, $routeParams, $scope, cart, car
 		})
 	};
 
+    $scope.ifNotClothing = function (product, colorSize) {
+      if (product.productCategory === "Accessories" || product.productCategory === "Soaps/Scrubs") {
+        return true
+      }
+  }
+
 	
 	$scope.getTotal = function() {
 		$scope.total = cartService.calculatePrice($scope.cart);

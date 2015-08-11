@@ -11,8 +11,8 @@
             	<div class="mobile-product-name">{{product.name}}</div>
             	<div class="mobile-product-info-box">
               		<div class="mobile-individual-product-info-box size-container">
-                		<div class="mobile-product-category-name">SIZE | {{product.size}}</div>
-                			<div></div>
+                		<div ng-show="!ifNotClothing(product)" class="mobile-product-category-name">SIZE | {{product.size}}</div>
+                			<div ng-show="ifNotClothing(product)" class="mobile-product-category-name">SIZE | ONE SIZE </div>
               			</div>
               			<div class="mobile-individual-product-info-box color-container">
                 			<div class="mobile-product-category-name">COLOR | {{product.color}}</div>
