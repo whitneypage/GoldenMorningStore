@@ -49,6 +49,18 @@ app.controller('adminHomeCtrl', function($scope, products, ProductService, $rout
 			$scope.confirmId = null;
 		});
 	};// end deleteProduct
+
+	$scope.onWait = function(listed) {
+		if(listed > 0) {
+			return true;
+		}
+	};
+
+	$scope.passInEmail = function(product) {
+		$scope.WL = product;
+		$scope.emails = product.colorSize;
+		console.log($scope.emails);
+	};
 	
 ////		COMMENTING OUT UNTIL WORKING - RH
 //	app.directive('productModal', function() {

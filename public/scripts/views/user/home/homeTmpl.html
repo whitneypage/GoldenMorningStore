@@ -7,7 +7,7 @@
       <h1 id="hello" class="animated fadeInUp">GOLDMORNING SHOP</h1>
       <div scroll-to="nav" duration="1800">
         <i class="fa fa-chevron-down fa-3x animated fadeInDown"></i>      
-        </div>
+      </div>
     </div>
   </div>
 
@@ -49,9 +49,11 @@
                     <li ng-repeat="colorSize in product.colorSize">
                         <figure>
                             <img href='#productModal' ng-src="{{ colorSize.mainImg }}" ng-click="passInProduct(product)" modal>
+                            
                             <!--begin product modal-->
                             <div id="productModal" class="modal">
                                 <div class="modal-content">
+                                    <h4 class="left-align" id="detailTitle">{{selectedProduct.productTitle}}</h4>
                                       <div class="product-photo-and-info">
                                         <div class="product-photo-box">
                                           <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
@@ -109,6 +111,7 @@
                                 </div>
                             </div>
                             <!-- end product modal -->
+
                             <figcaption>
                                 <div class="add-size" ng-show="!anyAvailable(colorSize)">
                                     <p class="bag">ADD TO BAG</p>
@@ -120,9 +123,9 @@
                                     <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)">S</span>
                                 </div>
                                 <div class="test" ng-show="anyAvailable(colorSize)">
-                                    <span>SOLD OUT <strong>| </strong> WANT TO SEE THIS ITEM COME BACK ?</span>
-                                    <form ng-submit="findColorSizeIndex(colorSize._id)" onsubmit="Materialize.toast('THANKS! WE WILL KEEP YOU IN THE LOOP!', 2500, 'rounded')">
-                                        <input ng-model="emailList.wantEmail" type="email" placeholder=" Enter Email Here" />
+                                    <span>SOLD OUT <strong>| </strong> WANT THIS BACK IN THE SHOP?</span>
+                                    <form ng-submit="findColorSizeIndex(colorSize._id)" toast="submit" message="THANKS! YOU'LL BE THE FIRST TO KNOW." duration="3000">
+                                        <input ng-model="emailList.wantEmail" type="email" placeholder=" enter your email" />
                                     </form>
                                 </div>
                             </figcaption>
@@ -181,6 +184,8 @@
     </div>
 </div>
 <!-- End Shopping Bag Modal -->
+
+<!-- START FOOTER -->
 
 
 <footer class="page-footer">

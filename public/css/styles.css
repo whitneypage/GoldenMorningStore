@@ -36,6 +36,10 @@ body {
   font-weight: 100;
 }
 
+.headline-main i:hover {
+  cursor: pointer;
+}
+
 .fixed {
   position: fixed; 
   top: 0; 
@@ -364,11 +368,34 @@ form button:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-#imageWrap { 
+
+.showWait {
+  color: #6a6a6a;
+  font-size: 17px;
+  margin: 20px auto;
+}
+
+#numberWait {
+  color: #6a6a6a;
+  font-size: 17px;
+  margin: 20px auto;
+}
+
+.showWait:hover {
+  color: #4db6ac;
+  cursor: pointer;
+}
+
+#waitList h4 {
+  margin: 10px auto;
+  font-weight: lighter;
+}
+
+/*#imageWrap { 
     width: 640px; 
     height: 420px; 
     background: url('ajax-loader.gif') center center no-repeat; 
-}
+}*/
 
 .btn-flat:hover {
   color: #727272;
@@ -1025,7 +1052,9 @@ table th {
   /*padding: .5em 1em .5em 1em;*/
   /*margin-top: 50px;*/
 }
+
 /*START CHECKOUT PAGE*/
+
 .checkout {
   width: 80%;
   padding: 20px;
@@ -1037,6 +1066,15 @@ table th {
   border-bottom: 1px solid #727272;
   font-weight: lighter;
 }
+
+.orderCell {
+  height: 385px;
+  width: 1140px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+
 #orderGrid {
   border-bottom: 1px solid #727272;
   font-weight: normal;
@@ -1074,16 +1112,35 @@ table th {
   color: #5e5e5e;
 }
 
+#payOptions1, #payOptions2 {
+  text-align: center;
+}
+
+#payOptions1 i {
+  color: #4a4a4a;
+  cursor: pointer;
+}
+
+#payOptions2 {
+  border-left: 1px solid #3a3a3a;
+}
+
+.checkoutForm {
+  margin: 100px auto;
+  padding: 20px;
+  border-top: 1px solid #3a3a3a;
+}
+
+.checkoutForm h3 {
+  font-weight: lighter;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 .paypal {
   cursor: pointer;
 }
 
-#payOptions1, #payOptions2 {
-  text-align: center;
-}
- #payOptions1 {
-  border-right: 1px solid #3a3a3a;
- }
 
 /* #payOptions2 {
   margin-top: 100px;
