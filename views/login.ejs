@@ -8,9 +8,9 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Palanquin:400,100,200,300|Ek+Mukta:400,300,200|Raleway:400,300,600,500|Poppins:400,500,300' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Arimo|Hind:400,300,500|Pontano+Sans' rel='stylesheet' type='text/css'>
-	<link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection">
+	<link type="text/css" rel="stylesheet" href="../public/css/materialize.css" media="screen,projection">
 	<link href="bower_components/angular-carousel/dist/angular-carousel.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="../public/css/animate.css">
 	
 	
 </head>
@@ -27,13 +27,13 @@
 				<form action="/api/login" method="post" class="col s12" id="loginForm">
 					<div class="row">
 							<div class="input-field l8 s12 animated slideInDown">
-								<input id="email" type="email" name="email" class="validate">
+								<input class="rh-admin-input" id="email" type="email" name="email" class="validate">
 								<label for="email">EMAIL</label>
 							</div>
 					 </div>
 					<div class="row">
 								<div class="input-field l8 s12 animated slideInUp">
-									<input id="password" type="password" name="password" class="validate">
+									<input class="rh-admin-input" id="password" type="password" name="password" class="validate">
 									<label for="password">PASSWORD</label>
 							</div>
 					</div>
@@ -41,8 +41,6 @@
 				</form>
 				
 			 <hr>
-			 
-			 <p>Don't have an account? <a href="/api/register">Signup</a></p>
 			 
 		</div>
 	</div>	

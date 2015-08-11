@@ -7,6 +7,16 @@ console.log(User);
 
 module.exports = function(passport) {
 	
+	passport.serializeUser(function(user, done) {
+		done(null, user.id);
+	});
+	
+	passport.deserializeUser(function(id, done) {
+		User.findById(id, function(err, user) {
+			done(err, user);
+		}); 
+	});
+	
 //			SETUP UP LOCAL SIGNUP
 	
 	passport.use('local-signup', new LocalStrategy({
@@ -67,14 +77,8 @@ module.exports = function(passport) {
 	
 	//		PASSPORT SETUP - SERIALIZE USER ONTO AND OFF OF SESSION
 
-	passport.serializeUser(function(user, done) {
-		done(null, user.id);
-	});
+
 	
-	passport.deserializeUser(function(id, done) {
-		User.findById(id, function(err, user) {
-			done(err, user);
-		}); 
-	});
+
 	
 };//end module.exports

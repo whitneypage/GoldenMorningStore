@@ -41,7 +41,9 @@ try {
 }
 routes.init(paypalConfig);
 
-app.use(morgan('dev'));
+app.set('view engine', 'ejs'); // for making the login and register pages
+
+//app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -51,7 +53,7 @@ app.use(cors());
 app.use(express.static(__dirname+'/public'));
 app.use(flash());
 
-app.set('view engine', 'ejs'); // for making the login and register pages
+
 
 //RH MOVING PASSPORT THINGS HERE
 

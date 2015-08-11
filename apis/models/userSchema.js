@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
-var userCtrl = require('../controllers/userCtrl');
+var userCtrl = require('../controllers/userCtrl.js');
 
 var Schema = mongoose.Schema;
 
@@ -39,10 +39,10 @@ userSchema.pre('save', function(next) {
 //	});
 //}, 'that email is already in use');
 
-//userSchema.methods.generateHash = function(password){
-//	return bcrypt.hashSync(password, bcrypt.genSaltSynt(10), null);
-//};
-//
+userSchema.methods.generateHash = function(password){
+	return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
+};
+
 userSchema.methods.validPassword = function(password) {
 	return bcrypt.compareSync(password, this.password);
 };// end password check //userSchema.methods.validPassword

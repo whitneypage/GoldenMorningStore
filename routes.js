@@ -48,44 +48,55 @@ next();
 
 
 
-//app.use(session({
-//	secret: process.env.SESSION_SECRET || "goldmorningshopsecret",
-//	resave: false,
-//	saveUninitialized: true, 
+app.use(session({
+	secret: process.env.SESSION_SECRET || "goldmorningshopsecret",
+	resave: false,
+	saveUninitialized: true, 
 //	store : new MongoStore({
 //		mongooseConnection : mongoose.connection
 //	})	
-//}));
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
 
-//passport.use(new LocalStrategy(
-//	function(username, password, done) {
-//		User.findOne({ email: username }, function(err, user) {
-//			if(err) {return done(err); }
-//			if(!user) {
-//				return done(null, false, {message: 'Incorrect username.'});
-//			}
-//			if(!user.validPassword(password)) {
-//				return done(null, false, {message: 'Incorrect username.'});
-//			}
-//		return done(null, user);
-//		});
-//	}
-//));
+passport.use(new LocalStrategy(
+	function(username, password, done) {
+		User.findOne({ email: username }, function(err, user) {
+			if(err) {return done(err); }
+			if(!user) {
+				return done(null, false, {message: 'Incorrect username.'});
+			}
+			if(!user.validPassword(password)) {
+				return done(null, false, {message: 'Incorrect username.'});
+			}
+		return done(null, user);
+		});
+	}
+));
 
-//passport.serializeUser(function(user, done) {
-//   done(null, user);
-//});
-//passport.deserializeUser(function(obj, done) {
-//   done(null, obj);
-//});
+passport.serializeUser(function(user, done) {
+   done(null, user);
+});
+passport.deserializeUser(function(obj, done) {
+   done(null, obj);
+});
 
 	//RH LOGIN ROUTES
 	
+
+	
+	
+//		ROUTES FOR REGISTRATION -- COMMENTED OUT BC THEY DON'T ALWAYS NEED TO BE PRESENT
+//		CAN OPEN THEN FOR HER TO REGISTER THEN CLOSE THEM AGAIN
+//	app.get('/api/register', function(req, res) {
+//		res.render('register.ejs', {message : 				req.flash('signupMessage')});
+//	});// end get registration page
+//	
+//		app.post('/api/register', userCtrl.createAdmin);
+	
 		app.get('/api/login', function(req, res) {
-		res.render('login.ejs', {message : req.flash('loginMessage')});
+			res.render('login.ejs', {message : req.flash('loginMessage')});
 	});
 	
 		app.post('/api/login', passport.authenticate('local-login', {
@@ -93,41 +104,15 @@ app.use(passport.session());
 			failureRedirect : '/api/login',
 			failureFlash : true
 		}));
-			
-					
 
-	
-	
-	app.get('/api/register', function(req, res) {
-		res.render('register.ejs', {message : 				req.flash('signupMessage')});
-	});// end get registration page
-	 
-	app.post('/api/register', passport.authenticate('local-signup', {
-		successRedirect : '/api/login',
-		failureRedirect : '/#/admin/home',
-		failureFlash : true
-	}));
-	
-//		app.post('/api/register', function(req, res) {
-//			userCtrl.addUser(req.body, function(err) {
-//				if(err) {
-//					console.log(err, ' err from app.post');
-//					return res.redirect('/api/register');
-//				}
-//				res.redirect('/#/');
-//			});
-//		});
-	
-	app.get('/api/logout', function(req, res){
+		app.get('/api/logout', function(req, res){
 		req.logout();
 		res.redirect('/#/');
 	});
 	
 	
-	app.post('/api/register', userCtrl.createAdmin);
+
 	app.get('/api/admin/loggedin', userCtrl.checkLoggedIn);
-	
-	
 	
 	app.post('/api/upload', multipartMiddleware, productsCtrl.uploadPhoto);
 	app.get('/api/upload', productsCtrl.addPicturesGet);
@@ -175,3 +160,11 @@ app.use(passport.session());
  
 
 };// end routes.js
+
+
+//					LEFT IN FOR REFERENCE RH
+//	app.post('/api/register', passport.authenticate('local-signup', {
+//		successRedirect : '/api/login',
+//		failureRedirect : '/#/admin/home',
+//		failureFlash : true
+//	}));

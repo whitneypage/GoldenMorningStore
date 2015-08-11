@@ -70,9 +70,6 @@ app.config(function($routeProvider) {
 		templateUrl : 'scripts/views/admin/product/productTmpl.html',
 		controller : 'productCtrl',
 		resolve : {
-			loggedin : function(UserService) {
-				return UserService.checkLoggedin();
-			},
 //			//				THIS RESTRICTS ACCESS IF NOT LOGGED IN.  
 ////				IF NOT LOGGED IN, REDIRECTS TO LOGIN PAGE
 ////				COMMENTED OUT FOR DEV PURPOSES
@@ -98,17 +95,19 @@ app.config(function($routeProvider) {
 		}
 	})
 	.otherwise('/');	
+	
 	////UNUSED ROUTE, COMMENTED OUT 
 //	.when('/admin/login', {
 //		templateUrl : 'scripts/views/admin/login/adminLogin.html',
 //		controller : 'adminLoginCtrl'
 //	})
 
-});//end app.config in app.js
+
 
 app.run(function ($rootScope, $window) {
  $rootScope.$on("$routeChangeSuccess", function(event){
     $window.scrollTo(0,0);
-})
-})
+});
+});
+});//end app.config in app.js
 

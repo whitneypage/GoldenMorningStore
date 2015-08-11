@@ -300,7 +300,7 @@ footer h6, footer h5 {
 
 .admin {
   height: 100vh;
-  background: url("../images/E11.jpg") 75% 80% no-repeat;
+  background: url("../images/admin-bg2.jpg") 75% 80% no-repeat;
   background-size: cover;
 }
 
@@ -347,6 +347,13 @@ form button:hover {
   opacity: 0.5;
   color: #000;
   font-weight: normal;
+}
+
+.rh-admin-input {
+
+	background : rgba(185,159,121, .1);
+	border : none;
+	border-bottom : 1px solid #fff
 }
 
 /*END ADMIN LOGIN*/
