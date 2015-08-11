@@ -22,12 +22,12 @@ app.config(function($routeProvider) {
 	.when('/cart', {
 		templateUrl : 'scripts/views/user/cart/cartTmpl.html',
 		controller: 'cartCtrl',
-		resolve: {
-			cart: function(cartService) {
-				return cartService.getCart();
-			}
-		}
-	})
+    resolve: {
+      cart: function(cartService) {
+        return cartService.getCart();
+      }
+    }
+  })
 	.when('/thankyou', {
 		templateUrl : 'scripts/views/user/checkout/confirm.html',
 		controller : 'thankyouCtrl', 

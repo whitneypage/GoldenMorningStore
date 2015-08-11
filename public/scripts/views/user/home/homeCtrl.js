@@ -51,6 +51,12 @@ $scope.emailList = {};
       }
   }
 
+  $scope.ifNotClothing = function (product, colorSize) {
+      if (product.productCategory === "Accessories" || product.productCategory === "Soaps/Scrubs") {
+        return true
+      }
+  }
+
   $scope.available = true;
 
 	$scope.cart = cart;
@@ -64,6 +70,7 @@ $scope.emailList = {};
 			, color: colorSize.color
 			, size: size
 			, price: product.price
+      , productCategory: product.productCategory
 		};
 		console.log(productObject);
 		console.log("colorSize", colorSize._id);
