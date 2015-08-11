@@ -25,7 +25,6 @@ app.service('orderService', function($http, $q){
 	};
 
 	this.updateOrder = function(id, orderObj) {
-		console.log('in service');
 		return $http({
 			method: 'PUT',
 			url: '/api/admin/order/' + id,
@@ -34,7 +33,7 @@ app.service('orderService', function($http, $q){
 	};
 
 	this.updateOrderByPaymentId = function(orderObj){
-		console.log(orderObj.paymentId)
+		console.log(orderObj)
 		return $http({
 			method: 'PUT',
 			url: '/api/user/order/' + orderObj.paymentId,
