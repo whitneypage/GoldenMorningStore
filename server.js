@@ -22,7 +22,6 @@ mongoose.connect('mongodb://localhost:27017/GoldenMorningStore');
 try {
   var configJSON = fs.readFileSync(__dirname + "/apis/config/config.json");
   var paypalConfig = JSON.parse(configJSON.toString());
-  console.log('configJson', paypalConfig);
 
 } catch (e) {
   console.error("File config.json not found or is invalid: " + e.message);

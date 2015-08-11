@@ -124,6 +124,7 @@ module.exports = {
 	}
 
 	, pmtCreate: function(req, res) {
+		console.log('SENDING TO PAYPAL', req.body.payment)
 			Paypal.payment.create(req.body.payment, function (error, payment) {
 	  if (error) {
 	    console.log(error.response.details);
