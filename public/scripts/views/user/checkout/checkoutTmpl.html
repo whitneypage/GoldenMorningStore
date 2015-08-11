@@ -1,8 +1,11 @@
+<script src="js/init.js"></script>
+
 <div class="wrapper">
 	<h2 id="checkOutHead" class="right-align animated fadeIn">SHIPPING SOON</h2>
 	<div class="checkout container">
 
 		<div ng-init="getTotal()">
+		<div class="orderCell">
 			<div class="row" id="orderGrid">
 				<div ng-repeat="product in cart" id="imageSum" class="col l3 s12">
 						<img class="cart-images" ng-src="{{product.imageUrl}}" width="250px" />
@@ -13,6 +16,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 
 			<h4 id="orderTotal" class="center-align">ORDER TOTAL: $ {{total}}</h4>
 
@@ -20,25 +24,52 @@
 	
 	<div class="row">
 
-		<div class="col l8 s12" id="payOptions1">
+		<div class="col l6 s12" id="payOptions1">
 			<h5 id="payHead">CHECKOUT AS GUEST</h5><br>
+			<i class="fa fa-chevron-down fa-3x animated fadeInDown" id="guest"></i>
+		</div>
 			
-			<div class="row">
-					<form class="col l12 s12">
+			
+			
+			<div class="col l6 s12" id="payOptions2">
+				<h5 id="payHead">CHECKOUT WITH PAYPAL</h5><br>
+				<img class="paypal" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" alt="PayPal" ng-click="paypalCheckout(); loading=true">
 
-						<div class="row">
-							<div class="input-field col s5">
-									<input type="text" placeholder="NAME">
-							</div>
-							<div class="input-field col s6">
-								<input type="email" placeholder="EMAIL" required><br>
-							</div>
-						</div>
+				<br>
+				<br>
+				
+				<div class="progress animated fadeIn" ng-show="loading">
+      		<div class="indeterminate"></div>
+  			</div>
+        
+			</div>
+
+	</div>
+
+	<br>
+
+<div class="checkoutForm">
+	<h3>GUEST CHECKOUT</h3>
+		<div class="row">
+			<form class="col l12 s12">
+
+				<div class="row">
+					<div class="input-field col s3">
+						<input type="text" placeholder="FIRST">
+					</div>
+					<div class="input-field col s3">
+						<input type="text" placeholder="LAST">
+					</div>
+					<div class="input-field col s5">
+						<input type="email" placeholder="EMAIL" required><br>
+					</div>
+				</div>
 
 						<div class="row">
 							<div class="input-field col s9">
 								<input type="text" placeholder="STREET ADDRESS" required>
 							</div>
+							
 							<div class="input-field col s2">
 								<input type="checkbox" id="bill" ng-model="checked" required>
 								<label for="bill">DIFFERENT THAN BILLING</label>
@@ -46,15 +77,15 @@
 						</div>
 
 						<div class="row">
-								<div class="input-field col s5">
-									<input type="text" placeholder="CITY" required>
-								</div>
-								<div class="input-field col s4">
-									<input type="text" placeholder="STATE" required>
-								</div>
-								<div class="input-field col s2">
-									<input type="text" placeholder="ZIP" required>
-								</div>
+							<div class="input-field col s5">
+								<input type="text" placeholder="CITY" required>
+							</div>
+							<div class="input-field col s4">
+								<input type="text" placeholder="STATE" required>
+							</div>
+							<div class="input-field col s2">
+								<input type="text" placeholder="ZIP" required>
+							</div>
 						</div>
 
 						<!-- hidden billing address form -->
@@ -66,20 +97,23 @@
 						</div>
 
 						<div class="row" ng-show="checked">
-								<div class="input-field col s5">
-									<input type="text" placeholder="CITY" required>
-								</div>
-								<div class="input-field col s4">
-									<input type="text" placeholder="STATE" required>
-								</div>
-								<div class="input-field col s2">
-									<input type="text" placeholder="ZIP" required>
-								</div>
+							<div class="input-field col s5">
+								<input type="text" placeholder="CITY" required>
+							</div>
+							<div class="input-field col s4">
+								<input type="text" placeholder="STATE" required>
+							</div>
+							<div class="input-field col s2">
+								<input type="text" placeholder="ZIP" required>
+							</div>
 						</div>
 
 						<!-- end of billing address form -->
 
 						<div class="row">
+						<div class="input-field col s4">
+							<a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown>TYPE</a>
+						</div>
 							<div class="input-field col s10">
 								<input type="text" pattern="[0-9]{13,16}" placeholder="CREDIT CARD #" required>
 							</div>
@@ -97,30 +131,13 @@
 					</form>
 				</div>
 
-					<div id="placeOrder">
+					<div id="placeOrder" class="center-align">
 						<a class="btn-large waves-effect waves-light" ng-click="submitCC()">PLACE ORDER</a>
 					</div>
 
-			</div>
-			
-			<div class="col l4 s12" id="payOptions2">
-				<h5 id="payHead">CHECKOUT WITH PAYPAL</h5><br>
-				<img class="paypal" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" alt="PayPal" ng-click="paypalCheckout(); loading=true">
-
-				<br>
-				<br>
-				<br>
-				
-				<div class="progress animated fadeIn" ng-show="loading">
-      		<div class="indeterminate"></div>
-  			</div>
-        
-			</div>
-
 		</div>
-			
-	</div>
 
+	</div>
 </div>
 
 

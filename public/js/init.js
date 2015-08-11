@@ -33,6 +33,12 @@ $(document).ready(function(){
 	});
 
 	$('.slider').slider();
+
+	$("#guest").click(function() {
+    	$('html,body').animate({
+        	scrollTop: $(".checkoutForm").offset().top},
+        	'slow');
+	});
 	
 	
 	

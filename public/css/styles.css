@@ -948,6 +948,13 @@ table th {
   font-weight: lighter;
 }
 
+.orderCell {
+  height: 385px;
+  width: 1140px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 
 #orderGrid {
   border-bottom: 1px solid #727272;
@@ -986,16 +993,35 @@ table th {
   color: #5e5e5e;
 }
 
+#payOptions1, #payOptions2 {
+  text-align: center;
+}
+
+#payOptions1 i {
+  color: #4a4a4a;
+  cursor: pointer;
+}
+
+#payOptions2 {
+  border-left: 1px solid #3a3a3a;
+}
+
+.checkoutForm {
+  margin: 100px auto;
+  padding: 20px;
+  border-top: 1px solid #3a3a3a;
+}
+
+.checkoutForm h3 {
+  font-weight: lighter;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 .paypal {
   cursor: pointer;
 }
 
-#payOptions1, #payOptions2 {
-  text-align: center;
-}
- #payOptions1 {
-  border-right: 1px solid #3a3a3a;
- }
 
 /* #payOptions2 {
   margin-top: 100px;
