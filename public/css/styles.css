@@ -368,11 +368,34 @@ form button:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-#imageWrap { 
+
+.showWait {
+  color: #6a6a6a;
+  font-size: 17px;
+  margin: 20px auto;
+}
+
+#numberWait {
+  color: #6a6a6a;
+  font-size: 17px;
+  margin: 20px auto;
+}
+
+.showWait:hover {
+  color: #4db6ac;
+  cursor: pointer;
+}
+
+#waitList h4 {
+  margin: 10px auto;
+  font-weight: lighter;
+}
+
+/*#imageWrap { 
     width: 640px; 
     height: 420px; 
     background: url('ajax-loader.gif') center center no-repeat; 
-}
+}*/
 
 .btn-flat:hover {
   color: #727272;
@@ -642,6 +665,7 @@ table th {
   flex-direction: row;
   justify-content: space-between;
 }
+
 
 .product-object {
   height: 24em;
@@ -923,6 +947,8 @@ table th {
   border-bottom: 1px solid #727272;
   font-weight: lighter;
 }
+
+
 #orderGrid {
   border-bottom: 1px solid #727272;
   font-weight: normal;

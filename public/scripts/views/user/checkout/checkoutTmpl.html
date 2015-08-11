@@ -1,6 +1,7 @@
 <div class="wrapper">
 	<h2 id="checkOutHead" class="right-align animated fadeIn">SHIPPING SOON</h2>
 	<div class="checkout container">
+
 		<div ng-init="getTotal()">
 			<div class="row" id="orderGrid">
 				<div ng-repeat="product in cart" id="imageSum" class="col l3 s12">
@@ -30,29 +31,29 @@
 									<input type="text" placeholder="NAME">
 							</div>
 							<div class="input-field col s6">
-								<input type="email" placeholder="EMAIL"><br>
+								<input type="email" placeholder="EMAIL" required><br>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s9">
-								<input type="text" placeholder="STREET ADDRESS">
+								<input type="text" placeholder="STREET ADDRESS" required>
 							</div>
 							<div class="input-field col s2">
-								<input type="checkbox" id="bill" ng-model="checked">
+								<input type="checkbox" id="bill" ng-model="checked" required>
 								<label for="bill">DIFFERENT THAN BILLING</label>
 							</div>
 						</div>
 
 						<div class="row">
 								<div class="input-field col s5">
-									<input type="text" placeholder="CITY">
+									<input type="text" placeholder="CITY" required>
 								</div>
 								<div class="input-field col s4">
-									<input type="text" placeholder="STATE">
+									<input type="text" placeholder="STATE" required>
 								</div>
 								<div class="input-field col s2">
-									<input type="text" placeholder="ZIP">
+									<input type="text" placeholder="ZIP" required>
 								</div>
 						</div>
 
@@ -60,19 +61,19 @@
 
 						<div class="row" ng-show="checked">
 							<div class="input-field col s9">
-								<input type="text" placeholder="BILLING ADDRESS">
+								<input type="text" placeholder="BILLING ADDRESS" required>
 							</div>
 						</div>
 
 						<div class="row" ng-show="checked">
 								<div class="input-field col s5">
-									<input type="text" placeholder="CITY">
+									<input type="text" placeholder="CITY" required>
 								</div>
 								<div class="input-field col s4">
-									<input type="text" placeholder="STATE">
+									<input type="text" placeholder="STATE" required>
 								</div>
 								<div class="input-field col s2">
-									<input type="text" placeholder="ZIP">
+									<input type="text" placeholder="ZIP" required>
 								</div>
 						</div>
 
@@ -80,16 +81,16 @@
 
 						<div class="row">
 							<div class="input-field col s10">
-								<input type="text" placeholder="CREDIT CARD #">
+								<input type="text" pattern="[0-9]{13,16}" placeholder="CREDIT CARD #" required>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="input-field col s4">
-								<input type="text" placeholder="EXP DATE">
+								<input type="text" placeholder="EXP DATE" required>
 							</div>
 							<div class="input-field col s4">
-								<input type="text" placeholder="CCV">
+								<input type="text" placeholder="CCV" required>
 							</div>
 						</div>
 
@@ -108,6 +109,7 @@
 
 				<br>
 				<br>
+				<br>
 				
 				<div class="progress animated fadeIn" ng-show="loading">
       		<div class="indeterminate"></div>
@@ -120,5 +122,5 @@
 	</div>
 
 </div>
-</div>
+
 
