@@ -10,6 +10,7 @@ var configDB = require('./apis/config/database.js');
 var session = require('express-session');
 var fs = require('fs');
 var productsCtrl = require('./apis/controllers/productsCtrl');
+var sendgrid  = require('sendgrid')('OxP5d0TSTiOp6WrbIyVkyg');
 
 // var routes = require('./routes');
 // var configJSON = fs.readFileSync(__dirname + "/apis/config/config.json");

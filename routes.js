@@ -15,6 +15,7 @@ var fs = require('fs');
 var config = require('./apis/config/keys');
 var mongoose = require('mongoose');
 var connectMongo = require('connect-mongo');
+var sendgrid  = require('sendgrid')('OxP5d0TSTiOp6WrbIyVkyg');
 
 var auth = function(req, res, next) {
 	if (!req.isAuthenticated()){
@@ -78,6 +79,7 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(obj, done) {
    done(null, obj);
 });
+
 
 	app.post('/api/admin', userCtrl.createAdmin);
 	app.get('/api/admin/loggedin', userCtrl.checkLoggedIn);

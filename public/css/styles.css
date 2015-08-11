@@ -691,7 +691,7 @@ table th {
 /*START ORDERS PAGE*/
 
 .orderStatusDD {
-  width: 8%;
+  width: 25%;
 }
 
 .notesArea {
@@ -699,7 +699,7 @@ table th {
 }
 
 .moreInfoBox {
-  background-color: green;
+ 
 }
 
 
