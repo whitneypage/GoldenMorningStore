@@ -48,92 +48,95 @@
 
 	<br>
 
-<div class="checkoutForm">
-	<h3>GUEST CHECKOUT</h3>
-		<div class="row">
-			<form class="col l12 s12">
+	<div class="checkoutForm">
+		<h3>GUEST CHECKOUT</h3>
+			<div class="row">
+				<form class="col l12 s12">
 
-				<div class="row">
-					<div class="input-field col s3">
-						<input type="text" placeholder="FIRST">
+					<div class="row">
+						<div class="input-field col s3">
+							<input type="text" placeholder="FIRST" ng-model="firstName">
+						</div>
+						<div class="input-field col s3">
+							<input type="text" placeholder="LAST" ng-model="lastName">
+						</div>
+						<div class="input-field col s5">
+							<input type="email" placeholder="EMAIL" ng-model="email" required><br>
+						</div>
 					</div>
-					<div class="input-field col s3">
-						<input type="text" placeholder="LAST">
+
+					<div class="row">
+						<div class="input-field col s9">
+							<input type="text" placeholder="STREET ADDRESS" required>
+						</div>
+								
+						<div class="input-field col s2">
+							<input type="checkbox" id="bill" ng-model="checked" required>
+							<label for="bill">DIFFERENT THAN BILLING</label>
+						</div>
 					</div>
-					<div class="input-field col s5">
-						<input type="email" placeholder="EMAIL" required><br>
-					</div>
-				</div>
 
-						<div class="row">
-							<div class="input-field col s9">
-								<input type="text" placeholder="STREET ADDRESS" required>
-							</div>
-							
-							<div class="input-field col s2">
-								<input type="checkbox" id="bill" ng-model="checked" required>
-								<label for="bill">DIFFERENT THAN BILLING</label>
-							</div>
+					<div class="row">
+						<div class="input-field col s5">
+							<input type="text" placeholder="CITY" required>
 						</div>
-
-						<div class="row">
-							<div class="input-field col s5">
-								<input type="text" placeholder="CITY" required>
-							</div>
-							<div class="input-field col s4">
-								<input type="text" placeholder="STATE" required>
-							</div>
-							<div class="input-field col s2">
-								<input type="text" placeholder="ZIP" required>
-							</div>
-						</div>
-
-						<!-- hidden billing address form -->
-
-						<div class="row" ng-show="checked">
-							<div class="input-field col s9">
-								<input type="text" placeholder="BILLING ADDRESS" required>
-							</div>
-						</div>
-
-						<div class="row" ng-show="checked">
-							<div class="input-field col s5">
-								<input type="text" placeholder="CITY" required>
-							</div>
-							<div class="input-field col s4">
-								<input type="text" placeholder="STATE" required>
-							</div>
-							<div class="input-field col s2">
-								<input type="text" placeholder="ZIP" required>
-							</div>
-						</div>
-
-						<!-- end of billing address form -->
-
-						<div class="row">
 						<div class="input-field col s4">
-							<a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown>TYPE</a>
+							<input type="text" placeholder="STATE" required>
 						</div>
-							<div class="input-field col s10">
-								<input type="text" pattern="[0-9]{13,16}" placeholder="CREDIT CARD #" required>
-							</div>
+						<div class="input-field col s2">
+							<input type="text" placeholder="ZIP" required>
 						</div>
-
-						<div class="row">
-							<div class="input-field col s4">
-								<input type="text" placeholder="EXP DATE" required>
-							</div>
-							<div class="input-field col s4">
-								<input type="text" placeholder="CCV" required>
-							</div>
-						</div>
-
-					</form>
-				</div>
-
-					<div id="placeOrder" class="center-align">
-						<a class="btn-large waves-effect waves-light" ng-click="submitCC()">PLACE ORDER</a>
 					</div>
+
+							<!-- hidden billing address form -->
+
+							<div class="row" ng-show="checked">
+								<div class="input-field col s9">
+									<input type="text" placeholder="BILLING ADDRESS" ng-model="street" required>
+								</div>
+							</div>
+
+							<div class="row" ng-show="checked">
+									<div class="input-field col s5">
+										<input type="text" placeholder="CITY" ng-model="city" required>
+									</div>
+									<div class="input-field col s4">
+										<input type="text" placeholder="STATE" ng-model="state" required>
+									</div>
+									<div class="input-field col s2">
+										<input type="text" placeholder="ZIP" ng-model="zip" required>
+									</div>
+							</div>
+
+							<!-- end of billing address form -->
+
+					<div class="row">
+						<div class="input-field col s4">
+							<a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown ng-model="ccType">TYPE</a>
+						</div>
+						<div class="input-field col s10">
+							<input type="text" pattern="[0-9]{13,16}" placeholder="CREDIT CARD #" ng-model="creditCard" required>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="input-field col s4">
+							<input type="text" placeholder="EXP MONTH" ng-model="expireMonth">
+						</div>
+						<div class="input-field col s4">
+							<input type="text" placeholder="EXP YEAR" ng-model="expireYear">
+						</div>
+						<div class="input-field col s4">
+							<input type="text" placeholder="CCV" ng-model="ccv">
+						</div>
+					</div>
+
+				</form>
+			</div>
+
+				<div id="placeOrder" class="center-align">
+					<a class="btn-large waves-effect waves-light" ng-click="guestCheckout()">PLACE ORDER</a>
+				</div>
 
 		</div>
 

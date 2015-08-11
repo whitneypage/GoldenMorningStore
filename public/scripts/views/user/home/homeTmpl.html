@@ -57,7 +57,7 @@
                                       <div class="product-photo-and-info">
                                         <div class="product-photo-box">
                                           <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
-                                              <li ng-repeat="photo in selectedProduct.images">
+                                              <li ng-repeat="photo in selectedProduct.images" class="product-image">
                                                   <img class="carousel_img" ng-src="{{ photo }}" />
                                               </li>
                                           </ul>
@@ -68,7 +68,44 @@
                                           </div>
                                         </div>
                                         <div class="product-info">
-                                          <div class="product-object">{{selectedProduct}}</div>
+                                          <div class="product-object">
+                                            <div class="product-modal-title">{{selectedProduct.productTitle}}</div>
+                                            <div class="product-modal-price">
+                                              <div class="product-modal-keyword">PRICE</div>
+                                              <div class="product-modal-price-price">${{selectedProduct.price}}</div>
+                                            </div>
+                                            <div class="product-modal-description">
+                                              <div class="product-modal-keyword">PRODUCT DETAILS</div>
+                                              <div>{{selectedProduct.productDescription}}</div>
+                                            </div>
+                                              <!--angular dropdown with "select"-->
+                                              <div class="product-modal-color-dropdown"> 
+                                                <div class="product-modal-keyword product-modal-color-keyword">COLOR</div>
+                                                <select ng-model="colorSize.color" material-select watch> 
+                                                  <option value="blue" disable selected>blue</option>
+                                                  <option ng-repeat="colorOption in selectedProduct.colorSize">{{colorOption.color}}</option>
+                                                </select>
+                                              </div>
+
+                                              <!--Materialize dropdown-->
+                                            <!--dropdown trigger-->
+                                              <!-- <a class="product-modal-color-dropdown" data-activates="product-modal-color-dropdown">COLOR</a>
+                                            dropdown structure
+                                              <ul>
+                                                <li ng-repeat="colorOption in selectedProduct.colorSize" ng-model="colorSize.color">{{colorOption.color}}</li>
+                                                <li class="divider"></li>
+                                              </ul> -->
+                                              <div class="product-modal-size-container">
+                                                <div class="product-modal-keyword">SIZE</div>
+                                                <div class="product-modal-size-buttons" ng-model="size" ng-repeat="colorSize in selectedProduct.colorSize">
+                                                  <div class="product-modal-individual-size-button" ng-if="colorSize.smallQty">S</div>
+                                                  <div class="product-modal-individual-size-button" ng-if="colorSize.mediumQty">M</div>
+                                                  <div class="product-modal-individual-size-button" ng-if="colorSize.largeQty">L</div>
+                                                </div>
+                                              </div>
+                                            <div class="product-modal-add-to-bag" ng-click="addProductToCart(product, colorSize, size"><p>ADD TO BAG</p></div>
+                                            
+                                          </div>
                                         </div>
                                       </div>
                                 </div>
@@ -86,7 +123,7 @@
                                     <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)">S</span>
                                 </div>
                                 <div class="test" ng-show="anyAvailable(colorSize)">
-                                    <span>WANT THIS BACK IN THE SHOP?</span>
+                                    <span>SOLD OUT <strong>| </strong> WANT THIS BACK IN THE SHOP?</span>
                                     <form ng-submit="findColorSizeIndex(colorSize._id)" toast="submit" message="THANKS! YOU'LL BE THE FIRST TO KNOW." duration="3000">
                                         <input ng-model="emailList.wantEmail" type="email" placeholder=" enter your email" />
                                     </form>
