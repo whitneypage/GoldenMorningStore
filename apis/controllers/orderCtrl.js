@@ -2,7 +2,8 @@ var Order = require('../models/orderSchema');
 var Product = require('../models/productsSchema');
 var Paypal = require('paypal-rest-sdk');
 var session = require('express-session');
-var sendgrid  = require('sendgrid')('OxP5d0TSTiOp6WrbIyVkyg');
+var configAuth = require('./config/keys');
+var sendgrid = require('sendgrid')(configAuth.sendgridAuth.apiKey);
 
 module.exports = {
 

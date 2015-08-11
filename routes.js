@@ -15,7 +15,7 @@ var fs = require('fs');
 var config = require('./apis/config/keys');
 var mongoose = require('mongoose');
 var connectMongo = require('connect-mongo');
-var sendgrid  = require('sendgrid')('OxP5d0TSTiOp6WrbIyVkyg');
+
 
 var auth = function(req, res, next) {
 	if (!req.isAuthenticated()){
