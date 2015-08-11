@@ -740,7 +740,13 @@ table th {
   border: 1px solid #5E5E5E;
   width: 100%;
   font-size: 20px;
-  padding: .5em 0 1em 0;
+  padding-top: -1em;
+  
+}
+
+.product-modal-add-to-bag p{
+  font-size: 20px;
+  line-height: .6em;
 }
 
 .product-modal-description {
