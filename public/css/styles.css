@@ -7,8 +7,9 @@ body {
 
 
 #hero {
-	background-image: url(../images/S9.jpg);
-	background-size: cover;
+	background: url(../images/S2.jpg) no-repeat;
+  background-size: cover;
+  background-position: 20% 75%;
 	position: relative;
 	height: 100vh;
 }
@@ -218,9 +219,12 @@ nav img {
   }
 }
 
-.product-price {
-  font-size: 18px;
+
+.product-title {
+  font-size: 19px;
+  font-weight: 300;
   margin: 5px auto;
+  text-transform: uppercase;
 }
 
 .preview {
@@ -300,7 +304,7 @@ footer #contact {
 }
 
 footer h6, footer h5 {
-  font-weight: 200;
+  font-weight: 300;
   margin: 0;
 }
 
@@ -324,7 +328,7 @@ footer h6, footer h5 {
 
 .admin {
   height: 100vh;
-  background: url("../images/admin-bg2.jpg") 75% 80% no-repeat;
+  background: url("../images/admin-bg.jpg") 75% 80% no-repeat;
   background-size: cover;
 	font-family: 'Palanquin', sans-serif;
 }
@@ -1300,6 +1304,30 @@ table th {
 
 
 /*END CHECKOUT PAGE*/
+
+/*START THANK YOU PAGE*/
+#urahero {
+  background: url(../images/S6.jpg);
+  background-size: cover;
+  background-position: 20% 75%;
+  position: relative;
+  height: 100vh;
+}
+
+#goodbye a {
+  color: #fff;
+  font-weight: 300;
+}
+
+#goodbye a:hover {
+  color: #4db6ac;
+}
+
+
+
+
+
+/*END THANK YOU PAGE*/
 
 /** {
   outline: 1px solid black;

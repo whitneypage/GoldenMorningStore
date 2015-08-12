@@ -11,6 +11,7 @@
     </div>
 </div>
 <!-- End Header -->
+
 <!-- Nav Start -->
 <nav id="nav">
     <div class="nav-wrapper">
@@ -127,15 +128,16 @@
                                 <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)">S</span>
                             </div>
                             <div class="soldOut" ng-show="anyAvailable(colorSize)">
-                                <span>SOLD OUT <strong>| WANT THIS BACK IN THE SHOP ?</strong> </span>
+                                <span>SOLD OUT <strong> > WANT THIS BACK IN THE SHOP ?</strong> </span>
                                 <form ng-submit="findColorSizeIndex(colorSize._id)" toast="submit" message="THANKS! YOU'LL BE THE FIRST TO KNOW." duration="3000">
-                                    <input ng-model="emailList.wantEmail" type="email" placeholder=" Enter Email Here" />
+                                    <input ng-model="emailList.wantEmail" type="email" placeholder="  ENTER EMAIL" />
                                 </form>
                             </div>
                             <div class="accessoriesAdd" ng-show="ifNotClothing(product)" ng-click="addProductToCart(product, colorSize, sizes[0])"> ADD TO BAG</div>
                         </figcaption>
                     </figure>
-                    <p class="product-price">{{product.productTitle}} </br> ${{ product.price }}</p>
+                    <p class="product-title">{{product.productTitle}}<br>
+                    ${{ product.price }}</p>
                 </li>
             </ul>
         </div>
@@ -143,6 +145,7 @@
 </div>
 </div>
 <!-- End Product Grid -->
+
 <!-- Start Shopping Bag Modal -->
 <div id="modal2" class="modal">
     <div class="modal-content">

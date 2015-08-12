@@ -66,13 +66,13 @@
 
 <div class="wrapper">
 	<div id="products" class="row">
-		<div ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter" class="col s12 m6 l4">
+		<div ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter">
 			<ul class="grid size-style">
-				<li ng-repeat="colorSize in product.colorSize">
+				<li class="col s12 m6 l4" ng-repeat="colorSize in product.colorSize">
 					<figure class="adminFigure">
 							<img ng-src="{{ colorSize.mainImg }}">
 						<figcaption>
-							<a ng-href="#/admin/product/{{product._id}}">
+							<a ng-href="/#/admin/product/{{product._id}}">
 								<span class="adminEditBtn">EDIT ITEM</span>
 							</a>			
 						</figcaption>
@@ -89,13 +89,13 @@
 					<p>S: {{colorSize.smallQty}} | M: {{colorSize.mediumQty}} | L: {{colorSize.largeQty}}
 					<br>
 					<span ng-show="onWait(colorSize.wantList.length)" id="numberWait">{{ colorSize.wantList.length }}</span>
-					<span class="showWait" ng-show="onWait(colorSize.wantList.length)" ng-href="#waitList" ng-click="passInEmail(product)" modal>ON WAITLIST</span>
+					<span class="showWait" ng-show="onWait(colorSize.wantList.length)" ng-href="#waitList" ng-click="passInEmail(product)" modal>ON WANTLIST</span>
 					</p>
 
 					<!-- WAITLIST MODAL -->
 
 					<div class="modal" id="waitList">
-						<h4>WAITLISTED FOR {{ WL.productTitle }}</h4><br>
+						<h4>WANTLISTED FOR {{ WL.productTitle }}</h4><br>
 						<table class="centered responsive-table">
 				        <thead>
 				          <tr>
@@ -109,11 +109,11 @@
 				          </tr>
 				          <tr>
 				          	<td>
-	     								 <span class="admin-delete-product" ng-click="showDeleteWaitlist()" >Delete Waitlist</span>
-				     					 <div ng-show="confirmDeleteWaitlist">Are you sure you want to delete the emails from the waitlist?  You won't be able to get them back.
+	     								 <span class="admin-delete-product" ng-click="showDeleteWaitlist()" >DELETE WANTLIST</span>
+				     					 <div ng-show="confirmDeleteWaitlist">are you sure you want to delete all emails from the wantlist?  you won't be able to get them back.
 				      					<div>
-				      					<span class="modal-close admin-delete-button" ng-click="removeEmail(name._id, WL._id)" onClick="$('#waitList').closeModal()">Yes, delete the waitlist</span>
-				      					<span class="admin-cancel-delete-button" ng-click="cancelDeleteWaitlist()" onClick="$('#waitList').closeModal()">No thanks</span>
+				      					<span class="modal-close admin-delete-button" ng-click="removeEmail(name._id, WL._id)" onClick="$('#waitList').closeModal()">YES, DELETEno</span>
+				      					<span class="admin-cancel-delete-button" ng-click="cancelDeleteWaitlist()" onClick="$('#waitList').closeModal()">NO THANKS</span>
 				      	</div>
 				      </div>
 				          	</td>
@@ -141,7 +141,7 @@
 					ng-click="hideConfirmDelete(product._id)" 
 					ng-show="confirmDelete && (product._id === confirmId)">
 					
-					NO THANK YOU
+					NEVERMIND
 					</div>
 <!--					</div>		-->
 							
