@@ -43,8 +43,8 @@
 				<br>
 				<br>
 				
-				<div class="progress animated fadeIn" ng-show="loading">
-      		<div class="indeterminate"></div>
+			<div class="progress animated fadeIn" ng-show="loading">
+      			<div class="indeterminate"></div>
   			</div>
         
 			</div>
@@ -148,8 +148,14 @@
 			</div>
 
 				<div id="placeOrder" class="center-align">
-					<a class="btn-large waves-effect waves-light" ng-click="guestCheckout()">PLACE ORDER</a>
+					<a class="btn-large waves-effect waves-light" ng-click="guestCheckout(); loading=true">PLACE ORDER</a>
 				</div>
+
+				<br>
+
+			<div class="progress animated fadeIn" ng-show="loading">
+      			<div class="indeterminate"></div>
+  			</div>
 
 		</div>
 
