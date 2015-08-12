@@ -96,7 +96,6 @@ module.exports = {
 			});
 		},//end decSize 
 
-		
 
    addPicturesGet: function(req, res) {
     flow.get(req, function(status, filename, original_filename, identifier) {
@@ -181,7 +180,35 @@ module.exports = {
               }
             })
           } 
-        };
-      })
-    }
-};
+        }
+      });
+    },
+	
+			removeEmailsFromWaitlist: function(req, res) {
+				console.log(req.params.toDelete);
+				Product.findOne({"colorSize._id" : req.params.toDelete}, function(err, response){
+					if(err) {
+						return res.status(500).json(err);
+					} 
+					if(response) {
+						console.log(response, "response from removeEmailFromWaitlist");
+						for(var i = 0; i < response.colorSize.length; i++) {
+							console.log(response.colorSize[i].toString())
+							if(response.colorSize[i]._id.toString() === req.params.toDelete) {
+								response.colorSize[i].wantList = [];
+								response.save(function(err){
+									if(err) {
+										console.log(err, ' err from within response.save');
+										return res.status(500).json(err)
+									} 
+	console.log(response.colorSize[i].wantList);
+										return res.send(response);									
+								})
+							}// end wantList = []
+						}// end for loop
+					}// end if response
+				});
+
+			}// end removeEmailsFromWaitlist,
+
+}; // end productsCtrl in server

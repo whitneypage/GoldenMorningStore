@@ -12,11 +12,21 @@ app.service('ProductService', function($http, $q) {
         wantList: email
       }
     }).then(function(response) {
-      deferred.resolve(response.data)
-    })
+      deferred.resolve(response.data);
+    });
     return deferred.promise;
   };
 
+	this.removeEmailsFromWaitlist = function( colorSizeId) {
+		var deferred = $q.defer();
+		$http({
+			method : 'PUT',
+			url: '/api/products/colorSizeIndex/' + colorSizeId
+		}).then(function(response) {
+			deferred.resolve(response.data);
+		});
+		return deferred.promise;
+	};
 	
 	//****TYTEBBS SERIVICES FROM OLD productService.js***//
 	this.createPayment = function(x){
