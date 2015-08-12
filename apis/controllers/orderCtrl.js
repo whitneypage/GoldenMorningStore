@@ -67,9 +67,6 @@ module.exports = {
 
 
 				//end email upon order status update -shipped
-
-
-
 			}
 			res.json(data);
 		})
