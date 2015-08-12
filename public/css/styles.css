@@ -1269,6 +1269,12 @@ table th {
   font-size: 18px;
 }
 
+.thumbnail {
+  width: 75px;
+  height: auto;
+  display: inline;
+}
+
 
 
 /*END CHECKOUT PAGE*/

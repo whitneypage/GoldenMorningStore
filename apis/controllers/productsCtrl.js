@@ -37,7 +37,7 @@ module.exports = {
   },// end handleGetOneProduct
 
   handlePost: function(req, res) {
-    console.log(111, req.body);
+    // console.log(111, req.body);
       Product.create(req.body, function(error, response) {
         if (error) {
           return res.status(500).json(error);
@@ -126,7 +126,7 @@ module.exports = {
         if (error) {
           return res.status(500).json(error);
         } else {
-          console.log(22222, file_buffer);
+          // console.log(22222, file_buffer);
           var params = {
             Bucket: s3_bucket_name,
             Key: s3_filename,
