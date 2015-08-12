@@ -2,6 +2,7 @@
 // NAVBAR MAGIC
 
 $(document).ready(function(){
+	
 	$(window).bind('scroll', function() {
 	   var navHeight = $( window ).height() - 0;
 			 if ($(window).scrollTop() > navHeight) {
@@ -20,9 +21,12 @@ $(document).ready(function(){
 	// 		 else {
 	// 			 $('adminNav').removeClass('fixed');
 	// 		 }
-	// 	});
+	// 	})
 
-	$(".button-collapse").sideNav();
+	$('.button-collapse').sideNav({
+      closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    }
+  );
 
 	$('.tooltipped').tooltip({delay: 20});
 
