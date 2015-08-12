@@ -46,47 +46,50 @@
     <!-- Product Grid -->
     <div class="wrapper">
         <div id="products" class="row">
-          <div product="product" ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter" class="col s12 m6 l4">
-                <ul class="grid size-style">
-                <li ng-repeat="colorSize in product.colorSize">
-                        <figure>
-                            <img href='#productModal' ng-src="{{ colorSize.mainImg }}" ng-click="passInProduct(product)" modal>
+          <div product="product" ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter">
+            <ul class="grid size-style">
+              <li class="col s12 m6 l4" ng-repeat="colorSize in product.colorSize">
+                <figure>
+                  <img href='#productModal' ng-src="{{ colorSize.mainImg }}" ng-click="passInProduct(product)" modal>
                             
-                            <!--begin product modal-->
-                            <div id="productModal" class="modal">
-                                <div class="modal-content">
-                                      <div class="product-photo-and-info">
-                                        <div class="product-photo-box">
-                                          <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
-                                              <li ng-repeat="photo in selectedProduct.images" class="product-image">
-                                                  <img class="carousel_img" ng-src="{{ photo }}" />
-                                              </li>
-                                          </ul>
-                                          <div class="test" rn-carousel-indicators ng-if="selectedProduct.images.length > 1" slides="selectedProduct.images" rn-carousel-index="index1">
-                                              <div class="rn-carousel-indicator">
-                                                  <span ng-repeat="slide in slides" ng-class="{active: $index==index}" ng-click="goToSlide($index)"></span>
-                                              </div>
-                                          </div>
-                                        </div>
-                                        <div class="product-info">
-                                          <div class="product-object">
-                                            <div class="product-modal-title">{{selectedProduct.productTitle}}</div>
-                                            <div class="product-modal-price">
-                                              <div class="product-modal-keyword">PRICE</div>
-                                              <div class="product-modal-price-price">${{selectedProduct.price}}</div>
-                                            </div>
-                                            <div class="product-modal-description">
-                                              <div class="product-modal-keyword">PRODUCT DETAILS</div>
-                                              <div>{{selectedProduct.productDescription}}</div>
-                                            </div>
-                                              <!--angular dropdown with "select"-->
-                                              <div class="product-modal-color-dropdown"> 
-                                                <div class="product-modal-keyword product-modal-color-keyword">COLOR</div>
-                                                <select ng-model="colorSize.color" material-select watch> 
-                                                  <option value="blue" disable selected>blue</option>
-                                                  <option ng-repeat="colorOption in selectedProduct.colorSize">{{colorOption.color}}</option>
-                                                </select>
-                                              </div>
+                      <!--begin product modal-->
+                    <div id="productModal" class="modal">
+                      <div class="modal-content">
+                        <div class="product-photo-and-info">
+                          <div class="product-photo-box">
+                            <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
+                              <li ng-repeat="photo in selectedProduct.images" class="product-image">
+                                <img class="carousel_img" ng-src="{{ photo }}" />
+                              </li>
+                            </ul>
+                            <div class="test" rn-carousel-indicators ng-if="selectedProduct.images.length > 1" slides="selectedProduct.images" rn-carousel-index="index1">
+                              <div class="rn-carousel-indicator">
+                                <span ng-repeat="slide in slides" ng-class="{active: $index==index}" ng-click="goToSlide($index)"></span>
+                              </div>
+                            </div>
+                          </div>
+                                        
+                          <div class="product-info">
+                            <div class="product-object">
+                              <div class="product-modal-title">{{selectedProduct.productTitle}}</div>
+                                <div class="product-modal-price">
+                                  <div class="product-modal-keyword">PRICE</div>
+                                  <div class="product-modal-price-price">${{selectedProduct.price}}</div>
+                                </div>
+                                          
+                              <div class="product-modal-description">
+                                <div class="product-modal-keyword">PRODUCT DETAILS</div>
+                                <div>{{selectedProduct.productDescription}}</div>
+                              </div>
+
+                                      <!--angular dropdown with "select"-->
+                              <div class="product-modal-color-dropdown"> 
+                                <div class="product-modal-keyword product-modal-color-keyword">COLOR</div>
+                                <select ng-model="colorSize.color" material-select watch> 
+                                  <option value="blue" disable selected>blue</option>
+                                  <option ng-repeat="colorOption in selectedProduct.colorSize">{{colorOption.color}}</option>
+                                </select>
+                              </div>
 
                                               <!--Materialize dropdown-->
                                             <!--dropdown trigger-->
@@ -106,12 +109,13 @@
                                               </div>
                                             <div class="product-modal-add-to-bag" ng-click="addProductToCart(product, colorSize, size)"><p>ADD TO BAG</p></div>
                                             
-                                          </div>
-                                        </div>
-                                      </div>
-                                </div>
                             </div>
-                            <!-- end product modal -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                            
+                    <!-- end product modal -->
 
                             <figcaption>
                                 <div class="add-size" ng-show="!anyAvailable(colorSize) && !ifNotClothing(product)">
@@ -131,7 +135,7 @@
                                 </div>
                                 <div class="accessoriesAdd" ng-show="ifNotClothing(product)" ng-click="addProductToCart(product, colorSize, sizes[0])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')"> ADD TO BAG</div>
                             </figcaption>
-                        </figure>
+                  </figure>
                         <p class="product-price">{{product.productTitle}} </br> ${{ product.price }}</p>
                     </li>
                 </ul>
