@@ -7,7 +7,7 @@ body {
 
 
 #hero {
-	background-image: url(../images/GMLogo.jpg);
+	background-image: url(../images/S9.jpg);
 	background-size: cover;
 	position: relative;
 	height: 100vh;
@@ -27,7 +27,7 @@ body {
   width: 100%;
   color: #fff;
   font-size:3 6px;
-  text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 15px rgba(0,0,0,0.9);
   -ms-transform: translate(0,-50%);  /*IE 9*/ 
     -webkit-transform: translate(0,-50%);  /*Safari*/ 
     transform: translate(0,-50%);
@@ -68,7 +68,7 @@ nav a:hover {
 
 
 nav img {
-  margin-top: 10px;
+  margin-top: 6px;
   margin-left: 10px;
 }
 /*PRODUCT GRID START*/
@@ -247,6 +247,7 @@ nav img {
 
 .aboutDes {
  font-family: 'Palanquin', sans-serif;
+ letter-spacing: 1px;
   font-weight: 100;
   font-size: 16px;
   text-align: center;
@@ -285,6 +286,11 @@ footer .container, footer a {
   margin-top: 10px;
  margin-right: 8px;
 }
+
+.page-footer span img {
+  margin-bottom: -25px;
+}
+
 
 footer #contact {
   text-align: right;
