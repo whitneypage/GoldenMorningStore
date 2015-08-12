@@ -1,6 +1,6 @@
 var app = angular.module('GoldMorning');
 
-app.controller('checkoutCtrl', function($q, $window, $routeParams, $scope, cart, cartService, orderService) {
+app.controller('checkoutCtrl', function($location, $window, $routeParams, $scope, cart, cartService, orderService) {
 
 	$scope.cart = cart;
 
@@ -93,6 +93,9 @@ app.controller('checkoutCtrl', function($q, $window, $routeParams, $scope, cart,
 					}
 				};
 				orderService.updateOrder(orderData.data._id, updateData).then(function(updatedOrderObj){
+					var redirectUrl = 'http://localhost:1337/#/thankyou?_id=' + updatedOrderObj.data._id;
+					console.log('redirectUrl', redirectUrl)
+					$window.location.href = redirectUrl;
 					console.log('THE END', updatedOrderObj);
 				})
 			})
