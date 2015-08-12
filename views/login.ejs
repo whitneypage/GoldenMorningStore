@@ -17,7 +17,7 @@
 <body>
 	<div class="admin">
 		<div class="container" id="adminLogin">
-			<h1 class="animated fadeIn">GOLDMORNING SHOP</h1><br>
+			<h1 class="rh-admin-header">GOLDMORNING SHOP</h1><br>
 
 				<% if (message.length > 0){ %>
 					<div class="login-error-message"><%= message %></div>
@@ -26,14 +26,14 @@
 			
 				<form action="/api/login" method="post" class="col s12" id="loginForm">
 					<div class="row">
-							<div class="input-field l8 s12 animated slideInDown">
-								<input class="rh-admin-input" id="email" type="email" name="email" class="validate">
+							<div class="rh-admin-input-wrapper">
+								<input class="rh-admin-input" type="email" name="email" class="validate">
 								<label for="email">EMAIL</label>
 							</div>
 					 </div>
 					<div class="row">
-								<div class="input-field l8 s12 animated slideInUp">
-									<input class="rh-admin-input" id="password" type="password" name="password" class="validate">
+								<div class="rh-admin-input-wrapper">
+									<input class="rh-admin-input" type="password" name="password" class="validate">
 									<label for="password">PASSWORD</label>
 							</div>
 					</div>
