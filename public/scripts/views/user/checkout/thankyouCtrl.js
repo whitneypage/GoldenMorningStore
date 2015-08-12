@@ -8,15 +8,11 @@ app.controller('thankyouCtrl', function($scope, $routeParams, orderService, Prod
 	orderService.updateOrderByPaymentId($routeParams).then(function(data){
 		if(data) {
 			cartService.getCart().then(function(checkedOutCart){
-			ProductService.decrementSize(checkedOutCart).then(function(data){
-				if(data){
-					orderService.emptyCart().then(function(data){
-					console.log('cart is empty now... maybe', data)
-					})
-				}			
+			ProductService.decrementSize(checkedOutCart);
+			orderService.emptyCart();
 			});	
 
-			});
+
 		}
 //		ProductService.decrementSize(data.data.products);
 	});
