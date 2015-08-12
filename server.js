@@ -17,9 +17,6 @@ var flash = require('connect-flash');
 var morgan = require('morgan');
 var connectMongo = require('connect-mongo');
 var flash = require('connect-flash');
-// var routes = require('./routes');
-// var configJSON = fs.readFileSync(__dirname + "/apis/config/config.json");
-// var paypalConfig = JSON.parse(configJSON.toString());
 
 var port = 1337;
 

@@ -46,6 +46,7 @@
 							<h5>ORDER DETAILS:</h5>
 								<div class="moreInfoBox" ng-repeat="product in order.products">
 									<div class="oneInfoBox">
+											<img class="thumbnail" src="{{product.imageUrl}}" />
 					            	<span>ITEM NAME:</span> {{product.product.productTitle}}
 										<br>
 					            	<span>SIZE:</span> {{product.size}}
