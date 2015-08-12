@@ -8,13 +8,18 @@ app.controller('thankyouCtrl', function($scope, $routeParams, orderService, Prod
 	orderService.updateOrderByPaymentId($routeParams).then(function(data){
 		if(data) {
 			cartService.getCart().then(function(checkedOutCart){
-			ProductService.decrementSize(checkedOutCart);	
-			orderService.emptyCart().then(function(data) {
-				console.log(data, ' from orderService.emptyCart() -- should be an empty cart');
-			});
+			ProductService.decrementSize(checkedOutCart).then(function(data){
+				if(data){
+					orderService.emptyCart().then(function(data){
+					console.log('cart is empty now... maybe', data)
+					})
+				}			
+			});	
+
 			});
 		}
 //		ProductService.decrementSize(data.data.products);
 	});
+});// end thankyouCtrl
 
-});
+

@@ -25,16 +25,9 @@ module.exports = {
 		res.send(req.session.cart);
 	}
 
-	/*, emptyCart: function(req, res){
-		Cart.findByIdAndRemove(req.params.id, function(err, result) {
-			if(err){
-				res.status(500).json(err);
-			}
-			else {
-				res.json(result);
-			}
-		})
-	}*/
+	, emptyCart: function(req, res){
+		req.session.destroy();
+	}
 
  
 };
