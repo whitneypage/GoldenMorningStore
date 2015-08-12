@@ -84,20 +84,21 @@
                                                     </select>
                                                 </div>
                                                 <div class="product-modal-size-container" ng-if="!ifNot(selectedProduct) && !productModalNotAvailable(selectedProduct.colorSize)">
-                                                    <div class="product-modal-keyword">SIZE</div>
+                                                    <div class="product-modal-keyword product-modal-size-keyword">SIZE</div>
                                                     <div class="product-modal-size-buttons" ng-model="size">
                                                         <div class="product-modal-individual-size-button" ng-click="selectSize(sizes[0])" ng-if="selectedColorSize.smallQty">S</div>
                                                         <div class="product-modal-individual-size-button" ng-click="selectSize(sizes[1])" ng-if="selectedColorSize.mediumQty">M</div>
                                                         <div class="product-modal-individual-size-button" ng-click="selectSize(sizes[2])" ng-if="selectedColorSize.largeQty">L</div>
                                                     </div>
-                                                    <div class="product-modal-add-to-bag" ng-click="addProductToCartFromModal(selectedProduct, selectedColorSize, theSize)">
-                                                        <p>ADD TO BAG</p>
+                                                  
+                                                    <div class="product-modal-add-to-bag modal-action modal-close" ng-click="goodToGo || addProductToCartFromModal(selectedProduct, selectedColorSize, theSize)" ng-disabled="goodToGo" ng-class="{'disabled': goodToGo }">
+                                                        <p class="Add2Bag">ADD TO BAG</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="ifNotClothing" ng-if="ifNot(selectedProduct)">
-                                                <div class="product-modal-add-to-bag" ng-click="addProductToCart(selectedProduct, selectedColorSize, sizes[0])">
-                                                    <p>ADD TO BAG</p>
+                                                <div class="product-modal-add-to-bag modal-action modal-close" ng-click="goodToGo || addProductToCart(selectedProduct, selectedColorSize, sizes[0])" ng-disabled="goodToGo" ng-class="{'disabled': goodToGo }">
+                                                    <p class="Add2Bag">ADD TO BAG</p>
                                                 </div>
                                             </div>
                                             <div class="ifWantList" ng-show="productModalNotAvailable(selectedProduct.colorSize)">
@@ -118,11 +119,11 @@
                         <figcaption>
                             <div class="add-size" ng-show="!anyAvailable(colorSize) && !ifNotClothing(product)">
                                 <p class="bag">ADD TO BAG</p>
-                                <span class="inStock" ng-show="inStock(colorSize.largeQty)" ng-click="addProductToCart(product, colorSize, sizes[2])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')">L</span>
+                                <span class="inStock" ng-show="inStock(colorSize.largeQty)" ng-click="addProductToCart(product, colorSize, sizes[2])" >L</span>
                                 <span class="outOfStock" ng-show="!inStock(colorSize.largeQty)">L</span>
-                                <span class="inStock" ng-show="inStock(colorSize.mediumQty)" ng-click="addProductToCart(product, colorSize, sizes[1])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')">M</span>
+                                <span class="inStock" ng-show="inStock(colorSize.mediumQty)" ng-click="addProductToCart(product, colorSize, sizes[1])" >M</span>
                                 <span class="outOfStock" ng-show="!inStock(colorSize.mediumQty)">M</span>
-                                <span class="inStock" ng-show="inStock(colorSize.smallQty)" ng-click="addProductToCart(product, colorSize, sizes[0])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')">S</span>
+                                <span class="inStock" ng-show="inStock(colorSize.smallQty)" ng-click="addProductToCart(product, colorSize, sizes[0])" >S</span>
                                 <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)">S</span>
                             </div>
                             <div class="soldOut" ng-show="anyAvailable(colorSize)">
@@ -150,8 +151,8 @@
         </div>
         <div class="whole-cart">
             <div class="each-product-container" ng-show="cart.length === 0">
-                <div class="product-name">
-                    NO ITEMS IN YOUR CART
+                <div class="emptyCartMsg">
+                    <div class="no-items-in-cart">NO ITEMS IN YOUR CART</div>
                 </div>
             </div>
             <div class="each-product-container" ng-repeat="product in cart">
