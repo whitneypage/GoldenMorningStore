@@ -36,8 +36,6 @@ app.controller('cartCtrl', function($scope, ProductService, cart, cartService, $
 		
 	$scope.sizes = ["L", "M", "S"];	
 
-	/*$scope.size = size;*/
-
 	$scope.cart = cart;
 
 	$scope.addProductToCart = function(product, colorSize, size) {

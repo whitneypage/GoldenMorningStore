@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var customerSchema = require('./customerSchema');
 
+
 var orderSchema = mongoose.Schema({
     user: {type: String}, 
     products: [{
@@ -10,9 +11,9 @@ var orderSchema = mongoose.Schema({
         , colorSizeId: {type: String}
         , imageUrl: {type: String}
     }]
-    , total: {type: Number}
+    , total: {type: String}
     , status: {type: String, enum: ['approved', 'pending', 'shipped', 'delivered', 'on hold', 'canceled'], default: 'pending'}
-    , timePlaced: {type: Date}
+    , timePlaced: {type: Date, format: 'YYYY-MM-DD', default: Date.now}
     , shippingDate: {type: Date}
     , note: {type: String}
     , paymentId: {type: String}
