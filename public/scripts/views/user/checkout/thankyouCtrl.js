@@ -9,6 +9,9 @@ app.controller('thankyouCtrl', function($scope, $routeParams, orderService, Prod
 		if(data) {
 			cartService.getCart().then(function(checkedOutCart){
 			ProductService.decrementSize(checkedOutCart);	
+			orderService.emptyCart().then(function(data) {
+				console.log(data, ' from orderService.emptyCart() -- should be an empty cart');
+			});
 			});
 		}
 //		ProductService.decrementSize(data.data.products);
