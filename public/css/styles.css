@@ -218,9 +218,12 @@ nav img {
   }
 }
 
-.product-price {
-  font-size: 18px;
+
+.product-title {
+  font-size: 19px;
+  font-weight: 300;
   margin: 5px auto;
+  text-transform: uppercase;
 }
 
 .preview {
@@ -300,7 +303,7 @@ footer #contact {
 }
 
 footer h6, footer h5 {
-  font-weight: 200;
+  font-weight: 300;
   margin: 0;
 }
 

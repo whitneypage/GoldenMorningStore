@@ -135,7 +135,8 @@
                             <div class="accessoriesAdd" ng-show="ifNotClothing(product)" ng-click="addProductToCart(product, colorSize, sizes[0])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')"> ADD TO BAG</div>
                         </figcaption>
                     </figure>
-                    <p class="product-price">{{product.productTitle}} </br> ${{ product.price }}</p>
+                    <p class="product-title">{{product.productTitle}}<br>
+                    ${{ product.price }}</p>
                 </li>
             </ul>
         </div>
