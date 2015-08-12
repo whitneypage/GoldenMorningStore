@@ -52,10 +52,7 @@ app.use(cors());
 app.use(express.static(__dirname+'/public'));
 app.use(flash());
 
-
-
 //RH MOVING PASSPORT THINGS HERE
-
 
 app.use(session({
 	secret: "goldmorningshopsecret",

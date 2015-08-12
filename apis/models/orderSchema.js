@@ -8,6 +8,7 @@ var orderSchema = mongoose.Schema({
         , size: {type: String}
         , color: {type: String}
         , colorSizeId: {type: String}
+        , imageUrl: {type: String}
     }]
     , total: {type: Number}
     , status: {type: String, enum: ['approved', 'pending', 'shipped', 'delivered', 'on hold', 'canceled'], default: 'pending'}

@@ -80,8 +80,8 @@ module.exports = {
 
 		  	//email upon order
 			var email     = new sendgrid.Email({
-				to:       'tylertebbs20@gmail.com',
-				from:     'tylertebbs20@yahoo.com',
+				to:       'andykj@gmail.com',
+				from:     'andykj@gmail.com',
 				subject:  'Congrats, someone just made an order',
 				text:     'Hello myself'
 			});
@@ -124,7 +124,7 @@ module.exports = {
 		console.log('SENDING TO PAYPAL', req.body.payment)
 			Paypal.payment.create(req.body.payment, function (error, payment) {
 	  if (error) {
-	    console.log('PAYMENT CREATION ERROR:', error);
+	    console.log('PAYMENT CREATION ERROR:', error.response.details);
 	  } else {
 	  	console.log('PAYMENT', payment);
 	    res.json(payment)

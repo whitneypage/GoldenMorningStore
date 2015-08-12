@@ -32,11 +32,12 @@ app.controller('checkoutCtrl', function($q, $window, $routeParams, $scope, cart,
 				product: cart[i].refId,
 				size: cart[i].size,
 				color: cart[i].color,
-				colorSizeId: cart[i].colorSizeId
+				colorSizeId: cart[i].colorSizeId,
+				imageUrl: cart[i].imageUrl
 			};
 			products.push(newProduct);
 		}
-		var order = {products: products, total: total, note: 'tyler tebbbzzzz'};
+		var order = {products: products, total: total};
 		cartService.createOrder(order).then(function(orderData){
 			console.log('orderData', orderData)
 			var payment = {
@@ -45,18 +46,18 @@ app.controller('checkoutCtrl', function($q, $window, $routeParams, $scope, cart,
 			    "payment_method": "credit_card",
 			    "funding_instruments": [{
 			      "credit_card": {
-			        "number": $scope.creditCard,
-			        "type": $scope.ccType,
-			        "expire_month": $scope.expireMonth,
-			        "expire_year": $scope.expireYear,
-			        "cvv2": $scope.ccv,
-			        "first_name": $scope.firstName,
-			        "last_name": $scope.lastName,
+			        "number": '4827369667800959',
+			        "type": 'visa',
+			        "expire_month": '02',
+			        "expire_year": '2019',
+			        "cvv2": '111',
+			        "first_name": 'Joe',
+			        "last_name": 'Shopper',
 			        "billing_address": {
-			          "line1": $scope.street,
-			          "city": $scope.city,
-			          "state": $scope.state,
-			          "postal_code": $scope.zip,
+			          "line1": '52 North Main ST',
+			          "city": 'Johnstown',
+			          "state": 'OH',
+			          "postal_code": '43210',
 			          "country_code": "US" }}}]},
 			  "transactions": [{
 			    "amount": {
@@ -101,17 +102,19 @@ app.controller('checkoutCtrl', function($q, $window, $routeParams, $scope, cart,
 	$scope.paypalCheckout = function(){
 	    var products = [];
 	    var total = $scope.total;
+	    console.log(cart[0].imageUrl, 'this is cart')
 	    for(var i = 0; i < cart.length; i++){
 	        var newProduct = {
 	            product: cart[i].refId,
 	            size: cart[i].size,
 	            color: cart[i].color,
-	            colorSizeId: cart[i].colorSizeId
+	            colorSizeId: cart[i].colorSizeId,
+	            imageUrl: cart[i].imageUrl
 	        };
 	        products.push(newProduct);
 	    }
 			console.log('total', total)
-	    var order = {products: products, total: total, note: 'tyler tebbbzzzz'};
+	    var order = {products: products, total: total};
 	    cartService.createOrder(order).then(function(orderData){
 	        var order_Id = orderData.data._id;
 	        var payment = {
