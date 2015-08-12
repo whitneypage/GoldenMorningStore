@@ -3,7 +3,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var userCtrl = require('../controllers/userCtrl');
 
 var User = require('../models/userSchema');
-console.log(User);
+
 
 module.exports = function(passport) {
 	

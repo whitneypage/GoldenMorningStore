@@ -1,147 +1,131 @@
 <script src="js/init.js"></script>
-
 <!-- Header -->
 <div class="wrapper">
-  <div id="hero">
-    <div class="headline-main">
-     <!--  <h1 id="hello" class="animated fadeInUp">GOLDMORNING SHOP</h1> -->
-     <!--  <div class="downArrow" scroll-to="nav" duration="1800">
+    <div id="hero">
+        <div class="headline-main">
+            <!--  <h1 id="hello" class="animated fadeInUp">GOLDMORNING SHOP</h1> -->
+            <!--  <div class="downArrow" scroll-to="nav" duration="1800">
         <i class="fa fa-chevron-down fa-3x animated fadeInDown"></i>      
         </div> -->
-      </div>
-    </div>
-  </div>
-
-<!-- End Header -->
-
-    <!-- Nav Start -->
-    <nav id="nav">
-        <div class="nav-wrapper">
-            <a href="#/home" class="brand-logo">GM.S</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color: #424242">list</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a ng-click="productFilter = ''">ALL</a></li>
-                <li><a ng-click="productFilter = {productCategory: 'Dresses'}">DRESSES</a></li>
-                <li><a ng-click="productFilter = {productCategory: 'Tops'}">TOPS</a></li>
-                <li><a ng-click="productFilter = {productCategory: 'Bottoms'}">BOTTOMS</a></li>
-                <li><a ng-click="productFilter = {productCategory: 'Rompers'}">ROMPERS</a></li>
-                <li><a ng-click="productFilter = {productCategory: 'Accessories'}">ACCESSORIES</a></li>
-                <li><a ng-click="productFilter = {productCategory: 'Soaps/Scrubs'}">SOAPS & SCRUBS</a></li>
-                <li><a cart-modal ng-click="getTotal()"><i class="material-icons bagIcon">shopping_basket</i></a></li>
-            </ul>
-            <!-- Navbar Collapses for Mobile -->
-            <ul class="side-nav" id="mobile-demo">
-                <li><a ng-click="productFilter = {productCategory: 'Dresses'}">DRESSES</a></li>
-                <li><a ng-click="productFilter = {productCategory: 'Tops'}">TOPS</a></li>
-                <li><a ng-click="productFilter = {productCategory: 'Bottoms'}">BOTTOMS</a></li>
-                <li><a ng-click="productFilter = {productCategory: 'Rompers'}">ROMPERS</a></li>
-                <li><a ng-click="productFilter = {productCategory: 'Accessories'}">ACCESSORIES</a></li>
-                <li><a ng-click="productFilter = {productCategory: 'Soaps/Scrubs'}">BODY</a></li>
-                <li><a href="/#/cart"><i class="material-icons bagIcon">shopping_basket</i></a></li>
-            </ul>
-        </div>
-    </nav>
-    <!-- Nav End -->
-
-    <!-- Product Grid -->
-    <div class="wrapper">
-        <div id="products" class="row">
-          <div product="product" ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter" class="col s12 m6 l4">
-                <ul class="grid size-style">
-                <li ng-repeat="colorSize in product.colorSize">
-                        <figure>
-                            <img href='#productModal' ng-src="{{ colorSize.mainImg }}" ng-click="passInProduct(product)" modal>
-                            
-                            <!--begin product modal-->
-                            <div id="productModal" class="modal">
-                                <div class="modal-content">
-                                      <div class="product-photo-and-info">
-                                        <div class="product-photo-box">
-                                          <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
-                                              <li ng-repeat="photo in selectedProduct.images" class="product-image">
-                                                  <img class="carousel_img" ng-src="{{ photo }}" />
-                                              </li>
-                                          </ul>
-                                          <div class="test" rn-carousel-indicators ng-if="selectedProduct.images.length > 1" slides="selectedProduct.images" rn-carousel-index="index1">
-                                              <div class="rn-carousel-indicator">
-                                                  <span ng-repeat="slide in slides" ng-class="{active: $index==index}" ng-click="goToSlide($index)"></span>
-                                              </div>
-                                          </div>
-                                        </div>
-                                        <div class="product-info">
-                                          <div class="product-object">
-                                            <div class="product-modal-title">{{selectedProduct.productTitle}}</div>
-                                            <div class="product-modal-price">
-                                              <div class="product-modal-keyword">PRICE</div>
-                                              <div class="product-modal-price-price">${{selectedProduct.price}}</div>
-                                            </div>
-                                            <div class="product-modal-description">
-                                              <div class="product-modal-keyword">PRODUCT DETAILS</div>
-                                              <div>{{selectedProduct.productDescription}}</div>
-                                            </div>
-                                              <!--angular dropdown with "select"-->
-                                              <div class="product-modal-color-dropdown"> 
-                                                <div class="product-modal-keyword product-modal-color-keyword">COLOR</div>
-                                                <select ng-model="colorSize.color" material-select watch> 
-                                                  <option value="blue" disable selected>blue</option>
-                                                  <option ng-repeat="colorOption in selectedProduct.colorSize">{{colorOption.color}}</option>
-                                                </select>
-                                              </div>
-
-                                              <!--Materialize dropdown-->
-                                            <!--dropdown trigger-->
-                                              <!-- <a class="product-modal-color-dropdown" data-activates="product-modal-color-dropdown">COLOR</a>
-                                            dropdown structure
-                                              <ul>
-                                                <li ng-repeat="colorOption in selectedProduct.colorSize" ng-model="colorSize.color">{{colorOption.color}}</li>
-                                                <li class="divider"></li>
-                                              </ul> -->
-                                              <div class="product-modal-size-container">
-                                                <div class="product-modal-keyword">SIZE</div>
-                                                <div class="product-modal-size-buttons" ng-model="size" ng-repeat="colorSize in selectedProduct.colorSize">
-                                                  <div class="product-modal-individual-size-button" ng-if="colorSize.smallQty">S</div>
-                                                  <div class="product-modal-individual-size-button" ng-if="colorSize.mediumQty">M</div>
-                                                  <div class="product-modal-individual-size-button" ng-if="colorSize.largeQty">L</div>
-                                                </div>
-                                              </div>
-                                            <div class="product-modal-add-to-bag" ng-click="addProductToCart(product, colorSize, size"><p>ADD TO BAG</p></div>
-                                            
-                                          </div>
-                                        </div>
-                                      </div>
-                                </div>
-                            </div>
-                            <!-- end product modal -->
-
-                            <figcaption>
-                                <div class="add-size" ng-show="!anyAvailable(colorSize) && !ifNotClothing(product)">
-                                    <p class="bag">ADD TO BAG</p>
-                                    <span class="inStock" ng-show="inStock(colorSize.largeQty)" ng-click="addProductToCart(product, colorSize, sizes[2])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')">L</span>
-                                    <span class="outOfStock" ng-show="!inStock(colorSize.largeQty)">L</span>
-                                    <span class="inStock" ng-show="inStock(colorSize.mediumQty)" ng-click="addProductToCart(product, colorSize, sizes[1])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')">M</span>
-                                    <span class="outOfStock" ng-show="!inStock(colorSize.mediumQty)">M</span>
-                                    <span class="inStock" ng-show="inStock(colorSize.smallQty)" ng-click="addProductToCart(product, colorSize, sizes[0])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')">S</span>
-                                    <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)">S</span>
-                                </div>
-                                <div class="soldOut" ng-show="anyAvailable(colorSize)">
-                                    <span>SOLD OUT <strong>| WANT THIS BACK IN THE SHOP ?</strong> </span>
-                                    <form ng-submit="findColorSizeIndex(colorSize._id)" toast="submit" message="THANKS! YOU'LL BE THE FIRST TO KNOW." duration="3000">
-                                        <input ng-model="emailList.wantEmail" type="email" placeholder=" Enter Email Here" />
-                                    </form>
-                                </div>
-                                <div class="accessoriesAdd" ng-show="ifNotClothing(product)" ng-click="addProductToCart(product, colorSize, sizes[0])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')"> ADD TO BAG</div>
-                            </figcaption>
-                        </figure>
-                        <p class="product-price">{{product.productTitle}} </br> ${{ product.price }}</p>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>
+<!-- End Header -->
+<!-- Nav Start -->
+<nav id="nav">
+    <div class="nav-wrapper">
+        <a href="#/home" class="brand-logo">GM.S</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color: #424242">list</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a ng-click="productFilter = ''">ALL</a></li>
+            <li><a ng-click="productFilter = {productCategory: 'Dresses'}">DRESSES</a></li>
+            <li><a ng-click="productFilter = {productCategory: 'Tops'}">TOPS</a></li>
+            <li><a ng-click="productFilter = {productCategory: 'Bottoms'}">BOTTOMS</a></li>
+            <li><a ng-click="productFilter = {productCategory: 'Rompers'}">ROMPERS</a></li>
+            <li><a ng-click="productFilter = {productCategory: 'Accessories'}">ACCESSORIES</a></li>
+            <li><a ng-click="productFilter = {productCategory: 'Soaps/Scrubs'}">SOAPS & SCRUBS</a></li>
+            <li><a cart-modal ng-click="getTotal()"><i class="material-icons bagIcon">shopping_basket</i></a></li>
+        </ul>
+        <!-- Navbar Collapses for Mobile -->
+        <ul class="side-nav" id="mobile-demo">
+            <li><a ng-click="productFilter = {productCategory: 'Dresses'}">DRESSES</a></li>
+            <li><a ng-click="productFilter = {productCategory: 'Tops'}">TOPS</a></li>
+            <li><a ng-click="productFilter = {productCategory: 'Bottoms'}">BOTTOMS</a></li>
+            <li><a ng-click="productFilter = {productCategory: 'Rompers'}">ROMPERS</a></li>
+            <li><a ng-click="productFilter = {productCategory: 'Accessories'}">ACCESSORIES</a></li>
+            <li><a ng-click="productFilter = {productCategory: 'Soaps/Scrubs'}">BODY</a></li>
+            <li><a href="/#/cart"><i class="material-icons bagIcon">shopping_basket</i></a></li>
+        </ul>
+    </div>
+</nav>
+<!-- Nav End -->
+<!-- Product Grid -->
+<div class="wrapper">
+    <div id="products" class="row">
+        <div product="product" ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter">
+            <ul class="grid size-style">
+                <li class="col s12 m6 l4" ng-repeat="colorSize in product.colorSize">
+                    <figure>
+                        <img href='#productModal' ng-src="{{ colorSize.mainImg }}" ng-click="passInProduct(product)" modal>
+                        <!--begin product modal-->
+                        <div id="productModal" class="modal">
+                            <div class="modal-content">
+                                <div class="product-photo-and-info">
+                                    <div class="product-photo-box">
+                                        <ul rn-carousel class="carousel" rn-carousel-index="index1" rn-carousel-buffered rn-carousel-controls>
+                                            <li ng-repeat="photo in selectedProduct.images" class="product-image">
+                                                <img class="carousel_img" ng-src="{{ photo }}" />
+                                            </li>
+                                        </ul>
+                                        <div class="test" rn-carousel-indicators ng-if="selectedProduct.images.length > 1" slides="selectedProduct.images" rn-carousel-index="index1">
+                                            <div class="rn-carousel-indicator">
+                                                <span ng-repeat="slide in slides" ng-class="{active: $index==index}" ng-click="goToSlide($index)"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="product-object">
+                                            <div class="product-modal-title">{{selectedProduct.productTitle}}</div>
+                                            <div class="product-modal-price">
+                                                <div class="product-modal-keyword">PRICE</div>
+                                                <div class="product-modal-price-price">${{selectedProduct.price}}</div>
+                                            </div>
+                                            <div class="product-modal-description">
+                                                <div class="product-modal-keyword">PRODUCT DETAILS</div>
+                                                <div>{{selectedProduct.productDescription}}</div>
+                                            </div>
+                                            <!--angular dropdown with "select"-->
+                                            <div class="product-modal-color-dropdown">
+                                                <div class="product-modal-keyword product-modal-color-keyword">COLOR</div>
+                                                <select ng-change="selectedColorSize(chosenColor)" ng-model="chosenColor" material-select watch>
+                                                    <option value="" disabled selected>Select color</option>
+                                                    <option value="{{colorOption}}" ng-repeat="colorOption in selectedProduct.colorSize">{{colorOption.color}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="product-modal-size-container">
+                                                <div class="product-modal-keyword">SIZE</div>
+                                                <div class="product-modal-size-buttons" ng-model="size">
+                                                    <div class="product-modal-individual-size-button" ng-if="selectedColorSize.smallQty">S</div>
+                                                    <div class="product-modal-individual-size-button" ng-if="selectedColorSize.mediumQty">M</div>
+                                                    <div class="product-modal-individual-size-button" ng-if="selectedColorSize.largeQty">L</div>
+                                                </div>
+                                            </div>
+                                            <div class="product-modal-add-to-bag" ng-click="addProductToCart(product, colorSize, size)">
+                                                <p>ADD TO BAG</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end product modal -->
+                        <figcaption>
+                            <div class="add-size" ng-show="!anyAvailable(colorSize) && !ifNotClothing(product)">
+                                <p class="bag">ADD TO BAG</p>
+                                <span class="inStock" ng-show="inStock(colorSize.largeQty)" ng-click="addProductToCart(product, colorSize, sizes[2])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')">L</span>
+                                <span class="outOfStock" ng-show="!inStock(colorSize.largeQty)">L</span>
+                                <span class="inStock" ng-show="inStock(colorSize.mediumQty)" ng-click="addProductToCart(product, colorSize, sizes[1])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')">M</span>
+                                <span class="outOfStock" ng-show="!inStock(colorSize.mediumQty)">M</span>
+                                <span class="inStock" ng-show="inStock(colorSize.smallQty)" ng-click="addProductToCart(product, colorSize, sizes[0])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')">S</span>
+                                <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)">S</span>
+                            </div>
+                            <div class="soldOut" ng-show="anyAvailable(colorSize)">
+                                <span>SOLD OUT <strong>| WANT THIS BACK IN THE SHOP ?</strong> </span>
+                                <form ng-submit="findColorSizeIndex(colorSize._id)" toast="submit" message="THANKS! YOU'LL BE THE FIRST TO KNOW." duration="3000">
+                                    <input ng-model="emailList.wantEmail" type="email" placeholder=" Enter Email Here" />
+                                </form>
+                            </div>
+                            <div class="accessoriesAdd" ng-show="ifNotClothing(product)" ng-click="addProductToCart(product, colorSize, sizes[0])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')"> ADD TO BAG</div>
+                        </figcaption>
+                    </figure>
+                    <p class="product-price">{{product.productTitle}} </br> ${{ product.price }}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
 <!-- End Product Grid -->
-
-
 <!-- Start Shopping Bag Modal -->
 <div id="modal2" class="modal">
     <div class="modal-content">
@@ -161,13 +145,12 @@
                                 <div class="product-category-name">SIZE</div>
                                 <div ng-show="!ifNotClothing(product)">{{product.size}}</div>
                                 <div ng-show="ifNotClothing(product)">
-                                  OS
+                                    OS
                                 </div>
                             </div>
                             <div class="individual-product-info-box color-container">
                                 <div class="product-category-name">COLOR</div>
                                 <div>{{product.color}}</div>
-
                             </div>
                             <div class="individual-product-info-box price-container">
                                 <div class="product-category-name">PRICE</div>
@@ -191,119 +174,77 @@
     </div>
 </div>
 <!-- End Shopping Bag Modal -->
-
 <!-- START FOOTER -->
-
-
 <footer class="page-footer">
-  <div class="foot">
-    <div class="row">
-      <div class="col l8 s12">
-        <h5>CONNECT</h5>
-          <span><a target="_blank" href="https://instagram.com/goldmorning/?hl=en"><i class="fa fa-instagram fa-2x"></i></a></span>
-          <span><a target="_blank" href="https://www.pinterest.com/beulah_anne/goldmorning-shop/"><i class="fa fa-pinterest fa-2x"></i></a></span>
-           <span class="blogLink"><a target="_blank" href="http://goldmorningblog.com/"><img src="images/goldmorninglogo.png"</a></span>
+    <div class="foot">
+        <div class="row">
+            <div class="col l8 s12">
+                <h5>CONNECT</h5>
+                <span><a target="_blank" href="https://instagram.com/goldmorning/?hl=en"><i class="fa fa-instagram fa-2x"></i></a></span>
+                <span><a target="_blank" href="https://www.pinterest.com/beulah_anne/goldmorning-shop/"><i class="fa fa-pinterest fa-2x"></i></a></span>
+                <span class="blogLink"><a target="_blank" href="http://goldmorningblog.com/"><img src="images/goldmorninglogo.png"</a></span>
             </div>
-              <div class="col l2 offset-l2 s12" id="contact">
+            <div class="col l2 offset-l2 s12" id="contact">
                 <h6>CONTACT</h6>
                 <ul>
-                  <li><a href='#aboutModal' modal>ABOUT</a></li>
-                  <div id="aboutModal" class="modal">
-                      <div class="modal-content" class="row">
-                      <h5>ABOUT</h5>
-                      <hr>
-                        <img class="aboutImg" src="http://40.media.tumblr.com/056d433fec4dcd6b22d2fa02499a99ef/tumblr_inline_nqoqp4a7FV1tx6mj2_500.png">
-                        <p class="aboutDes">Hello! I will not speak in third person because I’m writing this myself! ;) My name is Beulah, I’m a fashion photographer who has found great joy in connecting with other women online and helping them find beautiful pieces that they enjoy. I search for a style that I love and make it easily available to them. I work hard at seeking out unique pieces, photographing them, and communicating with my shoppers; I’m hands on through every step of the process and I love it! So thank you for visiting and thank you so much for choosing my shop!
-                        </p>
-                        <div class="aboutSocial">
-                          <span><a target="_blank" href="https://instagram.com/goldmorning/?hl=en"><i class="fa fa-instagram fa-2x"></i></a></span>
-                          <span><a target="_blank" href="http://goldmorningblog.com/"><i class="fa fa-tumblr fa-2x"></i></a></span>
-                          <span><a target="_blank" href="https://www.pinterest.com/beulah_anne/goldmorning-shop/"><i class="fa fa-pinterest fa-2x"></i></a></span>
+                    <li><a href='#aboutModal' modal>ABOUT</a></li>
+                    <div id="aboutModal" class="modal">
+                        <div class="modal-content" class="row">
+                            <h5>ABOUT</h5>
+                            <hr>
+                            <img class="aboutImg" src="http://40.media.tumblr.com/056d433fec4dcd6b22d2fa02499a99ef/tumblr_inline_nqoqp4a7FV1tx6mj2_500.png">
+                            <p class="aboutDes">Hello! I will not speak in third person because I’m writing this myself! ;) My name is Beulah, I’m a fashion photographer who has found great joy in connecting with other women online and helping them find beautiful pieces that they enjoy. I search for a style that I love and make it easily available to them. I work hard at seeking out unique pieces, photographing them, and communicating with my shoppers; I’m hands on through every step of the process and I love it! So thank you for visiting and thank you so much for choosing my shop!
+                            </p>
+                            <div class="aboutSocial">
+                                <span><a target="_blank" href="https://instagram.com/goldmorning/?hl=en"><i class="fa fa-instagram fa-2x"></i></a></span>
+                                <span><a target="_blank" href="http://goldmorningblog.com/"><i class="fa fa-tumblr fa-2x"></i></a></span>
+                                <span><a target="_blank" href="https://www.pinterest.com/beulah_anne/goldmorning-shop/"><i class="fa fa-pinterest fa-2x"></i></a></span>
+                            </div>
                         </div>
-                      </div>
-                  </div>
-                  <li><a href='#policiesModal' modal>SHOP POLICIES</a></li>
-                  <div id="policiesModal" class="modal">
-                      <div class="modal-content" class="row">
-                      <h5>SHOP POLICIES</h5>
-                      <hr>
-                        <div class="policies">
-                        <p class="Q">Customer Care Contact:</p>
-
-                          Goldmorningshop@gmail.com
-
-                          Emails in regards to the shop sent to any other address will not be recieved! Make sure its this one :)
-
-                          <p class="Q"> How do I claim an item? </p>
-
-                           To claim an item, leave your email address in the comments of the desired items instagram picture. Once I receive payment I will delete your email address and mark the item “SOLD” or remove the picture. If the item is not mark sold, this means it is still up for grabs.
-
-                          <p class="Q"> What do I do to become VIP?</p>
-
-                          It’s soooo very easy! All you have to do is buy from goldmorning shop once! Once your email is in the system, all you have to do is comment “reserve!” and I will then know to send you an invoice with your email already in my paypal system. I developed this process to give my shoppers more privacy.
-
-                          <p class="Q"> How many sizes do you carry?</p>
-
-                           The shop started out as me selling pieces from my closet. I’m a size small and the clientele I’ve built are all my size and have figured out that this works for them. However, starting this July the shop will carry all sizes!
-
-                          <p class="Q"> How many pieces do you carry per item?</p>
-
-                           I carry one - three of each item. That’s what makes the shop fun –  it’s up and then it’s gone. You’re one of the few to have that piece! You have to grab the deals while they are available kind of like an instagram pop-up shop. I like to keep things fresh and exciting for all of the shoppers who follow me. There’s nothing worse than going into your favorite store to see the same pieces hanging there from a few months back!
-
-                          <p class="Q"> How long does it take to ship and do you provide tracking info?</p>
-
-                           Because the idea of the shop is to keep it simple, tracking info is only provided upon request. I ship all items out the NEXT day if paid for within ten hours. If the item isn’t paid for right away I will ship it out with the next batch of purchased items which can be anywhere from a few days to a week later. Note: Shipping to Canada can take longer than domestic shipments depending on customs (there will be no fees for you upon delivery.)
-
-                         <p class="Q">  Do you accept returns or exchanges?</p>
-
-                          Refunds are available for all full-priced items. Items must be returned within 5 business days of receipt for a refund and any received thereafter may be denied. Your return parcel must be post stamped within 5 business days of you receiving the order.
-
-                          The cost of return shipping is at the customer’s expense and is non-refundable. We recommend returning items through traceable mail, as any returned items that are not received by Goldmorning Shop will not be issued a refund. We also recommend that customers ask for proof of postage at the time of posting returned items. 
-
-                          Goldmorning Shop is not responsible for items listed as delivered on tracking. Please consider leaving a note for your mail man to return later with the package if you’re not present.
-
-                          Please note that the goods are your responsibility until they are returned to Goldmorning Shop. Goldmorning Shop will not issue a refund on item/s that are not received or are lost in transit.
-
-                          <p class="Q"> Do you ship internationally?</p>
-
-                           I do! Thanks to my husband I have a pretty nice sized clientele going on in Canada which should explain why I always list the Canadian shipping with each post ($10) As for any other countries that I have yet to ship to, the shipping will vary depending on where they are located. All you have to do is claim an item along with your country other than the U.S & Canada. Then I will look up the shipping cost. Shipping to Germany, Australia and Paris cost $14
-
-                          <p class="Q"> How often do you get new stock in?</p>
-
-                           The goal is to get new stuff in once a month! I will notify you all through instragram a week prior so you’re ready. I only post new stock WED-SAT.
-
-                          <p class="Q"> How can I contact Costumer Care?</p>
-
-                           To contact costumer care, please email goldmorningshop[at]gmail.com You will receive a reply as soon as possible. Please avoid using instagram to contact the shop or my personal email. Instagram is not a completely reliable source of communication and we prefer to have record of all communication in the same place. It’s also import to know we have received your message!
-
-                          <p class="Q"> Can I purchase a gift card?</p>
-
-                           Yes! a Goldmorning shop gift card is this most perfect and unique present for any gal. We make specialize gift cards just for you. To inquire send me an email and I can prepare one for you right away. Gift cards are valid for a year.
-
-                          <p class="Q"> For reference - what are the models measurements/sizes?</p>
-
-                           I wear both size Small, Pants size 1, Bust is 30", Hips 34-35" Waist 24" Height: 5'6.5 Shoe Size 5.5-6.5 depending on what brand.
-
-                          <p class="Q"> How do I know which items are new and which items are closet items?</p>
-
-                           Most of the items will now be new, however there is a symbol that let you know if the item is a closet item all else is new. See the instragram bio to view the closet symbol. Please note: the closet items are items that have been warn but greatly cared for! I do not sell anything with rips or stains. There may however be tags that are cut off because I sometimes cut tags off that make me itchy! That’s about all the wear you will see. I was my clothing on cold delicate cycle and I air-dry everything.
+                    </div>
+                    <li><a href='#policiesModal' modal>SHOP POLICIES</a></li>
+                    <div id="policiesModal" class="modal">
+                        <div class="modal-content" class="row">
+                            <h5>SHOP POLICIES</h5>
+                            <hr>
+                            <div class="policies">
+                                <p class="Q">Customer Care Contact:</p>
+                                Goldmorningshop@gmail.com Emails in regards to the shop sent to any other address will not be recieved! Make sure its this one :)
+                                <p class="Q"> How do I claim an item? </p>
+                                To claim an item, leave your email address in the comments of the desired items instagram picture. Once I receive payment I will delete your email address and mark the item “SOLD” or remove the picture. If the item is not mark sold, this means it is still up for grabs.
+                                <p class="Q"> What do I do to become VIP?</p>
+                                It’s soooo very easy! All you have to do is buy from goldmorning shop once! Once your email is in the system, all you have to do is comment “reserve!” and I will then know to send you an invoice with your email already in my paypal system. I developed this process to give my shoppers more privacy.
+                                <p class="Q"> How many sizes do you carry?</p>
+                                The shop started out as me selling pieces from my closet. I’m a size small and the clientele I’ve built are all my size and have figured out that this works for them. However, starting this July the shop will carry all sizes!
+                                <p class="Q"> How many pieces do you carry per item?</p>
+                                I carry one - three of each item. That’s what makes the shop fun – it’s up and then it’s gone. You’re one of the few to have that piece! You have to grab the deals while they are available kind of like an instagram pop-up shop. I like to keep things fresh and exciting for all of the shoppers who follow me. There’s nothing worse than going into your favorite store to see the same pieces hanging there from a few months back!
+                                <p class="Q"> How long does it take to ship and do you provide tracking info?</p>
+                                Because the idea of the shop is to keep it simple, tracking info is only provided upon request. I ship all items out the NEXT day if paid for within ten hours. If the item isn’t paid for right away I will ship it out with the next batch of purchased items which can be anywhere from a few days to a week later. Note: Shipping to Canada can take longer than domestic shipments depending on customs (there will be no fees for you upon delivery.)
+                                <p class="Q"> Do you accept returns or exchanges?</p>
+                                Refunds are available for all full-priced items. Items must be returned within 5 business days of receipt for a refund and any received thereafter may be denied. Your return parcel must be post stamped within 5 business days of you receiving the order. The cost of return shipping is at the customer’s expense and is non-refundable. We recommend returning items through traceable mail, as any returned items that are not received by Goldmorning Shop will not be issued a refund. We also recommend that customers ask for proof of postage at the time of posting returned items. Goldmorning Shop is not responsible for items listed as delivered on tracking. Please consider leaving a note for your mail man to return later with the package if you’re not present. Please note that the goods are your responsibility until they are returned to Goldmorning Shop. Goldmorning Shop will not issue a refund on item/s that are not received or are lost in transit.
+                                <p class="Q"> Do you ship internationally?</p>
+                                I do! Thanks to my husband I have a pretty nice sized clientele going on in Canada which should explain why I always list the Canadian shipping with each post ($10) As for any other countries that I have yet to ship to, the shipping will vary depending on where they are located. All you have to do is claim an item along with your country other than the U.S & Canada. Then I will look up the shipping cost. Shipping to Germany, Australia and Paris cost $14
+                                <p class="Q"> How often do you get new stock in?</p>
+                                The goal is to get new stuff in once a month! I will notify you all through instragram a week prior so you’re ready. I only post new stock WED-SAT.
+                                <p class="Q"> How can I contact Costumer Care?</p>
+                                To contact costumer care, please email goldmorningshop[at]gmail.com You will receive a reply as soon as possible. Please avoid using instagram to contact the shop or my personal email. Instagram is not a completely reliable source of communication and we prefer to have record of all communication in the same place. It’s also import to know we have received your message!
+                                <p class="Q"> Can I purchase a gift card?</p>
+                                Yes! a Goldmorning shop gift card is this most perfect and unique present for any gal. We make specialize gift cards just for you. To inquire send me an email and I can prepare one for you right away. Gift cards are valid for a year.
+                                <p class="Q"> For reference - what are the models measurements/sizes?</p>
+                                I wear both size Small, Pants size 1, Bust is 30", Hips 34-35" Waist 24" Height: 5'6.5 Shoe Size 5.5-6.5 depending on what brand.
+                                <p class="Q"> How do I know which items are new and which items are closet items?</p>
+                                Most of the items will now be new, however there is a symbol that let you know if the item is a closet item all else is new. See the instragram bio to view the closet symbol. Please note: the closet items are items that have been warn but greatly cared for! I do not sell anything with rips or stains. There may however be tags that are cut off because I sometimes cut tags off that make me itchy! That’s about all the wear you will see. I was my clothing on cold delicate cycle and I air-dry everything.
+                            </div>
                         </div>
-                      </div>
-                  </div>
+                    </div>
                 </ul>
-              </div>
             </div>
-          </div>
-      <div class="footer-copyright">
-        <div class="foot">
-          © 2015 copyright text
-          <a class="right" href="/api/login">ADMIN LOGIN</a>
         </div>
-      </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="foot">
+            © 2015 copyright text
+            <a class="right" href="/api/login">ADMIN LOGIN</a>
+        </div>
+    </div>
 </footer>
-
-
-
-
-
-

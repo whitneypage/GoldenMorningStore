@@ -33,7 +33,6 @@ require('./apis/config/passport')(passport);
 try {
   var configJSON = fs.readFileSync(__dirname + "/apis/config/config.json");
   var paypalConfig = JSON.parse(configJSON.toString());
-  console.log('configJson', paypalConfig);
 
 } catch (e) {
   console.error("File config.json not found or is invalid: " + e.message);
@@ -53,10 +52,7 @@ app.use(cors());
 app.use(express.static(__dirname+'/public'));
 app.use(flash());
 
-
-
 //RH MOVING PASSPORT THINGS HERE
-
 
 app.use(session({
 	secret: "goldmorningshopsecret",

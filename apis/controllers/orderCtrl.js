@@ -56,45 +56,36 @@ module.exports = {
 			} else {
 
 				//email upon order status update - shipped
-			
 
-
-
-
-
-			var email = new Email({
-			    to:         to_address,
-			    from:       from_address,
-			    subject:    subject,
-			    text:       text_body,
-			    html:       html_body
+			var email     = new sendgrid.Email({
+				to:       'andykj@gmail.com',
+				from:     'andykj@gmail.com',
+				subject:  'Congrats, your item has been shipped',
+				text:     'Hello myself'
 			});
+			sendgrid.send(email);
 
-			sendgrid.send(email, function(err, json) {
-				if (err) { return console.error(err); }
-				console.log(json);
-			});
 
 				//end email upon order status update -shipped
 
 
 
 			}
-			res.send(data);
+			res.json(data);
 		})
 	}
 
 	, updateOrderByPaymentId: function(req, res){
 		var PayerID = {payer_id: req.body.PayerID};
-		Paypal.payment.execute(req.params.id, PayerID, function(error, payment){
+		Paypal.payment.execute(req.params.id, PayerID, {new: true}, function(error, payment){
 		  if(error){
 		    console.error(error);
 		  } else {
 
 		  	//email upon order
 			var email     = new sendgrid.Email({
-				to:       'tylertebbs20@gmail.com',
-				from:     'tylertebbs20@yahoo.com',
+				to:       'andykj@gmail.com',
+				from:     'andykj@gmail.com',
 				subject:  'Congrats, someone just made an order',
 				text:     'Hello myself'
 			});
@@ -135,9 +126,10 @@ module.exports = {
 	}
 
 	, pmtCreate: function(req, res) {
+		console.log('SENDING TO PAYPAL', req.body.payment)
 			Paypal.payment.create(req.body.payment, function (error, payment) {
 	  if (error) {
-	    console.log(error.response.details);
+	    console.log('PAYMENT CREATION ERROR:', error.response.details);
 	  } else {
 	  	console.log('PAYMENT', payment);
 	    res.json(payment)
