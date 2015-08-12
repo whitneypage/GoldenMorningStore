@@ -37,7 +37,7 @@
 							</select>
 						</div>
 						<div class="col s3 offset-s3">
-							<h6>DATE ORDERED:</h6>{{ order.timePlaced }}
+							<h6>DATE ORDERED:</h6>{{ order.timePlaced | date:'MMM d, y h:mm a'}}
 						</div>
 					</div>
 
@@ -66,6 +66,8 @@
 					      </div>
 					   </div>
 
+
+
 					</div>
 			
 
@@ -75,6 +77,7 @@
 								<textarea class="productDescriptionInput" type="text" ng-model="order.note" placeholder=" special requests, reminders, etc"></textarea>
 						</div>
 					</div>
+
 
 				
 
@@ -88,6 +91,7 @@
 				<div id="updateOrder" class="center-align">
 			   		<a class="btn waves-effect waves-light" ng-click="updateOrder(order._id, order.note, order.status)" ng-disabled="disableButton">UPDATE ORDER</a>
 			   </div>
+
 
 			</div>
 

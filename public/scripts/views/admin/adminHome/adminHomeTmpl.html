@@ -107,15 +107,20 @@
 				          <tr ng-repeat="email in name.wantList track by $index">
 				            <td>{{ email }} </td>
 				          </tr>
-				        </tbody>
-				      </table>
-				      <span class="admin-delete-product" ng-click="showDeleteWaitlist()" >Delete Waitlist</span>
-				      <div ng-show="confirmDeleteWaitlist">Are you sure you want to delete the emails from the waitlist?  You won't be able to get them back.
-				      	<div>
-				      	<span class="modal-close admin-delete-button" ng-click="removeEmail(name._id, WL._id)" onClick="$('#waitList').closeModal()">Yes, delete the waitlist</span>
-				      	<span class="admin-cancel-delete-button" ng-click="cancelDeleteWaitlist()" onClick="$('#waitList').closeModal()">No thanks</span>
+				          <tr>
+				          	<td>
+	     								 <span class="admin-delete-product" ng-click="showDeleteWaitlist()" >Delete Waitlist</span>
+				     					 <div ng-show="confirmDeleteWaitlist">Are you sure you want to delete the emails from the waitlist?  You won't be able to get them back.
+				      					<div>
+				      					<span class="modal-close admin-delete-button" ng-click="removeEmail(name._id, WL._id)" onClick="$('#waitList').closeModal()">Yes, delete the waitlist</span>
+				      					<span class="admin-cancel-delete-button" ng-click="cancelDeleteWaitlist()" onClick="$('#waitList').closeModal()">No thanks</span>
 				      	</div>
 				      </div>
+				          	</td>
+				          </tr>
+				        </tbody>
+				      </table>
+			
 				      
 
 					</div>

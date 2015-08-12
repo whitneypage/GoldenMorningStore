@@ -31,10 +31,10 @@ app.controller('cartCtrl', function($scope, ProductService, cart, cartService, $
 	// $scope.productFilter = "bottom";
 
 	$scope.getProducts();
+
+  
 		
 	$scope.sizes = ["L", "M", "S"];	
-
-	/*$scope.size = size;*/
 
 	$scope.cart = cart;
 

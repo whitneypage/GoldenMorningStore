@@ -78,6 +78,7 @@ app.controller('adminHomeCtrl', function($scope, products, ProductService, $rout
 					$scope.products = res;
 				});
 				$scope.showConfirmWaitlist = false;
+				$route.reload();
 			};
 //			console.log(resetView());
 		$scope.products = resetView();
