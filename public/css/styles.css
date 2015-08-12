@@ -88,7 +88,7 @@ nav img {
 /* START ADD-TO-CART HOVER */
 
 .grid {
-  padding: 10px;
+  /*padding: 10px;*/
   max-width: 1300px;
   margin: 0 auto;
   list-style: none;
@@ -318,7 +318,7 @@ footer h6, footer h5 {
 
 .admin {
   height: 100vh;
-  background: url("../images/E11.jpg") 75% 80% no-repeat;
+  background: url("../images/admin-bg2.jpg") 75% 80% no-repeat;
   background-size: cover;
 }
 
@@ -365,6 +365,13 @@ form button:hover {
   opacity: 0.5;
   color: #000;
   font-weight: normal;
+}
+
+.rh-admin-input {
+
+	background : rgba(185,159,121, .1);
+	border : none;
+	border-bottom : 1px solid #fff
 }
 
 /*END ADMIN LOGIN*/
@@ -503,6 +510,74 @@ table th {
 #addProductButton a:hover {
   background-color: #727272;
 }
+
+/*END ADD PRODUCT PAGE*/
+
+/*START ADMIN ORDERS*/
+
+.goHome {
+  font-weight: lighter;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.goHome:hover a {
+  color: #4db6ac;
+}
+ .goHome a {
+  color: #454545;
+ }
+
+.mainOrders {
+  margin: 50px auto;
+  color: #4a4a4a;
+}
+
+.mainOrders h2 {
+  font-weight: lighter;
+}
+
+.mainOrders p {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+#orderHeader:hover i {
+  color: #4db6ac;
+}
+
+#orderDetails {
+  width: 80%;
+  margin-top: 20px;
+}
+
+#orderDetails h5 {
+  font-weight: lighter;
+}
+
+.moreInfoBox {
+  font-size: 16px;
+}
+
+.moreInfoBox span {
+  font-weight: lighter;
+}
+
+.oneInfoBox {
+  border-bottom: 1px solid #4a4a4a;
+}
+
+#updateOrder a {
+  background-color: #454545;
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: lighter;
+}
+
+
+
+
+/*END ADMIN ORDERS*/
 
 
 /*START SHOPPING BAG MODAL*/
@@ -1062,6 +1137,7 @@ table th {
 .mobile-checkout-button {
   color: black;
   border: 1px solid #5e5e5e;
+  padding: .5em 1em .5em 1em;
   /*padding: .5em 1em .5em 1em;*/
   /*margin-top: 50px;*/
 }

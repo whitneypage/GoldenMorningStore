@@ -5,6 +5,17 @@ app.controller('adminHomeCtrl', function($scope, products, ProductService, $rout
 	//show and hide edit size inputs 
 	//defaults to hidden
 	$scope.confirmDelete = false;
+	$scope.confirmDeleteWaitlist = false;
+	
+	$scope.showDeleteWaitlist = function(){
+		$scope.confirmDeleteWaitlist = true;
+	}
+	
+	$scope.cancelDeleteWaitlist = function() {
+		$scope.confirmDeleteWaitlist = false;
+	}
+	
+	
 	
 	$scope.toggleShowEditSizes = function() {
 		$scope.showEditSizes = !$scope.showEditSizes;
@@ -55,12 +66,33 @@ app.controller('adminHomeCtrl', function($scope, products, ProductService, $rout
 			return true;
 		}
 	};
+	
+	$scope.removeEmail = function(colorSizeId, productId) {
+//		$scope.emails.splice(key, 1);
+//		return $scope.emails;
+			console.log('$scope.removeEmail HIT passed', colorSizeId, ' colorSizeId');	
+		ProductService.removeEmailsFromWaitlist(colorSizeId);
+			var resetView = function() {
+				ProductService.getProduct().then(function(res){
+					console.log(res, ' from .then getProduct');
+					$scope.products = res;
+				});
+				$scope.showConfirmWaitlist = false;
+			};
+//			console.log(resetView());
+		$scope.products = resetView();
+		$scope.passInEmail(productId);
+	};// end removeEmail
+	
+	
 
 	$scope.passInEmail = function(product) {
 		$scope.WL = product;
 		$scope.emails = product.colorSize;
 		console.log($scope.emails);
 	};
+	
+
 	
 ////		COMMENTING OUT UNTIL WORKING - RH
 //	app.directive('productModal', function() {

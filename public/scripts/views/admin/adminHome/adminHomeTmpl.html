@@ -35,7 +35,8 @@
 <!-- END DROPDOWN STRUCTURE -->
         
         <li><a ng-href="#/admin/orders/">ORDERS</a></li>
-        <li><a ng-href="#/">USER VIEW</a></li>     
+        <li><a ng-href="#/">USER VIEW</a></li>  
+				<li><a href="/api/logout">LOGOUT</a></li>    
 
 <!-- UNCOMMENT AS MORE NAVS ARE NEEDED -->
 
@@ -53,7 +54,7 @@
        <ul class="side-nav" id="mobile-demo">
         <li><a ng-href="#/admin/orders/">ORDERS</a></li>
         <li><a ng-href="#/">USERS</a></li>
-        <li><a ng-href="#/admin/product/">ADD PRODUCT</a></li>
+				<li><a ng-href="#/admin/product/">ADD PRODUCT</a></li>
       </ul>
     </div>
 </nav> 
@@ -104,15 +105,24 @@
 
 				        <tbody ng-repeat="name in emails">
 				          <tr ng-repeat="email in name.wantList track by $index">
-				            <td>{{ email }}</td>
+				            <td>{{ email }} </td>
 				          </tr>
 				        </tbody>
 				      </table>
+				      <span class="admin-delete-product" ng-click="showDeleteWaitlist()" >Delete Waitlist</span>
+				      <div ng-show="confirmDeleteWaitlist">Are you sure you want to delete the emails from the waitlist?  You won't be able to get them back.
+				      	<div>
+				      	<span class="modal-close admin-delete-button" ng-click="removeEmail(name._id, WL._id)" onClick="$('#waitList').closeModal()">Yes, delete the waitlist</span>
+				      	<span class="admin-cancel-delete-button" ng-click="cancelDeleteWaitlist()" onClick="$('#waitList').closeModal()">No thanks</span>
+				      	</div>
+				      </div>
+				      
 
 					</div>
 					
 					<p class="admin-delete-product" ng-click="showConfirmDelete(product._id)">DELETE</p>
-							
+					
+<!--						<div modal class="modal" id="deleteProductModal">-->
 					<p class="confirm" ng-show="confirmDelete && (product._id === confirmId)">are you sure you want to delete {{product.productTitle}}?</p>
 					
 					<div class="admin-delete-button" 
@@ -128,7 +138,7 @@
 					
 					NO THANK YOU
 					</div>
-						
+<!--					</div>		-->
 							
 					<p class="product-price">${{ product.price }}</p>
 

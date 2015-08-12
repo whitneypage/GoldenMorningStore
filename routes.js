@@ -14,7 +14,7 @@ var multipartMiddleware = multipart();
 var fs = require('fs');
 var config = require('./apis/config/keys');
 var mongoose = require('mongoose');
-var connectMongo = require('connect-mongo');
+
 
 
 var auth = function(req, res, next) {
@@ -26,8 +26,9 @@ var auth = function(req, res, next) {
 };// end auth middleware to limit route access
 
 
+
 var app = express.Router();
-var MongoStore = connectMongo(session);
+
 
 
 exports.init = function(c){
@@ -35,7 +36,7 @@ exports.init = function(c){
 	paypal.configure(c.api);
 };
 
-exports.app = function(app){
+exports.app = function(app, passport){
 
 
 function cart(req, res, next){
@@ -47,16 +48,18 @@ next();
 }
 
 
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(session({
 	secret: process.env.SESSION_SECRET || "goldmorningshopsecret",
 	resave: false,
 	saveUninitialized: true, 
-	store : new MongoStore({
-		mongooseConnection : mongoose.connection
-})	
+//	store : new MongoStore({
+//		mongooseConnection : mongoose.connection
+//	})	
 }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 passport.use(new LocalStrategy(
 	function(username, password, done) {
@@ -80,15 +83,38 @@ passport.deserializeUser(function(obj, done) {
    done(null, obj);
 });
 
+	//RH LOGIN ROUTES
+	
+//		ROUTES FOR REGISTRATION -- COMMENTED OUT BC THEY DON'T ALWAYS NEED TO BE PRESENT
+//		CAN OPEN THEN FOR HER TO REGISTER THEN CLOSE THEM AGAIN
+//	app.get('/api/register', function(req, res) {
+//		res.render('register.ejs', {message : 				req.flash('signupMessage')});
+//	});// end get registration page
+//	
+//		app.post('/api/register', userCtrl.createAdmin);
+	
+		app.get('/api/login', function(req, res) {
+			res.render('login.ejs', {message : req.flash('loginMessage')});
+	});
+	
+		app.post('/api/login', passport.authenticate('local-login', {
+			successRedirect : '/#/admin/home',
+			failureRedirect : '/api/login',
+			failureFlash : true
+		}));
 
-	app.post('/api/admin', userCtrl.createAdmin);
+		app.get('/api/logout', function(req, res){
+		req.logout();
+		res.redirect('/#/');
+	});
+	
+	
+
 	app.get('/api/admin/loggedin', userCtrl.checkLoggedIn);
-	
-	
 	
 	app.post('/api/upload', multipartMiddleware, productsCtrl.uploadPhoto);
 	app.get('/api/upload', productsCtrl.addPicturesGet);
-  app.post('/api/colorSize', auth, productsCtrl.updateColorSize);
+  app.post('/api/colorSize', productsCtrl.updateColorSize);
 	// app.post('/api/upload', productsCtrl.uploadPhoto)
 
   // app.get('/api/products/image', productsCtrl.uploadImage)
@@ -99,6 +125,7 @@ passport.deserializeUser(function(obj, done) {
 	app.put('/api/products', productsCtrl.decSize);
 	app.delete('/api/products/:productId', productsCtrl.handleDelete);
   app.post('/api/products/colorSizeIndex', productsCtrl.findColorSizeIndex);
+	app.put('/api/products/colorSizeIndex/:toDelete', productsCtrl.removeEmailsFromWaitlist);
  
   // app.get('/api/paypal/', orderCtrl.pmtExecute);
 	app.post('/api/paypal', orderCtrl.pmtCreate);
@@ -132,3 +159,11 @@ passport.deserializeUser(function(obj, done) {
  
 
 };// end routes.js
+
+
+//					LEFT IN FOR REFERENCE RH
+//	app.post('/api/register', passport.authenticate('local-signup', {
+//		successRedirect : '/api/login',
+//		failureRedirect : '/#/admin/home',
+//		failureFlash : true
+//	}));
