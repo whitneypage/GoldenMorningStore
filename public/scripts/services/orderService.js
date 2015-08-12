@@ -41,5 +41,12 @@ app.service('orderService', function($http, $q){
 		})
 	};
 
+	this.emptyCart = function() {
+		return $http({
+			method: 'DELETE',
+			url: '/api/user/cart'
+		})
+	}
+
 
 });

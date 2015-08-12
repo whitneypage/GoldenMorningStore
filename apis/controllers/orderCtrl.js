@@ -63,9 +63,6 @@ module.exports = {
 			sendgrid.send(email);
 
 				//end email upon order status update -shipped
-
-
-
 			}
 			res.json(data);
 		})
