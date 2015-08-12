@@ -30,14 +30,14 @@
                 <li><a cart-modal ng-click="getTotal()"><i class="material-icons bagIcon">shopping_basket</i></a></li>
             </ul>
             <!-- Navbar Collapses for Mobile -->
-            <ul class="side-nav" id="mobile-demo">
+            <ul class="side-nav" id="mobile-demo" data-closeonclick="true">
                 <li><a ng-click="productFilter = {productCategory: 'Dresses'}">DRESSES</a></li>
                 <li><a ng-click="productFilter = {productCategory: 'Tops'}">TOPS</a></li>
                 <li><a ng-click="productFilter = {productCategory: 'Bottoms'}">BOTTOMS</a></li>
                 <li><a ng-click="productFilter = {productCategory: 'Rompers'}">ROMPERS</a></li>
                 <li><a ng-click="productFilter = {productCategory: 'Accessories'}">ACCESSORIES</a></li>
                 <li><a ng-click="productFilter = {productCategory: 'Soaps/Scrubs'}">BODY</a></li>
-                <li><a href="/#/cart"><i class="material-icons bagIcon">shopping_basket</i></a></li>
+                <li><a cart-modal ng-click="getTotal()"><i class="material-icons bagIcon">shopping_basket</i></a></li>
             </ul>
         </div>
     </nav>
