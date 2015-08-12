@@ -6,26 +6,52 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
     console.log("clicked");
   }
 
+$scope.thanks = true;
 $scope.emailList = {};
 
   $scope.findColorSizeIndex = function(color) {
-    console.log(color);
-    console.log($scope.emailList.wantEmail);
+    $scope.thanks = false;
     ProductService.findColorSizeIndex(color, $scope.emailList.wantEmail).then(function(response) {
-      console.log(response);
+      console.log("ADDED",response);
            $scope.emailList.wantEmail = "";
     })
   }
 
 
-
   $scope.passInProduct = function(product) {
   $scope.selectedProduct = product;
-  $scope.selectedColorSize.smallQty = "";
-  $scope.selectedColorSize.mediumQty = "";
-  $scope.selectedColorSize.largeQty = "";
+  console.log($scope.selectedProduct);
+  $scope.selectedColorSize = {};
 }
 
+
+$scope.productModalNotAvailable = function(CS) {
+    for (var i = 0; i < CS.length; i++) {
+      if (CS[i].smallQty === 0 && CS[i].mediumQty === 0 && CS[i].largeQty === 0) {
+        return true;
+        console.log("true");
+      }
+    };
+  
+}
+
+ $scope.selectedColorSize = {};
+ 
+ $scope.selectedProduct = {
+  productCategory: "Yo",
+  colorSize: "Yo"
+};
+
+  $scope.selectColorSize = function(colorSize) {
+    var colorSizeParsed = JSON.parse(colorSize);
+
+    $scope.selectedColorSize = colorSizeParsed;
+    console.log("PARSEDOBJ", $scope.selectedColorSize);
+  }
+
+$scope.selectSize = function(size) {
+  $scope.theSize = size;
+}
 
 
 	$scope.getProducts = function(){
@@ -51,24 +77,47 @@ $scope.emailList = {};
       }
   }
 
-  $scope.ifNotClothing = function (product, colorSize) {
-      if (product.productCategory === "Accessories" || product.productCategory === "Soaps/Scrubs") {
+
+  $scope.ifNot = function (x) {
+      if (x.productCategory === "Accessories" || x.productCategory === "Soaps/Scrubs") {
         return true
       }
   }
 
-  $scope.selectedColorSize = {};
-
-  $scope.selectedColorSize = function(colorSize) {
-    var colorSizeParsed = JSON.parse(colorSize);
-    $scope.selectedColorSize.smallQty = colorSizeParsed.smallQty;
-     $scope.selectedColorSize.mediumQty = colorSizeParsed.mediumQty;
-      $scope.selectedColorSize.largeQty = colorSizeParsed.largeQty;
+  $scope.ifNotClothing = function (x) {
+      if (x.productCategory === "Accessories" || x.productCategory === "Soaps/Scrubs") {
+        return true
+      }
   }
 
   $scope.available = true;
 
 	$scope.cart = cart;
+
+  $scope.addProductToCartFromModal = function(product, colorSize, size) {
+
+    console.log(product, colorSize, size);
+    var productObject = {
+      name: product.productTitle
+      , refId: product._id
+      , colorSizeId: colorSize._id
+      , imageUrl: colorSize.mainImg
+      , color: colorSize.color
+      , size: size
+      , price: product.price
+      , productCategory: product.productCategory
+    };
+    cartService.addProductToCart(productObject).then(function(response) {
+      console.log(response.data);
+      /*reset dynamic values to empty (cf. Mark)*/
+      $scope.cart = response.data;
+      // $scope.$apply();
+      /*pull down modal for a second or two*/
+      $scope.getTotal($scope.cart);
+    });
+  };
+
+
 
 
 

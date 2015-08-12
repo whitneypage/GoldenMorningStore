@@ -109,11 +109,11 @@ app.config(function($routeProvider) {
 
 
 
+});//end app.config in app.js
 
 app.run(function ($rootScope, $window) {
  $rootScope.$on("$routeChangeSuccess", function(event){
     $window.scrollTo(0,0);
 });
 });
-});//end app.config in app.js
 
