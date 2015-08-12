@@ -111,9 +111,9 @@
                                 <span class="outOfStock" ng-show="!inStock(colorSize.smallQty)">S</span>
                             </div>
                             <div class="soldOut" ng-show="anyAvailable(colorSize)">
-                                <span>SOLD OUT <strong>| WANT THIS BACK IN THE SHOP ?</strong> </span>
+                                <span>SOLD OUT <strong> > WANT THIS BACK IN THE SHOP ?</strong> </span>
                                 <form ng-submit="findColorSizeIndex(colorSize._id)" toast="submit" message="THANKS! YOU'LL BE THE FIRST TO KNOW." duration="3000">
-                                    <input ng-model="emailList.wantEmail" type="email" placeholder=" Enter Email Here" />
+                                    <input ng-model="emailList.wantEmail" type="email" placeholder="  ENTER EMAIL" />
                                 </form>
                             </div>
                             <div class="accessoriesAdd" ng-show="ifNotClothing(product)" ng-click="addProductToCart(product, colorSize, sizes[0])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')"> ADD TO BAG</div>
