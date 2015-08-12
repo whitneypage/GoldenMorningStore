@@ -320,6 +320,7 @@ footer h6, footer h5 {
   height: 100vh;
   background: url("../images/admin-bg2.jpg") 75% 80% no-repeat;
   background-size: cover;
+	font-family: 'Palanquin', sans-serif;
 }
 
 #adminLogin {
@@ -329,14 +330,17 @@ footer h6, footer h5 {
   padding-top: 60px;
 }
 
+
+
+
 #adminLogin h1{
   color: #fff;
   text-align: center;
   margin-top: 0;
   margin-bottom: 10px;
-  padding: 20px;
+  padding: 20px 0 60px;
   font-weight: lighter;
-  text-shadow: 0 5px 15px rgba(0,0,0,1.5);
+  text-shadow: 0 5px 15px rgba(0,0,0,2);
 }
 
 #loginForm input, #loginForm label {
@@ -367,11 +371,36 @@ form button:hover {
   font-weight: normal;
 }
 
-.rh-admin-input {
+.rh-admin-header {
+	font-size: 3.57rem;
+}
 
-	background : rgba(185,159,121, .1);
+.rh-admin-input-wrapper {
+	width: 100%;
+}
+
+.rh-admin-input {
 	border : none;
-	border-bottom : 1px solid #fff
+	background : rgba(185,159,121, .1);
+	width: 82%;
+	text-align: center;
+}
+
+.rh-admin-input-wrapper:after {
+	display:block;
+	content: '';
+	border-bottom: solid 2px #FFF;
+	-webkit-transform: scaleX(0.0001);
+  -ms-transform: scaleX(0.0001);
+  transform: scaleX(0.0001);  
+  -webkit-transition: -webkit-transform 250ms ease-in-out;
+  transition: transform 250ms ease-in-out;
+}
+
+.rh-admin-input-wrapper:hover:after {
+	-webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 /*END ADMIN LOGIN*/

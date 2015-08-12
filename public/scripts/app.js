@@ -99,13 +99,14 @@ app.config(function($routeProvider) {
 //			}
 		}
 	})
+	.when('/admin/login', {
+		templateUrl : 'scripts/views/admin/login/adminLogin.html',
+		controller : 'adminLoginCtrl'
+	})
 	.otherwise('/');	
 	
-	////UNUSED ROUTE, COMMENTED OUT 
-//	.when('/admin/login', {
-//		templateUrl : 'scripts/views/admin/login/adminLogin.html',
-//		controller : 'adminLoginCtrl'
-//	})
+	//UNUSED ROUTE, COMMENTED OUT 
+
 
 
 
