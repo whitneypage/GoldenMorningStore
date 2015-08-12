@@ -66,13 +66,13 @@
 
 <div class="wrapper">
 	<div id="products" class="row">
-		<div ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter" class="col s12 m6 l4">
+		<div ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter">
 			<ul class="grid size-style">
-				<li ng-repeat="colorSize in product.colorSize">
+				<li class="col s12 m6 l4" ng-repeat="colorSize in product.colorSize">
 					<figure class="adminFigure">
 							<img ng-src="{{ colorSize.mainImg }}">
 						<figcaption>
-							<a ng-href="#/admin/product/{{product._id}}">
+							<a ng-href="/#/admin/product/{{product._id}}">
 								<span class="adminEditBtn">EDIT ITEM</span>
 							</a>			
 						</figcaption>
