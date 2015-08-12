@@ -11,22 +11,22 @@ $scope.emailList = {};
   $scope.findColorSizeIndex = function(color) {
     console.log(color);
     console.log($scope.emailList.wantEmail);
-    ProductService.findColorSizeIndex(color, $scope.emailList.wantEmail ).then(function(response) {
+    ProductService.findColorSizeIndex(color, $scope.emailList.wantEmail).then(function(response) {
       console.log(response);
            $scope.emailList.wantEmail = "";
     })
   }
 
-	$scope.open = function() {
-		$scope.openProductModal = !$scope.openProductModal
-		console.log('open clicked ', $scope.openProductModal)
-	}
+
 
   $scope.passInProduct = function(product) {
   $scope.selectedProduct = product;
-  console.log("p", product);
-  console.log($scope.selectedProduct);
+  $scope.selectedColorSize.smallQty = "";
+  $scope.selectedColorSize.mediumQty = "";
+  $scope.selectedColorSize.largeQty = "";
 }
+
+
 
 	$scope.getProducts = function(){
 		ProductService.getProduct().then(function(data) {
@@ -57,9 +57,20 @@ $scope.emailList = {};
       }
   }
 
+  $scope.selectedColorSize = {};
+
+  $scope.selectedColorSize = function(colorSize) {
+    var colorSizeParsed = JSON.parse(colorSize);
+    $scope.selectedColorSize.smallQty = colorSizeParsed.smallQty;
+     $scope.selectedColorSize.mediumQty = colorSizeParsed.mediumQty;
+      $scope.selectedColorSize.largeQty = colorSizeParsed.largeQty;
+  }
+
   $scope.available = true;
 
 	$scope.cart = cart;
+
+
 
 	$scope.addProductToCart = function(product, colorSize, size) {
 		var productObject = {

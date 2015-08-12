@@ -829,9 +829,8 @@ table th {
   /*border-bottom: 1px solid #2e2e2e;*/
 }
 
-.select-dropdown {
-  margin-top: -.5em;
-  outline: 3px solid red;
+.select-dropdown li{
+  margin: 0px;
 }
 
 .product-modal-size-container {
@@ -882,8 +881,8 @@ table th {
 }*/
 
 .carousel {
-  width: 30em;
-  height: 30em;
+  width: 450px;
+  height: 450px;
 }
 
 .carousel_img {
