@@ -6,23 +6,29 @@ app.controller('thankyouCtrl', function($scope, $routeParams, orderService, Prod
 	console.log($routeParams);
 	$scope.checkedOutCart = checkedOutCart;
 	console.log($scope.checkedOutCart);
-	
-	orderService.getOrderDetails($routeParams._id).then(function(data){
-	  if(data.data.status === "approved"){
-	  	ProductService.decrementSize($scope.checkedOutCart);
-			orderService.emptyCart().then(function(data){
-				console.log('cart is empty now... fyi', data)
-			})
-		}
-		console.log('after order updateOrderByPaymentId', data);
-	})
 
-	orderService.updateOrderByPaymentId($routeParams).then(function(data){
-		if(data.data.status === "200") {
-			ProductService.decrementSize($scope.checkedOutCart);
-			orderService.emptyCart();
-		}
-	});
+	var onOrder = function(){
+		if($routeParams._id){
+			orderService.getOrderDetails($routeParams._id).then(function(data){
+			  if(data.data.status === "approved"){
+			  	ProductService.decrementSize($scope.checkedOutCart);
+					orderService.emptyCart().then(function(data){
+						console.log('cart is empty now... fyi', data)
+					})
+				}
+				console.log('after order updateOrderByPaymentId', data);
+			})
+		} else
+			orderService.updateOrderByPaymentId($routeParams).then(function(data){
+				if(data.data.status === "200") {
+					ProductService.decrementSize($scope.checkedOutCart);
+					orderService.emptyCart();
+				}
+			});
+	}
+
+	onOrder();
+
 });// end thankyouCtrl
 
 
