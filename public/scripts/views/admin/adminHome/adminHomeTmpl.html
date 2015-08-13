@@ -13,7 +13,7 @@
 <!-- NAVBAR START -->
 <nav class="adminNav">
      <div id= "adminNav" class="nav-wrapper">
-       <a href="#/admin/home" class="brand-logo">GM.S</a>
+       <a href="#/admin/home" class="brand-logo"><img src="images/tinyPalm.png"></a>
        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons" style="color: black">list</i></a>
        <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a ng-href="#/admin/product/"><i class="fa fa-plus"></i></a></li>
@@ -68,7 +68,7 @@
 	<div id="products" class="row">
 		<div ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter">
 			<ul class="grid size-style">
-				<li class="col s12 m6 l4" ng-repeat="colorSize in product.colorSize">
+				<li id="adminProducts" class="col s12 m6 l4" ng-repeat="colorSize in product.colorSize">
 					<figure class="adminFigure">
 							<img ng-src="{{ colorSize.mainImg }}">
 						<figcaption>
