@@ -68,7 +68,7 @@
 	<div id="products" class="row">
 		<div ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter">
 			<ul class="grid size-style">
-				<li class="col s12 m6 l4" ng-repeat="colorSize in product.colorSize">
+				<li id="adminProducts" class="col s12 m6 l4" ng-repeat="colorSize in product.colorSize">
 					<figure class="adminFigure">
 							<img ng-src="{{ colorSize.mainImg }}">
 						<figcaption>
