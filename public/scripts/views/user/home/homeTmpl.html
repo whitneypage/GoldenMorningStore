@@ -72,7 +72,7 @@
                                                 <div class="product-modal-price-price">${{selectedProduct.price}}</div>
                                             </div>
                                             <div class="product-modal-description">
-                                                <div class="product-modal-keyword">PRODUCT DETAILS</div>
+                                                <div class="product-modal-keyword"></div>
                                                 <div>{{selectedProduct.productDescription}}</div>
                                             </div>
                                             <div class="onlyIfAllIsWell">
@@ -85,7 +85,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="product-modal-size-container" ng-if="!ifNot(selectedProduct) && !productModalNotAvailable(selectedProduct.colorSize)">
-                                                    <div class="product-modal-keyword product-modal-size-keyword">SIZE</div>
+                                                    <div class="product-modal-keyword product-modal-size-keyword"></div>
                                                     <div class="product-modal-size-buttons" ng-model="size">
                                                         <div class="product-modal-individual-size-button" ng-click="selectSize(sizes[0])" ng-if="selectedColorSize.smallQty">S</div>
                                                         <div class="product-modal-individual-size-button" ng-click="selectSize(sizes[1])" ng-if="selectedColorSize.mediumQty">M</div>
@@ -133,7 +133,7 @@
                                     <input ng-model="emailList.wantEmail" type="email" placeholder="  ENTER EMAIL" />
                                 </form>
                             </div>
-                            <div class="accessoriesAdd" ng-show="ifNotClothing(product)" ng-click="addProductToCart(product, colorSize, sizes[0])" onclick="Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')"> ADD TO BAG</div>
+                            <div class="accessoriesAdd" ng-show="ifNotClothing(product)" ng-click="addProductToCart(product, colorSize, sizes[0])"> ADD TO BAG</div>
                         </figcaption>
                     </figure>
                     <p class="product-title">{{product.productTitle}}<br>

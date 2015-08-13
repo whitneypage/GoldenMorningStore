@@ -1,21 +1,34 @@
 var app = angular.module('GoldMorning');
 
-app.controller('thankyouCtrl', function($scope, $routeParams, orderService, ProductService, cartService, checkedOutCart){
-	$scope.checkedOutCart = checkedOutCart;
-	
-	$scope.payerId = $routeParams.PayerID;
-	$scope.name = 'Andy';
-	console.log($routeParams)
 
-	orderService.updateOrderByPaymentId($routeParams).then(function(data){
-		if(data) {
-			
-			ProductService.decrementSize($scope.checkedOutCart);
-			orderService.emptyCart();
+app.controller('thankyouCtrl', function($scope, $routeParams, orderService, ProductService, cartService, checkedOutCart){
 	
-		}
-//		ProductService.decrementSize(data.data.products);
-	});
+	console.log($routeParams);
+	$scope.checkedOutCart = checkedOutCart;
+	console.log($scope.checkedOutCart);
+
+	var onOrder = function(){
+		if($routeParams._id){
+			orderService.getOrderDetails($routeParams._id).then(function(data){
+			  if(data.data.status === "approved"){
+			  	ProductService.decrementSize($scope.checkedOutCart);
+					orderService.emptyCart().then(function(data){
+						console.log('cart is empty now... fyi', data)
+					})
+				}
+				console.log('after order updateOrderByPaymentId', data);
+			})
+		} else
+			orderService.updateOrderByPaymentId($routeParams).then(function(data){
+				if(data.data.status === "200") {
+					ProductService.decrementSize($scope.checkedOutCart);
+					orderService.emptyCart();
+				}
+			});
+	}
+
+	onOrder();
+
 });// end thankyouCtrl
 
 
