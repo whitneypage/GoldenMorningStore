@@ -68,7 +68,7 @@
 	<div id="products" class="row">
 		<div ng-repeat="product in products | orderBy: 'dateCreated': true | filter: productFilter">
 			<ul class="grid size-style">
-				<li class="col s12 m6 l4" ng-repeat="colorSize in product.colorSize">
+				<li id="adminMargin" class="col s12 m6 l4" ng-repeat="colorSize in product.colorSize">
 					<figure class="adminFigure">
 							<img ng-src="{{ colorSize.mainImg }}">
 						<figcaption>
@@ -84,7 +84,7 @@
 
 					<p>DETAILS: {{product.productDescription}}<br>
 					CATEGORY: {{product.productCategory}}<br>
-					COLOR: {{colorSize.color}}<br></p>
+					COLOR: {{colorSize.color}}</p>
 
 					<p>S: {{colorSize.smallQty}} | M: {{colorSize.mediumQty}} | L: {{colorSize.largeQty}}
 					<br>
@@ -97,32 +97,30 @@
 					<div class="modal" id="waitList">
 						<h4>WANTLISTED FOR {{ WL.productTitle }}</h4><br>
 						<table class="centered responsive-table">
-				        <thead>
-				          <tr>
-				              <th data-field="id">EMAIL</th>
-				          </tr>
-				        </thead>
+					       <thead>
+					        <tr>
+					         <th data-field="id">EMAIL</th>
+					        </tr>
+					       </thead>
 
-				        <tbody ng-repeat="name in emails">
-				          <tr ng-repeat="email in name.wantList track by $index">
-				            <td>{{ email }} </td>
-				          </tr>
-				          <tr>
-				          	<td>
-	     								 <span class="admin-delete-product" ng-click="showDeleteWaitlist()" >DELETE WANTLIST</span>
-				     					 <div ng-show="confirmDeleteWaitlist">are you sure you want to delete all emails from the wantlist?  you won't be able to get them back.
-				      					<div>
-				      					<span class="modal-close admin-delete-button" ng-click="removeEmail(name._id, WL._id)" onClick="$('#waitList').closeModal()">YES, DELETEno</span>
-				      					<span class="admin-cancel-delete-button" ng-click="cancelDeleteWaitlist()" onClick="$('#waitList').closeModal()">NO THANKS</span>
-				      	</div>
-				      </div>
-				          	</td>
-				          </tr>
-				        </tbody>
-				      </table>
-			
-				      
-
+					       <tbody ng-repeat="name in emails">
+					       <tr ng-repeat="email in name.wantList track by $index">
+					         <td>{{ email }} </td>
+					       </tr>
+					       <tr>
+					         <td>
+		     					<span class="admin-delete-product" ng-click="showDeleteWaitlist()" >DELETE WANTLIST</span>
+					     			
+					     		<div ng-show="confirmDeleteWaitlist">are you sure you want to delete all emails from the wantlist?  you won't be able to get them back.
+					      			<div>
+					      				<span class="modal-close admin-delete-button" ng-click="removeEmail(name._id, WL._id)" onClick="$('#waitList').closeModal()">YES, DELETE</span>
+					      				<span class="admin-cancel-delete-button" ng-click="cancelDeleteWaitlist()" onClick="$('#waitList').closeModal()">NO THANKS</span>
+					      			</div>
+					      		</div>
+					      	</td>
+					      </tr>
+					      </tbody>
+				      	</table>
 					</div>
 					
 					<p class="admin-delete-product" ng-click="showConfirmDelete(product._id)">DELETE</p>
@@ -152,6 +150,7 @@
 		</div>	
 	</div>
 </div>
+
 	
 
 
