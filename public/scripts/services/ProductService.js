@@ -132,40 +132,41 @@ app.service('ProductService', function($http, $q) {
 //};//end updateSmallQty
 //	
 	
-	this.decrementSize = function(cartObj) {
-		for(var i = 0; i < cartObj.length; i++) {
-			if(cartObj[i].size === "S"){
-				console.log('cartObj[i] IS S, within decrementSize');
+	this.decrementSize = function(checkedOutCart) {
+		console.log(checkedOutCart, ' checkedOutCart from ProductService');
+		for(var i = 0; i < checkedOutCart.length; i++) {
+			if(checkedOutCart[i].size === "S"){
+				console.log('checkedOutCart[i] IS S, within decrementSize');
 				$http({
 					method: 'PUT',
 					url: "api/products/",
 					data: {
-						productId : cartObj[i].refId,
-						colorSizeId : cartObj[i].colorSizeId,
+						productId : checkedOutCart[i].refId,
+						colorSizeId : checkedOutCart[i].colorSizeId,
 						sizeToDec : 'smallQty',
 					}
 				});
-			}// end if cartObj[i] is small
-			else if(cartObj[i].size === "M"){
-				console.log('cartObj[i] IS M, within decrementSize');
+			}// end if checkedOutCart[i] is small
+			else if(checkedOutCart[i].size === "M"){
+				console.log('checkedOutCart[i] IS M, within decrementSize');
 				$http({
 					method : "PUT",
 					url: "api/products/",
 					data: {
-						productId : cartObj[i].refId,
-						colorSizeId : cartObj[i].colorSizeId,
+						productId : checkedOutCart[i].refId,
+						colorSizeId : checkedOutCart[i].colorSizeId,
 						sizeToDec : 'mediumQty'
 					}
 				});
-			} // end if cartObj[i] is medium
-			else if(cartObj[i].size === "L") {
-				console.log('cartObj[i] is L');
+			} // end if checkedOutCart[i] is medium
+			else if(checkedOutCart[i].size === "L") {
+				console.log('checkedOutCart[i] is L');
 				$http({
 					method : "PUT",
 					url : "api/products/",
 					data : {
-						productId : cartObj[i].refId,
-						colorSizeId : cartObj[i].colorSizeId,
+						productId : checkedOutCart[i].refId,
+						colorSizeId : checkedOutCart[i].colorSizeId,
 						sizeToDec : 'largeQty'
 					}
 				});

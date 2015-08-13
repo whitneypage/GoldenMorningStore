@@ -77,11 +77,14 @@ module.exports = {
    },
 	
 		decSize: function(req,res) {
+			console.log('decSize in productsCtrl HIT');
 			var sizeToDec = req.body.sizeToDec;
+			console.log(req, ' req from within the decSize');
 			Product.findById(req.body.productId, function(err, response) {
 				if(err) {
-					return res.status(500).json(err);
+					return res.status(500).json(err, console.log('error happening within decSize'));
 				} if(response) {
+					console.log('if(response) in decSize hit')
 					for(var i = 0; i < response.colorSize.length; i ++) {
 						if(parseInt(response.colorSize[i]._id, 16) === parseInt(req.body.colorSizeId, 16)) {
 							response.colorSize[i][sizeToDec] = response.colorSize[i][sizeToDec] - 1;

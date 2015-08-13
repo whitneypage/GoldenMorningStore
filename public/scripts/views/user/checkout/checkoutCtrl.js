@@ -118,6 +118,7 @@ app.controller('checkoutCtrl', function($location, $window, $routeParams, $scope
 	    }
 			console.log('total', total)
 	    var order = {products: products, total: total};
+	    console.log('ORDER HERER', order)
 	    cartService.createOrder(order).then(function(orderData){
 	        var order_Id = orderData.data._id;
 	        var payment = {

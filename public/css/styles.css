@@ -7,8 +7,9 @@ body {
 
 
 #hero {
-	background-image: url(../images/S9.jpg);
-	background-size: cover;
+	background: url(../images/S2.jpg) no-repeat;
+  background-size: cover;
+  background-position: 20% 75%;
 	position: relative;
 	height: 100vh;
 }
@@ -218,9 +219,12 @@ nav img {
   }
 }
 
-.product-price {
-  font-size: 18px;
+
+.product-title {
+  font-size: 19px;
+  font-weight: 300;
   margin: 5px auto;
+  text-transform: uppercase;
 }
 
 .preview {
@@ -300,7 +304,7 @@ footer #contact {
 }
 
 footer h6, footer h5 {
-  font-weight: 200;
+  font-weight: 300;
   margin: 0;
 }
 
@@ -324,7 +328,7 @@ footer h6, footer h5 {
 
 .admin {
   height: 100vh;
-  background: url("../images/admin-bg2.jpg") 75% 80% no-repeat;
+  background: url("../images/admin-bg.jpg") 75% 80% no-repeat;
   background-size: cover;
 	font-family: 'Palanquin', sans-serif;
 }
@@ -686,6 +690,16 @@ table th {
   font-size: 16px;
 }
 
+.emptyCartMsg {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.no-items-in-cart {
+  margin-left: 10em;
+}
+
 .product-info-box {
   margin-top: 10px;
   height: 50px;
@@ -806,6 +820,12 @@ table th {
   
 }*/
 
+.disabled {
+  color: #bdbdbd;
+  cursor: default;
+}
+
+
 .product-object {
   height: 24em;
   width: 24em;
@@ -870,6 +890,11 @@ table th {
 
 .product-modal-size-container {
   margin-top: -.5em;
+  min-height: 3em;
+}
+
+.product-modal-size-keyword {
+  margin-top: 2em;
 }
 
 .product-modal-size-buttons {
@@ -891,6 +916,7 @@ table th {
   width: 100%;
   font-size: 20px;
   padding-top: -1em;
+  cursor: pointer;
   
 }
 
@@ -904,8 +930,8 @@ table th {
   margin-top: -.5em;
   text-align: left;
  /* border-bottom: 1px solid #2e2e2e;*/
-  padding-bottom: 1em;
-}
+/*  padding-bottom: 1em;
+*/}
 
 .product-image {
   width: 100%;
@@ -916,8 +942,8 @@ table th {
 }*/
 
 .carousel {
-  width: 450px;
-  height: 450px;
+  width: 400px;
+  height: 400px;
 }
 
 .carousel_img {
@@ -946,13 +972,13 @@ table th {
 
 .rn-carousel-control.rn-carousel-control-next {
     font-size: 45px;
-    margin-right: 400px;
+    margin-right: 392px;
     color: rgb(255, 255, 255);
 }
 
 .rn-carousel-control.rn-carousel-control-prev {
     font-size: 45px;
-    margin-left: 5px;
+    margin-left: 8px;
     color: rgb(255, 255, 255);
 }
 
@@ -1284,6 +1310,30 @@ table th {
 
 
 /*END CHECKOUT PAGE*/
+
+/*START THANK YOU PAGE*/
+#urahero {
+  background: url(../images/S6.jpg);
+  background-size: cover;
+  background-position: 20% 75%;
+  position: relative;
+  height: 100vh;
+}
+
+#goodbye a {
+  color: #fff;
+  font-weight: 300;
+}
+
+#goodbye a:hover {
+  color: #4db6ac;
+}
+
+
+
+
+
+/*END THANK YOU PAGE*/
 
 /** {
   outline: 1px solid black;

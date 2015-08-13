@@ -7,6 +7,7 @@ app.controller('homeCtrl', function($scope, ProductService, cart, cartService) {
   }
 
 $scope.thanks = true;
+$scope.goodToGo = true;
 $scope.emailList = {};
 
   $scope.findColorSizeIndex = function(color) {
@@ -22,6 +23,7 @@ $scope.emailList = {};
   $scope.selectedProduct = product;
   console.log($scope.selectedProduct);
   $scope.selectedColorSize = {};
+  $scope.goodToGo = true;
 }
 
 
@@ -51,6 +53,7 @@ $scope.productModalNotAvailable = function(CS) {
 
 $scope.selectSize = function(size) {
   $scope.theSize = size;
+  $scope.goodToGo = false;
 }
 
 
@@ -95,7 +98,7 @@ $scope.selectSize = function(size) {
 	$scope.cart = cart;
 
   $scope.addProductToCartFromModal = function(product, colorSize, size) {
-
+    Materialize.toast('ITEM ADDED TO BAG', 2000, 'rounded');
     console.log(product, colorSize, size);
     var productObject = {
       name: product.productTitle
@@ -122,6 +125,7 @@ $scope.selectSize = function(size) {
 
 
 	$scope.addProductToCart = function(product, colorSize, size) {
+    Materialize.toast('ITEM ADDED TO BAG', 1000, 'rounded')
 		var productObject = {
 			name: product.productTitle
 			, refId: product._id
@@ -134,7 +138,7 @@ $scope.selectSize = function(size) {
 		};
 		console.log(productObject);
 		console.log("colorSize", colorSize._id);
-		cartService.addProductToCart(productObject).then(function(response) {
+		cartService.addProductToCart(productObject).then(function(response) {  
 			console.log(response.data);
 			/*reset dynamic values to empty (cf. Mark)*/
 			$scope.cart = response.data;

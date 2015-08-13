@@ -31,6 +31,11 @@ app.config(function($routeProvider) {
 	.when('/thankyou', {
 		templateUrl : 'scripts/views/user/checkout/confirm.html',
 		controller : 'thankyouCtrl', 
+		resolve: {
+			checkedOutCart: function(cartService) {
+				return cartService.getCart();
+			}
+		}
 	})
 		.when('/checkout', {
 		templateUrl : 'scripts/views/user/checkout/checkoutTmpl.html',
@@ -114,6 +119,7 @@ app.config(function($routeProvider) {
 app.run(function ($rootScope, $window) {
  $rootScope.$on("$routeChangeSuccess", function(event){
     $window.scrollTo(0,0);
-});
-});
+	});
+});// end app.run in app.js
+
 
