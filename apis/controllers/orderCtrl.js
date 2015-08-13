@@ -27,7 +27,7 @@ module.exports = {
 		.populate('products.product')
 		.exec(function(err, data) {
 			if(err) {
-				res.error(500).send(err);
+				res.err(500).send(err);
 			}
 			else {
 				res.send(data);
