@@ -16,7 +16,7 @@
 
 	<div class="orderView">
 		<ul class="collapsible popout" data-collapsible="accordion" watch>
-		    <li ng-repeat="order in orders | filter:search">
+		    <li ng-repeat="order in orders | filter:search | orderBy: 'timePlaced': true">
 		      
 		      <div class="collapsible-header" id="orderHeader">
 		       <p><i class="fa fa-angle-double-right"></i>
