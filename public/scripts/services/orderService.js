@@ -33,7 +33,7 @@ app.service('orderService', function($http, $q){
 	};
 
 	this.updateOrderByPaymentId = function(orderObj){
-		console.log(orderObj)
+		console.log('what is this', orderObj)
 		return $http({
 			method: 'PUT',
 			url: '/api/user/order/' + orderObj.paymentId,
